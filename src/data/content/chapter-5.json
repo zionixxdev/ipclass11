@@ -1,0 +1,3340 @@
+{
+  "chapter": {
+    "id": "ch5",
+    "number": 5,
+    "title": "Data Types and Operators",
+    "summary": "This chapter covers Python's core data types (int, float, complex, bool, str, list, tuple and None), the distinction between mutable and immutable types, and the type() function. It explains every category of operator — arithmetic (including // and %), relational, logical, assignment and augmented assignment, bitwise, membership and identity — together with operator precedence and associativity. It also covers implicit and explicit type conversion using int(), float(), str() and bool(), and how expressions are evaluated, including common pitfalls such as integer vs float division and right-associative exponentiation."
+  },
+  "topics": [
+    {
+      "id": "ch5-data-types",
+      "title": "Data Types",
+      "content": {
+        "hinglish": "Python me har value ka ek data type hota hai, jaise int (poore number), float (decimal wale), complex, bool (True/False), str (text), list, tuple aur None. Data type batata hai ki us value ke saath kaunse operations ho sakte hain aur memory me kaise store hoti hai. type() function se hum kisi bhi value ka type check kar sakte hain, jaise type(10) int deta hai. Kuch types mutable hote hain (badal sakte hain) jaise list, aur kuch immutable hote hain (nahi badal sakte) jaise int, str aur tuple. Bool actually int ka hi subtype hai, isliye True ko 1 aur False ko 0 ki tarah use kar sakte hain.",
+        "formalDefinition": "A data type is a classification that specifies which kind of value a variable can hold, how much memory it occupies, and which operations are permitted on it. Python is a dynamically typed language, so the type of a name is decided at runtime from the object it currently refers to, not from a declared type. Python's built-in core data types are: numeric (int, float, complex), boolean (bool), text/sequence (str), sequence containers (list, tuple), mapping (dict), set (set, frozenset), and the special value NoneType (None). Types are broadly classified as immutable (int, float, complex, bool, str, tuple, frozenset) or mutable (list, dict, set). The built-in function type(object) returns the class of an object.",
+        "keywords": [
+          "int",
+          "float",
+          "complex",
+          "bool",
+          "str",
+          "list",
+          "mutable",
+          "immutable"
+        ],
+        "examples": [
+          "10            -> int",
+          "3.14          -> float",
+          "2 + 3j        -> complex",
+          "True / False  -> bool",
+          "'Hello'       -> str",
+          "[1, 2, 3]     -> list (mutable)",
+          "(1, 2, 3)     -> tuple (immutable)",
+          "None          -> NoneType"
+        ],
+        "tables": [
+          {
+            "title": "Core built-in data types in Python",
+            "headers": [
+              "Type",
+              "Example",
+              "Mutable?",
+              "Description"
+            ],
+            "rows": [
+              [
+                "int",
+                "42, -7, 0",
+                "No",
+                "Whole numbers of unlimited size"
+              ],
+              [
+                "float",
+                "3.14, -0.5, 2e3",
+                "No",
+                "Real numbers with a decimal point"
+              ],
+              [
+                "complex",
+                "2+3j",
+                "No",
+                "Number with real and imaginary parts"
+              ],
+              [
+                "bool",
+                "True, False",
+                "No",
+                "Logical values (subtype of int)"
+              ],
+              [
+                "str",
+                "'abc', \"hi\"",
+                "No",
+                "Sequence of characters"
+              ],
+              [
+                "list",
+                "[1, 2, 3]",
+                "Yes",
+                "Ordered, changeable collection"
+              ],
+              [
+                "tuple",
+                "(1, 2, 3)",
+                "No",
+                "Ordered, unchangeable collection"
+              ],
+              [
+                "NoneType",
+                "None",
+                "No",
+                "Special value meaning 'no value'"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Data Types\n  |-- Numeric -> int, float, complex\n  |-- Boolean -> bool (True/False)\n  |-- Sequence -> str, list, tuple\n  |-- Mapping -> dict\n  |-- Set -> set, frozenset\n  |-- Special -> NoneType (None)"
+        ],
+        "differences": {
+          "title": "Mutable vs Immutable types",
+          "headers": [
+            "Basis",
+            "Mutable",
+            "Immutable"
+          ],
+          "rows": [
+            [
+              "Can be changed after creation?",
+              "Yes",
+              "No"
+            ],
+            [
+              "Examples",
+              "list, dict, set",
+              "int, float, str, tuple"
+            ],
+            [
+              "Effect of '=' on element",
+              "Same object is modified",
+              "A new object is created"
+            ],
+            [
+              "Hashable / usable as dict key?",
+              "No",
+              "Yes (mostly)"
+            ],
+            [
+              "Example",
+              "a=[1]; a[0]=9",
+              "s='hi'; s[0]='H' -> error"
+            ]
+          ]
+        },
+        "pythonSyntax": "# No type is declared; the interpreter infers it\nx = 10          # int\ny = 2.5         # float\nz = True        # bool\nname = \"Ravi\"   # str\nnums = [1, 2, 3]  # list\npoint = (4, 5)    # tuple\nprint(type(x))    # <class 'int'>",
+        "codeExamples": [
+          {
+            "code": "x = 10\ny = 2.5\nprint(type(x))\nprint(type(y))",
+            "output": "<class 'int'>\n<class 'float'>",
+            "explanation": "type() returns the class of the object; 10 is an int and 2.5 is a float."
+          },
+          {
+            "code": "print(type(True))\nprint(True + 1)",
+            "output": "<class 'bool'>\n2",
+            "explanation": "bool is a subtype of int, so True behaves like 1 in arithmetic."
+          },
+          {
+            "code": "nums = [1, 2, 3]\nnums[0] = 99\nprint(nums)\nname = \"Ravi\"\nprint(name[0])",
+            "output": "[99, 2, 3]\nR",
+            "explanation": "A list is mutable so its element can be reassigned; a str is immutable but its characters can still be read by index."
+          }
+        ],
+        "commonMistakes": [
+          "Confusing // (floor division) with / (true division): 10/2 gives 5.0, not 5.",
+          "Thinking True and False are strings; they are bool literals written without quotes.",
+          "Trying to change a character of a string, e.g. s[0] = 'H', which raises TypeError because str is immutable.",
+          "Forgetting that None is not the same as 0 or '' — it is its own NoneType and is falsy.",
+          "Assuming every number with a decimal point is float but writing '3.0' in quotes makes it a str."
+        ],
+        "examNotes": [
+          "Python is dynamically typed: no int x declaration is needed; the type comes from the assigned value.",
+          "int has unlimited precision in Python; there is no fixed 32/64-bit overflow.",
+          "float follows IEEE-754 double precision, so 0.1 + 0.2 gives 0.30000000000000004.",
+          "bool is a subclass of int; True == 1 and False == 0 both evaluate to True.",
+          "NoneType has exactly one value, None, and is commonly used as a placeholder.",
+          "type() gives the class; isinstance() is preferred to test membership of a type."
+        ],
+        "faqs": [
+          {
+            "q": "Is bool a separate data type or just int?",
+            "a": "bool is a distinct type but it is implemented as a subclass of int, so True equals 1 and False equals 0 in numeric contexts."
+          },
+          {
+            "q": "Why does 10 / 2 give 5.0 and not 5?",
+            "a": "The single slash / is true division and always returns a float, even when the result is a whole number. Use // for an integer quotient."
+          },
+          {
+            "q": "What is the type of None?",
+            "a": "None belongs to NoneType. It represents the absence of a value and is falsy, but it is not equal to 0 or an empty string."
+          },
+          {
+            "q": "Can a tuple contain a list inside it?",
+            "a": "Yes. The tuple itself is immutable, but if it holds a mutable object like a list, that inner list can still be modified."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What is the output of print(type(5 / 2))?",
+            "options": [
+              "<class 'int'>",
+              "<class 'float'>",
+              "<class 'complex'>",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "The / operator is true division and always returns a float, so 5 / 2 is 2.5 (float)."
+          },
+          {
+            "question": "Which of these is immutable?",
+            "options": [
+              "list",
+              "dict",
+              "tuple",
+              "set"
+            ],
+            "answer": 2,
+            "explanation": "A tuple cannot be changed after creation; list, dict and set are mutable."
+          },
+          {
+            "question": "What does print(True + True) display?",
+            "options": [
+              "True",
+              "2",
+              "False",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "bool is a subtype of int, so True is treated as 1 and True + True gives 2."
+          },
+          {
+            "question": "The value None belongs to which type?",
+            "options": [
+              "bool",
+              "int",
+              "NoneType",
+              "str"
+            ],
+            "answer": 2,
+            "explanation": "None is the only value of the NoneType class."
+          }
+        ],
+        "checklist": [
+          "I can name the core data types: int, float, complex, bool, str, list, tuple, None.",
+          "I can use type() to check the type of any value.",
+          "I can tell mutable types from immutable types and give examples.",
+          "I know that True == 1 and False == 0 because bool is a subtype of int.",
+          "I know that / always returns float while // returns an integer quotient.",
+          "I understand that Python decides a variable's type from the value assigned."
+        ]
+      }
+    },
+    {
+      "id": "ch5-operators",
+      "title": "Operators",
+      "content": {
+        "hinglish": "Operators wo symbols hote hain jo values (operands) par kaam karke result dete hain, jaise +, -, *, / . Arithmetic operators me // (floor division) aur % (modulus) sabse zyada confusion create karte hain: 7//2 deta hai 3 aur 7%2 deta hai 1. Relational operators (<, >, ==) do values compare karke True ya False dete hain, aur logical operators and, or, not conditions ko jodte hain. Assignment operator = value store karta hai, aur augmented assignment jaise +=, -= ek hi step me operation aur assignment dono kar dete hain. Bitwise operators (&, |, ^, ~, <<, >>) numbers ke binary bits par kaam karte hain. Membership operators in aur not in batate hain ki koi value kisi sequence me hai ya nahi, aur identity operators is aur is not batate hain ki do naam ek hi object ko point karte hain ya nahi.",
+        "formalDefinition": "An operator is a symbol or keyword that performs an operation on one or more operands and yields a result. Operators are grouped by function: arithmetic (+ - * / // % **), relational/comparison (< > <= >= == !=), logical (and or not), assignment (= and augmented forms += -= *= /= //= %= **=), bitwise (& | ^ ~ << >>), membership (in, not in) and identity (is, is not). A unary operator acts on a single operand (e.g. the minus in -5 or not x), while a binary operator acts on two. The value an operator returns depends on the types of its operands; for example + concatenates strings and joins lists but adds numbers.",
+        "keywords": [
+          "arithmetic",
+          "relational",
+          "logical",
+          "assignment",
+          "bitwise",
+          "membership",
+          "identity",
+          "precedence"
+        ],
+        "examples": [
+          "7 + 3  -> 10        (arithmetic)",
+          "7 // 2 -> 3         (floor division)",
+          "7 % 2  -> 1         (modulus/remainder)",
+          "2 ** 4 -> 16        (exponent)",
+          "5 > 3  -> True      (relational)",
+          "not False -> True   (logical unary)",
+          "x += 5  -> x = x+5  (augmented assignment)",
+          "3 in [1,3,5] -> True (membership)"
+        ],
+        "tables": [
+          {
+            "title": "Categories of operators",
+            "headers": [
+              "Category",
+              "Operators",
+              "Result type"
+            ],
+            "rows": [
+              [
+                "Arithmetic",
+                "+ - * / // % **",
+                "int or float"
+              ],
+              [
+                "Relational",
+                "< > <= >= == !=",
+                "bool"
+              ],
+              [
+                "Logical",
+                "and or not",
+                "bool (or operand)"
+              ],
+              [
+                "Assignment",
+                "= += -= *= /= //= %= **=",
+                "assigned value"
+              ],
+              [
+                "Bitwise",
+                "& | ^ ~ << >>",
+                "int"
+              ],
+              [
+                "Membership",
+                "in, not in",
+                "bool"
+              ],
+              [
+                "Identity",
+                "is, is not",
+                "bool"
+              ],
+              [
+                "Unary",
+                "- + ~ not",
+                "varies"
+              ]
+            ]
+          },
+          {
+            "title": "Bitwise operators on 5 (0101) and 3 (0011)",
+            "headers": [
+              "Expression",
+              "Binary working",
+              "Result"
+            ],
+            "rows": [
+              [
+                "5 & 3",
+                "0101 AND 0011 = 0001",
+                "1"
+              ],
+              [
+                "5 | 3",
+                "0101 OR 0011 = 0111",
+                "7"
+              ],
+              [
+                "5 ^ 3",
+                "0101 XOR 0011 = 0110",
+                "6"
+              ],
+              [
+                "~5",
+                "-(5+1)",
+                "-6"
+              ],
+              [
+                "5 << 1",
+                "0101 shifted left = 1010",
+                "10"
+              ],
+              [
+                "5 >> 1",
+                "0101 shifted right = 0010",
+                "2"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Operators\n  |-- Arithmetic: + - * / // % **\n  |-- Relational: < > <= >= == !=\n  |-- Logical: and, or, not\n  |-- Assignment: = and augmented (+=, -=, ...)\n  |-- Bitwise: & | ^ ~ << >>\n  |-- Membership: in, not in\n  |-- Identity: is, is not"
+        ],
+        "differences": {
+          "title": "/ vs // vs %",
+          "headers": [
+            "Operator",
+            "Meaning",
+            "Example",
+            "Result"
+          ],
+          "rows": [
+            [
+              "/",
+              "True (real) division",
+              "7 / 2",
+              "3.5"
+            ],
+            [
+              "//",
+              "Floor division (integer quotient)",
+              "7 // 2",
+              "3"
+            ],
+            [
+              "%",
+              "Modulus (remainder)",
+              "7 % 2",
+              "1"
+            ]
+          ]
+        },
+        "pythonSyntax": "a, b = 7, 2\nprint(a + b, a - b, a * b)   # 9 5 14\nprint(a / b, a // b, a % b)  # 3.5 3 1\nprint(a ** b)                # 49\nprint(a > b, a == b)         # True False\nprint(a > 0 and b > 0)       # True\na += 5                        # a = a + 5",
+        "codeExamples": [
+          {
+            "code": "print(7 // 2)\nprint(7 % 2)\nprint(-7 // 2)\nprint(-7 % 2)",
+            "output": "3\n1\n-4\n1",
+            "explanation": "// gives the floor (rounded down) quotient and % gives the remainder that satisfies a = (a//b)*b + (a%b). For -7//2 the floor is -4, and -7 % 2 is 1."
+          },
+          {
+            "code": "print('ab' * 3)\nprint('ab' + 'cd')\nprint(3 * 2.0)",
+            "output": "ababab\nabcd\n6.0",
+            "explanation": "* repeats a string, + concatenates strings, and mixing int with float in arithmetic promotes the result to float."
+          },
+          {
+            "code": "print(3 & 5)\nprint(3 | 5)\nprint(3 ^ 5)\nprint(~5)",
+            "output": "1\n7\n6\n-6",
+            "explanation": "Bitwise operators work on the binary form of the numbers: AND, OR, XOR and bitwise NOT (~x = -(x+1))."
+          }
+        ],
+        "commonMistakes": [
+          "Using = (assignment) where == (comparison) is needed inside a condition.",
+          "Expecting 7 / 2 to give 3; / always returns a float (3.5), so use // for an integer.",
+          "Forgetting that % in Python can return a negative remainder when the dividend is negative (e.g. -7 % 3 is 2).",
+          "Confusing 'is' (identity, same object) with '==' (equality, same value).",
+          "Assuming 'and'/'or' always return True/False; they actually return one of the operands (e.g. 0 or 'x' returns 'x')."
+        ],
+        "examNotes": [
+          "The 'and' and 'or' operators short-circuit: the second operand is evaluated only when needed.",
+          "In Python, a = b = c = 5 is a chained assignment that assigns 5 to all three names.",
+          "Augmented assignment x += 3 is shorthand for x = x + 3 and works for lists/strings too.",
+          "~x equals -(x + 1); e.g. ~5 is -6.",
+          "'in' checks membership in a sequence or container; 'is' checks whether two names refer to the same object.",
+          "Relational operators can be chained: 1 < 2 < 3 is True and means (1 < 2) and (2 < 3)."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between / and //?",
+            "a": "/ is true division and always returns a float; // is floor division and returns the largest integer less than or equal to the real quotient."
+          },
+          {
+            "q": "What does the modulus operator % do with negative numbers?",
+            "a": "The result takes the sign of the divisor. For example -7 % 3 is 2 and 7 % -3 is -2."
+          },
+          {
+            "q": "When should I use 'is' instead of '=='?",
+            "a": "Use '==' to compare values and 'is' to test whether two names point to the same object, commonly written as 'x is None'."
+          },
+          {
+            "q": "Does 'and' always return a bool?",
+            "a": "No. 'and' returns the first falsy operand or the last operand, so 0 or 'hello' returns 'hello'. Use bool() if you need a strict True/False."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What is the value of 17 % 5?",
+            "options": [
+              "3",
+              "2",
+              "3.4",
+              "0"
+            ],
+            "answer": 1,
+            "explanation": "17 divided by 5 gives quotient 3 and remainder 2, so 17 % 5 is 2."
+          },
+          {
+            "question": "What does print(2 ** 3 ** 2) output?",
+            "options": [
+              "64",
+              "512",
+              "36",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "** is right-associative, so it is evaluated as 2 ** (3 ** 2) = 2 ** 9 = 512."
+          },
+          {
+            "question": "Which operator checks whether a value exists in a list?",
+            "options": [
+              "is",
+              "==",
+              "in",
+              "&"
+            ],
+            "answer": 2,
+            "explanation": "'in' is the membership operator and returns True if the value is present in the sequence."
+          },
+          {
+            "question": "What is the output of print(5 | 2)?",
+            "options": [
+              "7",
+              "3",
+              "2",
+              "10"
+            ],
+            "answer": 0,
+            "explanation": "In binary 5 = 101 and 2 = 010; the bitwise OR is 111, which is 7."
+          }
+        ],
+        "checklist": [
+          "I can list the arithmetic, relational, logical, assignment, bitwise, membership and identity operators.",
+          "I can explain the difference between /, // and %.",
+          "I can evaluate simple bitwise expressions like 5 & 3 and ~5.",
+          "I can use augmented assignment operators such as += and *=.",
+          "I know that 'is' checks identity while '==' checks equality.",
+          "I know that 'in' and 'not in' test membership in a sequence."
+        ]
+      }
+    },
+    {
+      "id": "ch5-type-conversion",
+      "title": "Type Conversion in Python",
+      "content": {
+        "hinglish": "Type conversion ka matlab hai ek data type ki value ko doosre data type me badalna. Iske do roop hote hain: implicit conversion (jise Python khud karta hai, jaise int aur float ko jodne par result float ban jata hai) aur explicit conversion (jise hum int(), float(), str(), bool() jaise functions se khud karte hain). Implicit conversion ko type promotion bhi kehte hain kyunki chhota type bade type me promote ho jata hai, jaise int se float. Explicit conversion me humein dhyan rakhna padta hai, jaise int('10') theek hai par int('abc') error dega. bool() me khaali cheezein jaise 0, '', [], None False dete hain aur baaki sab True.",
+        "formalDefinition": "Type conversion (also called type casting) is the process of changing a value from one data type to another. In implicit conversion (type coercion/promotion), the Python interpreter automatically converts a 'lower' type to a 'higher' type during an operation, following the order bool -> int -> float -> complex, so that no information is lost. In explicit conversion (type casting), the programmer uses built-in constructor functions — int(), float(), complex(), str(), bool(), list(), tuple(), set() — to deliberately convert a value. Explicit conversion can fail and raise a ValueError (e.g. int('abc')) or TypeError if the conversion is not defined.",
+        "keywords": [
+          "implicit conversion",
+          "explicit conversion",
+          "type promotion",
+          "int()",
+          "float()",
+          "str()",
+          "bool()",
+          "ValueError"
+        ],
+        "examples": [
+          "5 + 2.0   -> 7.0      (implicit: int promoted to float)",
+          "int('25') -> 25       (explicit)",
+          "float(7)  -> 7.0      (explicit)",
+          "str(99)   -> '99'     (explicit)",
+          "bool(0)   -> False    (explicit)",
+          "int(3.9)  -> 3        (truncates toward zero)",
+          "int('abc') -> ValueError"
+        ],
+        "tables": [
+          {
+            "title": "Common explicit conversion functions",
+            "headers": [
+              "Function",
+              "Converts to",
+              "Valid example",
+              "Result"
+            ],
+            "rows": [
+              [
+                "int()",
+                "integer",
+                "int('42'), int(3.9)",
+                "42, 3"
+              ],
+              [
+                "float()",
+                "float",
+                "float('2.5'), float(7)",
+                "2.5, 7.0"
+              ],
+              [
+                "complex()",
+                "complex",
+                "complex(2, 3)",
+                "(2+3j)"
+              ],
+              [
+                "str()",
+                "string",
+                "str(99)",
+                "'99'"
+              ],
+              [
+                "bool()",
+                "boolean",
+                "bool(''), bool('a')",
+                "False, True"
+              ]
+            ]
+          },
+          {
+            "title": "What bool() returns",
+            "headers": [
+              "Value passed",
+              "Result",
+              "Reason"
+            ],
+            "rows": [
+              [
+                "bool(0)",
+                "False",
+                "Zero is falsy"
+              ],
+              [
+                "bool(5)",
+                "True",
+                "Any non-zero number is truthy"
+              ],
+              [
+                "bool('')",
+                "False",
+                "Empty string is falsy"
+              ],
+              [
+                "bool('0')",
+                "True",
+                "Non-empty string is truthy (even '0')"
+              ],
+              [
+                "bool([])",
+                "False",
+                "Empty list is falsy"
+              ],
+              [
+                "bool(None)",
+                "False",
+                "None is falsy"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Implicit promotion order (small -> large):\n  bool -> int -> float -> complex\n\nExplicit conversion (programmer-controlled):\n  int()  float()  str()  bool()  complex()  list()  tuple()"
+        ],
+        "differences": {
+          "title": "Implicit vs Explicit conversion",
+          "headers": [
+            "Basis",
+            "Implicit conversion",
+            "Explicit conversion"
+          ],
+          "rows": [
+            [
+              "Who performs it?",
+              "Python interpreter (automatic)",
+              "Programmer (manual)"
+            ],
+            [
+              "Also called",
+              "Type coercion / promotion",
+              "Type casting"
+            ],
+            [
+              "Order followed",
+              "bool -> int -> float -> complex",
+              "Any target type chosen"
+            ],
+            [
+              "Example",
+              "5 + 2.0 -> 7.0",
+              "int('25') -> 25"
+            ],
+            [
+              "Can it fail?",
+              "No, it is safe",
+              "Yes, e.g. int('abc') raises ValueError"
+            ]
+          ]
+        },
+        "pythonSyntax": "# Explicit conversion\nprint(int('100'))     # 100\nprint(float('3.5'))   # 3.5\nprint(str(45) + '6')  # '456'\nprint(bool(''))       # False\n\n# Implicit conversion (type promotion)\nprint(10 + 2.5)       # 12.5  (int -> float)",
+        "codeExamples": [
+          {
+            "code": "print(5 + 2.0)\nprint(3 + True)\nprint(2 + 1j)",
+            "output": "7.0\n4\n(2+1j)",
+            "explanation": "Implicit promotion raises the 'smaller' operand: int+float gives float, bool is treated as int, and mixing a real with a complex gives complex."
+          },
+          {
+            "code": "print(int('10') + int('20'))\nprint(str(3) + str(4))",
+            "output": "30\n34",
+            "explanation": "int('10') + int('20') adds the numbers to get 30, while str(3) + str(4) concatenates the strings to give '34'."
+          },
+          {
+            "code": "print(int(3.9))\nprint(float(3))\nprint(bool(0))\nprint(bool('0'))",
+            "output": "3\n3.0\nFalse\nTrue",
+            "explanation": "int() truncates the decimal part (it does not round), float() adds .0, and bool() is False only for 'empty/falsy' values — the non-empty string '0' is True."
+          }
+        ],
+        "commonMistakes": [
+          "Thinking int(3.9) rounds to 4; it actually truncates toward zero and gives 3.",
+          "Writing int('3.5') expecting 3; converting a decimal string directly to int raises ValueError (use float('3.5') first).",
+          "Expecting '5' + 5 to give 10; Python raises TypeError because you cannot add str and int without conversion.",
+          "Assuming bool('False') is False; any non-empty string, including 'False', is True.",
+          "Believing str + int mixes automatically — Python does not implicitly convert between text and numbers."
+        ],
+        "examNotes": [
+          "Implicit conversion is automatic and lossless, moving toward the 'wider' type (bool -> int -> float -> complex).",
+          "Explicit conversion is done with constructor functions and may raise ValueError or TypeError.",
+          "int() truncates toward zero: int(3.9) is 3 and int(-3.9) is -3.",
+          "bool() treats 0, 0.0, '', [], (), {}, set(), and None as False; everything else is True.",
+          "Use float('3.5') rather than int('3.5') when a decimal string must be converted to a number.",
+          "Python does not implicitly convert between str and numeric types; you must convert explicitly."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between implicit and explicit conversion?",
+            "a": "Implicit conversion is done automatically by Python to a wider type (e.g. int to float), while explicit conversion is requested by the programmer using functions like int() or str()."
+          },
+          {
+            "q": "Why does int('3.5') give an error?",
+            "a": "int() on a string requires the string to represent a whole number. Convert to float first with float('3.5') and then to int if needed."
+          },
+          {
+            "q": "Is bool('False') True or False?",
+            "a": "It is True, because 'False' is a non-empty string and any non-empty string is truthy."
+          },
+          {
+            "q": "Does Python convert a string and a number automatically in '5' + 5?",
+            "a": "No. Python does not implicitly convert between str and int, so this raises a TypeError. Use str(5) or int('5') explicitly."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What is the result of int(3.9)?",
+            "options": [
+              "4",
+              "3",
+              "3.9",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "int() truncates toward zero, so int(3.9) is 3 (it does not round up)."
+          },
+          {
+            "question": "What does 10 + 2.5 evaluate to?",
+            "options": [
+              "12",
+              "12.5",
+              "Error",
+              "'102.5'"
+            ],
+            "answer": 1,
+            "explanation": "The int 10 is implicitly promoted to float, so the result is the float 12.5."
+          },
+          {
+            "question": "Which call raises an error?",
+            "options": [
+              "int('25')",
+              "float('2.5')",
+              "int('abc')",
+              "str(10)"
+            ],
+            "answer": 2,
+            "explanation": "int('abc') raises a ValueError because 'abc' is not a valid integer string."
+          },
+          {
+            "question": "What is bool('0')?",
+            "options": [
+              "False",
+              "True",
+              "0",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "'0' is a non-empty string, and any non-empty string is truthy, so bool('0') is True."
+          }
+        ],
+        "checklist": [
+          "I can explain implicit (automatic) and explicit (manual) conversion.",
+          "I know the promotion order bool -> int -> float -> complex.",
+          "I can use int(), float(), str(), bool() correctly.",
+          "I know int() truncates toward zero rather than rounding.",
+          "I know which values are falsy for bool(): 0, '', [], None, etc.",
+          "I know that mixing str with int raises a TypeError without explicit conversion."
+        ]
+      }
+    },
+    {
+      "id": "ch5-expressions",
+      "title": "Expressions",
+      "content": {
+        "hinglish": "Expression ek aisa combination hota hai jisme operands (values/variables) aur operators hote hain aur jo evaluate hokar ek value deta hai, jaise 2 + 3 * 4 . Jab ek expression me kai operators hote hain to unka order operator precedence decide karta hai: pehle brackets, phir exponent **, phir unary +/-, phir * / // %, phir + -, phir comparison, phir not, phir and, phir or. Associativity batati hai ki jab precedence same ho to kaunsa operator pehle chalega, jaise ** right se left chalta hai par + aur * left se right. Isi wajah se 2 + 3 * 4 ka answer 14 hota hai, 20 nahi, aur 2 ** 3 ** 2 ka answer 512 hota hai. Evaluation ka result operand ke types par bhi depend karta hai.",
+        "formalDefinition": "An expression is a valid combination of operands (literals, variables, function calls) and operators that the interpreter evaluates to produce a single value. When an expression contains multiple operators, the order of evaluation is fixed by operator precedence (which operator binds more tightly) and associativity (the direction of evaluation when precedence is equal). Python's precedence runs from highest to lowest roughly as: parentheses ( ), exponentiation **, unary +x -x ~x, multiplicative * / // %, additive + -, bitwise shifts << >>, bitwise & , ^ , |, comparisons (< <= > >= == != and membership/identity), not, and, or, and finally conditional/assignment expressions. Exponentiation is right-associative; almost all other operators are left-associative.",
+        "keywords": [
+          "expression",
+          "operand",
+          "operator",
+          "precedence",
+          "associativity",
+          "evaluation",
+          "parentheses",
+          "right-associative"
+        ],
+        "examples": [
+          "2 + 3 * 4      -> 14   (* before +)",
+          "(2 + 3) * 4    -> 20   (parentheses first)",
+          "2 ** 3 ** 2    -> 512  (right-associative)",
+          "10 - 4 - 3     -> 3    (left-associative)",
+          "not 5 > 3      -> False (comparison before not)",
+          "2 + 3 == 5     -> True  (arithmetic before ==)",
+          "True or False and False -> True (and before or)"
+        ],
+        "tables": [
+          {
+            "title": "Python operator precedence (highest to lowest, abridged)",
+            "headers": [
+              "Level",
+              "Operators",
+              "Associativity"
+            ],
+            "rows": [
+              [
+                "1 (highest)",
+                "( )  [ ]  { }",
+                "left to right"
+              ],
+              [
+                "2",
+                "**",
+                "right to left"
+              ],
+              [
+                "3",
+                "unary +x  -x  ~x",
+                "right to left"
+              ],
+              [
+                "4",
+                "*  /  //  %",
+                "left to right"
+              ],
+              [
+                "5",
+                "+  -",
+                "left to right"
+              ],
+              [
+                "6",
+                "<<  >>",
+                "left to right"
+              ],
+              [
+                "7",
+                "&",
+                "left to right"
+              ],
+              [
+                "8",
+                "^",
+                "left to right"
+              ],
+              [
+                "9",
+                "|",
+                "left to right"
+              ],
+              [
+                "10",
+                "<  <=  >  >=  ==  !=  in  is",
+                "left to right"
+              ],
+              [
+                "11",
+                "not",
+                "right to left"
+              ],
+              [
+                "12",
+                "and",
+                "left to right"
+              ],
+              [
+                "13 (lowest)",
+                "or",
+                "left to right"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Evaluation order (BODMAS-like):\n  Brackets -> Exponent (**) -> Unary -> * / // % -> + - ->\n  Comparison -> not -> and -> or\n\nExample:  2 + 3 * 4\n  1) 3 * 4 = 12\n  2) 2 + 12 = 14"
+        ],
+        "differences": {
+          "title": "Precedence vs Associativity",
+          "headers": [
+            "Basis",
+            "Precedence",
+            "Associativity"
+          ],
+          "rows": [
+            [
+              "Decides",
+              "Which operator is applied first",
+              "Order when precedence is equal"
+            ],
+            [
+              "Example",
+              "* is applied before +",
+              "** and - are right/left as defined"
+            ],
+            [
+              "Illustration",
+              "2 + 3 * 4 = 14",
+              "10 - 4 - 3 = 3"
+            ]
+          ]
+        },
+        "pythonSyntax": "# Precedence in action\nprint(2 + 3 * 4)      # 14\nprint((2 + 3) * 4)    # 20\nprint(2 ** 3 ** 2)    # 512 (right-associative)\nprint(10 - 4 - 3)     # 3   (left-associative)\nprint(not 5 > 3)      # False\nprint(2 + 3 == 5)     # True",
+        "codeExamples": [
+          {
+            "code": "print(2 + 3 * 4)\nprint((2 + 3) * 4)\nprint(2 * 3 ** 2)",
+            "output": "14\n20\n18",
+            "explanation": "Exponent binds before *, and * binds before +. Parentheses override the default precedence, giving 20 in the second line."
+          },
+          {
+            "code": "print(2 ** 3 ** 2)\nprint((2 ** 3) ** 2)\nprint(10 - 4 - 3)",
+            "output": "512\n64\n3",
+            "explanation": "** is right-associative so 2 ** 3 ** 2 = 2 ** (3 ** 2) = 512; parentheses change it to (2**3)**2 = 64. Subtraction is left-associative: (10-4)-3 = 3."
+          },
+          {
+            "code": "print(True or False and False)\nprint((True or False) and False)\nprint(not 5 > 3)",
+            "output": "True\nFalse\nFalse",
+            "explanation": "and binds before or, so the first is True or (False and False) = True. not applies after comparison, so not (5 > 3) = not True = False."
+          }
+        ],
+        "commonMistakes": [
+          "Ignoring precedence and reading 2 + 3 * 4 as 20; the correct value is 14 because * binds first.",
+          "Assuming ** is left-associative; it is right-associative, so 2 ** 3 ** 2 is 512.",
+          "Forgetting that not has lower precedence than comparison, so not 5 > 3 means not (5 > 3).",
+          "Mixing / and // in one expression and expecting an int result; any / makes the result a float.",
+          "Relying on 'and'/'or' returning a bool — they return one of the operands."
+        ],
+        "examNotes": [
+          "Parentheses ( ) have the highest precedence and are used to force a specific evaluation order.",
+          "** is right-associative; the multiplicative, additive, bitwise, comparison, and, or operators are left-associative.",
+          "Arithmetic operators bind tighter than comparisons, which bind tighter than not, then and, then or.",
+          "A single / anywhere in an arithmetic expression makes the overall result a float.",
+          "Chained comparisons like 1 < 2 < 3 are evaluated as (1 < 2) and (2 < 3).",
+          "When in doubt, add parentheses — it improves readability and avoids precedence errors."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between precedence and associativity?",
+            "a": "Precedence decides which operator is applied first when operators differ; associativity decides the order when the operators have the same precedence (left-to-right or right-to-left)."
+          },
+          {
+            "q": "Why is 2 ** 3 ** 2 equal to 512 and not 64?",
+            "a": "The exponent operator is right-associative, so the expression groups as 2 ** (3 ** 2) = 2 ** 9 = 512."
+          },
+          {
+            "q": "How do parentheses affect evaluation?",
+            "a": "Parentheses have the highest precedence, so the expression inside them is evaluated first, overriding the normal order."
+          },
+          {
+            "q": "What is the result of not 5 > 3?",
+            "a": "Comparison is applied first, so it becomes not (5 > 3) = not True = False."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What is the value of 2 + 3 * 4?",
+            "options": [
+              "20",
+              "14",
+              "24",
+              "9"
+            ],
+            "answer": 1,
+            "explanation": "Multiplication has higher precedence than addition, so 3 * 4 = 12 is computed first, then 2 + 12 = 14."
+          },
+          {
+            "question": "What is the value of 2 ** 3 ** 2?",
+            "options": [
+              "64",
+              "512",
+              "36",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "** is right-associative, so it evaluates as 2 ** (3 ** 2) = 2 ** 9 = 512."
+          },
+          {
+            "question": "What does print(10 - 4 - 3) display?",
+            "options": [
+              "9",
+              "3",
+              "11",
+              "-1"
+            ],
+            "answer": 1,
+            "explanation": "Subtraction is left-associative: (10 - 4) - 3 = 6 - 3 = 3."
+          },
+          {
+            "question": "Which operator has the highest precedence?",
+            "options": [
+              "+",
+              "*",
+              "**",
+              "( )"
+            ],
+            "answer": 3,
+            "explanation": "Parentheses have the highest precedence of all — the content inside them is evaluated first."
+          }
+        ],
+        "checklist": [
+          "I can define an expression and identify its operands and operators.",
+          "I can state Python's operator precedence order.",
+          "I can explain left vs right associativity with examples.",
+          "I can evaluate mixed expressions like 2 + 3 * 4 and 2 ** 3 ** 2 correctly.",
+          "I know parentheses override precedence.",
+          "I can predict the type of a result when / and // are mixed."
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "ch5-mcq-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the data type of the value 3 + 4j?",
+      "options": [
+        "int",
+        "float",
+        "complex",
+        "str"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "int is used for whole numbers only.",
+        "float holds real decimal numbers, not values with an imaginary part.",
+        "Correct: the trailing j marks the imaginary part, so 3 + 4j is a complex number.",
+        "str would require the value to be enclosed in quotes."
+      ],
+      "explanation": "A literal written as a + bj (with the letter j) creates a complex number of type complex.",
+      "relatedConcepts": [
+        "complex",
+        "numeric types",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch5-mcq-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is an immutable data type?",
+      "options": [
+        "list",
+        "dict",
+        "set",
+        "tuple"
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "A list can be changed after creation, so it is mutable.",
+        "A dict can have items added or removed, so it is mutable.",
+        "A set can be modified in place, so it is mutable.",
+        "Correct: a tuple cannot be changed after it is created, so it is immutable."
+      ],
+      "explanation": "Immutable means the object cannot be altered in place. str, tuple and numbers are immutable; list, dict and set are mutable.",
+      "relatedConcepts": [
+        "immutable",
+        "tuple",
+        "mutable vs immutable"
+      ]
+    },
+    {
+      "id": "ch5-mcq-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The value None belongs to which data type?",
+      "options": [
+        "int",
+        "bool",
+        "NoneType",
+        "str"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "None is not a number, so it is not int.",
+        "None is not equal to True or False, so it is not bool.",
+        "Correct: None is the only value of the NoneType class.",
+        "None is written without quotes, so it is not a str."
+      ],
+      "explanation": "None is a special value meaning 'no value'. It has its own type, NoneType, and is falsy.",
+      "relatedConcepts": [
+        "NoneType",
+        "None",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch5-mcq-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the output of print(True + True)?",
+      "options": [
+        "True",
+        "2",
+        "False",
+        "Error"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "True + True does not stay boolean; arithmetic is performed.",
+        "Correct: bool is a subtype of int, so True is treated as 1 and 1 + 1 = 2.",
+        "False would require the value 0, not 2.",
+        "No error occurs because bool supports arithmetic as an int subtype."
+      ],
+      "explanation": "bool is a subclass of int in Python; True behaves as 1 and False as 0 in numeric operations.",
+      "relatedConcepts": [
+        "bool",
+        "int subtype",
+        "arithmetic"
+      ]
+    },
+    {
+      "id": "ch5-mcq-05",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of these data types is mutable?",
+      "options": [
+        "str",
+        "tuple",
+        "list",
+        "int"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "A str is immutable; its characters cannot be reassigned.",
+        "A tuple is immutable by design.",
+        "Correct: a list can have its elements changed, added or removed, so it is mutable.",
+        "An int is immutable; arithmetic creates a new object."
+      ],
+      "explanation": "Mutable objects (list, dict, set) can be changed after creation, unlike immutable ones.",
+      "relatedConcepts": [
+        "mutable",
+        "list",
+        "mutable vs immutable"
+      ]
+    },
+    {
+      "id": "ch5-mcq-06",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which of the following is a float literal?",
+      "options": [
+        "'2.5'",
+        "2.5",
+        "2",
+        "2j"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "'2.5' is a string because it is inside quotes.",
+        "Correct: 2.5 without quotes is a float literal.",
+        "2 is an int literal, as it has no decimal point.",
+        "2j is a complex literal with an imaginary part."
+      ],
+      "explanation": "A float literal contains a decimal point or an exponent and is not quoted.",
+      "relatedConcepts": [
+        "float",
+        "literals",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch5-mcq-07",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the value of 17 % 5?",
+      "options": [
+        "3",
+        "2",
+        "3.4",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "3 is the quotient (17 // 5), not the remainder.",
+        "Correct: 17 = 5 x 3 + 2, so the remainder is 2.",
+        "3.4 is 17 / 5, the true division result.",
+        "The remainder is not 0 because 17 is not a multiple of 5."
+      ],
+      "explanation": "The % operator returns the remainder of integer division; 17 % 5 = 2.",
+      "relatedConcepts": [
+        "modulus",
+        "remainder",
+        "arithmetic operators"
+      ]
+    },
+    {
+      "id": "ch5-mcq-08",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the output of print(2 ** 3 ** 2)?",
+      "options": [
+        "64",
+        "512",
+        "36",
+        "Error"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "64 would be (2 ** 3) ** 2, which is not the default order.",
+        "Correct: ** is right-associative, so it is 2 ** (3 ** 2) = 2 ** 9 = 512.",
+        "36 is not related to this expression.",
+        "No error occurs; ** simply groups from the right."
+      ],
+      "explanation": "The exponentiation operator is right-associative, so 2 ** 3 ** 2 is evaluated as 2 ** (3 ** 2).",
+      "relatedConcepts": [
+        "exponent",
+        "associativity",
+        "precedence"
+      ]
+    },
+    {
+      "id": "ch5-mcq-09",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the output of print(5 | 2)?",
+      "options": [
+        "7",
+        "3",
+        "2",
+        "10"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: 5 = 101 and 2 = 010 in binary; OR gives 111 = 7.",
+        "3 would be the bitwise AND (5 & 2 = 0 actually), so this is wrong.",
+        "2 is just the second operand, not the OR result.",
+        "10 is the result of a left shift, not OR."
+      ],
+      "explanation": "Bitwise OR compares each bit: 1 if either bit is 1. 101 | 010 = 111 = 7.",
+      "relatedConcepts": [
+        "bitwise OR",
+        "binary",
+        "bitwise operators"
+      ]
+    },
+    {
+      "id": "ch5-mcq-10",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the value of 7 // 2?",
+      "options": [
+        "3.5",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "3.5 is the true division result 7 / 2, not floor division.",
+        "Correct: floor division 7 // 2 = 3 (the largest integer not exceeding 3.5).",
+        "4 would be rounding up, which // does not do here.",
+        "1 is the remainder 7 % 2, not the quotient."
+      ],
+      "explanation": "// is floor division and returns the integer quotient (rounded down).",
+      "relatedConcepts": [
+        "floor division",
+        "//",
+        "arithmetic operators"
+      ]
+    },
+    {
+      "id": "ch5-mcq-11",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "What is the value of -7 // 2 in Python?",
+      "options": [
+        "-3",
+        "-4",
+        "-3.5",
+        "3"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "-3 would be truncation toward zero, which // does not do.",
+        "Correct: floor division rounds down, and floor(-3.5) = -4.",
+        "-3.5 is the true division result -7 / 2.",
+        "3 has the wrong sign entirely."
+      ],
+      "explanation": "Floor division rounds toward negative infinity: -7 // 2 = -4, because -3.5 rounded down is -4.",
+      "relatedConcepts": [
+        "floor division",
+        "negative numbers",
+        "//"
+      ]
+    },
+    {
+      "id": "ch5-mcq-12",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the output of print('ab' * 3)?",
+      "options": [
+        "ababab",
+        "ab3",
+        "ab ab ab",
+        "Error"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: multiplying a string by an integer repeats it three times, giving 'ababab'.",
+        "'ab3' would need concatenation with str(3), not multiplication.",
+        "No spaces are inserted during repetition.",
+        "No error occurs; str * int is valid repetition."
+      ],
+      "explanation": "The * operator repeats a string when one operand is a string and the other an integer.",
+      "relatedConcepts": [
+        "string repetition",
+        "* operator",
+        "str"
+      ]
+    },
+    {
+      "id": "ch5-mcq-13",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "What is the value of ~5?",
+      "options": [
+        "5",
+        "-6",
+        "6",
+        "-5"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "~ is bitwise NOT, so it cannot leave 5 unchanged.",
+        "Correct: ~x = -(x + 1), so ~5 = -(5 + 1) = -6.",
+        "6 has the wrong sign.",
+        "-5 would be the unary minus (-5), not bitwise NOT."
+      ],
+      "explanation": "Bitwise NOT flips all bits; for an integer n, ~n equals -(n + 1).",
+      "relatedConcepts": [
+        "bitwise NOT",
+        "~",
+        "bitwise operators"
+      ]
+    },
+    {
+      "id": "ch5-mcq-14",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which operator checks whether a value exists in a sequence?",
+      "options": [
+        "is",
+        "==",
+        "in",
+        "&"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "is checks identity (same object), not membership.",
+        "== checks equality of values, not presence in a container.",
+        "Correct: 'in' is the membership operator and returns True if the value is found.",
+        "& is bitwise AND, unrelated to membership."
+      ],
+      "explanation": "The membership operators in and not in test whether a value occurs in a sequence or container.",
+      "relatedConcepts": [
+        "membership",
+        "in operator",
+        "sequence"
+      ]
+    },
+    {
+      "id": "ch5-mcq-15",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is an augmented assignment operator?",
+      "options": [
+        "==",
+        "+=",
+        "!=",
+        ">="
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "== is the equality comparison operator.",
+        "Correct: += adds and assigns in one step (x += 2 means x = x + 2).",
+        "!= is the not-equal comparison operator.",
+        ">= is a relational (comparison) operator."
+      ],
+      "explanation": "Augmented assignment operators such as +=, -=, *=, /= combine an operation with assignment.",
+      "relatedConcepts": [
+        "augmented assignment",
+        "+=",
+        "assignment"
+      ]
+    },
+    {
+      "id": "ch5-mcq-16",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the result of int(3.9)?",
+      "options": [
+        "4",
+        "3",
+        "3.9",
+        "Error"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "4 would be rounding, but int() does not round.",
+        "Correct: int() truncates toward zero, so int(3.9) = 3.",
+        "3.9 stays a float; int() always returns an integer.",
+        "No error occurs; a float can always be converted to int."
+      ],
+      "explanation": "int() on a float truncates the fractional part toward zero instead of rounding.",
+      "relatedConcepts": [
+        "int()",
+        "truncation",
+        "explicit conversion"
+      ]
+    },
+    {
+      "id": "ch5-mcq-17",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is bool('0')?",
+      "options": [
+        "False",
+        "True",
+        "0",
+        "Error"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "False is returned only for empty/falsy values, and '0' is not empty.",
+        "Correct: '0' is a non-empty string, and any non-empty string is truthy.",
+        "bool() always returns True or False, never 0.",
+        "No error occurs; bool() accepts any object."
+      ],
+      "explanation": "bool() returns False only for 'empty' values such as 0, '', [], and None; the string '0' is non-empty so it is True.",
+      "relatedConcepts": [
+        "bool()",
+        "truthiness",
+        "explicit conversion"
+      ]
+    },
+    {
+      "id": "ch5-mcq-18",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the result of 10 + 2.5?",
+      "options": [
+        "12",
+        "12.5",
+        "Error",
+        "'102.5'"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "12 ignores the decimal part, but the result keeps the fractional part.",
+        "Correct: the int 10 is implicitly promoted to float, giving 12.5.",
+        "No error occurs because int and float are compatible.",
+        "'102.5' would be string concatenation, which does not happen here."
+      ],
+      "explanation": "When int and float are mixed, the int is implicitly converted to float (type promotion) and the result is a float.",
+      "relatedConcepts": [
+        "implicit conversion",
+        "type promotion",
+        "int and float"
+      ]
+    },
+    {
+      "id": "ch5-mcq-19",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which of the following raises an error?",
+      "options": [
+        "int('25')",
+        "float('2.5')",
+        "int('abc')",
+        "str(10)"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "int('25') works because '25' is a valid integer string.",
+        "float('2.5') works because '2.5' is a valid float string.",
+        "Correct: int('abc') raises a ValueError since 'abc' is not a whole number.",
+        "str(10) simply returns '10' with no error."
+      ],
+      "explanation": "int() on a string succeeds only if the string represents a valid integer; otherwise it raises ValueError.",
+      "relatedConcepts": [
+        "ValueError",
+        "int()",
+        "explicit conversion"
+      ]
+    },
+    {
+      "id": "ch5-mcq-20",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is bool([])?",
+      "options": [
+        "True",
+        "False",
+        "Error",
+        "[]"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "An empty list is not truthy; it is empty, so this is wrong.",
+        "Correct: an empty list is falsy, so bool([]) is False.",
+        "No error occurs; bool() accepts any object.",
+        "bool() never returns the list itself, only True or False."
+      ],
+      "explanation": "Empty containers such as [], (), {} and '' are falsy; bool([]) therefore returns False.",
+      "relatedConcepts": [
+        "bool()",
+        "empty containers",
+        "truthiness"
+      ]
+    },
+    {
+      "id": "ch5-mcq-21",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the value of 2 + 3 * 4?",
+      "options": [
+        "20",
+        "14",
+        "24",
+        "9"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "20 would be (2 + 3) * 4, which requires parentheses.",
+        "Correct: * has higher precedence, so 3 * 4 = 12, then 2 + 12 = 14.",
+        "24 is not the value of this expression.",
+        "9 is not the value of this expression."
+      ],
+      "explanation": "Multiplication binds tighter than addition, so 3 * 4 is computed first, giving 14.",
+      "relatedConcepts": [
+        "precedence",
+        "arithmetic operators",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "ch5-mcq-22",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What does print(10 - 4 - 3) display?",
+      "options": [
+        "9",
+        "3",
+        "11",
+        "-1"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "9 would require evaluating from right to left as 10 - (4 - 3) = 9.",
+        "Correct: subtraction is left-associative, so (10 - 4) - 3 = 3.",
+        "11 would be addition, not subtraction.",
+        "-1 is not the value of this expression."
+      ],
+      "explanation": "Subtraction is left-associative, so the leftmost operation is performed first: (10 - 4) - 3 = 3.",
+      "relatedConcepts": [
+        "associativity",
+        "left-associative",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "ch5-mcq-23",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which operator has the highest precedence in Python?",
+      "options": [
+        "+",
+        "*",
+        "**",
+        "( )"
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "+ has a low precedence, below * and **.",
+        "* binds tighter than + but looser than **.",
+        "** is very high but still below parentheses.",
+        "Correct: parentheses ( ) have the highest precedence of all."
+      ],
+      "explanation": "Parentheses have the highest precedence; the expression inside them is always evaluated first.",
+      "relatedConcepts": [
+        "precedence",
+        "parentheses",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "ch5-mcq-24",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the value of not 5 > 3?",
+      "options": [
+        "True",
+        "False",
+        "5",
+        "Error"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "The comparison is True, and 'not' flips it, so True is wrong.",
+        "Correct: comparison is applied first, so not (5 > 3) = not True = False.",
+        "5 is an operand, not the boolean result.",
+        "No error occurs; the expression is valid."
+      ],
+      "explanation": "Comparison has higher precedence than not, so 5 > 3 is evaluated first, then not is applied.",
+      "relatedConcepts": [
+        "logical not",
+        "precedence",
+        "comparison"
+      ]
+    },
+    {
+      "id": "ch5-mcq-25",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the value of 2 * 3 ** 2?",
+      "options": [
+        "36",
+        "18",
+        "12",
+        "64"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "36 would be (2 * 3) ** 2, which requires parentheses.",
+        "Correct: ** is applied first, so 3 ** 2 = 9, then 2 * 9 = 18.",
+        "12 would ignore the exponent.",
+        "64 is 2 ** 6, which is not this expression."
+      ],
+      "explanation": "Exponentiation has higher precedence than multiplication, so 3 ** 2 = 9 is computed before multiplying by 2.",
+      "relatedConcepts": [
+        "precedence",
+        "exponent",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "ch5-assertion-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Assertion (A): The value of 7 / 2 in Python is 3.5. Reason (R): The / operator performs true division and always returns a float.",
+      "assertion": "Assertion (A): The value of 7 / 2 in Python is 3.5.",
+      "reason": "Reason (R): The / operator performs true division and always returns a float.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is NOT the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both statements are true. 7 / 2 gives 3.5 because / is true division, and true division always produces a float — so R correctly explains A.",
+      "relatedConcepts": [
+        "true division",
+        "/ operator",
+        "float result"
+      ]
+    },
+    {
+      "id": "ch5-assertion-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Assertion (A): The value of 10 // 3 is 3. Reason (R): The // operator returns the remainder of the division.",
+      "assertion": "Assertion (A): The value of 10 // 3 is 3.",
+      "reason": "Reason (R): The // operator returns the remainder of the division.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is NOT the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctAnswer": 2,
+      "explanation": "A is true because 10 // 3 gives the integer quotient 3. R is false because // returns the integer quotient, not the remainder — the remainder is given by %. Hence A is true but R is false.",
+      "relatedConcepts": [
+        "floor division",
+        "modulus",
+        "// operator"
+      ]
+    },
+    {
+      "id": "ch5-assertion-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "assertion",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Assertion (A): int(3.9) returns 4 because int() rounds the value. Reason (R): int() converts a float value to an integer.",
+      "assertion": "Assertion (A): int(3.9) returns 4 because int() rounds the value.",
+      "reason": "Reason (R): int() converts a float value to an integer.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is NOT the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctAnswer": 3,
+      "explanation": "A is false because int(3.9) truncates toward zero and returns 3, not 4. R is true because int() does convert a float to an integer. Hence A is false but R is true.",
+      "relatedConcepts": [
+        "int()",
+        "truncation",
+        "explicit conversion"
+      ]
+    },
+    {
+      "id": "ch5-assertion-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "assertion",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Assertion (A): The expression 2 ** 3 ** 2 evaluates to 512. Reason (R): The exponentiation operator ** is right-associative.",
+      "assertion": "Assertion (A): The expression 2 ** 3 ** 2 evaluates to 512.",
+      "reason": "Reason (R): The exponentiation operator ** is right-associative.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is NOT the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both are true. Because ** is right-associative, 2 ** 3 ** 2 is evaluated as 2 ** (3 ** 2) = 2 ** 9 = 512, so R correctly explains A.",
+      "relatedConcepts": [
+        "exponent",
+        "associativity",
+        "precedence"
+      ]
+    },
+    {
+      "id": "ch5-truefalse-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python is a dynamically typed language, so a variable's type is decided from the value assigned to it.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "In Python you do not declare a type; the interpreter determines the type of a name from the object it refers to at runtime.",
+      "relatedConcepts": [
+        "dynamic typing",
+        "data types",
+        "variable"
+      ]
+    },
+    {
+      "id": "ch5-truefalse-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A tuple is a mutable data type and its elements can be changed after creation.",
+      "correctAnswer": "False",
+      "correction": "A tuple is immutable; it is a list that is mutable. A tuple's elements cannot be changed after creation.",
+      "explanation": "Tuples are immutable — once created, their elements cannot be reassigned, added or removed. Lists, by contrast, are mutable.",
+      "relatedConcepts": [
+        "tuple",
+        "immutable",
+        "mutable vs immutable"
+      ]
+    },
+    {
+      "id": "ch5-truefalse-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The / operator always returns a float, even when the result is a whole number.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "True division with / always yields a float, so 10 / 2 gives 5.0. Use // for an integer quotient.",
+      "relatedConcepts": [
+        "true division",
+        "/ operator",
+        "float result"
+      ]
+    },
+    {
+      "id": "ch5-truefalse-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In Python, bool is a subtype of int, so True behaves like 1 in arithmetic.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "bool is implemented as a subclass of int, which is why True + True gives 2 and True == 1 is True.",
+      "relatedConcepts": [
+        "bool",
+        "int subtype",
+        "arithmetic"
+      ]
+    },
+    {
+      "id": "ch5-truefalse-05",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In Python, the expression 2 ** 3 ** 2 evaluates to 64.",
+      "correctAnswer": "False",
+      "correction": "It evaluates to 512, because ** is right-associative: 2 ** (3 ** 2) = 2 ** 9 = 512. The value 64 would require (2 ** 3) ** 2.",
+      "explanation": "The exponent operator is right-associative, so the rightmost exponent is applied first, giving 512 rather than 64.",
+      "relatedConcepts": [
+        "exponent",
+        "associativity",
+        "precedence"
+      ]
+    },
+    {
+      "id": "ch5-truefalse-06",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The expression int('3.5') returns 3.",
+      "correctAnswer": "False",
+      "correction": "int('3.5') raises a ValueError because '3.5' is not a valid integer string; you must first convert with float('3.5') and then to int.",
+      "explanation": "int() on a string requires the string to represent a whole number. A decimal string like '3.5' is rejected with a ValueError.",
+      "relatedConcepts": [
+        "int()",
+        "ValueError",
+        "explicit conversion"
+      ]
+    },
+    {
+      "id": "ch5-fillblank-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The built-in function ______ returns the data type of an object.",
+      "correctAnswer": "type()",
+      "acceptedAnswers": [
+        "type()",
+        "type",
+        "type() function"
+      ],
+      "explanation": "type(object) returns the class of the object, e.g. type(10) gives <class 'int'>.",
+      "relatedConcepts": [
+        "type()",
+        "data types"
+      ]
+    },
+    {
+      "id": "ch5-fillblank-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The ______ operator performs floor division and returns the integer quotient.",
+      "correctAnswer": "//",
+      "acceptedAnswers": [
+        "//",
+        "floor division",
+        "double slash"
+      ],
+      "explanation": "The // operator divides and rounds the result down to an integer, e.g. 7 // 2 = 3.",
+      "relatedConcepts": [
+        "floor division",
+        "//",
+        "arithmetic operators"
+      ]
+    },
+    {
+      "id": "ch5-fillblank-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The ______ operator returns the remainder after division.",
+      "correctAnswer": "%",
+      "acceptedAnswers": [
+        "%",
+        "modulus",
+        "modulo"
+      ],
+      "explanation": "The % operator gives the remainder, e.g. 17 % 5 = 2.",
+      "relatedConcepts": [
+        "modulus",
+        "%",
+        "remainder"
+      ]
+    },
+    {
+      "id": "ch5-fillblank-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "A ______ data type cannot be modified after it is created; a tuple is an example of it.",
+      "correctAnswer": "immutable",
+      "acceptedAnswers": [
+        "immutable",
+        "immutable type",
+        "unchangeable"
+      ],
+      "explanation": "Immutable objects such as int, str and tuple cannot be changed after creation; mutable ones like list can.",
+      "relatedConcepts": [
+        "immutable",
+        "tuple",
+        "mutable vs immutable"
+      ]
+    },
+    {
+      "id": "ch5-fillblank-05",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The value returned by int(3.9) is ______.",
+      "correctAnswer": "3",
+      "acceptedAnswers": [
+        "3"
+      ],
+      "explanation": "int() truncates toward zero, so int(3.9) returns 3 rather than 4.",
+      "relatedConcepts": [
+        "int()",
+        "truncation",
+        "explicit conversion"
+      ]
+    },
+    {
+      "id": "ch5-fillblank-06",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The value returned by bool('') is ______.",
+      "correctAnswer": "False",
+      "acceptedAnswers": [
+        "False",
+        "false"
+      ],
+      "explanation": "An empty string is falsy, so bool('') returns False.",
+      "relatedConcepts": [
+        "bool()",
+        "empty string",
+        "truthiness"
+      ]
+    },
+    {
+      "id": "ch5-match-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "match",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Match each operator with its correct meaning.",
+      "matchPairs": [
+        {
+          "left": "/",
+          "right": "True (real) division returning a float"
+        },
+        {
+          "left": "//",
+          "right": "Floor division returning the integer quotient"
+        },
+        {
+          "left": "%",
+          "right": "Modulus, i.e. the remainder"
+        },
+        {
+          "left": "**",
+          "right": "Exponentiation (power)"
+        },
+        {
+          "left": "in",
+          "right": "Membership test in a sequence"
+        }
+      ],
+      "explanation": "Each arithmetic operator has a fixed role: / is true division, // is floor division, % is the remainder, ** is exponentiation, and in tests membership.",
+      "relatedConcepts": [
+        "arithmetic operators",
+        "membership",
+        "operators"
+      ]
+    },
+    {
+      "id": "ch5-match-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "match",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Match each data type with a valid example of it.",
+      "matchPairs": [
+        {
+          "left": "int",
+          "right": "42"
+        },
+        {
+          "left": "float",
+          "right": "3.14"
+        },
+        {
+          "left": "str",
+          "right": "'abc'"
+        },
+        {
+          "left": "bool",
+          "right": "True"
+        },
+        {
+          "left": "NoneType",
+          "right": "None"
+        }
+      ],
+      "explanation": "Each literal illustrates a core type: 42 is int, 3.14 is float, 'abc' is str, True is bool, and None belongs to NoneType.",
+      "relatedConcepts": [
+        "data types",
+        "literals",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch5-vsa-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define a data type in Python.",
+      "modelAnswer": "A data type is a classification of a value that decides what kind of data it holds, how it is stored in memory, and which operations can be performed on it. Examples are int, float, str and bool.",
+      "keywords": [
+        "data type",
+        "classification",
+        "int",
+        "str"
+      ],
+      "explanation": "A data type tells Python the nature of a value so that the correct operations and memory usage are applied.",
+      "relatedConcepts": [
+        "data type",
+        "classification"
+      ]
+    },
+    {
+      "id": "ch5-vsa-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the difference between mutable and immutable types? Give one example of each.",
+      "modelAnswer": "Mutable types can be changed after they are created, e.g. a list. Immutable types cannot be changed after creation; any change creates a new object, e.g. a tuple or a string.",
+      "keywords": [
+        "mutable",
+        "immutable",
+        "list",
+        "tuple"
+      ],
+      "explanation": "Mutability is about whether the object itself can be modified in place after creation.",
+      "relatedConcepts": [
+        "mutable",
+        "immutable"
+      ]
+    },
+    {
+      "id": "ch5-vsa-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the use of the type() function? Give an example.",
+      "modelAnswer": "type() returns the data type (class) of the object passed to it. For example, type(10) returns <class 'int'> and type('hi') returns <class 'str'>.",
+      "keywords": [
+        "type()",
+        "class",
+        "returns"
+      ],
+      "explanation": "type() is used to inspect the type of any value or variable at runtime.",
+      "relatedConcepts": [
+        "type()",
+        "runtime"
+      ]
+    },
+    {
+      "id": "ch5-vsa-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is floor division? Give an example.",
+      "modelAnswer": "Floor division, written with //, divides two numbers and rounds the result down to the nearest integer. For example, 7 // 2 gives 3.",
+      "keywords": [
+        "floor division",
+        "//",
+        "rounds down"
+      ],
+      "explanation": "Floor division returns the largest integer less than or equal to the true quotient.",
+      "relatedConcepts": [
+        "floor division",
+        "//"
+      ]
+    },
+    {
+      "id": "ch5-vsa-05",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "State two differences between the / and // operators.",
+      "modelAnswer": "The / operator performs true division and always returns a float (e.g. 7 / 2 = 3.5). The // operator performs floor division and returns the integer quotient rounded down (e.g. 7 // 2 = 3).",
+      "keywords": [
+        "/",
+        "//",
+        "true division",
+        "float"
+      ],
+      "explanation": "The key difference is the result type and rounding: / gives a float, // gives a floored integer.",
+      "relatedConcepts": [
+        "/",
+        "//",
+        "true division"
+      ]
+    },
+    {
+      "id": "ch5-vsa-06",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What does the modulus operator % do? Give an example.",
+      "modelAnswer": "The modulus operator % returns the remainder left after dividing one number by another. For example, 17 % 5 gives 2, because 17 = 5 x 3 + 2.",
+      "keywords": [
+        "modulus",
+        "%",
+        "remainder"
+      ],
+      "explanation": "% gives the remainder of integer division and is often used to test divisibility.",
+      "relatedConcepts": [
+        "modulus",
+        "%"
+      ]
+    },
+    {
+      "id": "ch5-vsa-07",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Differentiate between implicit and explicit type conversion.",
+      "modelAnswer": "Implicit conversion is done automatically by Python, usually promoting a smaller type to a larger one, e.g. 5 + 2.0 gives 7.0. Explicit conversion is done by the programmer using functions like int(), float() and str(), e.g. int('25') gives 25.",
+      "keywords": [
+        "implicit",
+        "explicit",
+        "type promotion",
+        "int()"
+      ],
+      "explanation": "Implicit conversion is automatic and safe; explicit conversion is manual and may raise an error.",
+      "relatedConcepts": [
+        "implicit conversion",
+        "explicit conversion"
+      ]
+    },
+    {
+      "id": "ch5-vsa-08",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the output of bool(0) and bool(1)?",
+      "modelAnswer": "bool(0) returns False and bool(1) returns True. Zero is treated as falsy, while any non-zero number is truthy.",
+      "keywords": [
+        "bool()",
+        "False",
+        "True",
+        "falsy"
+      ],
+      "explanation": "bool() converts a value to True or False based on whether it is 'empty' (falsy) or non-empty (truthy).",
+      "relatedConcepts": [
+        "bool()",
+        "truthiness"
+      ]
+    },
+    {
+      "id": "ch5-vsa-09",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define an expression with an example.",
+      "modelAnswer": "An expression is a valid combination of operands (values or variables) and operators that the interpreter evaluates to produce a single value. For example, 2 + 3 * 4 is an expression whose value is 14.",
+      "keywords": [
+        "expression",
+        "operand",
+        "operator",
+        "evaluate"
+      ],
+      "explanation": "Any combination of values and operators that yields a value is an expression.",
+      "relatedConcepts": [
+        "expression",
+        "operand",
+        "operator"
+      ]
+    },
+    {
+      "id": "ch5-vsa-10",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "State the associativity of the ** operator and illustrate it.",
+      "modelAnswer": "The ** operator is right-associative, meaning it is evaluated from right to left. For example, 2 ** 3 ** 2 is evaluated as 2 ** (3 ** 2) = 2 ** 9 = 512.",
+      "keywords": [
+        "associativity",
+        "right-associative",
+        "**"
+      ],
+      "explanation": "Right-associativity means the rightmost operation is grouped first.",
+      "relatedConcepts": [
+        "associativity",
+        "**"
+      ]
+    },
+    {
+      "id": "ch5-sa-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain any four numeric data types in Python with examples.",
+      "modelAnswer": "Python has three numeric types: int, float and complex, plus bool which is a subtype of int.\n1. int: whole numbers of unlimited size, e.g. 42, -7.\n2. float: real numbers with a decimal point or exponent, e.g. 3.14, 2e3.\n3. complex: numbers with a real and an imaginary part written with j, e.g. 2 + 3j.\n4. bool: logical values True and False, where True equals 1 and False equals 0.",
+      "rubric": [
+        "Names three numeric types correctly (int, float, complex).",
+        "Gives a correct example for each.",
+        "Mentions bool as a subtype of int.",
+        "Explanation is clear and accurate."
+      ],
+      "explanation": "The numeric family in Python consists of int, float and complex, with bool being a special subtype of int.",
+      "relatedConcepts": [
+        "numeric types",
+        "int",
+        "float",
+        "complex"
+      ]
+    },
+    {
+      "id": "ch5-sa-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Differentiate between mutable and immutable data types with suitable examples.",
+      "modelAnswer": "Mutable types can be modified after creation; their contents can be changed in place. Examples are list, dict and set. Immutable types cannot be changed after creation; any apparent change creates a new object. Examples are int, float, str and tuple.\nFor example, in nums = [1, 2, 3], the statement nums[0] = 99 changes the list in place. But for a string s = 'hi', s[0] = 'H' raises an error because str is immutable.",
+      "rubric": [
+        "Correctly defines mutable and immutable.",
+        "Gives at least one example of each.",
+        "Explains in-place change vs new object.",
+        "Mentions an error on modifying an immutable object."
+      ],
+      "explanation": "Mutability decides whether an object can be altered in place. Lists are mutable; tuples and strings are not.",
+      "relatedConcepts": [
+        "mutable",
+        "immutable",
+        "list",
+        "tuple"
+      ]
+    },
+    {
+      "id": "ch5-sa-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the membership and identity operators with examples.",
+      "modelAnswer": "Membership operators, in and not in, test whether a value is present in a sequence or container. For example, 3 in [1, 2, 3] is True and 5 not in [1, 2, 3] is True.\nIdentity operators, is and is not, test whether two names refer to the same object in memory. For example, x is None checks whether x is the None object, and [1, 2] is [1, 2] is False because two different lists are created.",
+      "rubric": [
+        "Defines membership operators correctly.",
+        "Defines identity operators correctly.",
+        "Gives correct examples for each.",
+        "Distinguishes 'is' (identity) from '==' (equality)."
+      ],
+      "explanation": "Membership tests presence of a value in a container; identity tests whether two references point to the same object.",
+      "relatedConcepts": [
+        "membership",
+        "identity",
+        "in",
+        "is"
+      ]
+    },
+    {
+      "id": "ch5-sa-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "sa",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "Explain the behaviour of the // and % operators when negative numbers are involved.",
+      "modelAnswer": "In Python, floor division // rounds the result toward negative infinity, and the remainder % takes the sign of the divisor. The relation a = (a // b) * b + (a % b) always holds.\nFor example, -7 // 2 = -4 (because floor(-3.5) = -4) and -7 % 2 = 1. Similarly, 7 % -3 = -2, which takes the sign of the divisor -3.",
+      "rubric": [
+        "States that // rounds toward negative infinity.",
+        "States that % takes the sign of the divisor.",
+        "Gives a correct negative-number example.",
+        "Mentions the relation a = (a//b)*b + a%b."
+      ],
+      "explanation": "Floor division rounds down, and modulus follows the sign of the divisor, so negative operands can give non-obvious results.",
+      "relatedConcepts": [
+        "floor division",
+        "modulus",
+        "negative numbers"
+      ]
+    },
+    {
+      "id": "ch5-sa-05",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Explain augmented assignment operators with examples.",
+      "modelAnswer": "Augmented assignment operators combine an arithmetic or bitwise operation with assignment in one step. Common ones are +=, -=, *=, /=, //=, %= and **=.\nFor example, if x = 5, then x += 3 makes x equal to 8 (same as x = x + 3). Similarly, x *= 2 doubles x, and x -= 1 subtracts 1 from x.",
+      "rubric": [
+        "Defines augmented assignment.",
+        "Lists at least three operators.",
+        "Gives a correct worked example.",
+        "Shows the equivalent long form."
+      ],
+      "explanation": "Augmented assignment is shorthand that performs an operation and stores the result back into the same variable.",
+      "relatedConcepts": [
+        "augmented assignment",
+        "+=",
+        "assignment"
+      ]
+    },
+    {
+      "id": "ch5-sa-06",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain implicit type conversion in Python with an example.",
+      "modelAnswer": "Implicit conversion (also called type promotion) is performed automatically by Python when operands of different types appear in one operation. The 'smaller' type is promoted to the 'larger' type following the order bool -> int -> float -> complex.\nFor example, 5 + 2.0 gives 7.0 because the int 5 is promoted to float. Similarly, 3 + True gives 4 because True is treated as int 1, and 2 + 1j gives (2+1j) because the int is promoted to complex.",
+      "rubric": [
+        "Defines implicit conversion.",
+        "States the promotion order.",
+        "Gives a correct numeric example.",
+        "Mentions that no data is lost."
+      ],
+      "explanation": "Implicit conversion is automatic type promotion toward a wider type so that an operation can proceed without loss of information.",
+      "relatedConcepts": [
+        "implicit conversion",
+        "type promotion",
+        "int",
+        "float"
+      ]
+    },
+    {
+      "id": "ch5-sa-07",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the explicit conversion functions int(), float(), str() and bool().",
+      "modelAnswer": "Explicit conversion is done by the programmer using constructor functions.\n1. int(x): converts a value to an integer, truncating floats toward zero (int(3.9) = 3) and parsing valid integer strings (int('25') = 25).\n2. float(x): converts to a float (float(7) = 7.0, float('2.5') = 2.5).\n3. str(x): converts to a string (str(99) = '99').\n4. bool(x): converts to True/False, returning False for 0, '', [], None and True otherwise.",
+      "rubric": [
+        "Names all four functions.",
+        "Gives a correct example for each.",
+        "Mentions truncation by int().",
+        "Mentions falsy values for bool()."
+      ],
+      "explanation": "Explicit conversion uses constructor functions and may raise a ValueError for invalid input.",
+      "relatedConcepts": [
+        "explicit conversion",
+        "int()",
+        "float()",
+        "bool()"
+      ]
+    },
+    {
+      "id": "ch5-sa-08",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain operator precedence with an example.",
+      "modelAnswer": "Operator precedence decides which operator is applied first when an expression has more than one operator. Parentheses have the highest precedence, followed by **, then unary operators, then * / // %, then + -, then comparisons, then not, and, or.\nFor example, in 2 + 3 * 4 the multiplication is done first (3 * 4 = 12), giving 14. If we write (2 + 3) * 4, the parentheses force addition first, giving 20.",
+      "rubric": [
+        "Defines precedence.",
+        "Lists the order correctly.",
+        "Gives a correct example.",
+        "Shows the effect of parentheses."
+      ],
+      "explanation": "Precedence fixes the order of evaluation when operators differ, and parentheses override it.",
+      "relatedConcepts": [
+        "precedence",
+        "evaluation",
+        "parentheses"
+      ]
+    },
+    {
+      "id": "ch5-sa-09",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain associativity with an example.",
+      "modelAnswer": "Associativity decides the order of evaluation when two operators of the same precedence appear together. Most operators are left-associative (evaluated left to right), while ** is right-associative.\nFor example, 10 - 4 - 3 is evaluated as (10 - 4) - 3 = 3 because subtraction is left-associative. In contrast, 2 ** 3 ** 2 is evaluated as 2 ** (3 ** 2) = 512 because ** is right-associative.",
+      "rubric": [
+        "Defines associativity.",
+        "Distinguishes left and right associativity.",
+        "Gives a correct left-associative example.",
+        "Gives a correct right-associative example."
+      ],
+      "explanation": "Associativity resolves the order when precedence is equal, either left to right or right to left.",
+      "relatedConcepts": [
+        "associativity",
+        "left-associative",
+        "right-associative"
+      ]
+    },
+    {
+      "id": "ch5-sa-10",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "sa",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "Evaluate the following expressions and justify each result: 2 + 3 * 4, (2 + 3) * 4, 2 ** 3 ** 2.",
+      "modelAnswer": "1. 2 + 3 * 4: multiplication has higher precedence, so 3 * 4 = 12 and then 2 + 12 = 14.\n2. (2 + 3) * 4: parentheses are evaluated first, so (2 + 3) = 5 and 5 * 4 = 20.\n3. 2 ** 3 ** 2: ** is right-associative, so it is 2 ** (3 ** 2) = 2 ** 9 = 512.",
+      "rubric": [
+        "Correct value 14 with correct reasoning.",
+        "Correct value 20 with reasoning about parentheses.",
+        "Correct value 512 with reasoning about right associativity.",
+        "Clear justification for each."
+      ],
+      "explanation": "These three expressions test precedence and associativity: * before +, parentheses first, and right-associative **.",
+      "relatedConcepts": [
+        "precedence",
+        "associativity",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "ch5-la-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Explain the different categories of operators in Python with examples.",
+      "modelAnswer": "Operators in Python are grouped into the following categories:\n1. Arithmetic: +, -, *, /, //, %, ** perform mathematical operations. Example: 7 // 2 = 3 and 7 % 2 = 1.\n2. Relational/comparison: <, >, <=, >=, ==, != compare two values and return a bool. Example: 5 > 3 is True.\n3. Logical: and, or, not combine conditions. Example: 5 > 3 and 2 > 1 is True.\n4. Assignment: = stores a value, and augmented forms +=, -=, *=, /= update it. Example: x += 5.\n5. Bitwise: &, |, ^, ~, <<, >> operate on individual bits. Example: 5 & 3 = 1.\n6. Membership: in and not in test presence in a sequence. Example: 3 in [1, 2, 3] is True.\n7. Identity: is and is not test whether two names refer to the same object. Example: x is None.",
+      "rubric": [
+        "Covers at least six categories.",
+        "Gives a correct example for each category.",
+        "Correctly explains arithmetic operators including // and %.",
+        "Distinguishes membership from identity.",
+        "Explanation is accurate and well organised."
+      ],
+      "keywords": [
+        "operators",
+        "arithmetic",
+        "bitwise",
+        "membership"
+      ],
+      "explanation": "Operators are classified by the kind of operation they perform, and each category returns a characteristic type of result.",
+      "relatedConcepts": [
+        "operators",
+        "arithmetic",
+        "bitwise",
+        "membership"
+      ]
+    },
+    {
+      "id": "ch5-la-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Explain the data types available in Python, covering numeric, boolean, sequence, and the special None type, and mention which are mutable.",
+      "modelAnswer": "Python's built-in data types fall into these groups:\n1. Numeric: int (whole numbers, e.g. 42), float (real numbers, e.g. 3.14) and complex (e.g. 2+3j).\n2. Boolean: bool with values True and False; it is a subtype of int so True == 1 and False == 0.\n3. Sequence: str (text, e.g. 'abc'), list (ordered and changeable, e.g. [1, 2, 3]) and tuple (ordered and unchangeable, e.g. (1, 2, 3)).\n4. Special: NoneType with the single value None, used to mean 'no value'.\nMutable types: list, dict, set. Immutable types: int, float, complex, bool, str, tuple. The type() function returns the type of any value.",
+      "rubric": [
+        "Covers numeric types with examples.",
+        "Covers bool and its relation to int.",
+        "Covers sequence types.",
+        "Mentions None and NoneType.",
+        "Correctly classifies mutable and immutable types."
+      ],
+      "keywords": [
+        "data types",
+        "numeric",
+        "sequence",
+        "None"
+      ],
+      "explanation": "Data types classify values and determine their storage and permitted operations; Python groups them into numeric, boolean, sequence, mapping, set and the special NoneType.",
+      "relatedConcepts": [
+        "data types",
+        "numeric",
+        "sequence",
+        "None"
+      ]
+    },
+    {
+      "id": "ch5-la-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Explain type conversion in Python, describing both implicit and explicit conversion, with rules and possible errors.",
+      "modelAnswer": "Type conversion means changing a value from one data type to another. It has two forms:\n1. Implicit conversion (type promotion): Python automatically converts a 'smaller' type to a 'larger' one following the order bool -> int -> float -> complex, so no data is lost. Example: 5 + 2.0 gives 7.0.\n2. Explicit conversion (type casting): the programmer uses functions such as int(), float(), str(), bool() and complex(). Examples: int('25') = 25, float(7) = 7.0, str(99) = '99'.\nRules and errors: int() truncates floats toward zero (int(3.9) = 3); int('3.5') raises a ValueError because the string is not a whole number; bool() returns False for 0, '', [], None and True otherwise; mixing str with int without conversion raises a TypeError (e.g. '5' + 5).",
+      "rubric": [
+        "Defines both implicit and explicit conversion.",
+        "States the promotion order.",
+        "Gives correct examples of constructor functions.",
+        "Mentions ValueError and TypeError cases.",
+        "Explains truncation by int()."
+      ],
+      "keywords": [
+        "type conversion",
+        "implicit",
+        "explicit",
+        "ValueError"
+      ],
+      "explanation": "Implicit conversion is automatic and lossless toward a wider type; explicit conversion is manual and may raise errors for invalid input.",
+      "relatedConcepts": [
+        "type conversion",
+        "implicit",
+        "explicit",
+        "ValueError"
+      ]
+    },
+    {
+      "id": "ch5-la-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Explain operator precedence and associativity in Python, give the precedence table, and work through an example.",
+      "modelAnswer": "Operator precedence decides which operator is applied first when an expression has several operators; associativity decides the order when operators have equal precedence. Python's precedence from highest to lowest is:\n1. Parentheses ( )\n2. Exponentiation **\n3. Unary +x, -x, ~x\n4. Multiplicative * / // %\n5. Additive + -\n6. Bitwise shifts << >>\n7. Bitwise & , then ^ , then |\n8. Comparisons < <= > >= == != and membership/identity\n9. not\n10. and\n11. or\nAssociativity: ** is right-associative, while almost all other operators are left-associative.\nExample: 2 + 3 * 4 ** 2 is evaluated as 4 ** 2 = 16, then 3 * 16 = 48, then 2 + 48 = 50. For associativity, 2 ** 3 ** 2 = 2 ** 9 = 512.",
+      "rubric": [
+        "Defines precedence and associativity.",
+        "Lists the precedence order accurately.",
+        "States that ** is right-associative.",
+        "Works through a correct example step by step.",
+        "Mentions that parentheses override precedence."
+      ],
+      "keywords": [
+        "precedence",
+        "associativity",
+        "evaluation",
+        "parentheses"
+      ],
+      "explanation": "Precedence and associativity together determine the unique order in which a mixed expression is evaluated.",
+      "relatedConcepts": [
+        "precedence",
+        "associativity",
+        "evaluation",
+        "parentheses"
+      ]
+    },
+    {
+      "id": "ch5-la-05",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Explain bitwise operators in Python with truth tables and examples.",
+      "modelAnswer": "Bitwise operators act on the individual binary bits of integers.\n1. Bitwise AND (&): 1 only if both bits are 1. 5 & 3 = 0101 & 0011 = 0001 = 1.\n2. Bitwise OR (|): 1 if either bit is 1. 5 | 3 = 0111 = 7.\n3. Bitwise XOR (^): 1 if the bits differ. 5 ^ 3 = 0110 = 6.\n4. Bitwise NOT (~): flips all bits; for an integer n, ~n = -(n + 1), so ~5 = -6.\n5. Left shift (<<): shifts bits left, multiplying by 2 per shift. 5 << 1 = 10.\n6. Right shift (>>): shifts bits right, dividing by 2 per shift. 5 >> 1 = 2.\nTruth table: 0&0=0, 0&1=0, 1&0=0, 1&1=1; for OR, 0|0=0 and the rest are 1; for XOR, equal bits give 0 and different bits give 1.",
+      "rubric": [
+        "Lists the six bitwise operators.",
+        "Gives correct binary workings.",
+        "States the rule ~n = -(n + 1).",
+        "Explains shift operators.",
+        "Includes a truth table."
+      ],
+      "keywords": [
+        "bitwise operators",
+        "AND",
+        "OR",
+        "XOR"
+      ],
+      "explanation": "Bitwise operators work on the binary representation of integers, so their results follow from bit-by-bit logic.",
+      "relatedConcepts": [
+        "bitwise operators",
+        "AND",
+        "OR",
+        "XOR"
+      ]
+    },
+    {
+      "id": "ch5-output-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Write the exact output of the following code:\na = 7\nb = 2\nprint(a / b)\nprint(a // b)\nprint(a % b)",
+      "code": "a = 7\nb = 2\nprint(a / b)\nprint(a // b)\nprint(a % b)",
+      "correctAnswer": "3.5\n3\n1",
+      "executionSteps": [
+        "a / b performs true division: 7 / 2 = 3.5 (a float).",
+        "a // b performs floor division: 7 // 2 = 3 (the integer quotient).",
+        "a % b gives the remainder: 7 % 2 = 1."
+      ],
+      "explanation": "The three operators /, // and % give the real quotient, the floored integer quotient, and the remainder respectively.",
+      "relatedConcepts": [
+        "/ operator",
+        "// operator",
+        "modulus"
+      ]
+    },
+    {
+      "id": "ch5-output-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Write the exact output of the following code:\nprint(2 + 3 * 4)\nprint((2 + 3) * 4)\nprint(2 ** 3 ** 2)",
+      "code": "print(2 + 3 * 4)\nprint((2 + 3) * 4)\nprint(2 ** 3 ** 2)",
+      "correctAnswer": "14\n20\n512",
+      "executionSteps": [
+        "In 2 + 3 * 4, multiplication binds first: 3 * 4 = 12, then 2 + 12 = 14.",
+        "In (2 + 3) * 4, parentheses force addition first: 5 * 4 = 20.",
+        "In 2 ** 3 ** 2, ** is right-associative: 2 ** (3 ** 2) = 2 ** 9 = 512."
+      ],
+      "explanation": "This output tests precedence (multiplication before addition), parentheses, and the right-associativity of exponentiation.",
+      "relatedConcepts": [
+        "precedence",
+        "associativity",
+        "parentheses"
+      ]
+    },
+    {
+      "id": "ch5-output-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Write the exact output of the following code:\nprint(10 / 4)\nprint(10 // 4)\nprint(10 % 4)\nprint(-10 // 4)\nprint(-10 % 4)",
+      "code": "print(10 / 4)\nprint(10 // 4)\nprint(10 % 4)\nprint(-10 // 4)\nprint(-10 % 4)",
+      "correctAnswer": "2.5\n2\n2\n-3\n2",
+      "executionSteps": [
+        "10 / 4 = 2.5 (true division, float).",
+        "10 // 4 = 2 (floor of 2.5).",
+        "10 % 4 = 2 (remainder).",
+        "-10 // 4 = -3 because floor(-2.5) = -3.",
+        "-10 % 4 = 2, since -10 = (-3)(4) + 2."
+      ],
+      "explanation": "Floor division rounds toward negative infinity, so -10 // 4 is -3, and the remainder adjusts to keep a = (a//b)*b + (a%b).",
+      "relatedConcepts": [
+        "floor division",
+        "modulus",
+        "negative numbers"
+      ]
+    },
+    {
+      "id": "ch5-output-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Write the exact output of the following code:\nprint('Py' * 2)\nprint('Py' + 'thon')\nprint(3 * 'ab')",
+      "code": "print('Py' * 2)\nprint('Py' + 'thon')\nprint(3 * 'ab')",
+      "correctAnswer": "PyPy\nPython\nababab",
+      "executionSteps": [
+        "'Py' * 2 repeats the string twice: 'PyPy'.",
+        "'Py' + 'thon' concatenates the two strings: 'Python'.",
+        "3 * 'ab' repeats 'ab' three times: 'ababab'."
+      ],
+      "explanation": "The * operator repeats a string and + concatenates strings when a string is involved.",
+      "relatedConcepts": [
+        "string repetition",
+        "concatenation",
+        "str"
+      ]
+    },
+    {
+      "id": "ch5-output-05",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Write the exact output of the following code:\nprint(5 + 2.0)\nprint(5 > 2)\nprint(5 + 3 == 8)\nprint(not 5 > 2)",
+      "code": "print(5 + 2.0)\nprint(5 > 2)\nprint(5 + 3 == 8)\nprint(not 5 > 2)",
+      "correctAnswer": "7.0\nTrue\nTrue\nFalse",
+      "executionSteps": [
+        "5 + 2.0: the int is promoted to float, giving 7.0.",
+        "5 > 2 is a comparison, giving True.",
+        "5 + 3 == 8: addition is done first (8 == 8), giving True.",
+        "not 5 > 2: the comparison is done first (True), then not flips it to False."
+      ],
+      "explanation": "Arithmetic binds tighter than comparison, and comparison binds tighter than not; mixing int and float promotes to float.",
+      "relatedConcepts": [
+        "type promotion",
+        "precedence",
+        "comparison"
+      ]
+    },
+    {
+      "id": "ch5-output-06",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "output",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "Write the exact output of the following code:\nprint(2 * 3 ** 2)\nprint(17 // 5, 17 % 5)\nprint(1 < 2 < 3)\nprint(True + True)",
+      "code": "print(2 * 3 ** 2)\nprint(17 // 5, 17 % 5)\nprint(1 < 2 < 3)\nprint(True + True)",
+      "correctAnswer": "18\n3 2\nTrue\n2",
+      "executionSteps": [
+        "2 * 3 ** 2: ** first gives 9, then 2 * 9 = 18.",
+        "17 // 5 = 3 and 17 % 5 = 2, printed on one line separated by a space.",
+        "1 < 2 < 3 is a chained comparison, evaluated as (1 < 2) and (2 < 3) = True.",
+        "True + True = 1 + 1 = 2, because bool is a subtype of int."
+      ],
+      "explanation": "Exponentiation binds before multiplication, chained comparisons combine with and, and bool behaves as int in arithmetic.",
+      "relatedConcepts": [
+        "precedence",
+        "chained comparison",
+        "bool"
+      ]
+    },
+    {
+      "id": "ch5-debug-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "The following code has an error. Identify the type of error and write the corrected code:\nx = 5\ny = 10\nprint(x + y",
+      "code": "x = 5\ny = 10\nprint(x + y",
+      "errorType": "syntax",
+      "correctAnswer": "x = 5\ny = 10\nprint(x + y)",
+      "executionSteps": [
+        "The call to print() is missing its closing parenthesis.",
+        "Add the closing bracket: print(x + y).",
+        "Now the program prints 15."
+      ],
+      "explanation": "This is a syntax error: every opening parenthesis must be closed. print(x + y) is the corrected line.",
+      "relatedConcepts": [
+        "syntax error",
+        "parentheses",
+        "print()"
+      ]
+    },
+    {
+      "id": "ch5-debug-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "The following code has an error. Identify the type of error and write the corrected code:\na = 7\nb = 2\nquotient = a / b\nprint('Integer quotient =', quotient)",
+      "code": "a = 7\nb = 2\nquotient = a / b\nprint('Integer quotient =', quotient)",
+      "errorType": "logical",
+      "correctAnswer": "a = 7\nb = 2\nquotient = a // b\nprint('Integer quotient =', quotient)",
+      "executionSteps": [
+        "The goal is an integer quotient, but / performs true division and gives 3.5.",
+        "Replace / with // so that quotient = a // b.",
+        "Now quotient is 3 and the program prints 'Integer quotient = 3'."
+      ],
+      "explanation": "The code runs but gives the wrong kind of result, so it is a logical error: use // for an integer quotient.",
+      "relatedConcepts": [
+        "logical error",
+        "floor division",
+        "// operator"
+      ]
+    },
+    {
+      "id": "ch5-debug-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "The following code has an error. Identify the type of error and write the corrected code:\nage = '18'\nprint('Next year you will be', age + 1)",
+      "code": "age = '18'\nprint('Next year you will be', age + 1)",
+      "errorType": "runtime",
+      "correctAnswer": "age = int('18')\nprint('Next year you will be', age + 1)",
+      "executionSteps": [
+        "age is the string '18', and Python cannot add a string to an int.",
+        "This raises TypeError: can only concatenate str (not 'int') to str.",
+        "Fix it by converting first: age = int('18'), then age + 1 gives 19."
+      ],
+      "explanation": "This is a runtime TypeError caused by mixing str and int. Convert the string to int with int() before doing arithmetic.",
+      "relatedConcepts": [
+        "runtime error",
+        "TypeError",
+        "int()"
+      ]
+    },
+    {
+      "id": "ch5-debug-04",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "The following code has an error. Identify the type of error and write the corrected code:\nlength = 10\nwidth = 5\narea = length + width\nprint('Area =', area)",
+      "code": "length = 10\nwidth = 5\narea = length + width\nprint('Area =', area)",
+      "errorType": "logical",
+      "correctAnswer": "length = 10\nwidth = 5\narea = length * width\nprint('Area =', area)",
+      "executionSteps": [
+        "The area of a rectangle is length x width, not length + width.",
+        "Replace + with * so that area = length * width.",
+        "Now area is 50 and the program prints 'Area = 50'."
+      ],
+      "explanation": "The program runs without error but uses the wrong operator, so it is a logical error: area needs multiplication.",
+      "relatedConcepts": [
+        "logical error",
+        "arithmetic operators",
+        "operator choice"
+      ]
+    },
+    {
+      "id": "ch5-program-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program that takes a two-digit number as input and prints its tens digit and units digit using the // and % operators.",
+      "hints": [
+        "Use // 10 to get the tens digit.",
+        "Use % 10 to get the units digit.",
+        "Remember to convert the input string to int using int(input(...))."
+      ],
+      "modelSolution": "num = int(input(\"Enter a two-digit number: \"))\ntens = num // 10\nunits = num % 10\nprint(\"Tens digit =\", tens)\nprint(\"Units digit =\", units)",
+      "lineExplanations": [
+        {
+          "line": "num = int(input(\"Enter a two-digit number: \"))",
+          "explanation": "Reads the input as a string and converts it to an integer with int()."
+        },
+        {
+          "line": "tens = num // 10",
+          "explanation": "Floor division by 10 removes the units digit, leaving the tens digit."
+        },
+        {
+          "line": "units = num % 10",
+          "explanation": "Modulus by 10 gives the remainder, which is the units digit."
+        },
+        {
+          "line": "print(\"Tens digit =\", tens)",
+          "explanation": "Displays the tens digit."
+        },
+        {
+          "line": "print(\"Units digit =\", units)",
+          "explanation": "Displays the units digit."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "47",
+          "output": "Tens digit = 4\nUnits digit = 7"
+        },
+        {
+          "input": "90",
+          "output": "Tens digit = 9\nUnits digit = 0"
+        }
+      ],
+      "rubric": [
+        "Correct use of int(input()).",
+        "Correct use of // 10 for the tens digit.",
+        "Correct use of % 10 for the units digit.",
+        "Program runs without error and prints both digits."
+      ],
+      "explanation": "This program applies floor division and modulus to split a number into its digits.",
+      "relatedConcepts": [
+        "// operator",
+        "modulus",
+        "int()",
+        "input"
+      ]
+    },
+    {
+      "id": "ch5-program-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program that assigns one value of each of the types int, float, str, bool and None, and then prints each value together with its data type using the type() function.",
+      "hints": [
+        "Assign a value of each type to a separate variable.",
+        "Use type(variable) inside print() to show the type.",
+        "Use None for the NoneType example."
+      ],
+      "modelSolution": "a = 42\nb = 3.14\nc = \"Hello\"\nd = True\ne = None\nprint(a, type(a))\nprint(b, type(b))\nprint(c, type(c))\nprint(d, type(d))\nprint(e, type(e))",
+      "lineExplanations": [
+        {
+          "line": "a = 42",
+          "explanation": "Assigns an integer to a."
+        },
+        {
+          "line": "b = 3.14",
+          "explanation": "Assigns a float to b."
+        },
+        {
+          "line": "c = \"Hello\"",
+          "explanation": "Assigns a string to c."
+        },
+        {
+          "line": "d = True",
+          "explanation": "Assigns a boolean to d."
+        },
+        {
+          "line": "e = None",
+          "explanation": "Assigns the special value None to e."
+        },
+        {
+          "line": "print(a, type(a))",
+          "explanation": "Prints the value and its type using type()."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "(no input)",
+          "output": "42 <class 'int'>\n3.14 <class 'float'>\nHello <class 'str'>\nTrue <class 'bool'>\nNone <class 'NoneType'>"
+        }
+      ],
+      "rubric": [
+        "Correctly assigns one value of each type.",
+        "Uses type() to display each data type.",
+        "Covers all five requested types.",
+        "Program runs and output matches the types."
+      ],
+      "explanation": "This program demonstrates the core data types and the use of type() to inspect them.",
+      "relatedConcepts": [
+        "data types",
+        "type()",
+        "None"
+      ]
+    },
+    {
+      "id": "ch5-program-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "program",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Write a Python program that takes a number of seconds as input and converts it into hours, minutes and remaining seconds using the // and % operators.",
+      "hints": [
+        "One hour = 3600 seconds and one minute = 60 seconds.",
+        "Use // to get whole hours and minutes.",
+        "Use % to get the remaining seconds."
+      ],
+      "modelSolution": "total = int(input(\"Enter seconds: \"))\nhours = total // 3600\nremaining = total % 3600\nminutes = remaining // 60\nseconds = remaining % 60\nprint(\"Hours =\", hours)\nprint(\"Minutes =\", minutes)\nprint(\"Seconds =\", seconds)",
+      "lineExplanations": [
+        {
+          "line": "total = int(input(\"Enter seconds: \"))",
+          "explanation": "Reads the total seconds and converts to int."
+        },
+        {
+          "line": "hours = total // 3600",
+          "explanation": "Floor division by 3600 gives the whole hours."
+        },
+        {
+          "line": "remaining = total % 3600",
+          "explanation": "The remainder after removing hours."
+        },
+        {
+          "line": "minutes = remaining // 60",
+          "explanation": "Floor division by 60 gives the whole minutes."
+        },
+        {
+          "line": "seconds = remaining % 60",
+          "explanation": "The remainder is the leftover seconds."
+        },
+        {
+          "line": "print(\"Hours =\", hours)",
+          "explanation": "Displays the hours; similar prints show minutes and seconds."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "3661",
+          "output": "Hours = 1\nMinutes = 1\nSeconds = 1"
+        },
+        {
+          "input": "500",
+          "output": "Hours = 0\nMinutes = 8\nSeconds = 20"
+        }
+      ],
+      "rubric": [
+        "Correctly converts seconds to hours using // 3600.",
+        "Correctly finds minutes using // 60 on the remainder.",
+        "Correctly finds leftover seconds using % 60.",
+        "Program runs without error and output is correct."
+      ],
+      "explanation": "This program chains floor division and modulus to break a total into hours, minutes and seconds.",
+      "relatedConcepts": [
+        "// operator",
+        "modulus",
+        "arithmetic operators",
+        "int()"
+      ]
+    },
+    {
+      "id": "ch5-numerical-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "numerical",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Evaluate the expression 2 + 3 * 4 ** 2 and give the result.",
+      "correctAnswer": "50",
+      "unit": "",
+      "explanation": "Following precedence, ** is applied first: 4 ** 2 = 16. Then * : 3 * 16 = 48. Finally + : 2 + 48 = 50.",
+      "relatedConcepts": [
+        "precedence",
+        "exponent",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "ch5-numerical-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "numerical",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Find the values of 100 // 7 and 100 % 7. Enter the two values separated by a comma.",
+      "correctAnswer": "14, 2",
+      "unit": "(quotient, remainder)",
+      "explanation": "100 divided by 7 gives quotient 14 and remainder 2, since 7 x 14 = 98 and 100 - 98 = 2. So 100 // 7 = 14 and 100 % 7 = 2.",
+      "relatedConcepts": [
+        "floor division",
+        "modulus",
+        "arithmetic operators"
+      ]
+    },
+    {
+      "id": "ch5-numerical-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-expressions",
+      "type": "numerical",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Evaluate the expression 5 + 3 * 2 - 4 // 3 and give the result.",
+      "correctAnswer": "10",
+      "unit": "",
+      "explanation": "Multiplication and floor division are done first: 3 * 2 = 6 and 4 // 3 = 1. Then the expression becomes 5 + 6 - 1 = 10 (left to right).",
+      "relatedConcepts": [
+        "precedence",
+        "floor division",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "ch5-case-01",
+      "chapterId": "ch5",
+      "topicId": "ch5-data-types",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 6,
+      "question": "Read the case study and answer the sub-questions that follow.",
+      "caseStudy": {
+        "passage": "A student writes a small program to store details about a book. The code is:\ntitle = \"Python Basics\"\npages = 250\nprice = 349.50\nin_stock = True\ndiscount = None\nUsing the table below, answer the questions.",
+        "table": {
+          "title": "Values used in the program",
+          "headers": [
+            "Variable",
+            "Value"
+          ],
+          "rows": [
+            [
+              "title",
+              "Python Basics"
+            ],
+            [
+              "pages",
+              "250"
+            ],
+            [
+              "price",
+              "349.50"
+            ],
+            [
+              "in_stock",
+              "True"
+            ],
+            [
+              "discount",
+              "None"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "What is the data type of the variable price?",
+            "kind": "mcq",
+            "options": [
+              "int",
+              "float",
+              "str",
+              "bool"
+            ],
+            "answer": 1,
+            "explanation": "349.50 has a decimal point, so it is a float.",
+            "marks": 1
+          },
+          {
+            "question": "What is the data type of the variable discount?",
+            "kind": "mcq",
+            "options": [
+              "int",
+              "bool",
+              "NoneType",
+              "str"
+            ],
+            "answer": 2,
+            "explanation": "The value None belongs to the NoneType class.",
+            "marks": 1
+          },
+          {
+            "question": "Which variable stores an immutable sequence of characters?",
+            "kind": "mcq",
+            "options": [
+              "title",
+              "pages",
+              "in_stock",
+              "discount"
+            ],
+            "answer": 0,
+            "explanation": "title holds the string \"Python Basics\"; str is an immutable sequence of characters.",
+            "marks": 1
+          },
+          {
+            "question": "State the data types of pages and in_stock, and explain why True can be used in arithmetic.",
+            "kind": "short",
+            "answer": "pages is int and in_stock is bool. True can be used in arithmetic because bool is a subtype of int, so True behaves as 1 and False as 0.",
+            "explanation": "bool is implemented as a subclass of int, so its values act as 1 and 0 in numeric operations.",
+            "marks": 3
+          }
+        ]
+      },
+      "explanation": "This case tests identifying data types from literal values and recalling that bool is a subtype of int.",
+      "relatedConcepts": [
+        "data types",
+        "bool",
+        "NoneType",
+        "str"
+      ]
+    },
+    {
+      "id": "ch5-case-02",
+      "chapterId": "ch5",
+      "topicId": "ch5-operators",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 6,
+      "question": "Read the case study and answer the sub-questions that follow.",
+      "caseStudy": {
+        "passage": "A shopkeeper writes a program to bill a customer. Each item costs 250 rupees and the customer buys 4 items. The program is:\nrate = 250\nquantity = 4\ntotal = rate * quantity\npaid = 1200\nbalance = paid - total\nprint(total, balance)\nAnswer the questions below.",
+        "subQuestions": [
+          {
+            "question": "What is the value of total?",
+            "kind": "mcq",
+            "options": [
+              "254",
+              "1000",
+              "1200",
+              "250"
+            ],
+            "answer": 1,
+            "explanation": "total = rate * quantity = 250 * 4 = 1000.",
+            "marks": 1
+          },
+          {
+            "question": "What is the value of balance?",
+            "kind": "mcq",
+            "options": [
+              "200",
+              "1000",
+              "-200",
+              "1200"
+            ],
+            "answer": 0,
+            "explanation": "balance = paid - total = 1200 - 1000 = 200.",
+            "marks": 1
+          },
+          {
+            "question": "Which operators are used in this program and to which category do they belong?",
+            "kind": "short",
+            "answer": "The program uses * (multiplication) and - (subtraction), both of which are arithmetic operators, and = which is the assignment operator.",
+            "explanation": "* and - are arithmetic operators, while = assigns values to names.",
+            "marks": 2
+          },
+          {
+            "question": "If the quantity becomes 5, what would be the new total? Show the calculation.",
+            "kind": "short",
+            "answer": "New total = 250 * 5 = 1250 rupees.",
+            "explanation": "Substituting quantity = 5 into total = rate * quantity gives 250 * 5 = 1250.",
+            "marks": 2
+          }
+        ]
+      },
+      "explanation": "This case applies arithmetic operators to a billing situation and reinforces operator categories.",
+      "relatedConcepts": [
+        "arithmetic operators",
+        "assignment",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "ch5-case-03",
+      "chapterId": "ch5",
+      "topicId": "ch5-type-conversion",
+      "type": "case",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Read the case study and answer the sub-questions that follow.",
+      "caseStudy": {
+        "passage": "A programmer wants to compute the average of two marks entered by the user as text. The code is:\nm1 = input(\"Marks 1: \")\nm2 = input(\"Marks 2: \")\navg = (m1 + m2) / 2\nprint(avg)\nAnswer the questions below.",
+        "subQuestions": [
+          {
+            "question": "Why does this program not compute the average correctly?",
+            "kind": "mcq",
+            "options": [
+              "Because / cannot be used with numbers",
+              "Because input() returns strings, so m1 + m2 concatenates them",
+              "Because print() cannot show floats",
+              "Because avg should use //"
+            ],
+            "answer": 1,
+            "explanation": "input() returns a string, so m1 + m2 joins the two strings instead of adding the numbers, and the result is then divided incorrectly.",
+            "marks": 2
+          },
+          {
+            "question": "Which function should be used to fix the inputs before averaging?",
+            "kind": "mcq",
+            "options": [
+              "str()",
+              "bool()",
+              "float()",
+              "type()"
+            ],
+            "answer": 2,
+            "explanation": "Marks may be decimal, so float() converts the input strings to numbers before arithmetic.",
+            "marks": 1
+          },
+          {
+            "question": "Rewrite the two input lines so that the average is computed correctly.",
+            "kind": "short",
+            "answer": "m1 = float(input(\"Marks 1: \")) and m2 = float(input(\"Marks 2: \")). Then avg = (m1 + m2) / 2 works correctly.",
+            "explanation": "Wrapping input() with float() performs explicit conversion so that + and / work on numbers.",
+            "marks": 3
+          }
+        ]
+      },
+      "explanation": "This case shows why explicit type conversion is needed when input() returns strings.",
+      "relatedConcepts": [
+        "explicit conversion",
+        "input()",
+        "float()",
+        "str"
+      ]
+    }
+  ]
+}

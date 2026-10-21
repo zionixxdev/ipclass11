@@ -1,0 +1,3489 @@
+{
+  "chapter": {
+    "id": "ch6",
+    "number": 6,
+    "title": "Conditional and Looping Statements",
+    "summary": "Control structures decide the order in which a program's statements run. This chapter covers the three basic control structures — sequence, selection (branching) and iteration (looping). It explains Python's conditional statements (if, if-else, if-elif-else and nested if) with indentation rules, the for loop with range() and its start, stop and step arguments, the while loop, nested loops, the loop-control statements break, continue and pass, and the loop else clause. It also shows how to combine these to write complete programs such as finding the largest of three numbers, the sum of n numbers, a factorial, a prime check and a multiplication table."
+  },
+  "topics": [
+    {
+      "id": "ch6-control-structures",
+      "title": "Control Structures",
+      "content": {
+        "hinglish": "Jab hum koi program likhte hain, to uske statements ek ke baad ek chalte hain. Lekin sirf seedha chalne se kaam nahi chalta — kabhi humein condition ke hisaab se decide karna hota hai, aur kabhi ek hi kaam baar-baar repeat karna hota hai. Isi order aur decision ko control karne wale statements ko control structures kehte hain. Python mein mainly teen tarah ke control structures hote hain: sequence, selection aur iteration. Sequence mein statements upar se neeche chalte hain, selection mein condition ke hisaab se branch chunte hain, aur iteration mein loop ke through kaam repeat karte hain.",
+        "formalDefinition": "Control structures are the statements that determine the order in which the other statements of a program are executed. They control the flow of execution of a program. The three basic control structures are sequence, selection (branching) and iteration (looping).",
+        "keywords": [
+          "control structure",
+          "flow of control",
+          "sequence",
+          "selection",
+          "branching",
+          "iteration",
+          "looping",
+          "flowchart"
+        ],
+        "examples": [
+          "A program that reads two numbers, adds them and prints the result uses sequence — statements run top to bottom.",
+          "Checking whether a student has passed uses selection — an if statement chooses one of two branches.",
+          "Printing the numbers 1 to 100 uses iteration — a loop repeats the same print statement.",
+          "A menu-driven calculator uses all three: input (sequence), choice checking (selection) and repeated operations (iteration)."
+        ],
+        "tables": [
+          {
+            "title": "The three basic control structures",
+            "headers": [
+              "Control structure",
+              "Meaning",
+              "Python construct"
+            ],
+            "rows": [
+              [
+                "Sequence",
+                "Statements execute one after another in the written order",
+                "Normal statements written top to bottom"
+              ],
+              [
+                "Selection",
+                "A block is executed only if a condition is true",
+                "if, if-else, if-elif-else"
+              ],
+              [
+                "Iteration",
+                "A block is executed repeatedly",
+                "for, while"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Sequence flowchart: Start -> Statement 1 -> Statement 2 -> Stop (a single straight line, no branches).",
+          "Selection flowchart: Start -> Condition? -> Yes/No -> one of two paths -> Stop (a diamond with two exits).",
+          "Iteration flowchart: Start -> Condition? -> Yes -> Body -> back to Condition? ; No -> Stop (a loop back to the diamond)."
+        ],
+        "differences": {
+          "headers": [
+            "Basis",
+            "Sequence",
+            "Selection",
+            "Iteration"
+          ],
+          "rows": [
+            [
+              "Repetition",
+              "No repetition",
+              "No repetition",
+              "Statements repeat"
+            ],
+            [
+              "Decision",
+              "No decision taken",
+              "Decision taken using a condition",
+              "Decision taken to continue or stop"
+            ],
+            [
+              "Python keyword",
+              "None needed",
+              "if / elif / else",
+              "for / while"
+            ],
+            [
+              "Number of paths",
+              "One",
+              "Two or more",
+              "One body executed many times"
+            ]
+          ]
+        },
+        "pythonSyntax": "# Sequence\nstatement1\nstatement2\n\n# Selection\nif condition:\n    statement_block\n\n# Iteration\nfor item in sequence:\n    statement_block",
+        "codeExamples": [
+          {
+            "code": "name = \"Riya\"\nprint(\"Hello\", name)\nprint(\"Welcome to Python\")",
+            "output": "Hello Riya\nWelcome to Python",
+            "explanation": "This program shows sequence: the three statements execute one after another, top to bottom, with no decision and no repetition."
+          },
+          {
+            "code": "n = 12\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")",
+            "output": "Even",
+            "explanation": "This shows selection: the condition n % 2 == 0 is checked and exactly one of the two blocks runs."
+          },
+          {
+            "code": "for i in range(1, 4):\n    print(\"Python\")",
+            "output": "Python\nPython\nPython",
+            "explanation": "This shows iteration: the same print statement is executed three times by the for loop."
+          }
+        ],
+        "commonMistakes": [
+          "Thinking that a program always runs top to bottom — a selection or iteration structure can change that order.",
+          "Confusing selection with iteration: if only chooses a block, it does not repeat it.",
+          "Writing a loop where a simple if was needed, or an if where a loop was needed.",
+          "Forgetting that every control structure needs the correct indentation and a colon in Python."
+        ],
+        "examNotes": [
+          "Control structures control the flow of execution of a program; they do not change what the statements do, only the order.",
+          "Remember the three names exactly: sequence, selection (branching) and iteration (looping).",
+          "Questions often ask you to identify which control structure a given piece of code uses — read whether it decides or repeats.",
+          "A flowchart is the standard way to represent control structures in exams; sequence is a straight line, selection uses a diamond, iteration uses a loop-back arrow.",
+          "Sequence is the default; a program with no if and no loop is purely sequential.",
+          "In Python, indentation replaces the curly braces used in languages like C and Java to mark blocks."
+        ],
+        "faqs": [
+          {
+            "q": "What are control structures in programming?",
+            "a": "Control structures are statements that decide the order in which a program's statements are executed. They let a program take decisions (selection) and repeat work (iteration) instead of only running straight through (sequence)."
+          },
+          {
+            "q": "How many basic control structures are there?",
+            "a": "Three: sequence, selection (branching) and iteration (looping). Every program is built by combining these three."
+          },
+          {
+            "q": "Why are control structures needed?",
+            "a": "Without them a program could only run one fixed set of steps. Control structures let a program react to data (for example, decide pass or fail) and repeat a task many times without rewriting it."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which control structure executes statements one after another in the order they are written?",
+            "options": [
+              "Selection",
+              "Sequence",
+              "Iteration",
+              "Recursion"
+            ],
+            "answer": 1,
+            "explanation": "Sequence is the default control structure in which statements run one after another, top to bottom, in the order written."
+          },
+          {
+            "question": "A program that prints numbers 1 to 50 using the same print statement is using which control structure?",
+            "options": [
+              "Sequence",
+              "Selection",
+              "Iteration",
+              "None of these"
+            ],
+            "answer": 2,
+            "explanation": "Repeating the same block of statements many times is iteration (looping), done in Python with for or while."
+          },
+          {
+            "question": "Which Python construct is used for selection?",
+            "options": [
+              "for",
+              "while",
+              "if-else",
+              "range()"
+            ],
+            "answer": 2,
+            "explanation": "Selection (branching) is implemented with if, if-else and if-elif-else. for and while are used for iteration."
+          }
+        ],
+        "checklist": [
+          "I can name the three basic control structures.",
+          "I can explain the difference between sequence, selection and iteration.",
+          "I can identify which control structure a given piece of code uses.",
+          "I can draw the basic flowchart shape for sequence, selection and iteration.",
+          "I know that Python uses indentation instead of curly braces to mark blocks."
+        ]
+      }
+    },
+    {
+      "id": "ch6-sequence",
+      "title": "Sequence",
+      "content": {
+        "hinglish": "Sequence control structure mein program ki statements ek-ek karke upar se neeche, likhe gaye order mein chalti hain. Koi statement skip nahi hoti aur koi line baar-baar nahi chalti — bas seedha flow. Jaise aap ek recipe follow karte ho: pehle cheezein le lo, phir kaato, phir pakao. Python by default har program ko isi tarah chalata hai jab tak koi condition ya loop beech mein na aa jaye. Isliye sequence ko default control structure bhi kehte hain.",
+        "formalDefinition": "Sequence is the default control structure of a program in which the statements are executed one after another, strictly in the same order in which they are written. No statement is skipped and no statement is repeated.",
+        "keywords": [
+          "sequence",
+          "default control structure",
+          "top to bottom",
+          "statement order",
+          "sequential execution",
+          "straight-line code"
+        ],
+        "examples": [
+          "Reading two numbers, computing their sum, and printing the result — three steps performed in sequence.",
+          "x = 5, then y = 10, then print(x + y) — the print runs only after both assignments, so it prints 15.",
+          "A program that converts rupees to dollars: input rupees, multiply by the rate, display dollars — each step depends on the previous one.",
+          "Copying a file: open the file, read its contents, write to the new file, close both — a fixed sequence of steps."
+        ],
+        "tables": [
+          {
+            "title": "Properties of the sequence control structure",
+            "headers": [
+              "Property",
+              "Description"
+            ],
+            "rows": [
+              [
+                "Order",
+                "Top to bottom, exactly as written"
+              ],
+              [
+                "Repetition",
+                "None"
+              ],
+              [
+                "Decision",
+                "None"
+              ],
+              [
+                "Number of paths",
+                "Always one straight path"
+              ],
+              [
+                "Flowchart shape",
+                "Rectangle (process) blocks joined by a single downward arrow"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Sequence flowchart: an oval Start, then two or three rectangles for the statements, joined by straight downward arrows, ending in an oval Stop.",
+          "A straight line with no diamond (no decision) and no arrow going back (no loop) represents sequence."
+        ],
+        "differences": {
+          "headers": [
+            "Basis",
+            "Sequence",
+            "Selection",
+            "Iteration"
+          ],
+          "rows": [
+            [
+              "Statement execution",
+              "Each statement runs exactly once",
+              "Only the chosen block runs",
+              "A block runs many times"
+            ],
+            [
+              "Condition used",
+              "No",
+              "Yes",
+              "Yes"
+            ],
+            [
+              "Order of execution",
+              "Fixed, as written",
+              "Depends on the condition",
+              "Repeats until condition is met"
+            ]
+          ]
+        },
+        "pythonSyntax": "statement1\nstatement2\nstatement3\n# executed in this exact order, one after another",
+        "codeExamples": [
+          {
+            "code": "a = 5\nb = 10\nc = a + b\nprint(c)",
+            "output": "15",
+            "explanation": "The statements run in order: first a is assigned, then b, then c is computed from a and b, and finally c is printed. Changing the order would cause an error or a wrong result."
+          },
+          {
+            "code": "rupees = 830\nrate = 83\ndollars = rupees / rate\nprint(dollars)",
+            "output": "10.0",
+            "explanation": "Each step uses the value produced by the previous step: the division needs both rupees and rate, so those assignments must come first."
+          }
+        ],
+        "commonMistakes": [
+          "Using a variable before it has been assigned a value — in sequence, the assignment must come before its use.",
+          "Assuming Python reads the whole program before running it; it actually executes statements in order.",
+          "Reordering statements carelessly, which changes the result or causes a NameError.",
+          "Thinking that a print statement changes a value; it only displays it."
+        ],
+        "examNotes": [
+          "Sequence is the default control structure; it needs no special keyword.",
+          "In a sequence, the order of statements matters — a swap in order can change the output or cause an error.",
+          "A sequence flowchart uses only process boxes (rectangles) and a single straight path from Start to Stop.",
+          "Exam questions often ask what a program prints; trace sequence programs line by line, updating each variable as you go.",
+          "Sequence is the building block on which selection and iteration are built."
+        ],
+        "faqs": [
+          {
+            "q": "What is the sequence control structure?",
+            "a": "It is the default flow in which a program's statements are executed one after another, in the same order they are written, with no skipping and no repetition."
+          },
+          {
+            "q": "Why is sequence called the default control structure?",
+            "a": "Because unless a condition (if) or a loop (for/while) is used, Python always executes statements sequentially from top to bottom."
+          },
+          {
+            "q": "Does the order of statements matter in a sequence?",
+            "a": "Yes. Since each statement runs in the written order, putting an assignment after its use, for example, will cause an error or give a wrong result."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "In a purely sequential program, how many times is each statement executed?",
+            "options": [
+              "Zero times",
+              "Exactly once",
+              "Twice",
+              "Depends on the condition"
+            ],
+            "answer": 1,
+            "explanation": "In sequence there is no loop and no branch, so every statement is executed exactly once, in order."
+          },
+          {
+            "question": "What is the shape used for a process (statement) in a flowchart?",
+            "options": [
+              "Diamond",
+              "Oval",
+              "Rectangle",
+              "Parallelogram"
+            ],
+            "answer": 2,
+            "explanation": "A rectangle represents a process or statement. A diamond is a decision, an oval is Start/Stop, and a parallelogram is input/output."
+          },
+          {
+            "question": "Which of these programs uses only the sequence control structure?",
+            "options": [
+              "A program with an if-else",
+              "A program with a while loop",
+              "A program that adds two numbers and prints the sum",
+              "A program with a nested loop"
+            ],
+            "answer": 2,
+            "explanation": "Adding two numbers and printing the result needs only sequential statements — no decision and no repetition."
+          }
+        ],
+        "checklist": [
+          "I can define the sequence control structure.",
+          "I can explain why sequence is the default flow of a Python program.",
+          "I can trace a sequence program and predict its output.",
+          "I can draw a sequence flowchart using process boxes and straight arrows.",
+          "I understand that statement order matters in a sequence."
+        ]
+      }
+    },
+    {
+      "id": "ch6-selection",
+      "title": "Selection or Branching",
+      "content": {
+        "hinglish": "Selection ka matlab hai condition ke hisaab se program ka rasta chunna. Python mein iske liye if, if-else aur if-elif-else use karte hain. Agar condition True hai to if ka block chalta hai, warna else ka block. Jab bahut saari conditions check karni ho to if-elif-else use karte hain — Python pehli True condition milte hi baaki sab chhod deta hai. if ke andar phir se if likhna nested if kehlata hai. Aur haan, Python mein indentation (spaces) bahut important hai — block kaun sa hai ye spaces se hi pata chalta hai, curly braces nahi lagte.",
+        "formalDefinition": "Selection (also called branching or decision-making) is a control structure that executes a particular block of statements only when a specified condition is true, and optionally another block when it is false. In Python it is implemented using the if, if-else, if-elif-else and nested if statements.",
+        "keywords": [
+          "selection",
+          "branching",
+          "if",
+          "if-else",
+          "elif",
+          "nested if",
+          "condition",
+          "indentation"
+        ],
+        "examples": [
+          "if marks >= 40: print(\"Pass\") — prints only when the condition is true.",
+          "if-else choosing between \"Pass\" and \"Fail\" depending on marks.",
+          "if-elif-else assigning a grade (A, B, C) based on ranges of marks.",
+          "Nested if checking the largest of three numbers by testing one number inside another.",
+          "if-else checking whether a number is even or odd."
+        ],
+        "tables": [
+          {
+            "title": "Conditional statements in Python",
+            "headers": [
+              "Statement",
+              "Purpose",
+              "Number of blocks"
+            ],
+            "rows": [
+              [
+                "if",
+                "Runs a block when the condition is true",
+                "1"
+              ],
+              [
+                "if-else",
+                "Chooses between two blocks",
+                "2"
+              ],
+              [
+                "if-elif-else",
+                "Chooses among many blocks",
+                "2 or more"
+              ],
+              [
+                "nested if",
+                "An if inside another if",
+                "As many as written"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "if flowchart: Start -> Condition? -> Yes -> Statement block -> Stop; No path skips the block.",
+          "if-else flowchart: Start -> Condition? -> Yes -> Block 1 / No -> Block 2 -> Stop.",
+          "if-elif-else flowchart: a chain of diamonds, each 'No' passing control to the next condition and the last 'No' going to else."
+        ],
+        "differences": {
+          "headers": [
+            "Basis",
+            "if-elif-else",
+            "Separate if statements"
+          ],
+          "rows": [
+            [
+              "Blocks executed",
+              "At most one",
+              "Possibly more than one"
+            ],
+            [
+              "Condition checking",
+              "Stops at the first true condition",
+              "Every condition is checked"
+            ],
+            [
+              "Use",
+              "Mutually exclusive ranges (grades)",
+              "Independent conditions (multiple checks)"
+            ]
+          ]
+        },
+        "pythonSyntax": "if condition1:\n    block_1\nelif condition2:\n    block_2\nelse:\n    block_3\n\n# nested if\nif condition1:\n    if condition2:\n        block",
+        "codeExamples": [
+          {
+            "code": "age = 18\nif age >= 18:\n    print(\"Eligible to vote\")",
+            "output": "Eligible to vote",
+            "explanation": "The condition age >= 18 is true, so the indented block runs. If the condition were false, nothing would be printed because there is no else."
+          },
+          {
+            "code": "n = 7\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")",
+            "output": "Odd",
+            "explanation": "7 % 2 gives 1, so the if condition is false and the else block runs, printing Odd."
+          },
+          {
+            "code": "marks = 75\nif marks >= 90:\n    print(\"A\")\nelif marks >= 60:\n    print(\"B\")\nelse:\n    print(\"C\")",
+            "output": "B",
+            "explanation": "The first condition is false, so Python checks the elif. 75 >= 60 is true, so B is printed and the else is skipped."
+          },
+          {
+            "code": "a, b, c = 5, 9, 3\nif a > b:\n    if a > c:\n        print(\"A is largest\")\n    else:\n        print(\"C is largest\")\nelse:\n    if b > c:\n        print(\"B is largest\")\n    else:\n        print(\"C is largest\")",
+            "output": "B is largest",
+            "explanation": "a > b is false (5 > 9 is false), so the outer else runs; inside it b > c is true (9 > 3), so B is largest."
+          }
+        ],
+        "commonMistakes": [
+          "Forgetting the colon (:) at the end of the if, elif or else line — this is a SyntaxError.",
+          "Using a single equal sign (=) instead of a double equal sign (==) inside the condition.",
+          "Wrong indentation: a block that is not indented correctly either causes an IndentationError or changes which statements belong to the if.",
+          "Writing elif without a preceding if, or writing multiple else blocks for one if.",
+          "Using separate if statements when elif was intended, so that more than one block runs."
+        ],
+        "examNotes": [
+          "The colon (:) after if, elif and else is compulsory; its absence is a common syntax error asked in exams.",
+          "In Python, a block is marked by indentation (usually 4 spaces), not by curly braces.",
+          "elif means 'else if' and lets you test many conditions; only the first true branch executes.",
+          "An else never has a condition of its own; it runs when all preceding conditions are false.",
+          "In nested if, the inner if runs only when the outer condition is true.",
+          "Remember the difference between = (assignment) and == (comparison) — a favourite exam trap."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between if and if-else?",
+            "a": "An if statement runs its block only when the condition is true and does nothing otherwise. An if-else has two blocks: one for when the condition is true and one for when it is false."
+          },
+          {
+            "q": "When should I use elif instead of another if?",
+            "a": "Use elif when the conditions are mutually exclusive, such as grade ranges. With elif only one block can run; with separate if statements several blocks could run."
+          },
+          {
+            "q": "Why is indentation important in Python?",
+            "a": "Python uses indentation to define which statements belong to a block. Incorrect indentation causes an IndentationError or silently changes the logic."
+          },
+          {
+            "q": "Can an else have a condition?",
+            "a": "No. The else block has no condition of its own; it executes only when all the if and elif conditions before it are false."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which symbol must appear at the end of an if statement line?",
+            "options": [
+              "Semicolon (;)",
+              "Colon (:)",
+              "Braces ({ })",
+              "Full stop (.)"
+            ],
+            "answer": 1,
+            "explanation": "Every if, elif and else line must end with a colon (:), which introduces the indented block that follows."
+          },
+          {
+            "question": "In an if-elif-else chain, how many blocks execute at most?",
+            "options": [
+              "One",
+              "Two",
+              "Three",
+              "All of them"
+            ],
+            "answer": 0,
+            "explanation": "Python checks conditions from top to bottom and stops at the first true one, so at most one block executes (or the else)."
+          },
+          {
+            "question": "What is the output of: x = 10; if x > 5: print(\"Big\")?",
+            "options": [
+              "Nothing",
+              "Big",
+              "5",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "10 > 5 is true, so the indented block runs and prints Big."
+          },
+          {
+            "question": "An if statement placed inside another if statement is called:",
+            "options": [
+              "Chained if",
+              "Nested if",
+              "Loop if",
+              "Double if"
+            ],
+            "answer": 1,
+            "explanation": "An if inside another if is a nested if; the inner if is tested only when the outer condition is true."
+          }
+        ],
+        "checklist": [
+          "I can write if, if-else and if-elif-else statements with correct syntax.",
+          "I always remember the colon at the end of the condition line.",
+          "I can use indentation correctly to define blocks.",
+          "I can write a nested if to solve problems like the largest of three numbers.",
+          "I know the difference between = and ==, and between elif and a separate if."
+        ]
+      }
+    },
+    {
+      "id": "ch6-iteration",
+      "title": "Iteration",
+      "content": {
+        "hinglish": "Iteration ka matlab hai ek hi kaam ko baar-baar dohrana — ise loop bhi kehte hain. Python mein do main loops hote hain: for aur while. for loop tab use karte hain jab humein pata ho kitni baar repeat karna hai, aur range() ke saath numbers ki series banate hain. while loop tab use karte hain jab repeat tab tak karna ho jab tak koi condition True rahe. Loop ke beech se nikalne ke liye break, current round skip karne ke liye continue, aur kuch na karne ke liye pass use karte hain. Python mein for aur while ke saath else bhi lag sakta hai, jo loop normally (bina break) khatam hone par chalta hai.",
+        "formalDefinition": "Iteration (also called looping) is a control structure that repeatedly executes a block of statements as long as a given condition remains true, or for a fixed number of times. Python provides two loops — the for loop (definite iteration) and the while loop (indefinite iteration). The loop control statements break, continue and pass alter the normal repetition.",
+        "keywords": [
+          "iteration",
+          "for",
+          "while",
+          "range()",
+          "nested loop",
+          "break",
+          "continue",
+          "pass"
+        ],
+        "examples": [
+          "for i in range(1, 6): print(i) — prints 1 to 5, a definite number of repetitions.",
+          "while n > 0: print(n); n -= 1 — repeats until n becomes 0, an indefinite number of repetitions.",
+          "A multiplication table printed with a for loop over range(1, 11).",
+          "break to stop a loop as soon as the required value is found (for example, in a prime check).",
+          "Nested loops to print a star pattern or a table of tables."
+        ],
+        "tables": [
+          {
+            "title": "The range() function",
+            "headers": [
+              "Form",
+              "Meaning",
+              "Example values"
+            ],
+            "rows": [
+              [
+                "range(stop)",
+                "0, 1, ..., stop-1",
+                "range(4) -> 0,1,2,3"
+              ],
+              [
+                "range(start, stop)",
+                "start, ..., stop-1",
+                "range(2, 6) -> 2,3,4,5"
+              ],
+              [
+                "range(start, stop, step)",
+                "start, start+step, ... (< stop)",
+                "range(1, 10, 3) -> 1,4,7"
+              ]
+            ]
+          },
+          {
+            "title": "Loop control statements",
+            "headers": [
+              "Statement",
+              "Effect"
+            ],
+            "rows": [
+              [
+                "break",
+                "Terminates the loop immediately"
+              ],
+              [
+                "continue",
+                "Skips the rest of the current iteration and goes to the next"
+              ],
+              [
+                "pass",
+                "Does nothing; used as a placeholder"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "for loop flowchart: Start -> initialise/next item -> items left? -> Yes -> Body -> back; No -> Stop.",
+          "while loop flowchart: Start -> Condition? -> Yes -> Body (which must change the condition) -> back to Condition?; No -> Stop.",
+          "Nested loop flowchart: an outer loop box containing an inner loop box, with the inner loop completing on every outer iteration."
+        ],
+        "differences": {
+          "headers": [
+            "Basis",
+            "for loop",
+            "while loop"
+          ],
+          "rows": [
+            [
+              "Type",
+              "Definite iteration",
+              "Indefinite iteration"
+            ],
+            [
+              "Used when",
+              "Number of repetitions is known",
+              "Repetitions depend on a condition"
+            ],
+            [
+              "Header",
+              "for var in sequence:",
+              "while condition:"
+            ],
+            [
+              "Condition",
+              "Controlled by the sequence/range",
+              "Controlled by a condition that must change inside the body"
+            ],
+            [
+              "Risk",
+              "Fewer chances of an infinite loop",
+              "Infinite loop if the condition never becomes false"
+            ]
+          ]
+        },
+        "pythonSyntax": "# for loop\nfor variable in range(start, stop, step):\n    block\n\n# while loop\nwhile condition:\n    block\n\n# loop with else\nfor variable in sequence:\n    block\nelse:\n    block_when_loop_finishes_normally",
+        "codeExamples": [
+          {
+            "code": "for i in range(1, 6):\n    print(i)",
+            "output": "1\n2\n3\n4\n5",
+            "explanation": "range(1, 6) generates 1, 2, 3, 4, 5 (the stop value 6 is not included), so the loop body runs five times."
+          },
+          {
+            "code": "for i in range(10, 0, -2):\n    print(i)",
+            "output": "10\n8\n6\n4\n2",
+            "explanation": "A negative step of -2 counts downwards from 10, stopping before 0."
+          },
+          {
+            "code": "n = 3\nwhile n > 0:\n    print(n)\n    n -= 1",
+            "output": "3\n2\n1",
+            "explanation": "The while loop repeats while n > 0. The statement n -= 1 changes the condition, so the loop finally stops."
+          },
+          {
+            "code": "for i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)",
+            "output": "1\n2\n4\n5",
+            "explanation": "When i is 3, continue skips the print for that iteration; the loop carries on with 4 and 5."
+          },
+          {
+            "code": "for i in range(2, 4):\n    if i == 5:\n        break\nelse:\n    print(\"Completed\")",
+            "output": "Completed",
+            "explanation": "The loop finishes normally because break never runs, so the loop's else block executes."
+          }
+        ],
+        "commonMistakes": [
+          "Writing a while loop without changing the condition inside the body, which causes an infinite loop.",
+          "Off-by-one errors in range(): range(1, 5) stops at 4, not 5, because the stop value is excluded.",
+          "Forgetting the colon at the end of the for or while line.",
+          "Using break or continue outside a loop, which raises a SyntaxError.",
+          "Trying to change the loop variable inside a for loop; the next value comes from the sequence, not your change."
+        ],
+        "examNotes": [
+          "range(start, stop, step): the stop value is never included; step may be negative.",
+          "for is used when the number of repetitions is known (definite), while is used when it is not (indefinite).",
+          "break exits the loop at once; continue skips only the current iteration; pass does nothing.",
+          "The else of a loop runs only when the loop ends normally — that is, without a break.",
+          "Nested loops: the inner loop finishes completely for every single iteration of the outer loop.",
+          "Always trace a loop with a table of values to find the exact output."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between break and continue?",
+            "a": "break terminates the loop immediately and control moves to the statement after the loop. continue skips the remaining statements of the current iteration and jumps to the next iteration."
+          },
+          {
+            "q": "What does range(1, 10, 2) produce?",
+            "a": "It produces 1, 3, 5, 7, 9. It starts at 1, increases by 2 each time, and stops before reaching 10."
+          },
+          {
+            "q": "When does the else part of a loop execute?",
+            "a": "It executes only when the loop completes all its iterations normally, i.e. it is not terminated by a break statement."
+          },
+          {
+            "q": "How do I avoid an infinite while loop?",
+            "a": "Make sure something inside the loop body changes the variable used in the condition, so that the condition eventually becomes false."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "How many times does the body of 'for i in range(5):' execute?",
+            "options": [
+              "4",
+              "5",
+              "6",
+              "0"
+            ],
+            "answer": 1,
+            "explanation": "range(5) gives 0, 1, 2, 3, 4 — five values — so the body runs five times."
+          },
+          {
+            "question": "Which loop is best when the number of repetitions is not known in advance?",
+            "options": [
+              "for",
+              "while",
+              "if",
+              "range"
+            ],
+            "answer": 1,
+            "explanation": "The while loop repeats as long as a condition is true, so it suits situations where the number of repetitions is not known beforehand."
+          },
+          {
+            "question": "What does the continue statement do?",
+            "options": [
+              "Stops the loop",
+              "Skips the current iteration",
+              "Restarts the program",
+              "Does nothing"
+            ],
+            "answer": 1,
+            "explanation": "continue skips the remaining statements of the current iteration and moves control to the next iteration of the loop."
+          },
+          {
+            "question": "Which statement is a null statement that does nothing?",
+            "options": [
+              "break",
+              "continue",
+              "pass",
+              "return"
+            ],
+            "answer": 2,
+            "explanation": "pass is a null statement; it performs no action and is used as a placeholder where a statement is syntactically required."
+          }
+        ],
+        "checklist": [
+          "I can write for loops using range() with start, stop and step.",
+          "I can write a while loop and make sure it terminates.",
+          "I can explain break, continue and pass with examples.",
+          "I can explain when a loop's else block runs.",
+          "I can trace nested loops and predict their output."
+        ]
+      }
+    },
+    {
+      "id": "ch6-programs",
+      "title": "Python Programs",
+      "content": {
+        "hinglish": "Ab tak jo concepts seekhe — sequence, selection aur iteration — unko milkar asli programs banate hain. Jaise largest of three numbers nikaalna, first n numbers ka sum, factorial, prime check, ya table print karna. Program likhne ka tareeka hai: pehle problem samjho, input kya hai decide karo, phir step-by-step logic likho, aur aakhir mein code. Yaad rakho, ek accha program readable hota hai — sahi indentation, theek variable names aur chhote comments ke saath. Aur likhne ke baad dry run karke output check karna kabhi mat bhoolna.",
+        "formalDefinition": "A program is a complete, ordered set of instructions written in a programming language to solve a specific problem. Good programs combine sequence, selection and iteration appropriately, use meaningful variable names and correct indentation, include comments where needed, and are tested against sample inputs.",
+        "keywords": [
+          "program",
+          "algorithm",
+          "logic",
+          "input",
+          "process",
+          "output",
+          "dry run",
+          "test case"
+        ],
+        "examples": [
+          "Largest of three numbers: compare the numbers with nested if or with if-elif-else.",
+          "Sum of the first n natural numbers: use a for loop and an accumulator variable.",
+          "Factorial of n: multiply an accumulator by 1, 2, ..., n using a for loop.",
+          "Prime check: test divisibility by numbers from 2 to n-1 and use break when a divisor is found.",
+          "Multiplication table of n: use a for loop over range(1, 11) and print n * i."
+        ],
+        "tables": [
+          {
+            "title": "Steps to write a program",
+            "headers": [
+              "Step",
+              "What to do"
+            ],
+            "rows": [
+              [
+                "1. Understand",
+                "Read the problem and identify input, process and output"
+              ],
+              [
+                "2. Plan",
+                "Write the algorithm or draw a flowchart"
+              ],
+              [
+                "3. Code",
+                "Translate the steps into Python with correct syntax and indentation"
+              ],
+              [
+                "4. Test",
+                "Dry run with sample inputs and check the output"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Flowchart for the largest of three numbers: compare a and b (diamond), then compare the larger with c, ending in a print block for the largest.",
+          "Flowchart for factorial: Start -> read n -> set fact = 1, i = 1 -> i <= n? -> Yes -> fact = fact * i, i = i + 1 -> back; No -> print fact -> Stop."
+        ],
+        "differences": {
+          "headers": [
+            "Basis",
+            "Algorithm",
+            "Program"
+          ],
+          "rows": [
+            [
+              "Language",
+              "Plain language / steps",
+              "A programming language such as Python"
+            ],
+            [
+              "Syntax",
+              "No strict syntax",
+              "Must follow exact syntax and indentation"
+            ],
+            [
+              "Execution",
+              "Cannot be run by a computer",
+              "Can be run by a computer"
+            ]
+          ]
+        },
+        "pythonSyntax": "# General pattern of a small program\n# 1. read input\nn = int(input(\"Enter a number: \"))\n\n# 2. process using selection and/or iteration\nresult = 0\nfor i in range(1, n + 1):\n    result = result + i\n\n# 3. display output\nprint(\"Sum =\", result)",
+        "codeExamples": [
+          {
+            "code": "n = 5\ns = 0\nfor i in range(1, n + 1):\n    s = s + i\nprint(s)",
+            "output": "15",
+            "explanation": "The accumulator s starts at 0 and gains 1, 2, 3, 4, 5 in turn, giving 15. range(1, n + 1) ensures n is included."
+          },
+          {
+            "code": "n = 5\nf = 1\nfor i in range(1, n + 1):\n    f = f * i\nprint(f)",
+            "output": "120",
+            "explanation": "The loop multiplies f by 1, 2, 3, 4 and 5, so f becomes 120, which is 5! (factorial of 5)."
+          },
+          {
+            "code": "n = 7\nif n < 2:\n    print(\"Not Prime\")\nelse:\n    flag = 0\n    for i in range(2, n):\n        if n % i == 0:\n            flag = 1\n            break\n    if flag == 0:\n        print(\"Prime\")\n    else:\n        print(\"Not Prime\")",
+            "output": "Prime",
+            "explanation": "No number from 2 to 6 divides 7 exactly, so flag stays 0 and Prime is printed. If a divisor were found, break would stop the loop and flag would become 1."
+          }
+        ],
+        "commonMistakes": [
+          "Initialising an accumulator (sum or product) to the wrong value — a sum should start at 0 and a product at 1.",
+          "Using range(1, n) instead of range(1, n + 1) and so leaving out the last value.",
+          "Forgetting to update the loop variable in a while loop, causing an infinite loop.",
+          "Not handling the special cases (for example, 1 is neither prime nor composite) before the main logic.",
+          "Ignoring indentation, so statements that should be inside a loop end up outside it."
+        ],
+        "examNotes": [
+          "Always write the algorithm or draw the flowchart first if the question asks for it, then write the code.",
+          "Use meaningful variable names (sum, fact, count, flag) — examiners award marks for readability.",
+          "For a product/accumulator initialise to 1; for a sum initialise to 0.",
+          "In a prime check, test divisors from 2 to n-1 (or up to n//2) and use a flag or break.",
+          "Remember to include the boundary value in the loop: range(1, n + 1) includes n.",
+          "Do a dry run with a small value (n = 3 or 4) to verify the output before writing it down."
+        ],
+        "faqs": [
+          {
+            "q": "How do I decide whether to use a for loop or a while loop in a program?",
+            "a": "If you know in advance how many times the block must repeat (for example, the first n numbers), use a for loop. If repetition depends on a condition that may stop at an unknown time, use a while loop."
+          },
+          {
+            "q": "What value should an accumulator be initialised to?",
+            "a": "Initialise a sum accumulator to 0 and a product accumulator to 1. Using the wrong starting value gives a wrong result."
+          },
+          {
+            "q": "Why is 1 not a prime number?",
+            "a": "A prime number has exactly two factors, 1 and itself. The number 1 has only one factor, so it is neither prime nor composite."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What should an accumulator used for a product be initialised to?",
+            "options": [
+              "0",
+              "1",
+              "n",
+              "-1"
+            ],
+            "answer": 1,
+            "explanation": "A product accumulator must start at 1, because multiplying by 1 leaves the running product unchanged. Starting at 0 would make every product 0."
+          },
+          {
+            "question": "Which range correctly includes the value n in a loop from 1 to n?",
+            "options": [
+              "range(n)",
+              "range(1, n)",
+              "range(1, n + 1)",
+              "range(0, n - 1)"
+            ],
+            "answer": 2,
+            "explanation": "range(1, n + 1) produces 1, 2, ..., n because the stop value is excluded, so n + 1 is needed to include n."
+          },
+          {
+            "question": "In a prime-check program, what is the role of the break statement?",
+            "options": [
+              "To skip even numbers",
+              "To stop the loop as soon as a divisor is found",
+              "To restart the loop",
+              "To print the result"
+            ],
+            "answer": 1,
+            "explanation": "Once a divisor is found, the number is not prime, so break stops further checking; this makes the program faster."
+          }
+        ],
+        "checklist": [
+          "I can write a program to find the largest of three numbers.",
+          "I can write programs for the sum of n numbers and for factorial.",
+          "I can write a prime-check program using a loop, a flag and break.",
+          "I can print a multiplication table using a for loop.",
+          "I always dry run my program with a small input before finalising it."
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "ch6-mcq-01",
+      "topicId": "ch6-control-structures",
+      "difficulty": "easy",
+      "question": "Which control structure executes statements one after another in the order in which they are written?",
+      "options": [
+        "Selection",
+        "Sequence",
+        "Iteration",
+        "Recursion"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Selection chooses a block based on a condition; it does not simply run statements in written order.",
+        "Correct. Sequence is the default flow, executing statements top to bottom in the written order.",
+        "Iteration repeats a block of statements; it is not plain one-after-another execution.",
+        "Recursion is a function calling itself, not one of the three basic control structures."
+      ],
+      "explanation": "Sequence is the default control structure: statements run one after another, in the same order in which they are written.",
+      "relatedConcepts": [
+        "control structure",
+        "sequence",
+        "flow of control"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-02",
+      "topicId": "ch6-control-structures",
+      "difficulty": "easy",
+      "question": "Which of the following is NOT a basic control structure?",
+      "options": [
+        "Sequence",
+        "Selection",
+        "Iteration",
+        "Compilation"
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "Sequence is one of the three basic control structures.",
+        "Selection (branching) is one of the three basic control structures.",
+        "Iteration (looping) is one of the three basic control structures.",
+        "Correct. Compilation is the process of converting source code to machine code; it is not a control structure."
+      ],
+      "explanation": "The three basic control structures are sequence, selection and iteration. Compilation is unrelated to the flow of control.",
+      "relatedConcepts": [
+        "control structure",
+        "sequence",
+        "selection",
+        "iteration"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-03",
+      "topicId": "ch6-sequence",
+      "difficulty": "easy",
+      "question": "In a purely sequential program, how many times is each statement executed?",
+      "options": [
+        "Zero times",
+        "Exactly once",
+        "Twice",
+        "Depends on the condition"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Statements are not skipped in a sequence, so none is executed zero times.",
+        "Correct. With no loop and no branch, every statement runs exactly once, in order.",
+        "Repetition needs a loop, which a purely sequential program does not have.",
+        "A condition belongs to selection, which is absent in a purely sequential program."
+      ],
+      "explanation": "A sequential program has no loop and no branch, so each statement is executed exactly once in the written order.",
+      "relatedConcepts": [
+        "sequence",
+        "default flow",
+        "statement order"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-04",
+      "topicId": "ch6-selection",
+      "difficulty": "easy",
+      "question": "Which symbol must appear at the end of an if statement line in Python?",
+      "options": [
+        "Semicolon (;)",
+        "Colon (:)",
+        "Curly braces ({ })",
+        "Full stop (.)"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "A semicolon is not used to end an if line in Python.",
+        "Correct. Every if, elif and else line ends with a colon, which introduces the block.",
+        "Curly braces are used for blocks in C or Java, not in Python.",
+        "A full stop is not part of Python statement syntax."
+      ],
+      "explanation": "In Python, the colon (:) at the end of an if, elif or else line introduces the indented block that follows it.",
+      "relatedConcepts": [
+        "if statement",
+        "syntax",
+        "colon"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-05",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "question": "In an if-elif-else chain, how many blocks can execute at most?",
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "All of them"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. Python checks from top to bottom and stops at the first true condition, so at most one block runs.",
+        "Two blocks cannot run; once a condition is true, the rest are skipped.",
+        "All conditions are not tested; testing stops at the first true one.",
+        "Not all blocks run — only one branch is chosen."
+      ],
+      "explanation": "Conditions are tested from top to bottom and testing stops at the first true condition, so only one block (or the else) executes.",
+      "relatedConcepts": [
+        "if-elif-else",
+        "selection",
+        "branching"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-06",
+      "topicId": "ch6-selection",
+      "difficulty": "easy",
+      "question": "How many times is the condition of a simple if statement evaluated?",
+      "options": [
+        "Once",
+        "Twice",
+        "Depends on the number of lines",
+        "Never"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. A simple if tests its condition once; the block runs or is skipped.",
+        "An if does not repeat, so the condition is not evaluated twice.",
+        "The number of lines in the block does not affect how often the condition is checked.",
+        "The condition is always evaluated at least once."
+      ],
+      "explanation": "A simple if statement evaluates its condition exactly once and then either runs or skips its block.",
+      "relatedConcepts": [
+        "if statement",
+        "condition",
+        "selection"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-07",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "question": "Which keyword is used in Python for 'else if'?",
+      "options": [
+        "elseif",
+        "elif",
+        "elsif",
+        "else-if"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Python does not use the keyword elseif.",
+        "Correct. Python uses elif, which allows several conditions to be tested in one chain.",
+        "elsif is used in some other languages, not in Python.",
+        "else-if with a hyphen is not valid Python syntax."
+      ],
+      "explanation": "Python combines 'else' and 'if' into the single keyword elif, used to test additional conditions in a chain.",
+      "relatedConcepts": [
+        "elif",
+        "if-elif-else",
+        "selection"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-08",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "question": "When does the else block of an if-else statement execute?",
+      "options": [
+        "When the condition is true",
+        "When the condition is false",
+        "Always",
+        "Never"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "When the condition is true, the if block runs, not the else block.",
+        "Correct. The else block runs only when the if condition is false.",
+        "Only one of the two blocks runs, never both.",
+        "The else block does run whenever the condition is false."
+      ],
+      "explanation": "In an if-else statement the else block executes only when the if condition evaluates to false.",
+      "relatedConcepts": [
+        "if-else",
+        "condition",
+        "selection"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-09",
+      "topicId": "ch6-selection",
+      "difficulty": "hard",
+      "question": "What is the output of the following code?\nmarks = 55\nif marks >= 60:\n    print('First')\nelif marks >= 40:\n    print('Second')\nelse:\n    print('Third')",
+      "options": [
+        "First",
+        "Second",
+        "Third",
+        "Nothing is printed"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "55 >= 60 is false, so First is not printed.",
+        "Correct. 55 >= 60 is false, but 55 >= 40 is true, so Second is printed.",
+        "Third is in the else, which runs only if all conditions are false.",
+        "One branch always runs, so something is printed."
+      ],
+      "explanation": "The first condition (marks >= 60) is false, so Python checks the elif; 55 >= 40 is true, so 'Second' is printed and the else is skipped.",
+      "relatedConcepts": [
+        "if-elif-else",
+        "condition",
+        "output tracing"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-10",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "question": "In Python, a block of statements is defined by:",
+      "options": [
+        "Curly braces { }",
+        "Indentation",
+        "Semicolons",
+        "Parentheses ( )"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Curly braces mark blocks in C or Java, not in Python.",
+        "Correct. Python uses indentation to show which statements belong to a block.",
+        "Semicolons are not used to group statements into blocks.",
+        "Parentheses are used for grouping expressions and calling functions, not for blocks."
+      ],
+      "explanation": "Python defines a block by indentation (usually four spaces), not by braces as in many other languages.",
+      "relatedConcepts": [
+        "indentation",
+        "block",
+        "syntax"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-11",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "question": "Which operator is used to test equality inside a condition?",
+      "options": [
+        "=",
+        "==",
+        "=>",
+        "=<"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "A single = is the assignment operator; using it in a condition is a syntax error in Python.",
+        "Correct. == is the comparison operator that tests whether two values are equal.",
+        "=> is not a Python operator.",
+        "=< is not a Python operator."
+      ],
+      "explanation": "Use == to compare two values for equality. The single = is used only for assigning a value to a variable.",
+      "relatedConcepts": [
+        "comparison operator",
+        "==",
+        "condition"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-12",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "question": "How many times does the body of 'for i in range(4):' execute?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "range(4) gives four values, so the body runs four times, not three.",
+        "Correct. range(4) produces 0, 1, 2, 3 — four values.",
+        "range(4) stops before 4, so there are four values, not five.",
+        "The body does execute, four times."
+      ],
+      "explanation": "range(4) generates 0, 1, 2, 3, so the loop body executes four times.",
+      "relatedConcepts": [
+        "for loop",
+        "range()",
+        "iteration"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-13",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "What does range(2, 10, 3) produce?",
+      "options": [
+        "2, 5, 8",
+        "2, 4, 6, 8",
+        "3, 6, 9",
+        "2, 5, 8, 11"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. It starts at 2 and adds 3 each time, stopping before 10: 2, 5, 8.",
+        "This would be a step of 2, not 3.",
+        "The series starts at 2, not 3.",
+        "11 is not produced because it is not less than the stop value 10."
+      ],
+      "explanation": "range(start, stop, step) = range(2, 10, 3) gives 2, 5, 8; the next value 11 is not included because it is not less than 10.",
+      "relatedConcepts": [
+        "range()",
+        "step",
+        "for loop"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-14",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "question": "Which loop is best when the number of repetitions is not known in advance?",
+      "options": [
+        "for",
+        "while",
+        "if",
+        "range"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "A for loop is used when the number of repetitions is known.",
+        "Correct. A while loop repeats while a condition is true, suiting unknown repetition counts.",
+        "if is a selection statement, not a loop.",
+        "range is a function, not a loop."
+      ],
+      "explanation": "The while loop is used for indefinite iteration, where repetition continues as long as a condition is true.",
+      "relatedConcepts": [
+        "while loop",
+        "indefinite iteration",
+        "condition"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-15",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "Which statement immediately terminates a loop?",
+      "options": [
+        "continue",
+        "pass",
+        "break",
+        "exit"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "continue skips only the current iteration; it does not end the loop.",
+        "pass does nothing at all.",
+        "Correct. break terminates the loop at once and control moves to the statement after the loop.",
+        "exit is not a Python loop-control statement."
+      ],
+      "explanation": "The break statement ends the loop immediately, moving control to the first statement after the loop.",
+      "relatedConcepts": [
+        "break",
+        "loop control",
+        "iteration"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-16",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "Which statement skips the rest of the current iteration and moves to the next?",
+      "options": [
+        "break",
+        "continue",
+        "pass",
+        "return"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "break ends the whole loop, not just the current iteration.",
+        "Correct. continue skips the remaining statements of this iteration and goes to the next.",
+        "pass does nothing; it does not skip an iteration.",
+        "return exits a function, not a loop iteration."
+      ],
+      "explanation": "The continue statement abandons the rest of the current iteration and jumps to the next one.",
+      "relatedConcepts": [
+        "continue",
+        "loop control",
+        "iteration"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-17",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "question": "The pass statement:",
+      "options": [
+        "Terminates the loop",
+        "Skips one iteration",
+        "Does nothing (null statement)",
+        "Raises an error"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "pass does not terminate a loop; break does.",
+        "pass does not skip an iteration; continue does.",
+        "Correct. pass is a null statement that performs no action, used as a placeholder.",
+        "pass is valid syntax and does not raise an error."
+      ],
+      "explanation": "pass is a null statement. It performs no operation and is used where a statement is syntactically required but no action is needed.",
+      "relatedConcepts": [
+        "pass",
+        "null statement",
+        "loop control"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-18",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "What is the output of:\nfor i in range(1, 4):\n    print(i)",
+      "options": [
+        "1 2 3",
+        "1 2 3 4",
+        "0 1 2",
+        "0 1 2 3"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. range(1, 4) gives 1, 2, 3.",
+        "The stop value 4 is not included, so 4 is not printed.",
+        "The series starts at 1, not 0.",
+        "The series starts at 1 and stops before 4."
+      ],
+      "explanation": "range(1, 4) produces 1, 2, 3 — the stop value is excluded — so the output is 1, 2, 3 on separate lines.",
+      "relatedConcepts": [
+        "for loop",
+        "range()",
+        "output tracing"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-19",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "question": "What does the else clause of a for loop do?",
+      "options": [
+        "Runs after every iteration",
+        "Runs only if the loop ends without break",
+        "Runs only if break executes",
+        "Never runs"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "The else clause runs once, after the loop, not after each iteration.",
+        "Correct. The loop's else runs only when the loop completes normally, i.e. without a break.",
+        "If break executes, the else clause is skipped.",
+        "The else clause does run when the loop finishes without a break."
+      ],
+      "explanation": "The else clause of a loop executes only when the loop finishes all iterations normally, that is, without being terminated by break.",
+      "relatedConcepts": [
+        "loop else",
+        "break",
+        "for loop"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-20",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "question": "What is the output of:\nn = 4\nwhile n > 1:\n    print(n)\n    n -= 1",
+      "options": [
+        "4 3 2 1",
+        "4 3 2",
+        "3 2 1",
+        "4 3 2 1 0"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "When n becomes 1 the condition n > 1 is false, so 1 is not printed.",
+        "Correct. n is printed as 4, 3, 2 and then the loop stops because n > 1 is false at n = 1.",
+        "The first printed value is 4, not 3.",
+        "0 is never reached because the loop stops at n = 1."
+      ],
+      "explanation": "The loop runs for n = 4, 3, 2. When n becomes 1, the condition n > 1 is false and the loop stops, so the output is 4, 3, 2.",
+      "relatedConcepts": [
+        "while loop",
+        "condition",
+        "output tracing"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-21",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "How many times does the inner statement execute?\nfor i in range(3):\n    for j in range(2):\n        print(i, j)",
+      "options": [
+        "2",
+        "3",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "The inner loop runs twice for each of three outer iterations, so more than 2.",
+        "Three is the number of outer iterations, not the total.",
+        "The total is the product 3 x 2 = 6, not the sum 5.",
+        "Correct. The inner loop runs 2 times for each of the 3 outer iterations: 3 x 2 = 6."
+      ],
+      "explanation": "In nested loops the inner loop completes for every outer iteration, so the inner statement runs 3 x 2 = 6 times.",
+      "relatedConcepts": [
+        "nested loop",
+        "iteration",
+        "range()"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-22",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "question": "Which of the following creates an infinite loop?",
+      "options": [
+        "while True:",
+        "for i in range(10):",
+        "if x > 0:",
+        "while False:"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. while True: never becomes false, so the loop runs forever unless a break is used.",
+        "for i in range(10) runs a fixed ten times, not forever.",
+        "if is a selection statement, not a loop.",
+        "while False: never runs at all — the condition is false from the start."
+      ],
+      "explanation": "while True: is always true, so it repeats endlessly unless a break statement ends it — an infinite loop.",
+      "relatedConcepts": [
+        "infinite loop",
+        "while loop",
+        "condition"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-23",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "What does range(5, 0, -1) produce?",
+      "options": [
+        "5, 4, 3, 2, 1",
+        "5, 4, 3, 2, 1, 0",
+        "4, 3, 2, 1",
+        "0, 1, 2, 3, 4, 5"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. It counts down from 5 and stops before 0: 5, 4, 3, 2, 1.",
+        "0 is excluded because the stop value is never included.",
+        "The series starts at 5, not 4.",
+        "The negative step counts downwards, not upwards."
+      ],
+      "explanation": "range(5, 0, -1) starts at 5, decreases by 1, and stops before 0, giving 5, 4, 3, 2, 1.",
+      "relatedConcepts": [
+        "range()",
+        "negative step",
+        "for loop"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-24",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "What is the value of i after this loop finishes?\nfor i in range(1, 4):\n    pass",
+      "options": [
+        "3",
+        "4",
+        "2",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. The loop takes values 1, 2, 3, so after the loop i holds the last value, 3.",
+        "4 is the stop value and is never assigned to i.",
+        "2 is an intermediate value, not the final one.",
+        "1 is the first value, not the final one."
+      ],
+      "explanation": "range(1, 4) assigns i the values 1, 2 and 3 in turn; after the loop ends, i retains the last value, which is 3.",
+      "relatedConcepts": [
+        "for loop",
+        "loop variable",
+        "range()"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-25",
+      "topicId": "ch6-programs",
+      "difficulty": "medium",
+      "question": "An accumulator used to compute a product should be initialised to:",
+      "options": [
+        "0",
+        "1",
+        "n",
+        "-1"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Starting at 0 makes every product 0, because anything multiplied by 0 is 0.",
+        "Correct. Starting at 1 leaves the running product unchanged when the first multiplication is done.",
+        "n would wrongly pre-multiply the product by n.",
+        "-1 would make the sign wrong."
+      ],
+      "explanation": "A product accumulator must be initialised to 1, since multiplying by 1 does not change the value; a sum accumulator starts at 0.",
+      "relatedConcepts": [
+        "accumulator",
+        "factorial",
+        "initialisation"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-mcq-26",
+      "topicId": "ch6-programs",
+      "difficulty": "hard",
+      "question": "Which range correctly includes the value n in a loop from 1 to n?",
+      "options": [
+        "range(n)",
+        "range(1, n)",
+        "range(1, n + 1)",
+        "range(0, n - 1)"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "range(n) gives 0 to n-1, which starts at 0 and excludes n.",
+        "range(1, n) stops at n-1, so n is left out.",
+        "Correct. range(1, n + 1) gives 1, 2, ..., n because the stop value n + 1 is excluded.",
+        "range(0, n - 1) starts at 0 and stops at n-2."
+      ],
+      "explanation": "Since the stop value is excluded, range(1, n + 1) is needed to include n, producing 1, 2, ..., n.",
+      "relatedConcepts": [
+        "range()",
+        "off-by-one",
+        "for loop"
+      ],
+      "type": "mcq",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-01",
+      "topicId": "ch6-control-structures",
+      "difficulty": "easy",
+      "question": "Define control structure.",
+      "modelAnswer": "A control structure is a statement that determines the order in which the other statements of a program are executed. The three basic control structures are sequence, selection and iteration.",
+      "keywords": [
+        "order of execution",
+        "flow of control",
+        "sequence",
+        "selection",
+        "iteration"
+      ],
+      "explanation": "Control structures decide the flow of a program. They do not change what statements do, only the order in which they run.",
+      "relatedConcepts": [
+        "control structure",
+        "flow of control"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-02",
+      "topicId": "ch6-sequence",
+      "difficulty": "easy",
+      "question": "Which is the default control structure in Python?",
+      "modelAnswer": "Sequence is the default control structure. Unless a condition or a loop is used, Python executes the statements one after another, top to bottom, in the order written.",
+      "keywords": [
+        "sequence",
+        "default",
+        "top to bottom"
+      ],
+      "explanation": "Sequence is the default because Python follows the written order of statements unless selection or iteration changes it.",
+      "relatedConcepts": [
+        "sequence",
+        "default flow"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-03",
+      "topicId": "ch6-selection",
+      "difficulty": "easy",
+      "question": "What is selection (branching)?",
+      "modelAnswer": "Selection, also called branching, is a control structure in which a block of statements is executed only when a specified condition is true, with an optional alternative block when it is false. In Python it is implemented using if, if-else, if-elif-else and nested if.",
+      "keywords": [
+        "selection",
+        "branching",
+        "condition",
+        "if"
+      ],
+      "explanation": "Selection lets a program take a decision: it checks a condition and chooses which block of statements to run.",
+      "relatedConcepts": [
+        "selection",
+        "if statement",
+        "condition"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-04",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "question": "What is iteration?",
+      "modelAnswer": "Iteration, also called looping, is a control structure that repeatedly executes a block of statements as long as a condition is true or for a fixed number of times. Python provides the for loop and the while loop.",
+      "keywords": [
+        "iteration",
+        "looping",
+        "for",
+        "while",
+        "repetition"
+      ],
+      "explanation": "Iteration repeats a block of statements. The for loop is used for a known number of repetitions and the while loop for a condition-based one.",
+      "relatedConcepts": [
+        "iteration",
+        "loop",
+        "for",
+        "while"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-05",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "question": "What is the purpose of the range() function?",
+      "modelAnswer": "The range() function generates a sequence of integers, which is commonly used with a for loop to repeat a block a fixed number of times. It can take a stop value, or a start and stop value, or a start, stop and step value.",
+      "keywords": [
+        "range()",
+        "sequence of integers",
+        "for loop",
+        "step"
+      ],
+      "explanation": "range() produces the numbers that a for loop iterates over, for example range(1, 6) gives 1 to 5.",
+      "relatedConcepts": [
+        "range()",
+        "for loop",
+        "iteration"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-06",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "What does the continue statement do?",
+      "modelAnswer": "The continue statement skips the remaining statements of the current iteration of the loop and moves control to the next iteration. The loop itself is not terminated.",
+      "keywords": [
+        "continue",
+        "skip current iteration",
+        "next iteration"
+      ],
+      "explanation": "continue abandons only the current pass through the loop body and continues with the next pass, unlike break which ends the loop.",
+      "relatedConcepts": [
+        "continue",
+        "loop control",
+        "iteration"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-07",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "What is an infinite loop?",
+      "modelAnswer": "An infinite loop is a loop whose terminating condition never becomes false, so it repeats endlessly. For example, 'while True:' with no break statement is an infinite loop.",
+      "keywords": [
+        "infinite loop",
+        "never terminates",
+        "condition never false"
+      ],
+      "explanation": "An infinite loop keeps running because the condition it tests never becomes false. It is often caused by forgetting to change the loop variable.",
+      "relatedConcepts": [
+        "infinite loop",
+        "while loop",
+        "condition"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-08",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "What is the use of the pass statement?",
+      "modelAnswer": "The pass statement is a null statement that performs no action. It is used as a placeholder where a statement is syntactically required but no operation is to be done, for example an empty block.",
+      "keywords": [
+        "pass",
+        "null statement",
+        "placeholder"
+      ],
+      "explanation": "pass does nothing, but it is valid syntax. It is useful when a block is required by the syntax but you do not want any action yet.",
+      "relatedConcepts": [
+        "pass",
+        "null statement"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-09",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "question": "Why is indentation important in Python?",
+      "modelAnswer": "In Python, indentation defines a block of statements. Statements that are indented at the same level belong to the same block. Incorrect indentation causes an IndentationError or changes the logic of the program.",
+      "keywords": [
+        "indentation",
+        "block",
+        "IndentationError"
+      ],
+      "explanation": "Python has no braces, so indentation is the only way to mark which statements belong to an if, else or loop.",
+      "relatedConcepts": [
+        "indentation",
+        "block",
+        "syntax"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-vsa-10",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "question": "What is a nested loop?",
+      "modelAnswer": "A nested loop is a loop written inside the body of another loop. The inner loop completes all its iterations for every single iteration of the outer loop, so the total number of inner repetitions is the product of the two counts.",
+      "keywords": [
+        "nested loop",
+        "inner loop",
+        "outer loop"
+      ],
+      "explanation": "In a nested loop the inner loop runs fully for each outer iteration. For example, 3 outer iterations with an inner loop of 2 give 6 inner repetitions.",
+      "relatedConcepts": [
+        "nested loop",
+        "iteration"
+      ],
+      "type": "vsa",
+      "marks": 1,
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-01",
+      "topicId": "ch6-control-structures",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the three basic control structures with one example each.",
+      "modelAnswer": "The three basic control structures are:\n1. Sequence: statements are executed one after another in the order written. Example: a = 5; b = 3; print(a + b) prints 8.\n2. Selection (branching): a block runs only if a condition is true. Example: if marks >= 40: print('Pass') prints Pass only when the condition holds.\n3. Iteration (looping): a block is repeated. Example: for i in range(1, 4): print(i) prints 1, 2, 3.",
+      "rubric": [
+        "Names all three control structures (1 mark)",
+        "Correct explanation of each (1 mark)",
+        "A valid example for at least one (1 mark)"
+      ],
+      "explanation": "Control structures decide the order of execution: sequence runs straight, selection chooses, and iteration repeats.",
+      "relatedConcepts": [
+        "control structure",
+        "sequence",
+        "selection",
+        "iteration"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-02",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the if-elif-else statement with its syntax and an example.",
+      "modelAnswer": "The if-elif-else statement tests several conditions in order and executes the block of the first true condition. If none is true, the else block runs.\nSyntax:\nif condition1:\n    block1\nelif condition2:\n    block2\nelse:\n    block3\nExample:\nmarks = 72\nif marks >= 90:\n    print('A')\nelif marks >= 60:\n    print('B')\nelse:\n    print('C')\nOutput: B",
+      "rubric": [
+        "Correct syntax with colon and indentation (1 mark)",
+        "Explains that only the first true branch runs (1 mark)",
+        "Valid working example (1 mark)"
+      ],
+      "explanation": "elif lets you test many mutually exclusive conditions; testing stops at the first true one.",
+      "relatedConcepts": [
+        "if-elif-else",
+        "elif",
+        "selection"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-03",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the three forms of the range() function with examples.",
+      "modelAnswer": "range() generates a sequence of integers used with a for loop. Its three forms are:\n1. range(stop): starts at 0 and stops before stop. range(4) gives 0, 1, 2, 3.\n2. range(start, stop): starts at start and stops before stop. range(2, 6) gives 2, 3, 4, 5.\n3. range(start, stop, step): starts at start, changes by step, stops before stop. range(1, 10, 3) gives 1, 4, 7. The step may be negative, e.g. range(5, 0, -1) gives 5, 4, 3, 2, 1.\nIn every form the stop value is never included.",
+      "rubric": [
+        "All three forms listed correctly (1 mark)",
+        "Correct example values (1 mark)",
+        "States that the stop value is excluded (1 mark)"
+      ],
+      "explanation": "range() controls how many times a for loop runs; the stop value is always excluded.",
+      "relatedConcepts": [
+        "range()",
+        "for loop",
+        "step"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-04",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the while loop with an example and state how an infinite loop can be avoided.",
+      "modelAnswer": "A while loop repeats a block of statements as long as its condition is true. It is used when the number of repetitions is not known in advance.\nExample:\nn = 3\nwhile n > 0:\n    print(n)\n    n -= 1\nOutput: 3, 2, 1.\nAn infinite loop occurs if the condition never becomes false. It can be avoided by changing the variable used in the condition inside the body (here n -= 1), so that the condition eventually becomes false.",
+      "rubric": [
+        "Correct syntax and explanation of while (1 mark)",
+        "Working example with output (1 mark)",
+        "Correct method to avoid an infinite loop (1 mark)"
+      ],
+      "explanation": "A while loop must have a body statement that moves the condition towards being false, otherwise it never stops.",
+      "relatedConcepts": [
+        "while loop",
+        "infinite loop",
+        "condition"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-05",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the break and continue statements with examples.",
+      "modelAnswer": "break terminates the loop immediately and control moves to the statement after the loop.\ncontinue skips the remaining statements of the current iteration and moves to the next iteration; the loop is not terminated.\nExample (break):\nfor i in range(1, 10):\n    if i == 4:\n        break\n    print(i)\nOutput: 1, 2, 3.\nExample (continue):\nfor i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)\nOutput: 1, 2, 4, 5.",
+      "rubric": [
+        "Correct definition of break (1 mark)",
+        "Correct definition of continue (1 mark)",
+        "Valid examples with outputs (1 mark)"
+      ],
+      "explanation": "break ends the loop; continue only skips the current iteration.",
+      "relatedConcepts": [
+        "break",
+        "continue",
+        "loop control"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-06",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "Explain the else clause of a loop with an example.",
+      "modelAnswer": "In Python a for or while loop may have an else clause. The else block executes only when the loop finishes all its iterations normally, that is, when the loop is not terminated by a break statement. If break runs, the else block is skipped.\nExample:\nfor i in range(2, 5):\n    if i == 6:\n        break\n    print(i)\nelse:\n    print('No break')\nOutput: 2, 3, 4, No break.",
+      "rubric": [
+        "States that the else runs when the loop ends without break (1 mark)",
+        "Mentions that break skips the else (1 mark)",
+        "Valid example with output (1 mark)"
+      ],
+      "explanation": "The loop's else is a convenient way to detect that a search loop never hit a break.",
+      "relatedConcepts": [
+        "loop else",
+        "break",
+        "for loop"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-07",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain nested loops with an example.",
+      "modelAnswer": "A nested loop is a loop placed inside the body of another loop. For every single iteration of the outer loop, the inner loop runs through all of its iterations. Thus the inner body executes (outer count x inner count) times.\nExample:\nfor i in range(1, 4):\n    for j in range(1, i + 1):\n        print('*', end='')\n    print()\nOutput:\n*\n**\n***",
+      "rubric": [
+        "Correct definition of a nested loop (1 mark)",
+        "Explains that the inner loop finishes for each outer iteration (1 mark)",
+        "Valid example with output (1 mark)"
+      ],
+      "explanation": "Nested loops are used for patterns, tables and two-dimensional data; the inner loop restarts for every outer iteration.",
+      "relatedConcepts": [
+        "nested loop",
+        "iteration",
+        "pattern"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-08",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Give any three differences between the for loop and the while loop.",
+      "modelAnswer": "1. for is used for definite iteration (the number of repetitions is known); while is used for indefinite iteration (repetitions depend on a condition).\n2. The for loop's header is 'for variable in sequence:' while the while loop's header is 'while condition:'.\n3. In a for loop the loop variable is taken automatically from the sequence, whereas in a while loop the variable must be initialised before the loop and updated inside the body.",
+      "rubric": [
+        "First valid difference (1 mark)",
+        "Second valid difference (1 mark)",
+        "Third valid difference (1 mark)"
+      ],
+      "explanation": "The key difference is definite vs indefinite iteration and how the controlling value is managed.",
+      "relatedConcepts": [
+        "for loop",
+        "while loop",
+        "iteration"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-09",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain a nested if statement with an example.",
+      "modelAnswer": "A nested if is an if statement written inside the block of another if statement. The inner if is evaluated only when the outer condition is true.\nExample (largest of three numbers):\na, b, c = 5, 9, 3\nif a > b:\n    if a > c:\n        print('A is largest')\n    else:\n        print('C is largest')\nelse:\n    if b > c:\n        print('B is largest')\n    else:\n        print('C is largest')\nOutput: B is largest.",
+      "rubric": [
+        "Correct definition of nested if (1 mark)",
+        "Correct syntax and indentation (1 mark)",
+        "Valid example with output (1 mark)"
+      ],
+      "explanation": "Nested if is useful when a decision depends on a previous decision, such as finding the largest of three numbers.",
+      "relatedConcepts": [
+        "nested if",
+        "selection",
+        "indentation"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-sa-10",
+      "topicId": "ch6-programs",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Write the steps (algorithm) to check whether a number is even or odd.",
+      "modelAnswer": "Step 1: Start.\nStep 2: Read a number n.\nStep 3: Find the remainder r = n % 2.\nStep 4: If r is 0, display 'Even'; otherwise display 'Odd'.\nStep 5: Stop.",
+      "rubric": [
+        "Correct input and processing steps (1 mark)",
+        "Correct decision using remainder and final display (1 mark)"
+      ],
+      "explanation": "A number is even if it is exactly divisible by 2 (remainder 0); the modulus operator % gives the remainder.",
+      "relatedConcepts": [
+        "algorithm",
+        "modulus operator",
+        "if-else"
+      ],
+      "type": "sa",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-la-01",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain all the conditional statements in Python (if, if-else, if-elif-else and nested if) with syntax and examples.",
+      "modelAnswer": "1. if: runs a block only when the condition is true.\nif marks >= 40:\n    print('Pass')\n\n2. if-else: chooses between two blocks.\nif n % 2 == 0:\n    print('Even')\nelse:\n    print('Odd')\n\n3. if-elif-else: tests several conditions; the first true one runs.\nif marks >= 90:\n    print('A')\nelif marks >= 60:\n    print('B')\nelse:\n    print('C')\n\n4. nested if: an if inside another if; the inner one is tested only when the outer condition is true.\nif a > b:\n    if a > c:\n        print('A is largest')\n    else:\n        print('C is largest')\n\nIn every case the condition line ends with a colon and the block is defined by indentation.",
+      "rubric": [
+        "Correct syntax of if (1 mark)",
+        "Correct syntax of if-else (1 mark)",
+        "Correct syntax of if-elif-else (1 mark)",
+        "Correct nested if (1 mark)",
+        "Valid examples and mention of colon/indentation (1 mark)"
+      ],
+      "keywords": [
+        "if",
+        "if-else",
+        "if-elif-else",
+        "nested if",
+        "indentation",
+        "colon"
+      ],
+      "explanation": "All four forms of selection choose which block to run based on conditions, differing only in how many conditions they test.",
+      "relatedConcepts": [
+        "selection",
+        "if-else",
+        "if-elif-else",
+        "nested if"
+      ],
+      "type": "la",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-la-02",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Explain the for and while loops in detail with their syntax and examples, and list the differences between them.",
+      "modelAnswer": "for loop: used for definite iteration when the number of repetitions is known. It takes values from a sequence, usually produced by range().\nSyntax:\nfor variable in sequence:\n    block\nExample:\nfor i in range(1, 4):\n    print(i)   # prints 1, 2, 3\n\nwhile loop: used for indefinite iteration, repeating while a condition remains true.\nSyntax:\nwhile condition:\n    block\nExample:\nn = 3\nwhile n > 0:\n    print(n)\n    n -= 1   # prints 3, 2, 1\n\nDifferences:\n1. for is definite iteration; while is indefinite iteration.\n2. In for, the loop variable comes from the sequence; in while, the variable must be initialised before and updated inside the loop.\n3. A while loop risks becoming infinite if the condition is not changed; a for loop over a fixed range does not.\n4. for is used when the count is known; while when repetition depends on a condition.",
+      "rubric": [
+        "Correct syntax and explanation of for loop (1 mark)",
+        "Correct syntax and explanation of while loop (1 mark)",
+        "Valid examples with outputs (1 mark)",
+        "At least three correct differences (2 marks)"
+      ],
+      "keywords": [
+        "for",
+        "while",
+        "definite iteration",
+        "indefinite iteration",
+        "range()"
+      ],
+      "explanation": "The for loop is best when the number of repetitions is known and the while loop when repetition depends on a condition.",
+      "relatedConcepts": [
+        "for loop",
+        "while loop",
+        "range()",
+        "iteration"
+      ],
+      "type": "la",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-la-03",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Explain the loop control statements break, continue and pass with examples, and explain the loop else clause.",
+      "modelAnswer": "break: terminates the loop immediately.\nfor i in range(1, 10):\n    if i == 4:\n        break\n    print(i)   # prints 1, 2, 3\n\ncontinue: skips the rest of the current iteration and moves to the next.\nfor i in range(1, 6):\n    if i % 2 == 0:\n        continue\n    print(i)   # prints 1, 3, 5\n\npass: a null statement that does nothing; used as a placeholder.\nif x > 0:\n    pass\n\nLoop else: a for or while loop may have an else block, which runs only if the loop ends normally without a break.\nfor i in range(2, 5):\n    if i == 6:\n        break\n    print(i)\nelse:\n    print('No break')   # prints 2, 3, 4, No break",
+      "rubric": [
+        "break with a correct example (1 mark)",
+        "continue with a correct example (1 mark)",
+        "pass explained (1 mark)",
+        "Loop else explained correctly (1 mark)",
+        "Correct outputs stated (1 mark)"
+      ],
+      "keywords": [
+        "break",
+        "continue",
+        "pass",
+        "loop else"
+      ],
+      "explanation": "These statements alter the normal flow of a loop: break ends it, continue skips an iteration, pass does nothing, and else runs when no break occurred.",
+      "relatedConcepts": [
+        "break",
+        "continue",
+        "pass",
+        "loop else"
+      ],
+      "type": "la",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-la-04",
+      "topicId": "ch6-programs",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Write a program to find the largest of three numbers. Give the algorithm and explain your program.",
+      "modelAnswer": "Algorithm:\nStep 1: Start.\nStep 2: Read three numbers a, b, c.\nStep 3: If a >= b and a >= c, then a is the largest.\nStep 4: Else if b >= a and b >= c, then b is the largest.\nStep 5: Else c is the largest.\nStep 6: Display the largest and stop.\n\nProgram:\na = int(input('Enter first number: '))\nb = int(input('Enter second number: '))\nc = int(input('Enter third number: '))\nif a >= b and a >= c:\n    print('Largest is', a)\nelif b >= a and b >= c:\n    print('Largest is', b)\nelse:\n    print('Largest is', c)\n\nExplanation: The program compares a with both b and c using the and operator. If a is greater than or equal to both, it is the largest; otherwise the same test is done for b; if neither holds, c must be the largest. For a = 10, b = 25, c = 15 the output is 'Largest is 25'.",
+      "rubric": [
+        "Correct algorithm (1 mark)",
+        "Correct program with input statements (2 marks)",
+        "Correct use of conditions and elif (1 mark)",
+        "Correct explanation and sample output (1 mark)"
+      ],
+      "keywords": [
+        "largest",
+        "if-elif-else",
+        "and operator",
+        "algorithm"
+      ],
+      "explanation": "Comparing each number against the other two with >= and the and operator finds the largest without nested ifs.",
+      "relatedConcepts": [
+        "if-elif-else",
+        "and operator",
+        "algorithm",
+        "input()"
+      ],
+      "type": "la",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-la-05",
+      "topicId": "ch6-programs",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Write a program to check whether a number is prime. Give the algorithm and explain your program.",
+      "modelAnswer": "Algorithm:\nStep 1: Start.\nStep 2: Read n.\nStep 3: If n < 2, display 'Not Prime' and stop.\nStep 4: Set flag = 0.\nStep 5: For i from 2 to n-1: if n % i == 0, set flag = 1 and break.\nStep 6: If flag == 0, display 'Prime', else display 'Not Prime'.\nStep 7: Stop.\n\nProgram:\nn = int(input('Enter a number: '))\nif n < 2:\n    print('Not Prime')\nelse:\n    flag = 0\n    for i in range(2, n):\n        if n % i == 0:\n            flag = 1\n            break\n    if flag == 0:\n        print('Prime')\n    else:\n        print('Not Prime')\n\nExplanation: A prime number has exactly two factors, 1 and itself, so 1 is not prime. The loop tests every integer from 2 up to n-1. If any of them divides n exactly, flag becomes 1 and break stops the loop, so the number is not prime. If no divisor is found, flag stays 0 and the number is prime. For n = 7 the output is 'Prime'; for n = 12 it is 'Not Prime'.",
+      "rubric": [
+        "Correct algorithm (1 mark)",
+        "Handles n < 2 correctly (1 mark)",
+        "Correct loop to test divisors (2 marks)",
+        "Correct use of flag and break (1 mark)",
+        "Correct explanation with sample outputs (1 mark)"
+      ],
+      "keywords": [
+        "prime",
+        "flag",
+        "break",
+        "range()",
+        "modulus"
+      ],
+      "explanation": "A prime check tests divisibility from 2 to n-1; a flag records whether a divisor was found and break stops the search early.",
+      "relatedConcepts": [
+        "prime number",
+        "flag",
+        "break",
+        "range()"
+      ],
+      "type": "la",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-assertion-01",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Consider the assertion (A) and reason (R) and choose the correct option.",
+      "assertion": "A while loop is used when the number of repetitions is not known in advance.",
+      "reason": "A while loop repeats its block as long as its condition remains true.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both statements are true and the reason correctly explains the assertion: because the while loop repeats while a condition holds, it suits situations where the number of repetitions is not known beforehand.",
+      "relatedConcepts": [
+        "while loop",
+        "indefinite iteration",
+        "condition"
+      ],
+      "type": "assertion",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-assertion-02",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Consider the assertion (A) and reason (R) and choose the correct option.",
+      "assertion": "In Python, indentation is used to define a block of statements.",
+      "reason": "Python uses curly braces to mark the beginning and end of a block.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The assertion is true — Python does use indentation to define blocks. The reason is false: Python does not use curly braces for blocks (unlike C or Java). Hence A is true but R is false.",
+      "relatedConcepts": [
+        "indentation",
+        "block",
+        "syntax"
+      ],
+      "type": "assertion",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-assertion-03",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Consider the assertion (A) and reason (R) and choose the correct option.",
+      "assertion": "The break statement terminates the loop immediately.",
+      "reason": "The continue statement skips the current iteration and moves to the next.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Both statements are true, but the reason does not explain the assertion — it describes continue, a different statement. So both are true but R is not the correct explanation of A.",
+      "relatedConcepts": [
+        "break",
+        "continue",
+        "loop control"
+      ],
+      "type": "assertion",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-assertion-04",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Consider the assertion (A) and reason (R) and choose the correct option.",
+      "assertion": "The loop 'for i in range(5):' executes its body five times.",
+      "reason": "range(5) generates the numbers 0, 1, 2, 3, 4.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both are true and the reason correctly explains the assertion: range(5) yields five values (0 to 4), so the body runs five times.",
+      "relatedConcepts": [
+        "for loop",
+        "range()",
+        "iteration"
+      ],
+      "type": "assertion",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-truefalse-01",
+      "topicId": "ch6-selection",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "In Python, a block of statements is defined by indentation.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "True. Python uses indentation to mark blocks; statements indented at the same level belong to the same block.",
+      "relatedConcepts": [
+        "indentation",
+        "block"
+      ],
+      "type": "truefalse",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-truefalse-02",
+      "topicId": "ch6-selection",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The else block of an if statement executes when the condition is true.",
+      "correctAnswer": "False",
+      "correction": "The else block executes when the condition is false.",
+      "explanation": "False. When the condition is true the if block runs; the else block runs only when the condition is false.",
+      "relatedConcepts": [
+        "if-else",
+        "condition"
+      ],
+      "type": "truefalse",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-truefalse-03",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "A while loop always executes its body at least once.",
+      "correctAnswer": "False",
+      "correction": "A while loop may execute its body zero times if the condition is false at the start.",
+      "explanation": "False. A while loop checks its condition first; if it is false initially, the body is never executed.",
+      "relatedConcepts": [
+        "while loop",
+        "condition"
+      ],
+      "type": "truefalse",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-truefalse-04",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The break statement skips the current iteration and continues with the next.",
+      "correctAnswer": "False",
+      "correction": "The break statement terminates the loop; the continue statement skips the current iteration.",
+      "explanation": "False. break ends the whole loop; continue is the statement that skips only the current iteration.",
+      "relatedConcepts": [
+        "break",
+        "continue",
+        "loop control"
+      ],
+      "type": "truefalse",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-truefalse-05",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "range(1, 5) produces the numbers 1, 2, 3, 4.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "True. range(1, 5) starts at 1 and stops before 5, giving 1, 2, 3, 4.",
+      "relatedConcepts": [
+        "range()",
+        "for loop"
+      ],
+      "type": "truefalse",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-truefalse-06",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "The else clause of a loop executes if the loop is terminated by a break statement.",
+      "correctAnswer": "False",
+      "correction": "The else clause of a loop executes only if the loop finishes normally, without a break.",
+      "explanation": "False. The loop's else runs only when the loop completes all iterations without being terminated by break.",
+      "relatedConcepts": [
+        "loop else",
+        "break"
+      ],
+      "type": "truefalse",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-fillblank-01",
+      "topicId": "ch6-sequence",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The ______ control structure executes statements in the order in which they are written.",
+      "correctAnswer": "sequence",
+      "acceptedAnswers": [
+        "sequence",
+        "Sequence"
+      ],
+      "explanation": "Sequence is the default control structure in which statements run top to bottom in written order.",
+      "relatedConcepts": [
+        "sequence",
+        "control structure"
+      ],
+      "type": "fillblank",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-fillblank-02",
+      "topicId": "ch6-selection",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The ______ statement is used to check a condition and execute a block only when it is true.",
+      "correctAnswer": "if",
+      "acceptedAnswers": [
+        "if",
+        "if statement"
+      ],
+      "explanation": "The if statement checks a condition and runs its block only when the condition is true.",
+      "relatedConcepts": [
+        "if statement",
+        "selection"
+      ],
+      "type": "fillblank",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-fillblank-03",
+      "topicId": "ch6-selection",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "In Python, ______ is used to define a block of statements.",
+      "correctAnswer": "indentation",
+      "acceptedAnswers": [
+        "indentation",
+        "Indentation"
+      ],
+      "explanation": "Python uses indentation (usually four spaces) to mark which statements belong to a block.",
+      "relatedConcepts": [
+        "indentation",
+        "block"
+      ],
+      "type": "fillblank",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-fillblank-04",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The ______ statement immediately terminates the loop.",
+      "correctAnswer": "break",
+      "acceptedAnswers": [
+        "break"
+      ],
+      "explanation": "break ends the loop at once and control moves to the statement after the loop.",
+      "relatedConcepts": [
+        "break",
+        "loop control"
+      ],
+      "type": "fillblank",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-fillblank-05",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The ______ statement is a null statement that does nothing and is used as a placeholder.",
+      "correctAnswer": "pass",
+      "acceptedAnswers": [
+        "pass"
+      ],
+      "explanation": "pass performs no action; it is used where a statement is syntactically required but no work is to be done.",
+      "relatedConcepts": [
+        "pass",
+        "null statement"
+      ],
+      "type": "fillblank",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-fillblank-06",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "A loop that never terminates because its condition never becomes false is called an ______ loop.",
+      "correctAnswer": "infinite",
+      "acceptedAnswers": [
+        "infinite",
+        "Infinite"
+      ],
+      "explanation": "An infinite loop repeats endlessly because its condition never becomes false, often due to a missing update of the loop variable.",
+      "relatedConcepts": [
+        "infinite loop",
+        "while loop"
+      ],
+      "type": "fillblank",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-match-01",
+      "topicId": "ch6-control-structures",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match each control structure / statement in Column A with its correct description in Column B.",
+      "matchPairs": [
+        {
+          "left": "if",
+          "right": "Executes a block only when a condition is true"
+        },
+        {
+          "left": "if-elif-else",
+          "right": "Tests several conditions and runs the first true block"
+        },
+        {
+          "left": "for",
+          "right": "Definite iteration over a sequence"
+        },
+        {
+          "left": "while",
+          "right": "Indefinite iteration while a condition is true"
+        },
+        {
+          "left": "break",
+          "right": "Terminates the loop immediately"
+        }
+      ],
+      "explanation": "Each structure has a specific role: if and if-elif-else decide, for and while repeat, and break ends a loop early.",
+      "relatedConcepts": [
+        "if-elif-else",
+        "for",
+        "while",
+        "break"
+      ],
+      "type": "match",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-match-02",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match each item in Column A with its correct meaning or output in Column B.",
+      "matchPairs": [
+        {
+          "left": "range(5)",
+          "right": "0, 1, 2, 3, 4"
+        },
+        {
+          "left": "range(1, 4)",
+          "right": "1, 2, 3"
+        },
+        {
+          "left": "continue",
+          "right": "Skips the current iteration"
+        },
+        {
+          "left": "pass",
+          "right": "A null statement that does nothing"
+        },
+        {
+          "left": "loop else",
+          "right": "Runs when the loop ends without a break"
+        }
+      ],
+      "explanation": "range() forms and the loop-control statements each have distinct behaviour, which these pairs test.",
+      "relatedConcepts": [
+        "range()",
+        "continue",
+        "pass",
+        "loop else"
+      ],
+      "type": "match",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-case-01",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Study the given passage and program, and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "A school assigns grades from marks using this rule: 90 or above is grade A, 60 to 89 is grade B, 40 to 59 is grade C, and below 40 is grade F. A student writes the following program:\n\nmarks = 72\nif marks >= 90:\n    print('A')\nelif marks >= 60:\n    print('B')\nelif marks >= 40:\n    print('C')\nelse:\n    print('F')",
+        "table": {
+          "title": "Grade rules",
+          "headers": [
+            "Marks",
+            "Grade"
+          ],
+          "rows": [
+            [
+              "90 or above",
+              "A"
+            ],
+            [
+              "60 to 89",
+              "B"
+            ],
+            [
+              "40 to 59",
+              "C"
+            ],
+            [
+              "Below 40",
+              "F"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "What does the program print when marks = 72?",
+            "kind": "mcq",
+            "options": [
+              "A",
+              "B",
+              "C",
+              "F"
+            ],
+            "answer": 1,
+            "explanation": "72 >= 90 is false; 72 >= 60 is true, so 'B' is printed and the rest is skipped.",
+            "marks": 1
+          },
+          {
+            "question": "If marks = 39, which block runs?",
+            "kind": "mcq",
+            "options": [
+              "the if block",
+              "the first elif block",
+              "the second elif block",
+              "the else block"
+            ],
+            "answer": 3,
+            "explanation": "39 is not >= 90, not >= 60 and not >= 40, so all conditions are false and the else block runs, printing F.",
+            "marks": 1
+          },
+          {
+            "question": "How many conditions are actually tested when marks = 95?",
+            "kind": "mcq",
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "answer": 0,
+            "explanation": "The first condition (95 >= 90) is true, so testing stops immediately; only one condition is evaluated.",
+            "marks": 1
+          },
+          {
+            "question": "Why is elif used here instead of writing four separate if statements?",
+            "kind": "short",
+            "answer": "The grade ranges are mutually exclusive, so only one grade should be printed. With elif, Python stops at the first true condition and prints exactly one grade; separate if statements could print more than one.",
+            "explanation": "elif gives mutually exclusive branching; separate if statements test every condition independently and could print several grades.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case tests if-elif-else: conditions are checked in order and the first true branch runs.",
+      "relatedConcepts": [
+        "if-elif-else",
+        "selection",
+        "elif"
+      ],
+      "type": "case",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-case-02",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Study the given passage and program, and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "A teacher writes a program that reads marks one at a time and stops when a negative value is entered. It then prints the total and the average of the marks entered.\n\ntotal = 0\ncount = 0\nwhile True:\n    m = int(input('Enter marks (-1 to stop): '))\n    if m < 0:\n        break\n    total = total + m\n    count = count + 1\nprint('Total =', total)\nprint('Average =', total / count)",
+        "subQuestions": [
+          {
+            "question": "What is the output if the marks entered are 10, 20, 30 and then -1?",
+            "kind": "mcq",
+            "options": [
+              "Total = 60, Average = 20.0",
+              "Total = 61, Average = 20.33",
+              "Total = 60, Average = 15.0",
+              "Total = 30, Average = 10.0"
+            ],
+            "answer": 0,
+            "explanation": "Only 10, 20 and 30 are added (the -1 breaks the loop before being added), so total = 60, count = 3 and average = 60 / 3 = 20.0.",
+            "marks": 1
+          },
+          {
+            "question": "How many times does the loop body execute for the input sequence 10, 20, 30, -1?",
+            "kind": "mcq",
+            "options": [
+              "3",
+              "4",
+              "5",
+              "1"
+            ],
+            "answer": 1,
+            "explanation": "The body runs once for each of the four values. On the fourth run the value -1 makes the condition m < 0 true, so break ends the loop.",
+            "marks": 1
+          },
+          {
+            "question": "What is the role of the break statement in this program?",
+            "kind": "short",
+            "answer": "break ends the loop as soon as a negative value is entered. It acts as the stopping condition for the otherwise endless 'while True:' loop, so the program does not keep asking for marks forever.",
+            "explanation": "while True: would loop forever; break provides the exit when the sentinel value (-1 or any negative) is entered.",
+            "marks": 1
+          },
+          {
+            "question": "Why is 'while True:' used with a break instead of a normal while condition?",
+            "kind": "short",
+            "answer": "The stopping value is entered as data inside the loop, so it is convenient to loop forever and exit with break the moment a negative value is read. This is the standard sentinel-value pattern.",
+            "explanation": "When the loop's exit depends on a value read inside the body, the while True: with break pattern is a common and clear way to write it.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case tests an indefinite while loop with a sentinel value and the break statement.",
+      "relatedConcepts": [
+        "while loop",
+        "break",
+        "sentinel value",
+        "infinite loop"
+      ],
+      "type": "case",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-case-03",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "marks": 4,
+      "question": "Study the given passage and program, and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "A program finds the sum of the digits of a number using a while loop:\n\nn = 472\ns = 0\nwhile n > 0:\n    d = n % 10\n    s = s + d\n    n = n // 10\nprint(s)",
+        "subQuestions": [
+          {
+            "question": "What does the program print?",
+            "kind": "mcq",
+            "options": [
+              "13",
+              "472",
+              "2",
+              "9"
+            ],
+            "answer": 0,
+            "explanation": "The digits 2, 7 and 4 are added one by one, giving 2 + 7 + 4 = 13.",
+            "marks": 1
+          },
+          {
+            "question": "What does n % 10 give in the first iteration?",
+            "kind": "mcq",
+            "options": [
+              "4",
+              "7",
+              "2",
+              "47"
+            ],
+            "answer": 2,
+            "explanation": "The modulus n % 10 gives the last digit. For 472 the last digit is 2.",
+            "marks": 1
+          },
+          {
+            "question": "How many times does the loop body execute for n = 472?",
+            "kind": "mcq",
+            "options": [
+              "2",
+              "3",
+              "4",
+              "1"
+            ],
+            "answer": 1,
+            "explanation": "n becomes 47, then 4, then 0, so the body runs three times, once for each digit.",
+            "marks": 1
+          },
+          {
+            "question": "What is the purpose of the statement n = n // 10?",
+            "kind": "short",
+            "answer": "It removes the last digit of n by integer division by 10. This moves the loop towards its end: after the last digit is removed, n becomes 0 and the condition n > 0 becomes false, so the loop stops.",
+            "explanation": "n // 10 drops the last digit, which is how the loop walks through the digits and also how it terminates.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case tests a while loop that uses % and // to process the digits of a number, and how the loop terminates.",
+      "relatedConcepts": [
+        "while loop",
+        "modulus",
+        "integer division",
+        "digits"
+      ],
+      "type": "case",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-output-01",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What is the exact output of the following code?",
+      "code": "x = 15\nif x > 20:\n    print('A')\nelif x > 10:\n    print('B')\nelif x > 5:\n    print('C')\nelse:\n    print('D')\nprint('Done')",
+      "correctAnswer": "B\nDone",
+      "executionSteps": [
+        "x = 15.",
+        "x > 20 is false, so the first block is skipped.",
+        "x > 10 is true, so 'B' is printed and the remaining elif/else are skipped.",
+        "The statement print('Done') is outside the if, so it always runs."
+      ],
+      "explanation": "The first true condition is x > 10, so B is printed; the final print is outside the if-elif-else and always executes.",
+      "relatedConcepts": [
+        "if-elif-else",
+        "output tracing",
+        "selection"
+      ],
+      "type": "output",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-output-02",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "What is the exact output of the following code?",
+      "code": "for i in range(2, 10, 3):\n    print(i)",
+      "correctAnswer": "2\n5\n8",
+      "executionSteps": [
+        "range(2, 10, 3) starts at 2 and adds 3 each time.",
+        "Values produced: 2, 5, 8 (the next value 11 is not less than 10).",
+        "Each value is printed on its own line."
+      ],
+      "explanation": "range(2, 10, 3) yields 2, 5 and 8, printed on separate lines.",
+      "relatedConcepts": [
+        "for loop",
+        "range()",
+        "step"
+      ],
+      "type": "output",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-output-03",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "What is the exact output of the following code?",
+      "code": "n = 5\ns = 0\nwhile n > 0:\n    s = s + n\n    n = n - 1\nprint(s)",
+      "correctAnswer": "15",
+      "executionSteps": [
+        "s = 0, n = 5.",
+        "n = 5: s = 5, n = 4.",
+        "n = 4: s = 9, n = 3.",
+        "n = 3: s = 12, n = 2.",
+        "n = 2: s = 14, n = 1.",
+        "n = 1: s = 15, n = 0; the condition n > 0 is now false.",
+        "print(s) prints 15."
+      ],
+      "explanation": "The loop adds 5 + 4 + 3 + 2 + 1 = 15, so the output is 15.",
+      "relatedConcepts": [
+        "while loop",
+        "accumulator",
+        "output tracing"
+      ],
+      "type": "output",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-output-04",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What is the exact output of the following code?",
+      "code": "for i in range(1, 4):\n    for j in range(1, i + 1):\n        print('*', end='')\n    print()",
+      "correctAnswer": "*\n**\n***",
+      "executionSteps": [
+        "i = 1: inner loop runs j = 1, so one '*' is printed, then print() moves to a new line.",
+        "i = 2: inner loop runs j = 1, 2, so two '*' are printed, then a new line.",
+        "i = 3: inner loop runs j = 1, 2, 3, so three '*' are printed, then a new line."
+      ],
+      "explanation": "The inner loop prints i stars for each value of i, giving a growing star triangle. The empty print() ends each row.",
+      "relatedConcepts": [
+        "nested loop",
+        "pattern",
+        "end parameter"
+      ],
+      "type": "output",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-output-05",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What is the exact output of the following code?",
+      "code": "for i in range(1, 10):\n    if i == 4:\n        break\n    print(i)\nprint('End')",
+      "correctAnswer": "1\n2\n3\nEnd",
+      "executionSteps": [
+        "i = 1, 2, 3 are printed.",
+        "When i = 4, the condition i == 4 is true, so break terminates the loop immediately.",
+        "Control moves to the statement after the loop, which prints 'End'."
+      ],
+      "explanation": "break stops the loop at i = 4, so only 1, 2, 3 are printed before 'End'.",
+      "relatedConcepts": [
+        "break",
+        "for loop",
+        "loop control"
+      ],
+      "type": "output",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-output-06",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What is the exact output of the following code?",
+      "code": "for i in range(1, 6):\n    if i % 2 == 0:\n        continue\n    print(i)",
+      "correctAnswer": "1\n3\n5",
+      "executionSteps": [
+        "i = 1: 1 % 2 != 0, so print(1).",
+        "i = 2: 2 % 2 == 0, so continue skips the print.",
+        "i = 3: printed. i = 4: skipped. i = 5: printed."
+      ],
+      "explanation": "continue skips the even numbers, so only the odd numbers 1, 3 and 5 are printed.",
+      "relatedConcepts": [
+        "continue",
+        "modulus",
+        "for loop"
+      ],
+      "type": "output",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-output-07",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "What is the exact output of the following code?",
+      "code": "for i in range(2, 5):\n    if i == 6:\n        break\n    print(i)\nelse:\n    print('No break')\nprint('Finished')",
+      "correctAnswer": "2\n3\n4\nNo break\nFinished",
+      "executionSteps": [
+        "i takes the values 2, 3, 4; the condition i == 6 is never true, so break never runs.",
+        "Each value is printed, so 2, 3, 4 appear.",
+        "Since the loop ended normally (without break), the else block runs and prints 'No break'.",
+        "Finally print('Finished') runs."
+      ],
+      "explanation": "The loop completes without a break, so its else clause executes; 'Finished' is outside the loop and always prints.",
+      "relatedConcepts": [
+        "loop else",
+        "break",
+        "for loop"
+      ],
+      "type": "output",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-output-08",
+      "topicId": "ch6-iteration",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "What is the exact output of the following code?",
+      "code": "i = 1\nwhile i <= 3:\n    print(i * 2)\n    i += 1\nelse:\n    print('Loop over')",
+      "correctAnswer": "2\n4\n6\nLoop over",
+      "executionSteps": [
+        "i = 1: prints 2, i becomes 2.",
+        "i = 2: prints 4, i becomes 3.",
+        "i = 3: prints 6, i becomes 4; now i <= 3 is false, so the loop ends.",
+        "The loop ended without a break, so the else block prints 'Loop over'."
+      ],
+      "explanation": "The while loop prints 2, 4, 6 and, ending normally, its else clause prints 'Loop over'.",
+      "relatedConcepts": [
+        "while loop",
+        "loop else",
+        "output tracing"
+      ],
+      "type": "output",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-debug-01",
+      "topicId": "ch6-selection",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "The following program gives an error. Identify the error type and write the corrected code.",
+      "code": "marks = 45\nif marks >= 40\n    print('Pass')",
+      "errorType": "syntax",
+      "correctAnswer": "marks = 45\nif marks >= 40:\n    print('Pass')",
+      "executionSteps": [
+        "The if line does not end with a colon, which is a SyntaxError.",
+        "Add a colon (:) at the end of the if line.",
+        "The indented block then runs and prints 'Pass'."
+      ],
+      "explanation": "Every if, elif and else line must end with a colon; without it Python raises a SyntaxError.",
+      "relatedConcepts": [
+        "syntax error",
+        "colon",
+        "if statement"
+      ],
+      "type": "debug",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-debug-02",
+      "topicId": "ch6-selection",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "The following program gives an error. Identify the error type and write the corrected code.",
+      "code": "x = 10\nif x = 10:\n    print('Ten')",
+      "errorType": "syntax",
+      "correctAnswer": "x = 10\nif x == 10:\n    print('Ten')",
+      "executionSteps": [
+        "The condition uses a single = , which is the assignment operator and is not allowed in a condition (SyntaxError).",
+        "Replace = with the comparison operator ==.",
+        "The condition x == 10 is true, so 'Ten' is printed."
+      ],
+      "explanation": "Inside a condition you must use == to compare values; a single = is only for assignment.",
+      "relatedConcepts": [
+        "syntax error",
+        "comparison operator",
+        "=="
+      ],
+      "type": "debug",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-debug-03",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "The following program is supposed to print the sum 1 + 2 + ... + 5 but it never stops. Identify the error type and write the corrected code.",
+      "code": "n = 5\ntotal = 0\ni = 1\nwhile i <= n:\n    total = total + i\nprint(total)",
+      "errorType": "logical",
+      "correctAnswer": "n = 5\ntotal = 0\ni = 1\nwhile i <= n:\n    total = total + i\n    i = i + 1\nprint(total)",
+      "executionSteps": [
+        "The loop variable i is never changed inside the body, so the condition i <= n stays true forever — an infinite loop.",
+        "Add the statement i = i + 1 inside the loop body so that i eventually exceeds n.",
+        "The loop then ends and prints 15."
+      ],
+      "explanation": "A while loop must change the variable used in its condition inside the body; otherwise it never terminates.",
+      "relatedConcepts": [
+        "logical error",
+        "infinite loop",
+        "while loop"
+      ],
+      "type": "debug",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-debug-04",
+      "topicId": "ch6-programs",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "The following program is supposed to print the sum 1 + 2 + 3 + 4 + 5 but prints 5. Identify the error type and write the corrected code.",
+      "code": "total = 0\nfor i in range(1, 6):\n    total = total + 1\nprint(total)",
+      "errorType": "logical",
+      "correctAnswer": "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(total)",
+      "executionSteps": [
+        "The statement adds 1 every time instead of adding the value of i, so total becomes 5 (the count of iterations).",
+        "Change total = total + 1 to total = total + i.",
+        "The program then computes 1 + 2 + 3 + 4 + 5 = 15."
+      ],
+      "explanation": "An accumulator for a sum must add the loop variable i, not a fixed 1; adding 1 just counts the iterations.",
+      "relatedConcepts": [
+        "logical error",
+        "accumulator",
+        "for loop"
+      ],
+      "type": "debug",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-debug-05",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "The following program gives an error. Identify the error type and write the corrected code.",
+      "code": "for i in range(3):\n    print(number)",
+      "errorType": "runtime",
+      "correctAnswer": "for i in range(3):\n    print(i)",
+      "executionSteps": [
+        "The name 'number' is not defined anywhere, so Python raises a NameError when the print statement runs.",
+        "Use the loop variable i (or define a variable named number before the loop).",
+        "The corrected code prints 0, 1, 2."
+      ],
+      "explanation": "Using an undefined name raises a NameError at run time. Here the loop variable is i, not number.",
+      "relatedConcepts": [
+        "runtime error",
+        "NameError",
+        "for loop"
+      ],
+      "type": "debug",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-program-01",
+      "topicId": "ch6-programs",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program to find the largest of three numbers entered by the user.",
+      "hints": [
+        "Read three numbers using int(input(...)).",
+        "Use the and operator to compare one number with the other two.",
+        "Use if-elif-else to choose which number to print."
+      ],
+      "modelSolution": "a = int(input('Enter first number: '))\nb = int(input('Enter second number: '))\nc = int(input('Enter third number: '))\nif a >= b and a >= c:\n    print('Largest is', a)\nelif b >= a and b >= c:\n    print('Largest is', b)\nelse:\n    print('Largest is', c)",
+      "lineExplanations": [
+        {
+          "line": "a = int(input('Enter first number: '))",
+          "explanation": "Reads the first number and converts the text input to an integer."
+        },
+        {
+          "line": "if a >= b and a >= c:",
+          "explanation": "Checks whether a is greater than or equal to both b and c."
+        },
+        {
+          "line": "elif b >= a and b >= c:",
+          "explanation": "If a is not the largest, checks whether b is the largest."
+        },
+        {
+          "line": "else:",
+          "explanation": "If neither a nor b is the largest, then c must be the largest."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "10, 25, 15",
+          "output": "Largest is 25"
+        },
+        {
+          "input": "7, 3, 9",
+          "output": "Largest is 9"
+        },
+        {
+          "input": "5, 5, 2",
+          "output": "Largest is 5"
+        }
+      ],
+      "rubric": [
+        "Correct input statements (1 mark)",
+        "Correct use of if-elif-else and the and operator (2 marks)",
+        "Correct handling of the third number in the else (1 mark)",
+        "Correct output format (1 mark)"
+      ],
+      "explanation": "Comparing each number against the other two with >= and and finds the largest; the else covers the remaining case.",
+      "relatedConcepts": [
+        "if-elif-else",
+        "and operator",
+        "largest of three"
+      ],
+      "type": "program",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-program-02",
+      "topicId": "ch6-programs",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Write a Python program to find the sum of the first n natural numbers, where n is entered by the user.",
+      "hints": [
+        "Use a variable s initialised to 0 to hold the sum.",
+        "Use a for loop with range(1, n + 1) so that n is included.",
+        "Add the loop variable to s in each iteration."
+      ],
+      "modelSolution": "n = int(input('Enter n: '))\ns = 0\nfor i in range(1, n + 1):\n    s = s + i\nprint('Sum =', s)",
+      "lineExplanations": [
+        {
+          "line": "n = int(input('Enter n: '))",
+          "explanation": "Reads n, the number of terms, as an integer."
+        },
+        {
+          "line": "s = 0",
+          "explanation": "Initialises the accumulator s to 0 before adding anything."
+        },
+        {
+          "line": "for i in range(1, n + 1):",
+          "explanation": "Runs i from 1 up to n (n + 1 makes n inclusive)."
+        },
+        {
+          "line": "s = s + i",
+          "explanation": "Adds the current value of i to the running sum."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "5",
+          "output": "Sum = 15"
+        },
+        {
+          "input": "10",
+          "output": "Sum = 55"
+        },
+        {
+          "input": "1",
+          "output": "Sum = 1"
+        }
+      ],
+      "rubric": [
+        "Correct input and accumulator initialisation (1 mark)",
+        "Correct for loop with range(1, n + 1) (2 marks)",
+        "Correct output (1 mark)"
+      ],
+      "explanation": "The accumulator adds 1 + 2 + ... + n; range(1, n + 1) includes n because the stop value is excluded.",
+      "relatedConcepts": [
+        "for loop",
+        "range()",
+        "accumulator"
+      ],
+      "type": "program",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-program-03",
+      "topicId": "ch6-programs",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program to find the factorial of a number n entered by the user.",
+      "hints": [
+        "Initialise the product variable to 1, not 0.",
+        "Use a for loop from 1 to n and multiply the product each time.",
+        "Factorial of 0 is 1 by definition."
+      ],
+      "modelSolution": "n = int(input('Enter a number: '))\nf = 1\nfor i in range(1, n + 1):\n    f = f * i\nprint('Factorial =', f)",
+      "lineExplanations": [
+        {
+          "line": "f = 1",
+          "explanation": "The product accumulator must start at 1, because multiplying by 1 leaves it unchanged."
+        },
+        {
+          "line": "for i in range(1, n + 1):",
+          "explanation": "Runs i from 1 to n inclusive."
+        },
+        {
+          "line": "f = f * i",
+          "explanation": "Multiplies the running product by the current value of i."
+        },
+        {
+          "line": "print('Factorial =', f)",
+          "explanation": "Displays the final factorial."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "5",
+          "output": "Factorial = 120"
+        },
+        {
+          "input": "0",
+          "output": "Factorial = 1"
+        },
+        {
+          "input": "3",
+          "output": "Factorial = 6"
+        }
+      ],
+      "rubric": [
+        "Correct initialisation of f to 1 (1 mark)",
+        "Correct for loop to n (2 marks)",
+        "Correct multiplication and output (2 marks)"
+      ],
+      "explanation": "The loop multiplies 1 x 2 x ... x n. For n = 0 the loop does not run and f remains 1, which is the correct value of 0!.",
+      "relatedConcepts": [
+        "for loop",
+        "accumulator",
+        "factorial"
+      ],
+      "type": "program",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-program-04",
+      "topicId": "ch6-programs",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Write a Python program to check whether a number entered by the user is prime or not.",
+      "hints": [
+        "A prime number is greater than 1 and has no factor other than 1 and itself.",
+        "Test divisibility using n % i for i from 2 to n-1.",
+        "Use a flag variable and a break to stop as soon as a factor is found."
+      ],
+      "modelSolution": "n = int(input('Enter a number: '))\nif n < 2:\n    print('Not Prime')\nelse:\n    flag = 0\n    for i in range(2, n):\n        if n % i == 0:\n            flag = 1\n            break\n    if flag == 0:\n        print('Prime')\n    else:\n        print('Not Prime')",
+      "lineExplanations": [
+        {
+          "line": "if n < 2:",
+          "explanation": "Handles the special case: numbers less than 2 (0 and 1) are not prime."
+        },
+        {
+          "line": "flag = 0",
+          "explanation": "flag will be set to 1 if a divisor is found."
+        },
+        {
+          "line": "for i in range(2, n):",
+          "explanation": "Tests every possible divisor from 2 up to n-1."
+        },
+        {
+          "line": "if n % i == 0:",
+          "explanation": "If i divides n exactly, then n has a factor other than 1 and itself."
+        },
+        {
+          "line": "flag = 1\nbreak",
+          "explanation": "Records that a divisor was found and stops checking further, which saves time."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "7",
+          "output": "Prime"
+        },
+        {
+          "input": "12",
+          "output": "Not Prime"
+        },
+        {
+          "input": "1",
+          "output": "Not Prime"
+        }
+      ],
+      "rubric": [
+        "Handles n < 2 correctly (1 mark)",
+        "Correct loop to test divisors (2 marks)",
+        "Correct use of flag and break (1 mark)",
+        "Correct final decision and output (1 mark)"
+      ],
+      "explanation": "The loop searches for a divisor; the flag records whether one was found, and break stops the search early.",
+      "relatedConcepts": [
+        "prime number",
+        "flag",
+        "break",
+        "range()"
+      ],
+      "type": "program",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-program-05",
+      "topicId": "ch6-programs",
+      "difficulty": "easy",
+      "marks": 4,
+      "question": "Write a Python program to print the multiplication table of a number n (from 1 to 10).",
+      "hints": [
+        "Read n from the user.",
+        "Use a for loop with range(1, 11).",
+        "Print n, the multiplier i, and the product n * i."
+      ],
+      "modelSolution": "n = int(input('Enter a number: '))\nfor i in range(1, 11):\n    print(n, 'x', i, '=', n * i)",
+      "lineExplanations": [
+        {
+          "line": "n = int(input('Enter a number: '))",
+          "explanation": "Reads the number whose table is to be printed."
+        },
+        {
+          "line": "for i in range(1, 11):",
+          "explanation": "Runs i from 1 to 10, giving the ten rows of the table."
+        },
+        {
+          "line": "print(n, 'x', i, '=', n * i)",
+          "explanation": "Prints each row, for example 3 x 1 = 3."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "3",
+          "output": "3 x 1 = 3\n3 x 2 = 6\n...\n3 x 10 = 30"
+        },
+        {
+          "input": "5",
+          "output": "5 x 1 = 5\n5 x 2 = 10\n...\n5 x 10 = 50"
+        }
+      ],
+      "rubric": [
+        "Correct input (1 mark)",
+        "Correct for loop over range(1, 11) (2 marks)",
+        "Correct output format for all ten rows (1 mark)"
+      ],
+      "explanation": "range(1, 11) gives 1 to 10, so the loop prints the ten rows of the multiplication table.",
+      "relatedConcepts": [
+        "for loop",
+        "range()",
+        "multiplication table"
+      ],
+      "type": "program",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-num-01",
+      "topicId": "ch6-iteration",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "How many times does the body of the loop 'for i in range(3, 12, 3):' execute?",
+      "correctAnswer": "3",
+      "unit": "times",
+      "explanation": "range(3, 12, 3) produces 3, 6, 9 (the next value 12 is not less than 12), so the body runs 3 times.",
+      "relatedConcepts": [
+        "range()",
+        "for loop",
+        "step"
+      ],
+      "type": "numerical",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-num-02",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What value is printed by the code: s = 0; for i in range(1, 5): s = s + i; print(s)?",
+      "correctAnswer": "10",
+      "unit": "",
+      "explanation": "range(1, 5) gives 1, 2, 3, 4, so s = 1 + 2 + 3 + 4 = 10.",
+      "relatedConcepts": [
+        "for loop",
+        "range()",
+        "accumulator"
+      ],
+      "type": "numerical",
+      "chapterId": "ch6"
+    },
+    {
+      "id": "ch6-num-03",
+      "topicId": "ch6-iteration",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "For the nested loops 'for i in range(3):' and 'for j in range(2):', how many times does the inner statement execute in total?",
+      "correctAnswer": "6",
+      "unit": "times",
+      "explanation": "The inner loop runs 2 times for each of the 3 outer iterations, so the inner statement executes 3 x 2 = 6 times.",
+      "relatedConcepts": [
+        "nested loop",
+        "iteration",
+        "range()"
+      ],
+      "type": "numerical",
+      "chapterId": "ch6"
+    }
+  ]
+}

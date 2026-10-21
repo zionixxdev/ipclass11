@@ -1,0 +1,2977 @@
+{
+  "chapter": {
+    "id": "ch3",
+    "number": 3,
+    "title": "Python Overview",
+    "summary": "An introduction to Python: what it is, who created it, its key features, how to download and install it, the two modes of working in it, and how to write and run the classic \"Hello World\" program from the command line."
+  },
+  "topics": [
+    {
+      "id": "ch3-introduction",
+      "title": "Introduction to Python",
+      "content": {
+        "hinglish": "Python ek high-level, general-purpose programming language hai jise Guido van Rossum ne banaya aur 1991 mein pehli baar release kiya gaya. Iski sabse badi khaas baat ye hai ki iska code padhne aur likhne mein bahut aasaan hai — bilkul simple English jaisa lagta hai. Python ek interpreted language hai, matlab code line-by-line chalta hai, alag se compile karne ki zaroorat nahi padti. Yahi wajah hai ki beginners aur badi companies dono ise pasand karte hain — web development se lekar data science aur AI tak har jagah Python ka use hota hai.",
+        "formalDefinition": "Python is a high-level, interpreted, general-purpose, object-oriented programming language created by Guido van Rossum and first released in 1991. It emphasises code readability through a clean, simple syntax, supports multiple programming paradigms (procedural, object-oriented and functional), and is platform-independent — the same source code runs on Windows, Linux and macOS without modification.",
+        "keywords": [
+          "high-level language",
+          "interpreted",
+          "Guido van Rossum",
+          "general-purpose",
+          "object-oriented",
+          "portability",
+          "open source",
+          "1991"
+        ],
+        "examples": [
+          "Python is used to build websites and web apps with frameworks such as Django and Flask.",
+          "Data analysts use Python libraries like NumPy and pandas to process data.",
+          "Python powers machine-learning frameworks such as TensorFlow and scikit-learn.",
+          "Small automation scripts for file handling, reporting and web scraping are commonly written in Python."
+        ],
+        "tables": [
+          {
+            "title": "Key features of Python",
+            "headers": [
+              "Feature",
+              "Meaning"
+            ],
+            "rows": [
+              [
+                "Easy to learn and read",
+                "Simple English-like syntax with fewer symbols than C/C++."
+              ],
+              [
+                "Interpreted",
+                "Code runs line by line through an interpreter; no separate compile step."
+              ],
+              [
+                "Free and open source",
+                "Anyone can download, use and modify it at no cost."
+              ],
+              [
+                "Platform independent",
+                "The same program runs on Windows, Linux and macOS (portable)."
+              ],
+              [
+                "Object-oriented",
+                "Supports classes and objects along with procedural programming."
+              ],
+              [
+                "Large standard library",
+                "Comes with ready-made modules ('batteries included')."
+              ],
+              [
+                "Extensible and embeddable",
+                "Can be extended with C/C++ and embedded in other applications."
+              ],
+              [
+                "Dynamically typed",
+                "Variable types are decided at run time; no type declaration needed."
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "SOURCE CODE (.py)\n     |\n     v\n  INTERPRETER (reads one line at a time)\n     |\n     v\n     OUTPUT on screen\n\n(No separate machine-code file is produced.)"
+        ],
+        "differences": [
+          {
+            "title": "Compiled vs Interpreted language",
+            "headers": [
+              "Compiled language (e.g. C, C++)",
+              "Interpreted language (e.g. Python)"
+            ],
+            "rows": [
+              [
+                "Whole program is translated into machine code before running.",
+                "Code is translated and executed line by line at run time."
+              ],
+              [
+                "A separate executable file is produced.",
+                "No separate executable file is produced."
+              ],
+              [
+                "Errors are reported only after the whole program is compiled.",
+                "Errors are reported as soon as the faulty line is reached."
+              ],
+              [
+                "Generally faster execution.",
+                "Generally slower execution but faster to develop."
+              ],
+              [
+                "Compilation is a separate step from execution.",
+                "Translation and execution happen together."
+              ]
+            ]
+          }
+        ],
+        "pythonSyntax": "# This is a single-line comment in Python\nprint(\"Hello, World!\")   # print() displays output on the screen",
+        "codeExamples": [
+          {
+            "code": "print(\"Python is fun!\")",
+            "output": "Python is fun!",
+            "explanation": "print() sends the text inside the quotes to the screen. The quotes mark the text as a string."
+          },
+          {
+            "code": "x = 5\ny = 7\nprint(x + y)",
+            "output": "12",
+            "explanation": "x and y store integers 5 and 7. print(x + y) adds them and displays the result 12."
+          }
+        ],
+        "commonMistakes": [
+          "Thinking Python must be compiled first — Python is an interpreted language and runs directly.",
+          "Copying curly braces { } from C/Java; Python defines blocks using indentation instead.",
+          "Confusing the Python language with IDLE, which is only the editor and interactive shell that ships with Python.",
+          "Believing Python is 'only for beginners' — it is used in production by large organisations."
+        ],
+        "examNotes": [
+          "Remember the exact spelling and the year: Guido van Rossum, first released in 1991.",
+          "For 'features of Python' questions, write at least four: interpreted, high-level, free and open source, portable, object-oriented, large library.",
+          "Python is a case-sensitive language: Print and print are treated as different names.",
+          "Python 3 is the current series; Python 2 reached end of life and is not used for new programs.",
+          "One-line definitions earn full marks in 1-mark questions — practise short, precise wording."
+        ],
+        "faqs": [
+          {
+            "q": "Who developed Python and when?",
+            "a": "Python was developed by Guido van Rossum. Its development began in the late 1980s and it was first released in 1991."
+          },
+          {
+            "q": "Is Python a compiled or an interpreted language?",
+            "a": "Python is an interpreted language — the interpreter reads and executes the code line by line, so no separate compilation step is needed by the programmer."
+          },
+          {
+            "q": "Why is Python called a high-level language?",
+            "a": "Because its instructions resemble human language and hide the low-level details of the machine (memory, registers). The programmer writes in English-like syntax rather than machine or assembly code."
+          },
+          {
+            "q": "Is Python free to use?",
+            "a": "Yes. Python is free and open source — it can be downloaded from python.org, used, and modified without paying any licence fee."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Who is the creator of Python?",
+            "options": [
+              "James Gosling",
+              "Guido van Rossum",
+              "Dennis Ritchie",
+              "Bjarne Stroustrup"
+            ],
+            "answer": 1,
+            "explanation": "Python was created by Guido van Rossum; James Gosling created Java, Dennis Ritchie created C, and Bjarne Stroustrup created C++."
+          },
+          {
+            "question": "Python is a/an ______ language.",
+            "options": [
+              "compiled",
+              "interpreted",
+              "assembly",
+              "machine-level"
+            ],
+            "answer": 1,
+            "explanation": "Python is an interpreted language: the interpreter executes the source code line by line."
+          },
+          {
+            "question": "Python was first released in the year ______.",
+            "options": [
+              "1989",
+              "1991",
+              "2000",
+              "2008"
+            ],
+            "answer": 1,
+            "explanation": "Python was first released in 1991. (Development started around 1989, and Python 3 arrived in 2008.)"
+          },
+          {
+            "question": "Which of the following is NOT a feature of Python?",
+            "options": [
+              "Platform dependent",
+              "Free and open source",
+              "High-level",
+              "Interpreted"
+            ],
+            "answer": 0,
+            "explanation": "Python is platform independent (portable), not platform dependent — the same code runs on Windows, Linux and macOS."
+          }
+        ],
+        "checklist": [
+          "I can name the creator of Python and the year it was first released.",
+          "I can define Python as a high-level, interpreted, general-purpose language.",
+          "I can list at least four features of Python.",
+          "I can explain the difference between a compiled and an interpreted language.",
+          "I can give two real-world areas where Python is used.",
+          "I know that Python is case-sensitive and free/open source."
+        ]
+      }
+    },
+    {
+      "id": "ch3-installation",
+      "title": "Download and Installation of Python",
+      "content": {
+        "hinglish": "Python ko install karna bahut aasaan hai — pehle official website python.org par jaake apne operating system (Windows/Mac/Linux) ke hisaab se latest installer download karte hain. Windows par .exe installer chalta hai jisme 'Add Python to PATH' ka checkbox hota hai — ise zaroor tick karna chahiye. Install hone ke baad IDLE bhi automatically mil jata hai, jo Python ka default editor aur interactive shell hai. Command line par python --version ya python3 --version type karke confirm kar sakte hain ki Python theek se install hua hai.",
+        "formalDefinition": "Installing Python means obtaining the official Python interpreter from python.org and setting it up on the computer so that Python programs can be written and executed. The standard Windows installer also installs IDLE (Integrated Development and Learning Environment). During installation, the option 'Add Python to PATH' registers the Python interpreter with the operating system so that the command 'python' works from any directory in the terminal.",
+        "keywords": [
+          "python.org",
+          "installer",
+          "IDLE",
+          "PATH environment variable",
+          "Add Python to PATH",
+          "command prompt / terminal",
+          "python --version",
+          "pip"
+        ],
+        "examples": [
+          "Download the Windows installer from the Downloads page of python.org and run python-3.x.x.exe.",
+          "Tick 'Add Python to PATH' in the installer so that the 'python' command works from any folder.",
+          "After installation, open IDLE from the Start menu to write and run Python programs.",
+          "Verify the installation by typing 'python --version' in the command prompt."
+        ],
+        "tables": [
+          {
+            "title": "Installation steps on Windows",
+            "headers": [
+              "Step",
+              "Action"
+            ],
+            "rows": [
+              [
+                "1",
+                "Open a browser and go to the official website www.python.org."
+              ],
+              [
+                "2",
+                "Go to Downloads and choose the Windows installer for the latest version."
+              ],
+              [
+                "3",
+                "Run the downloaded .exe file."
+              ],
+              [
+                "4",
+                "Tick the checkbox 'Add Python to PATH' at the bottom of the installer window."
+              ],
+              [
+                "5",
+                "Click 'Install Now' and wait for the setup to finish."
+              ],
+              [
+                "6",
+                "Click Close; IDLE and the Python interpreter are now installed."
+              ],
+              [
+                "7",
+                "Open Command Prompt and type 'python --version' to confirm the installation."
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "www.python.org  ->  Downloads  ->  Windows installer (.exe)\n        |\n        v\n  Run installer\n        |\n  [x] Add Python to PATH\n        |\n        v\n  Install Now  ->  IDLE + python.exe installed\n        |\n        v\n  Command Prompt: python --version  ->  Python 3.x.x"
+        ],
+        "differences": [
+          {
+            "title": "PATH not set vs PATH set",
+            "headers": [
+              "Python NOT added to PATH",
+              "Python added to PATH"
+            ],
+            "rows": [
+              [
+                "The command 'python' is not recognised in the terminal.",
+                "The command 'python' works from any folder."
+              ],
+              [
+                "You must type the full path, e.g. C:\\Python311\\python.exe.",
+                "You can simply type python or python3."
+              ],
+              [
+                "Running scripts from other folders is inconvenient.",
+                "Scripts can be run from anywhere in the terminal."
+              ]
+            ]
+          }
+        ],
+        "pythonSyntax": "# Check the installed Python version (run these in the terminal, not inside Python):\npython --version\npython3 --version\n\n# Start the Python interactive shell:\npython",
+        "codeExamples": [
+          {
+            "code": "python --version",
+            "output": "Python 3.11.4",
+            "explanation": "Typed in the command prompt/terminal, this command prints the installed Python version and confirms that Python is available on the PATH."
+          },
+          {
+            "code": "python hello.py",
+            "output": "Hello World",
+            "explanation": "This runs the script file hello.py using the Python interpreter from the terminal."
+          }
+        ],
+        "commonMistakes": [
+          "Forgetting to tick 'Add Python to PATH', after which the 'python' command is not recognised in the terminal.",
+          "Downloading Python from unofficial websites instead of the official python.org.",
+          "Installing a very old version (such as Python 2) instead of the current Python 3 series.",
+          "Typing Python code directly into the command prompt instead of the Python interactive shell or IDLE."
+        ],
+        "examNotes": [
+          "The official website for downloading Python is www.python.org — remember this exact address.",
+          "IDLE is bundled with the standard Python installation; no separate download is needed.",
+          "The 'Add Python to PATH' option registers Python with the operating system so the 'python' command works everywhere.",
+          "To confirm the installation, run 'python --version' (or 'python3 --version') in the terminal.",
+          "pip, the package installer for Python, is also installed along with Python 3."
+        ],
+        "faqs": [
+          {
+            "q": "From where should Python be downloaded?",
+            "a": "Only from the official website, www.python.org, to ensure a safe and genuine installation."
+          },
+          {
+            "q": "What does 'Add Python to PATH' do?",
+            "a": "It registers the Python interpreter with the operating system's PATH environment variable, so you can run the 'python' command from any folder in the terminal without typing the full path."
+          },
+          {
+            "q": "Is IDLE downloaded separately?",
+            "a": "No. IDLE comes bundled with the standard Python installation and is available from the Start menu after installation."
+          },
+          {
+            "q": "How do I check whether Python is installed correctly?",
+            "a": "Open the command prompt or terminal and type 'python --version'. If it prints a version such as Python 3.11.4, the installation was successful."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "The official website for downloading Python is ______.",
+            "options": [
+              "python.com",
+              "python.org",
+              "python.net",
+              "pypi.com"
+            ],
+            "answer": 1,
+            "explanation": "Python is downloaded from its official site www.python.org."
+          },
+          {
+            "question": "Which option should be ticked during Windows installation so the 'python' command works from any folder?",
+            "options": [
+              "Install for all users",
+              "Add Python to PATH",
+              "Create shortcuts",
+              "Install launcher"
+            ],
+            "answer": 1,
+            "explanation": "'Add Python to PATH' registers the interpreter with the operating system so the python command works from anywhere."
+          },
+          {
+            "question": "Which editor/shell is bundled with the standard Python installation?",
+            "options": [
+              "PyCharm",
+              "IDLE",
+              "VS Code",
+              "Jupyter Notebook"
+            ],
+            "answer": 1,
+            "explanation": "IDLE (Integrated Development and Learning Environment) ships with Python; the others are separate tools."
+          },
+          {
+            "question": "Which command confirms the installed Python version in the terminal?",
+            "options": [
+              "python -v",
+              "python --version",
+              "version python",
+              "py.info"
+            ],
+            "answer": 1,
+            "explanation": "'python --version' prints the installed version and confirms Python is on the PATH."
+          }
+        ],
+        "checklist": [
+          "I know the official website python.org for downloading Python.",
+          "I can list the steps to install Python on Windows.",
+          "I can explain what 'Add Python to PATH' does.",
+          "I know that IDLE is bundled with the Python installation.",
+          "I can verify an installation using 'python --version'.",
+          "I know Python 3 is the current series to install."
+        ]
+      }
+    },
+    {
+      "id": "ch3-working",
+      "title": "Working in Python",
+      "content": {
+        "hinglish": "Python mein kaam karne ke do main tareeke hote hain — interactive mode aur script mode. Interactive mode mein aap >>> prompt par ek-ek line likhte hain aur Enter dabate hi turant result dikh jata hai; yeh chhote experiments aur testing ke liye achha hai. Script mode mein poora program ek file mein likha jata hai jise .py extension ke saath save karte hain, aur phir use poora ek saath run karte hain. IDLE dono kaam karta hai — isme shell (interactive) aur File > New File se editor (script) milta hai. Bade programs ke liye script mode hi behtar hota hai kyunki code save rehta hai aur dobara use ho sakta hai.",
+        "formalDefinition": "Working in Python refers to the two ways of executing Python code: interactive mode, in which each statement is typed at the '>>>' prompt and executed immediately, and script mode, in which the complete program is written in a file with the .py extension and executed as a whole. IDLE (Integrated Development and Learning Environment) provides both an interactive shell and a file editor, allowing programmers to test statements quickly and to save and run complete programs.",
+        "keywords": [
+          "interactive mode",
+          "script mode",
+          "IDLE",
+          ".py extension",
+          ">>> prompt",
+          "Run Module (F5)",
+          "File > New File",
+          "interpreter"
+        ],
+        "examples": [
+          "Interactive: type 2 + 3 at the >>> prompt and press Enter; 5 appears immediately.",
+          "Script: write print('Hello') in a new file, save it as hello.py and run it with F5 in IDLE.",
+          "Interactive is used to test a single statement; script mode is used to build a complete program.",
+          "In IDLE, File > New File opens the editor, and Run > Run Module (F5) executes the saved script."
+        ],
+        "tables": [
+          {
+            "title": "Interactive mode vs Script mode",
+            "headers": [
+              "Point",
+              "Interactive mode",
+              "Script mode"
+            ],
+            "rows": [
+              [
+                "How it is used",
+                "Type one statement at a time at the >>> prompt.",
+                "Write the whole program in a file."
+              ],
+              [
+                "Result shown",
+                "Immediately after pressing Enter.",
+                "Only when the whole script is run."
+              ],
+              [
+                "Saving",
+                "Code is not saved permanently.",
+                "Code is saved in a .py file and can be reused."
+              ],
+              [
+                "Suitable for",
+                "Testing small expressions and quick checks.",
+                "Writing complete, longer programs."
+              ],
+              [
+                "print() needed?",
+                "Not always — the value is echoed automatically.",
+                "Yes — you must use print() to see output."
+              ],
+              [
+                "Editing",
+                "Difficult to correct earlier lines.",
+                "Easy — the file can be edited and re-run."
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "WORKING IN PYTHON\n  |\n  +-- Interactive mode (>>>)  --->  type line -> Enter -> result now\n  |\n  +-- Script mode (.py file)  --->  write file -> save -> Run (F5) -> output\n\nIDLE = Integrated Development and Learning Environment\n  [>>> shell]  +  [File > New File editor]"
+        ],
+        "differences": [
+          {
+            "title": "IDLE shell vs IDLE editor",
+            "headers": [
+              "IDLE shell (interactive)",
+              "IDLE editor (script)"
+            ],
+            "rows": [
+              [
+                "Shows the >>> prompt.",
+                "A blank window to type a program file."
+              ],
+              [
+                "Executes each statement as soon as Enter is pressed.",
+                "Executes the whole program only when run (F5)."
+              ],
+              [
+                "Good for quick testing.",
+                "Good for writing and saving full programs."
+              ],
+              [
+                "Cannot save the session as a program file.",
+                "Saved with a .py extension."
+              ]
+            ]
+          }
+        ],
+        "pythonSyntax": "# --- Interactive mode (typed at the >>> prompt) ---\n>>> 2 + 3\n5\n>>> print(\"Hi\")\nHi\n\n# --- Script mode (a .py file, run as a whole) ---\na = 4\nb = 6\nprint(\"Sum =\", a + b)",
+        "codeExamples": [
+          {
+            "code": "2 + 3",
+            "output": "5",
+            "explanation": "In interactive mode the value of the expression is displayed automatically at the >>> prompt — no print() is needed."
+          },
+          {
+            "code": "a = 4\nb = 6\nprint(\"Sum =\", a + b)",
+            "output": "Sum = 10",
+            "explanation": "In script mode you must use print() to display the result; simply writing a + b would produce no visible output."
+          }
+        ],
+        "commonMistakes": [
+          "Expecting an expression like a + b to print itself in script mode — print() is required.",
+          "Saving a script without the .py extension, so it is not recognised as a Python file.",
+          "Pasting multi-line code into the interactive shell and expecting it all to run at once.",
+          "Forgetting to save the file before pressing F5 in IDLE, so the old version runs."
+        ],
+        "examNotes": [
+          "The interactive prompt is >>> and the prompt for a continuation line is ... .",
+          "In interactive mode the result of an expression is shown automatically; in script mode you must use print().",
+          "A Python script file must be saved with the .py extension.",
+          "In IDLE, File > New File opens the editor and Run > Run Module (or F5) runs the script.",
+          "IDLE stands for Integrated Development and Learning Environment.",
+          "Script mode is preferred for complete programs because the code is saved and can be reused and edited."
+        ],
+        "faqs": [
+          {
+            "q": "What are the two modes of working in Python?",
+            "a": "Interactive mode (statements typed at the >>> prompt and executed immediately) and script mode (a complete program saved in a .py file and run as a whole)."
+          },
+          {
+            "q": "Which mode is better for writing a long program?",
+            "a": "Script mode, because the entire program is saved in a file, can be edited easily and can be re-run many times."
+          },
+          {
+            "q": "What is IDLE?",
+            "a": "IDLE (Integrated Development and Learning Environment) is the simple editor and interactive shell that comes bundled with Python. It provides both a >>> shell and a file editor."
+          },
+          {
+            "q": "How do I run a script in IDLE?",
+            "a": "Open or create the file, save it with a .py extension, then choose Run > Run Module or press F5."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which prompt is shown in Python's interactive mode?",
+            "options": [
+              "$",
+              ">>>",
+              "#",
+              ">>"
+            ],
+            "answer": 1,
+            "explanation": "Python's interactive mode uses the >>> prompt; the $ prompt is a shell prompt and # begins a comment."
+          },
+          {
+            "question": "In which mode must you use print() to see the output of an expression?",
+            "options": [
+              "Interactive mode",
+              "Script mode",
+              "Both modes",
+              "Neither mode"
+            ],
+            "answer": 1,
+            "explanation": "In interactive mode the value is echoed automatically, but in script mode you must use print() to display a result."
+          },
+          {
+            "question": "A Python program file is saved with the extension ______.",
+            "options": [
+              ".python",
+              ".py",
+              ".pyt",
+              ".pt"
+            ],
+            "answer": 1,
+            "explanation": "Python script files use the .py extension."
+          },
+          {
+            "question": "Which key runs a script from the IDLE editor?",
+            "options": [
+              "F1",
+              "F5",
+              "F9",
+              "Ctrl+S"
+            ],
+            "answer": 1,
+            "explanation": "F5 (Run > Run Module) executes the current script in IDLE. Ctrl+S is used to save."
+          }
+        ],
+        "checklist": [
+          "I can name the two modes of working in Python.",
+          "I can explain how interactive mode differs from script mode.",
+          "I know the interactive prompt is >>>.",
+          "I know Python files use the .py extension.",
+          "I can create, save and run a file in IDLE using File > New File and F5.",
+          "I know IDLE stands for Integrated Development and Learning Environment."
+        ]
+      }
+    },
+    {
+      "id": "ch3-hello-world",
+      "title": "Printing \"Hello World\" using the Command Line",
+      "content": {
+        "hinglish": "Kisi bhi nayi language mein pehla program aksar 'Hello World' print karna hota hai. Python mein iske liye print() function use karte hain — print(\"Hello World\"). Command line se ise do tareeke se chala sakte hain: pehle 'python' likhkar interactive shell (REPL) kholo aur seedha statement type karo, ya ek file hello.py banao aur terminal par 'python hello.py' likh kar chalao. REPL ka matlab hai Read-Eval-Print Loop — jo aap type karte hain use padhta hai, chalata hai aur result dikhata hai, phir dobara prompt deta hai.",
+        "formalDefinition": "Printing 'Hello World' is the traditional first program in a new language. In Python it is written using the built-in print() function: print(\"Hello World\"). It can be run from the command line either by entering the Python interactive shell (REPL — Read, Eval, Print, Loop) and typing the statement at the >>> prompt, or by saving the statement in a file such as hello.py and executing it with the command 'python hello.py'.",
+        "keywords": [
+          "print()",
+          "Hello World",
+          "command line / terminal",
+          "REPL",
+          "interactive shell",
+          "python hello.py",
+          "string",
+          "output"
+        ],
+        "examples": [
+          "print(\"Hello World\") — the classic first program.",
+          "At the terminal: python hello.py runs the saved program.",
+          "At the >>> prompt: typing print(\"Hello World\") and pressing Enter shows Hello World at once.",
+          "print(\"Hello\", \"World\") prints Hello World with a space between the two values."
+        ],
+        "tables": [
+          {
+            "title": "Running 'Hello World' two ways",
+            "headers": [
+              "Method",
+              "What you type",
+              "What happens"
+            ],
+            "rows": [
+              [
+                "Interactive shell (REPL)",
+                "python  then  print(\"Hello World\")",
+                "Hello World is printed immediately at the >>> prompt."
+              ],
+              [
+                "Script file",
+                "Save print(\"Hello World\") in hello.py, then run python hello.py",
+                "The interpreter runs the file and prints Hello World."
+              ],
+              [
+                "IDLE editor",
+                "Type the statement and press F5",
+                "The saved script runs and prints Hello World."
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "REPL = Read -> Eval -> Print -> Loop\n\nC:\\> python\n>>> print(\"Hello World\")\nHello World\n>>>\n\nOR\n\nC:\\> python hello.py\nHello World"
+        ],
+        "differences": [
+          {
+            "title": "print(\"Hello\" + \"World\") vs print(\"Hello\", \"World\")",
+            "headers": [
+              "Using + (concatenation)",
+              "Using comma"
+            ],
+            "rows": [
+              [
+                "print(\"Hello\" + \"World\") gives HelloWorld",
+                "print(\"Hello\", \"World\") gives Hello World"
+              ],
+              [
+                "Values are joined with no space.",
+                "Values are separated by a space by default."
+              ],
+              [
+                "Only strings can be joined with +.",
+                "Values of any type can be separated by commas."
+              ]
+            ]
+          }
+        ],
+        "pythonSyntax": "print(value1, value2, ..., sep=' ', end='\\n')\n\n# Examples\nprint(\"Hello World\")\nprint(\"Hello\", \"World\")\nprint(\"Hello\", \"World\", sep=\"-\")\nprint(\"Hello\", end=\" \")\nprint(\"World\")",
+        "codeExamples": [
+          {
+            "code": "print(\"Hello World\")",
+            "output": "Hello World",
+            "explanation": "The text inside quotes is a string; print() displays it followed by a newline."
+          },
+          {
+            "code": "print(\"Hello\", \"World\", sep=\"-\")",
+            "output": "Hello-World",
+            "explanation": "The sep parameter replaces the default space separator with a hyphen."
+          },
+          {
+            "code": "print(\"Hello\", end=\" \")\nprint(\"World\")",
+            "output": "Hello World",
+            "explanation": "end=\" \" makes the first print() end with a space instead of a newline, so the second print() continues on the same line."
+          }
+        ],
+        "commonMistakes": [
+          "Forgetting the quotes: print(Hello World) is treated as two undefined names and causes a NameError.",
+          "Using a capital P — Print is not the same as print in case-sensitive Python.",
+          "Running python hello.py from the wrong folder, causing a 'file not found' error.",
+          "Expecting a space when using + : print(\"Hello\" + \"World\") gives HelloWorld, not Hello World."
+        ],
+        "examNotes": [
+          "print() is a built-in function; its arguments may be strings, numbers or variables.",
+          "The default separator (sep) is a space and the default line terminator (end) is a newline (\\n).",
+          "REPL stands for Read, Eval, Print, Loop — the behaviour of the interactive shell.",
+          "The command to run a saved script from the terminal is: python filename.py",
+          "To print Hello World on one line from the terminal, either use the shell directly or run a .py file."
+        ],
+        "faqs": [
+          {
+            "q": "What does REPL stand for?",
+            "a": "REPL stands for Read, Eval, Print, Loop. It describes the Python interactive shell: it reads what you type, evaluates it, prints the result, and then loops back to the prompt."
+          },
+          {
+            "q": "How do I run hello.py from the command line?",
+            "a": "Open the terminal in the folder containing the file and type: python hello.py (use python3 hello.py on some systems). The output is printed below."
+          },
+          {
+            "q": "What is the difference between print(\"Hello\"+\"World\") and print(\"Hello\",\"World\")?",
+            "a": "The + joins the strings with no space giving HelloWorld, while the comma separates the values with a space giving Hello World."
+          },
+          {
+            "q": "Why do we need quotes in print(\"Hello World\")?",
+            "a": "Quotes mark the text as a string literal. Without quotes, Python would try to interpret Hello and World as variable names and raise a NameError."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which function is used to display output in Python?",
+            "options": [
+              "echo()",
+              "printf()",
+              "print()",
+              "display()"
+            ],
+            "answer": 2,
+            "explanation": "print() is Python's built-in function for displaying output on the screen."
+          },
+          {
+            "question": "What is the output of print(\"Hello\", \"World\")?",
+            "options": [
+              "HelloWorld",
+              "Hello World",
+              "Hello,World",
+              "Hello-World"
+            ],
+            "answer": 1,
+            "explanation": "A comma between arguments makes print() separate them with a single space by default."
+          },
+          {
+            "question": "What does REPL stand for?",
+            "options": [
+              "Read Evaluate Print Loop",
+              "Run Execute Print Loop",
+              "Read Execute Process Line",
+              "Repeat Evaluate Print Line"
+            ],
+            "answer": 0,
+            "explanation": "REPL = Read, Eval, Print, Loop — the cycle followed by the interactive Python shell."
+          },
+          {
+            "question": "Which command runs a saved script named hello.py from the terminal?",
+            "options": [
+              "run hello.py",
+              "python hello.py",
+              "execute hello.py",
+              "hello.py run"
+            ],
+            "answer": 1,
+            "explanation": "The interpreter is invoked as 'python' followed by the script filename: python hello.py."
+          }
+        ],
+        "checklist": [
+          "I can write the Hello World program in Python.",
+          "I know that print() is used to display output.",
+          "I can run Hello World both interactively and from a script file.",
+          "I know the terminal command 'python hello.py'.",
+          "I can explain what REPL stands for.",
+          "I know the default values of the sep and end parameters."
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "ch3-mcq-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Who is the creator of Python?",
+      "options": [
+        "James Gosling",
+        "Guido van Rossum",
+        "Dennis Ritchie",
+        "Bjarne Stroustrup"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Java was created by James Gosling.",
+        "Correct — Python was created by Guido van Rossum.",
+        "C was created by Dennis Ritchie.",
+        "C++ was created by Bjarne Stroustrup."
+      ],
+      "explanation": "Python was created by Guido van Rossum and first released in 1991.",
+      "relatedConcepts": [
+        "Guido van Rossum",
+        "creator of Python",
+        "1991"
+      ]
+    },
+    {
+      "id": "ch3-mcq-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python is a/an ______ language.",
+      "options": [
+        "compiled",
+        "interpreted",
+        "assembly",
+        "machine-level"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "A compiled language needs a separate translation step.",
+        "Correct — Python is interpreted.",
+        "Assembly is a low-level language.",
+        "Machine-level code is binary and not written by hand."
+      ],
+      "explanation": "Python is an interpreted language: the interpreter executes the source code line by line.",
+      "relatedConcepts": [
+        "interpreted language",
+        "interpreter",
+        "execution"
+      ]
+    },
+    {
+      "id": "ch3-mcq-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "In which year was Python first released?",
+      "options": [
+        "1989",
+        "1991",
+        "2000",
+        "2008"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "1989 is when development started.",
+        "Correct — Python was first released in 1991.",
+        "2000 is when Python 2.0 was released.",
+        "2008 is when Python 3.0 was released."
+      ],
+      "explanation": "Development began in the late 1980s but Python was first released in 1991.",
+      "relatedConcepts": [
+        "Python history",
+        "1991",
+        "release"
+      ]
+    },
+    {
+      "id": "ch3-mcq-04",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is NOT a feature of Python?",
+      "options": [
+        "Platform dependent",
+        "Free and open source",
+        "High-level",
+        "Interpreted"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct — Python is platform INDEPENDENT (portable), not platform dependent.",
+        "Python is free and open source.",
+        "Python is a high-level language.",
+        "Python is an interpreted language."
+      ],
+      "explanation": "Python is platform independent — the same code runs on Windows, Linux and macOS.",
+      "relatedConcepts": [
+        "portability",
+        "features of Python",
+        "platform independence"
+      ]
+    },
+    {
+      "id": "ch3-mcq-05",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which extension is used for a Python program file?",
+      "options": [
+        ".python",
+        ".py",
+        ".pyt",
+        ".pt"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        ".python is not a Python extension.",
+        "Correct — Python files use .py.",
+        ".pyt is not standard.",
+        ".pt is used by other tools (e.g. PyTorch models)."
+      ],
+      "explanation": "Python script files are saved with the .py extension.",
+      "relatedConcepts": [
+        ".py extension",
+        "script file",
+        "saving programs"
+      ]
+    },
+    {
+      "id": "ch3-mcq-06",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which mode executes each statement immediately and shows the result at once?",
+      "options": [
+        "Script mode",
+        "Interactive mode",
+        "Batch mode",
+        "Compile mode"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Script mode runs the whole file together.",
+        "Correct — interactive mode executes statements one at a time.",
+        "Batch mode is not a Python working mode.",
+        "Compile mode is not a Python working mode."
+      ],
+      "explanation": "In interactive mode a statement is executed as soon as Enter is pressed.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        "REPL"
+      ]
+    },
+    {
+      "id": "ch3-mcq-07",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the prompt shown in Python's interactive mode?",
+      "options": [
+        "$",
+        ">>>",
+        "#",
+        ">>"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "$ is an operating-system shell prompt.",
+        "Correct — Python uses >>>.",
+        "# begins a comment in Python.",
+        ">> is not the Python prompt."
+      ],
+      "explanation": "The Python interactive shell displays the >>> prompt; a continuation line uses ...",
+      "relatedConcepts": [
+        "interactive prompt",
+        ">>>",
+        "shell"
+      ]
+    },
+    {
+      "id": "ch3-mcq-08",
+      "chapterId": "ch3",
+      "topicId": "ch3-installation",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "From which website should Python be downloaded?",
+      "options": [
+        "python.com",
+        "python.org",
+        "python.net",
+        "pypi.com"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "python.com is not the official site.",
+        "Correct — the official site is www.python.org.",
+        "python.net is not the official site.",
+        "pypi is a package index, not the download site."
+      ],
+      "explanation": "Python is downloaded from its official website, www.python.org.",
+      "relatedConcepts": [
+        "python.org",
+        "download",
+        "installation"
+      ]
+    },
+    {
+      "id": "ch3-mcq-09",
+      "chapterId": "ch3",
+      "topicId": "ch3-installation",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which editor and interactive shell is bundled with the standard Python installation?",
+      "options": [
+        "PyCharm",
+        "IDLE",
+        "VS Code",
+        "Jupyter Notebook"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "PyCharm is a separate third-party IDE.",
+        "Correct — IDLE ships with Python.",
+        "VS Code is a separate editor.",
+        "Jupyter is installed separately."
+      ],
+      "explanation": "IDLE (Integrated Development and Learning Environment) is bundled with Python.",
+      "relatedConcepts": [
+        "IDLE",
+        "bundled tools",
+        "installation"
+      ]
+    },
+    {
+      "id": "ch3-mcq-10",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "How are blocks of code defined in Python?",
+      "options": [
+        "Using curly braces { }",
+        "Using indentation",
+        "Using parentheses ( )",
+        "Using the keywords begin/end"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Curly braces are used in C, Java and JavaScript.",
+        "Correct — Python uses indentation.",
+        "Parentheses group expressions, not blocks.",
+        "begin/end are used in Pascal, not Python."
+      ],
+      "explanation": "Python uses indentation (whitespace) to define blocks such as those of if, for and while.",
+      "relatedConcepts": [
+        "indentation",
+        "blocks",
+        "syntax"
+      ]
+    },
+    {
+      "id": "ch3-mcq-11",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which function is used to display output in Python?",
+      "options": [
+        "echo()",
+        "printf()",
+        "print()",
+        "display()"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "echo is a shell command, not a Python function.",
+        "printf() is used in C.",
+        "Correct — print() displays output.",
+        "display() is not a standard Python output function."
+      ],
+      "explanation": "print() is Python's built-in function for displaying output on the screen.",
+      "relatedConcepts": [
+        "print()",
+        "output",
+        "built-in function"
+      ]
+    },
+    {
+      "id": "ch3-mcq-12",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Python is a case-sensitive language. This means that ______.",
+      "options": [
+        "Print and print are the same",
+        "Print and print are different names",
+        "capital letters are ignored",
+        "keywords can be written in any case"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "They are not the same.",
+        "Correct — Print and print are different identifiers.",
+        "Case is never ignored in Python.",
+        "Keywords must be written in the correct case."
+      ],
+      "explanation": "In a case-sensitive language, Print and print are treated as different names.",
+      "relatedConcepts": [
+        "case sensitivity",
+        "identifiers",
+        "syntax rules"
+      ]
+    },
+    {
+      "id": "ch3-mcq-13",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which function tells you the data type of a value?",
+      "options": [
+        "datatype()",
+        "type()",
+        "typeof()",
+        "class()"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "datatype() is not a Python function.",
+        "Correct — type() returns the data type.",
+        "typeof() is used in JavaScript.",
+        "class() is not used for this purpose."
+      ],
+      "explanation": "The built-in function type(x) returns the data type of x, e.g. <class 'int'>.",
+      "relatedConcepts": [
+        "type()",
+        "data types",
+        "built-in function"
+      ]
+    },
+    {
+      "id": "ch3-mcq-14",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is printed by print(\"A\", \"B\", sep=\"-\")?",
+      "options": [
+        "A B",
+        "A-B",
+        "A,B",
+        "AB"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "That would be the default separator.",
+        "Correct — sep=\"-\" uses a hyphen.",
+        "The comma is not printed.",
+        "There is a separator between the values."
+      ],
+      "explanation": "The sep parameter sets the string placed between multiple arguments; here it is a hyphen.",
+      "relatedConcepts": [
+        "sep parameter",
+        "print()",
+        "separators"
+      ]
+    },
+    {
+      "id": "ch3-mcq-15",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The ability of the same Python program to run on different operating systems is called ______.",
+      "options": [
+        "compilation",
+        "portability",
+        "conversion",
+        "interpretation"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Compilation is translation of code, not this property.",
+        "Correct — it is portability.",
+        "Conversion is unrelated.",
+        "Interpretation is how code is executed, not this property."
+      ],
+      "explanation": "Portability (platform independence) means the same source code runs on Windows, Linux and macOS.",
+      "relatedConcepts": [
+        "portability",
+        "platform independence",
+        "features"
+      ]
+    },
+    {
+      "id": "ch3-mcq-16",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which Python version series is the current one used for new programs?",
+      "options": [
+        "Python 1",
+        "Python 2",
+        "Python 3",
+        "Python 4"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Python 1 is obsolete.",
+        "Python 2 reached end of life and is not used for new code.",
+        "Correct — Python 3 is the current series.",
+        "Python 4 does not exist yet."
+      ],
+      "explanation": "Python 3 is the current series; Python 2 is no longer supported.",
+      "relatedConcepts": [
+        "Python versions",
+        "Python 3",
+        "current version"
+      ]
+    },
+    {
+      "id": "ch3-mcq-17",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which of the following is a correct single-line comment in Python?",
+      "options": [
+        "// this is a comment",
+        "/* this is a comment */",
+        "# this is a comment",
+        "-- this is a comment"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "// is used in C, Java and JavaScript.",
+        "/* */ is a C-style block comment.",
+        "Correct — Python uses #.",
+        "-- is not a Python comment."
+      ],
+      "explanation": "In Python a comment begins with # and extends to the end of the line.",
+      "relatedConcepts": [
+        "comments",
+        "# symbol",
+        "syntax"
+      ]
+    },
+    {
+      "id": "ch3-mcq-18",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What does the end parameter of print() control?",
+      "options": [
+        "The text printed first",
+        "The character printed at the end of the output",
+        "The number of lines printed",
+        "The separator between values"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "That is not what end does.",
+        "Correct — end sets what is printed after the values.",
+        "end does not set a line count.",
+        "That is the job of the sep parameter."
+      ],
+      "explanation": "The end parameter sets what is printed after the values; by default it is a newline (\\n).",
+      "relatedConcepts": [
+        "end parameter",
+        "print()",
+        "newline"
+      ]
+    },
+    {
+      "id": "ch3-mcq-19",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In script mode, to display the value of an expression you must use ______.",
+      "options": [
+        "echo",
+        "print()",
+        "write()",
+        "show()"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "echo is a shell command.",
+        "Correct — print() is required in script mode.",
+        "write() writes to a file, not the screen.",
+        "show() is not a Python function."
+      ],
+      "explanation": "In script mode values are not echoed automatically; print() must be used to display them.",
+      "relatedConcepts": [
+        "script mode",
+        "print()",
+        "output"
+      ]
+    },
+    {
+      "id": "ch3-mcq-20",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Which of the following is NOT a built-in Python data type?",
+      "options": [
+        "int",
+        "float",
+        "str",
+        "char"
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "int is a built-in integer type.",
+        "float is a built-in floating-point type.",
+        "str is a built-in string type.",
+        "Correct — Python has no separate char type; a single character is a str."
+      ],
+      "explanation": "Python has no char data type; characters are stored as strings of length one.",
+      "relatedConcepts": [
+        "data types",
+        "str",
+        "char"
+      ]
+    },
+    {
+      "id": "ch3-mcq-21",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Python is often described as a 'batteries included' language because ______.",
+      "options": [
+        "it needs batteries to run",
+        "it ships with a large standard library",
+        "it is only used for hardware",
+        "it runs on battery power"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Python does not need batteries.",
+        "Correct — it comes with a large standard library.",
+        "It is not limited to hardware.",
+        "That is unrelated to the phrase."
+      ],
+      "explanation": "'Batteries included' means Python ships with a large standard library of ready-to-use modules.",
+      "relatedConcepts": [
+        "standard library",
+        "features",
+        "modules"
+      ]
+    },
+    {
+      "id": "ch3-mcq-22",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which statement about Python is TRUE?",
+      "options": [
+        "Python is a low-level language",
+        "Python is compiled only",
+        "Python is a high-level, interpreted language",
+        "Python cannot do object-oriented programming"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Python is high-level, not low-level.",
+        "Python is interpreted.",
+        "Correct — Python is high-level and interpreted.",
+        "Python supports object-oriented programming."
+      ],
+      "explanation": "Python is a high-level, interpreted, general-purpose and object-oriented language.",
+      "relatedConcepts": [
+        "high-level",
+        "interpreted",
+        "object-oriented"
+      ]
+    },
+    {
+      "id": "ch3-mcq-23",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "What is the output of print(\"2\" + \"3\")?",
+      "options": [
+        "5",
+        "23",
+        "\"23\"",
+        "An error"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "5 would be the result of adding the numbers 2 and 3.",
+        "Correct — the + joins two strings to give 23.",
+        "Quotes are not part of the output.",
+        "There is no error; + joins two strings."
+      ],
+      "explanation": "The + operator concatenates strings, so \"2\" + \"3\" gives the string 23, printed as 23.",
+      "relatedConcepts": [
+        "string concatenation",
+        "print()",
+        "operators"
+      ]
+    },
+    {
+      "id": "ch3-mcq-24",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is an advantage of Python?",
+      "options": [
+        "Code is difficult to read",
+        "It requires manual memory management",
+        "Simple and readable syntax",
+        "It works only on Windows"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Python code is easy to read.",
+        "Python manages memory automatically.",
+        "Correct — the syntax is simple and readable.",
+        "Python is platform independent."
+      ],
+      "explanation": "Python's simple, English-like syntax makes programs shorter and easier to read and write.",
+      "relatedConcepts": [
+        "advantages",
+        "readability",
+        "syntax"
+      ]
+    },
+    {
+      "id": "ch3-mcq-25",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the interactive shell of IDLE mainly used for?",
+      "options": [
+        "Compiling C programs",
+        "Testing small pieces of code one line at a time",
+        "Designing web pages",
+        "Managing databases only"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "IDLE does not compile C.",
+        "Correct — it is used to test small code snippets quickly.",
+        "It is not a web-page designer.",
+        "It is not limited to databases."
+      ],
+      "explanation": "The interactive shell lets you type a statement and see its result immediately — ideal for quick testing.",
+      "relatedConcepts": [
+        "IDLE shell",
+        "interactive mode",
+        "testing"
+      ]
+    },
+    {
+      "id": "ch3-vsa-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Who created Python and in which year was it first released?",
+      "modelAnswer": "Python was created by Guido van Rossum and was first released in 1991.",
+      "keywords": [
+        "Guido van Rossum",
+        "1991",
+        "creator"
+      ],
+      "explanation": "Python was created by Guido van Rossum and was first released in 1991.",
+      "relatedConcepts": [
+        "Guido van Rossum",
+        "1991",
+        "creator"
+      ]
+    },
+    {
+      "id": "ch3-vsa-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define an interpreted language.",
+      "modelAnswer": "An interpreted language is one in which the source code is translated and executed line by line by an interpreter at run time, without being converted into a separate machine-code file beforehand.",
+      "keywords": [
+        "interpreted",
+        "line by line",
+        "interpreter"
+      ],
+      "explanation": "An interpreted language is one in which the source code is translated and executed line by line by an interpreter at run time, without being converted into a separate machine-code file beforehand.",
+      "relatedConcepts": [
+        "interpreted",
+        "line by line",
+        "interpreter"
+      ]
+    },
+    {
+      "id": "ch3-vsa-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the extension of a Python program file?",
+      "modelAnswer": "A Python program (script) file is saved with the .py extension, for example hello.py.",
+      "keywords": [
+        ".py",
+        "script file",
+        "extension"
+      ],
+      "explanation": "A Python program (script) file is saved with the .py extension, for example hello.py.",
+      "relatedConcepts": [
+        ".py",
+        "script file",
+        "extension"
+      ]
+    },
+    {
+      "id": "ch3-vsa-04",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Name the two modes of working in Python.",
+      "modelAnswer": "The two modes of working in Python are interactive mode and script mode.",
+      "keywords": [
+        "interactive mode",
+        "script mode"
+      ],
+      "explanation": "The two modes of working in Python are interactive mode and script mode.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode"
+      ]
+    },
+    {
+      "id": "ch3-vsa-05",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is IDLE?",
+      "modelAnswer": "IDLE (Integrated Development and Learning Environment) is the simple editor and interactive shell bundled with Python, used to write, save and run Python programs.",
+      "keywords": [
+        "IDLE",
+        "editor",
+        "shell"
+      ],
+      "explanation": "IDLE (Integrated Development and Learning Environment) is the simple editor and interactive shell bundled with Python, used to write, save and run Python programs.",
+      "relatedConcepts": [
+        "IDLE",
+        "editor",
+        "shell"
+      ]
+    },
+    {
+      "id": "ch3-vsa-06",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the use of the print() function?",
+      "modelAnswer": "The print() function displays (prints) values such as strings, numbers or variables on the screen as output.",
+      "keywords": [
+        "print()",
+        "output",
+        "display"
+      ],
+      "explanation": "The print() function displays (prints) values such as strings, numbers or variables on the screen as output.",
+      "relatedConcepts": [
+        "print()",
+        "output",
+        "display"
+      ]
+    },
+    {
+      "id": "ch3-vsa-07",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the interactive-mode prompt in Python?",
+      "modelAnswer": "The interactive-mode prompt in Python is >>> (three greater-than signs); a continuation line shows the ... prompt.",
+      "keywords": [
+        ">>>",
+        "interactive prompt"
+      ],
+      "explanation": "The interactive-mode prompt in Python is >>> (three greater-than signs); a continuation line shows the ... prompt.",
+      "relatedConcepts": [
+        ">>>",
+        "interactive prompt"
+      ]
+    },
+    {
+      "id": "ch3-vsa-08",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Give one advantage of Python.",
+      "modelAnswer": "Python has a simple, English-like and readable syntax, which makes programs easy to write, learn and debug.",
+      "keywords": [
+        "advantage",
+        "readable syntax",
+        "easy to learn"
+      ],
+      "explanation": "Python has a simple, English-like and readable syntax, which makes programs easy to write, learn and debug.",
+      "relatedConcepts": [
+        "advantage",
+        "readable syntax",
+        "easy to learn"
+      ]
+    },
+    {
+      "id": "ch3-vsa-09",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What does the sep parameter do in the print() function?",
+      "modelAnswer": "The sep parameter specifies the string that separates multiple values printed by a single print() call. By default it is a space.",
+      "keywords": [
+        "sep",
+        "separator",
+        "print()"
+      ],
+      "explanation": "The sep parameter specifies the string that separates multiple values printed by a single print() call. By default it is a space.",
+      "relatedConcepts": [
+        "sep",
+        "separator",
+        "print()"
+      ]
+    },
+    {
+      "id": "ch3-vsa-10",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Expand the abbreviation IDLE.",
+      "modelAnswer": "IDLE stands for Integrated Development and Learning Environment.",
+      "keywords": [
+        "Integrated Development and Learning Environment",
+        "IDLE"
+      ],
+      "explanation": "IDLE stands for Integrated Development and Learning Environment.",
+      "relatedConcepts": [
+        "Integrated Development and Learning Environment",
+        "IDLE"
+      ]
+    },
+    {
+      "id": "ch3-sa-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain any three features of Python.",
+      "modelAnswer": "Three important features of Python are: (i) Easy and readable syntax — it uses English-like statements and indentation, so programs are short and easy to understand. (ii) Interpreted — the code is executed line by line by the interpreter, so no separate compilation step is needed and errors are reported as soon as the faulty line is reached. (iii) Free and open source with a large standard library — Python can be downloaded and used freely and comes with many ready-made modules. It is also platform independent, so the same program runs on Windows, Linux and macOS.",
+      "rubric": [
+        "Names three correct features (1 mark each).",
+        "Gives a one-line explanation of each feature.",
+        "Mentions at least one of: interpreted, high-level, open source, portable, object-oriented, large library."
+      ],
+      "explanation": "Three important features of Python are: (i) Easy and readable syntax — it uses English-like statements and indentation, so programs are short and easy to understand. (ii) Interpreted — the code is executed line by line by the interpreter, so no separate compilation step is needed and errors are reported as soon as the faulty line is reached. (iii) Free and open source with a large standard library — Python can be downloaded and used freely and comes with many ready-made modules. It is also platform independent, so the same program runs on Windows, Linux and macOS.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-sa-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Differentiate between interactive mode and script mode in Python.",
+      "modelAnswer": "In interactive mode, statements are typed one at a time at the >>> prompt and are executed immediately, with the result displayed at once; the code is not saved. In script mode, the entire program is written in a file with a .py extension and executed as a whole, so the code is saved, can be edited and can be re-run. Interactive mode is useful for testing small expressions, while script mode is used for complete programs. Also, in interactive mode the value of an expression is shown automatically, whereas in script mode print() must be used to see output.",
+      "rubric": [
+        "Defines interactive mode correctly.",
+        "Defines script mode correctly.",
+        "States at least two points of difference (saving, immediate result, use of print())."
+      ],
+      "explanation": "In interactive mode, statements are typed one at a time at the >>> prompt and are executed immediately, with the result displayed at once; the code is not saved. In script mode, the entire program is written in a file with a .py extension and executed as a whole, so the code is saved, can be edited and can be re-run. Interactive mode is useful for testing small expressions, while script mode is used for complete programs. Also, in interactive mode the value of an expression is shown automatically, whereas in script mode print() must be used to see output.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-sa-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "What is the difference between a compiler and an interpreter?",
+      "modelAnswer": "A compiler translates the entire source program into machine code at once before execution and produces a separate executable file; errors are reported only after the whole program is compiled. An interpreter translates and executes the program line by line at run time and does not produce a separate executable file; errors are reported as soon as the faulty line is reached. Compiled programs generally run faster, while interpreted programs are easier to develop and debug. Python is an interpreted language.",
+      "rubric": [
+        "Explains that a compiler translates the whole program at once.",
+        "Explains that an interpreter works line by line.",
+        "Mentions at least one consequence (speed, error reporting, executable file)."
+      ],
+      "explanation": "A compiler translates the entire source program into machine code at once before execution and produces a separate executable file; errors are reported only after the whole program is compiled. An interpreter translates and executes the program line by line at run time and does not produce a separate executable file; errors are reported as soon as the faulty line is reached. Compiled programs generally run faster, while interpreted programs are easier to develop and debug. Python is an interpreted language.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-sa-04",
+      "chapterId": "ch3",
+      "topicId": "ch3-installation",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the steps to download and install Python on Windows.",
+      "modelAnswer": "Steps: (1) Open a browser and go to the official website www.python.org. (2) Click Downloads and choose the latest Windows installer. (3) Run the downloaded .exe file. (4) Tick the option 'Add Python to PATH'. (5) Click 'Install Now' and wait for the installation to finish. (6) Click Close. IDLE and the Python interpreter are now installed. (7) To verify, open Command Prompt and type 'python --version'; the installed version is displayed.",
+      "rubric": [
+        "Mentions python.org as the source.",
+        "Lists the correct installer steps.",
+        "Mentions 'Add Python to PATH'.",
+        "Mentions verification with python --version."
+      ],
+      "explanation": "Steps: (1) Open a browser and go to the official website www.python.org. (2) Click Downloads and choose the latest Windows installer. (3) Run the downloaded .exe file. (4) Tick the option 'Add Python to PATH'. (5) Click 'Install Now' and wait for the installation to finish. (6) Click Close. IDLE and the Python interpreter are now installed. (7) To verify, open Command Prompt and type 'python --version'; the installed version is displayed.",
+      "relatedConcepts": [
+        "Python installation",
+        "IDLE",
+        "python.org"
+      ]
+    },
+    {
+      "id": "ch3-sa-05",
+      "chapterId": "ch3",
+      "topicId": "ch3-installation",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "What is PATH? Why is 'Add Python to PATH' important during installation?",
+      "modelAnswer": "PATH is an environment variable of the operating system that lists the directories in which the system should look for executable programs. When 'Add Python to PATH' is selected during installation, the folder containing the Python interpreter is added to this list. As a result, the command 'python' (or python3) can be typed from any folder in the terminal without giving the full path of python.exe. If this option is not selected, the terminal reports that 'python' is not recognised and the full path must be typed each time.",
+      "rubric": [
+        "Defines PATH as an environment variable listing executable folders.",
+        "Explains that it lets the 'python' command work from any folder.",
+        "Mentions the consequence if it is not selected."
+      ],
+      "explanation": "PATH is an environment variable of the operating system that lists the directories in which the system should look for executable programs. When 'Add Python to PATH' is selected during installation, the folder containing the Python interpreter is added to this list. As a result, the command 'python' (or python3) can be typed from any folder in the terminal without giving the full path of python.exe. If this option is not selected, the terminal reports that 'python' is not recognised and the full path must be typed each time.",
+      "relatedConcepts": [
+        "Python installation",
+        "IDLE",
+        "python.org"
+      ]
+    },
+    {
+      "id": "ch3-sa-06",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the sep and end parameters of the print() function with examples.",
+      "modelAnswer": "The sep parameter sets the string placed between multiple values printed by one print() call; its default value is a single space. For example, print(\"A\", \"B\", sep=\"-\") prints A-B. The end parameter sets what is printed after all the values; its default value is a newline (\\n), which moves the cursor to the next line. For example, print(\"Hello\", end=\" \") followed by print(\"World\") prints Hello World on one line. Thus sep controls what goes between values and end controls what comes after them.",
+      "rubric": [
+        "Explains sep correctly with default value and an example.",
+        "Explains end correctly with default value and an example.",
+        "Gives at least one correct code example for each."
+      ],
+      "explanation": "The sep parameter sets the string placed between multiple values printed by one print() call; its default value is a single space. For example, print(\"A\", \"B\", sep=\"-\") prints A-B. The end parameter sets what is printed after all the values; its default value is a newline (\\n), which moves the cursor to the next line. For example, print(\"Hello\", end=\" \") followed by print(\"World\") prints Hello World on one line. Thus sep controls what goes between values and end controls what comes after them.",
+      "relatedConcepts": [
+        "print()",
+        "output",
+        "command line"
+      ]
+    },
+    {
+      "id": "ch3-sa-07",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Why is Python called a high-level language? Give two reasons.",
+      "modelAnswer": "Python is called a high-level language because its instructions are written in an English-like form that is close to human language and far from the machine's binary code. Two reasons are: (i) the programmer does not have to manage low-level details such as memory addresses and registers — Python does this automatically; and (ii) the same high-level program is portable, so it can run on different operating systems without being rewritten. This makes Python easier to learn, write and maintain than low-level languages.",
+      "rubric": [
+        "States that it is close to human language.",
+        "Gives two valid reasons (e.g. no memory management, portability).",
+        "Contrasts with low-level/assembly/machine language."
+      ],
+      "explanation": "Python is called a high-level language because its instructions are written in an English-like form that is close to human language and far from the machine's binary code. Two reasons are: (i) the programmer does not have to manage low-level details such as memory addresses and registers — Python does this automatically; and (ii) the same high-level program is portable, so it can run on different operating systems without being rewritten. This makes Python easier to learn, write and maintain than low-level languages.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-sa-08",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain how to run a Python script saved as hello.py from the command line.",
+      "modelAnswer": "First save the program (for example print(\"Hello World\")) in a file named hello.py. Then open the command prompt or terminal in the folder that contains the file. Type the command: python hello.py (on some systems, python3 hello.py) and press Enter. The Python interpreter runs the file line by line and displays the output below the command. If Python is not on the PATH, the full path of the interpreter must be given instead.",
+      "rubric": [
+        "Mentions saving the program in a .py file.",
+        "Gives the command python hello.py.",
+        "Mentions that the output is displayed in the terminal."
+      ],
+      "explanation": "First save the program (for example print(\"Hello World\")) in a file named hello.py. Then open the command prompt or terminal in the folder that contains the file. Type the command: python hello.py (on some systems, python3 hello.py) and press Enter. The Python interpreter runs the file line by line and displays the output below the command. If Python is not on the PATH, the full path of the interpreter must be given instead.",
+      "relatedConcepts": [
+        "print()",
+        "output",
+        "command line"
+      ]
+    },
+    {
+      "id": "ch3-sa-09",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "sa",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "List any three common mistakes beginners make while writing Python programs and how to avoid them.",
+      "modelAnswer": "Common mistakes: (i) Forgetting that Python is case-sensitive — writing Print instead of print; avoid this by using the correct lower-case built-in names. (ii) Omitting quotes around strings, e.g. print(Hello World), which causes a NameError; always put text inside quotes. (iii) Expecting an expression to print itself in script mode; remember that print() is required. Another common mistake is forgetting the closing bracket, which causes a SyntaxError. Careful typing and running the program frequently help avoid these errors.",
+      "rubric": [
+        "Lists three genuine beginner mistakes.",
+        "Gives a way to avoid each (or a short explanation).",
+        "Shows understanding of syntax/logical errors."
+      ],
+      "explanation": "Common mistakes: (i) Forgetting that Python is case-sensitive — writing Print instead of print; avoid this by using the correct lower-case built-in names. (ii) Omitting quotes around strings, e.g. print(Hello World), which causes a NameError; always put text inside quotes. (iii) Expecting an expression to print itself in script mode; remember that print() is required. Another common mistake is forgetting the closing bracket, which causes a SyntaxError. Careful typing and running the program frequently help avoid these errors.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-sa-10",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain the role of the .py extension and how Python executes a script file.",
+      "modelAnswer": "The .py extension identifies a file as a Python source (script) file, so the operating system and editors recognise it as Python code. When such a file is executed — for example by the command python hello.py or by pressing F5 in IDLE — the Python interpreter reads the file, executes its statements from top to bottom, and displays any output produced by print(). The code is not converted into a separate machine-code file; the interpreter handles the whole process. Saving with .py is therefore essential for a program to be treated as a Python script.",
+      "rubric": [
+        "Explains that .py marks a Python source file.",
+        "Explains top-to-bottom execution by the interpreter.",
+        "Mentions running via python file.py or F5 in IDLE."
+      ],
+      "explanation": "The .py extension identifies a file as a Python source (script) file, so the operating system and editors recognise it as Python code. When such a file is executed — for example by the command python hello.py or by pressing F5 in IDLE — the Python interpreter reads the file, executes its statements from top to bottom, and displays any output produced by print(). The code is not converted into a separate machine-code file; the interpreter handles the whole process. Saving with .py is therefore essential for a program to be treated as a Python script.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-la-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 6,
+      "question": "Discuss any five features of Python that make it a popular programming language.",
+      "modelAnswer": "Python is popular because of the following features: (1) Easy to learn and read — its syntax is simple and English-like, with indentation instead of braces, so programs are short and clear. (2) Interpreted — the interpreter executes code line by line, so there is no separate compilation step and errors are reported immediately. (3) Free and open source — it can be downloaded from python.org, used and modified without any licence fee. (4) Platform independent (portable) — the same program runs on Windows, Linux and macOS without change. (5) Large standard library and community support — ready-made modules ('batteries included') and extensive third-party libraries support web development, data science, AI and more. It is also object-oriented and extensible, allowing code reuse and integration with other languages. These features together make Python suitable for both beginners and large organisations.",
+      "rubric": [
+        "Names at least five features.",
+        "Gives a correct one-line explanation of each.",
+        "Mentions object-oriented / extensible / large library as bonus."
+      ],
+      "keywords": [
+        "high-level",
+        "interpreted",
+        "open source",
+        "portability",
+        "standard library",
+        "object-oriented"
+      ],
+      "explanation": "Python is popular because of the following features: (1) Easy to learn and read — its syntax is simple and English-like, with indentation instead of braces, so programs are short and clear. (2) Interpreted — the interpreter executes code line by line, so there is no separate compilation step and errors are reported immediately. (3) Free and open source — it can be downloaded from python.org, used and modified without any licence fee. (4) Platform independent (portable) — the same program runs on Windows, Linux and macOS without change. (5) Large standard library and community support — ready-made modules ('batteries included') and extensive third-party libraries support web development, data science, AI and more. It is also object-oriented and extensible, allowing code reuse and integration with other languages. These features together make Python suitable for both beginners and large organisations.",
+      "relatedConcepts": [
+        "high-level",
+        "interpreted",
+        "open source"
+      ]
+    },
+    {
+      "id": "ch3-la-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Compare compiled and interpreted languages, and explain why Python is called an interpreted language with two advantages and one disadvantage.",
+      "modelAnswer": "In a compiled language (such as C or C++), the entire source program is translated into machine code by a compiler before it is run, and a separate executable file is produced; errors are reported only after the whole program is compiled. In an interpreted language, the source code is translated and executed line by line by an interpreter at run time, and no separate executable file is produced; errors are reported as soon as the faulty line is reached. Python is called an interpreted language because the Python interpreter reads and executes its source code line by line (internally it first compiles to bytecode, but the programmer sees only interpretation, with no separate compile step). Advantages of being interpreted: (i) development is faster because there is no compile step and code can be run immediately; (ii) errors are pinpointed to the exact line, which makes debugging easier, and the code is portable. Disadvantage: interpreted programs generally execute more slowly than fully compiled programs because translation happens at run time.",
+      "rubric": [
+        "Defines a compiled language correctly.",
+        "Defines an interpreted language correctly.",
+        "Explains why Python is interpreted.",
+        "Gives two advantages and one disadvantage.",
+        "Uses correct technical vocabulary (compiler, interpreter, bytecode)."
+      ],
+      "keywords": [
+        "compiler",
+        "interpreter",
+        "machine code",
+        "bytecode",
+        "debugging"
+      ],
+      "explanation": "In a compiled language (such as C or C++), the entire source program is translated into machine code by a compiler before it is run, and a separate executable file is produced; errors are reported only after the whole program is compiled. In an interpreted language, the source code is translated and executed line by line by an interpreter at run time, and no separate executable file is produced; errors are reported as soon as the faulty line is reached. Python is called an interpreted language because the Python interpreter reads and executes its source code line by line (internally it first compiles to bytecode, but the programmer sees only interpretation, with no separate compile step). Advantages of being interpreted: (i) development is faster because there is no compile step and code can be run immediately; (ii) errors are pinpointed to the exact line, which makes debugging easier, and the code is portable. Disadvantage: interpreted programs generally execute more slowly than fully compiled programs because translation happens at run time.",
+      "relatedConcepts": [
+        "compiler",
+        "interpreter",
+        "machine code"
+      ]
+    },
+    {
+      "id": "ch3-la-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-installation",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain in detail how Python and IDLE are installed, including the role of PATH, and how the installation is verified.",
+      "modelAnswer": "To install Python: open the official website www.python.org, go to Downloads, and select the Windows installer for the latest Python 3 version. Run the downloaded .exe file. In the installer window, tick the checkbox 'Add Python to PATH' — this is important because PATH is the operating-system environment variable that lists the folders searched for executable programs; adding Python to it lets you run the 'python' command from any folder. Click 'Install Now' and wait for the setup to complete, then click Close. The standard installer also installs IDLE (Integrated Development and Learning Environment), Python's default editor and interactive shell, available from the Start menu. To verify the installation, open Command Prompt and type 'python --version' (or 'python3 --version'); the installed version, such as Python 3.11.4, is displayed. You may also type just 'python' to enter the interactive shell. pip, the package installer, is installed along with Python 3.",
+      "rubric": [
+        "Mentions python.org and the Windows installer.",
+        "Explains 'Add Python to PATH' and why it matters.",
+        "States that IDLE is bundled with the installation.",
+        "Explains verification using python --version.",
+        "Correct sequence of steps."
+      ],
+      "keywords": [
+        "python.org",
+        "installer",
+        "PATH",
+        "IDLE",
+        "python --version",
+        "pip"
+      ],
+      "explanation": "To install Python: open the official website www.python.org, go to Downloads, and select the Windows installer for the latest Python 3 version. Run the downloaded .exe file. In the installer window, tick the checkbox 'Add Python to PATH' — this is important because PATH is the operating-system environment variable that lists the folders searched for executable programs; adding Python to it lets you run the 'python' command from any folder. Click 'Install Now' and wait for the setup to complete, then click Close. The standard installer also installs IDLE (Integrated Development and Learning Environment), Python's default editor and interactive shell, available from the Start menu. To verify the installation, open Command Prompt and type 'python --version' (or 'python3 --version'); the installed version, such as Python 3.11.4, is displayed. You may also type just 'python' to enter the interactive shell. pip, the package installer, is installed along with Python 3.",
+      "relatedConcepts": [
+        "python.org",
+        "installer",
+        "PATH"
+      ]
+    },
+    {
+      "id": "ch3-la-04",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 6,
+      "question": "Explain the two modes of working in Python — interactive mode and script mode — with examples, and describe how to create and run a .py file in IDLE.",
+      "modelAnswer": "Python code can be executed in two modes. (1) Interactive mode: the interpreter is started and a >>> prompt appears; each statement is typed and, on pressing Enter, executed immediately with the result displayed at once. For example, typing 2 + 3 at the prompt shows 5 without any print(). This mode is ideal for testing small expressions but the code is not saved. (2) Script mode: the complete program is written in a file and saved with the .py extension; the whole file is then executed together. For example, saving a = 4; b = 6; print(\"Sum =\", a + b) in sum.py and running it prints Sum = 10. In script mode print() must be used to display output, but the code is saved, editable and reusable. To create and run a script in IDLE: open IDLE, choose File > New File to open the editor, type the program, save it with a .py extension using File > Save, and run it with Run > Run Module or the F5 key. The output appears in the IDLE shell. IDLE therefore provides both the interactive shell and the file editor.",
+      "rubric": [
+        "Explains interactive mode with the >>> prompt and an example.",
+        "Explains script mode with a .py file and an example.",
+        "Mentions that print() is needed in script mode.",
+        "Describes creating/running a file in IDLE (New File, Save, F5).",
+        "States at least one difference between the modes."
+      ],
+      "keywords": [
+        "interactive mode",
+        "script mode",
+        ">>> prompt",
+        ".py file",
+        "IDLE",
+        "F5"
+      ],
+      "explanation": "Python code can be executed in two modes. (1) Interactive mode: the interpreter is started and a >>> prompt appears; each statement is typed and, on pressing Enter, executed immediately with the result displayed at once. For example, typing 2 + 3 at the prompt shows 5 without any print(). This mode is ideal for testing small expressions but the code is not saved. (2) Script mode: the complete program is written in a file and saved with the .py extension; the whole file is then executed together. For example, saving a = 4; b = 6; print(\"Sum =\", a + b) in sum.py and running it prints Sum = 10. In script mode print() must be used to display output, but the code is saved, editable and reusable. To create and run a script in IDLE: open IDLE, choose File > New File to open the editor, type the program, save it with a .py extension using File > Save, and run it with Run > Run Module or the F5 key. The output appears in the IDLE shell. IDLE therefore provides both the interactive shell and the file editor.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ">>> prompt"
+      ]
+    },
+    {
+      "id": "ch3-la-05",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 6,
+      "question": "Write a detailed note on the print() function, covering its syntax, the sep and end parameters, printing multiple values, and string concatenation versus the comma.",
+      "modelAnswer": "The print() function is Python's built-in function for displaying output on the screen. Its general form is print(value1, value2, ..., sep=' ', end='\\n'). Values may be strings (in quotes), numbers or variables. When several values are given separated by commas, print() displays them separated by a space — for example print(\"Hello\", \"World\") gives Hello World. The sep parameter changes this separator: print(\"A\", \"B\", sep=\"-\") gives A-B. The end parameter sets what is printed after the values; the default is a newline (\\n), so each print() starts a new line. Using end=\" \" keeps the cursor on the same line, so print(\"Hello\", end=\" \") followed by print(\"World\") gives Hello World on one line. Values can also be joined with the + operator, but + concatenates strings with no space — print(\"Hello\" + \"World\") gives HelloWorld — and it works only for strings, whereas a comma can separate values of any type. The simplest program, print(\"Hello World\"), prints Hello World and is the traditional first program in Python.",
+      "rubric": [
+        "Gives the general syntax of print().",
+        "Explains sep with an example and its default value.",
+        "Explains end with an example and its default value.",
+        "Explains multiple values and the comma separator.",
+        "Contrasts + concatenation with the comma.",
+        "Uses correct examples throughout."
+      ],
+      "keywords": [
+        "print()",
+        "sep",
+        "end",
+        "concatenation",
+        "string",
+        "newline"
+      ],
+      "explanation": "The print() function is Python's built-in function for displaying output on the screen. Its general form is print(value1, value2, ..., sep=' ', end='\\n'). Values may be strings (in quotes), numbers or variables. When several values are given separated by commas, print() displays them separated by a space — for example print(\"Hello\", \"World\") gives Hello World. The sep parameter changes this separator: print(\"A\", \"B\", sep=\"-\") gives A-B. The end parameter sets what is printed after the values; the default is a newline (\\n), so each print() starts a new line. Using end=\" \" keeps the cursor on the same line, so print(\"Hello\", end=\" \") followed by print(\"World\") gives Hello World on one line. Values can also be joined with the + operator, but + concatenates strings with no space — print(\"Hello\" + \"World\") gives HelloWorld — and it works only for strings, whereas a comma can separate values of any type. The simplest program, print(\"Hello World\"), prints Hello World and is the traditional first program in Python.",
+      "relatedConcepts": [
+        "print()",
+        "sep",
+        "end"
+      ]
+    },
+    {
+      "id": "ch3-case-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Study the passage and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "A student opens IDLE and sees a window with a >>> prompt. She types 7 * 8 and presses Enter; the value 56 appears immediately. Later she chooses File > New File, types a small program, saves it as marks.py, and presses F5 to run it. The output of the program appears in the shell window.",
+        "subQuestions": [
+          {
+            "question": "Which mode of working in Python is the student using when she types 7 * 8 at the >>> prompt?",
+            "kind": "mcq",
+            "options": [
+              "Script mode",
+              "Interactive mode",
+              "Batch mode",
+              "Compile mode"
+            ],
+            "answer": 1,
+            "explanation": "Statements typed at the >>> prompt and executed at once are interactive mode.",
+            "marks": 1
+          },
+          {
+            "question": "Why did the result 56 appear without using print()?",
+            "kind": "short",
+            "answer": "In interactive mode the value of an expression is displayed automatically, so print() is not required.",
+            "explanation": "The interactive shell echoes the value of each expression; print() is needed only in script mode.",
+            "marks": 1
+          },
+          {
+            "question": "What is the extension of the file the student saved?",
+            "kind": "mcq",
+            "options": [
+              ".python",
+              ".py",
+              ".txt",
+              ".exe"
+            ],
+            "answer": 1,
+            "explanation": "Python script files use the .py extension.",
+            "marks": 1
+          },
+          {
+            "question": "Which key did the student press to run the saved program, and what does it do?",
+            "kind": "short",
+            "answer": "F5 (Run > Run Module). It executes the saved script and shows the output in the IDLE shell.",
+            "explanation": "F5 runs the current script in IDLE; the output appears in the shell window.",
+            "marks": 2
+          }
+        ]
+      },
+      "explanation": "This case tests the distinction between interactive and script mode, the .py extension, and running a script with F5 in IDLE.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py extension",
+        "IDLE"
+      ]
+    },
+    {
+      "id": "ch3-case-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Read the passage and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "Ravi wants to print a greeting from the terminal. He opens Command Prompt and types the command python hello.py. The program hello.py contains two lines: print(\"Hello\", \"World\") and print(\"Hello\" + \"World\").",
+        "table": {
+          "headers": [
+            "Statement",
+            "Output"
+          ],
+          "rows": [
+            [
+              "print(\"Hello\", \"World\")",
+              "?"
+            ],
+            [
+              "print(\"Hello\" + \"World\")",
+              "?"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "What is the output of the first statement print(\"Hello\", \"World\")?",
+            "kind": "mcq",
+            "options": [
+              "HelloWorld",
+              "Hello World",
+              "Hello,World",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "A comma makes print() separate the values with a space by default.",
+            "marks": 1
+          },
+          {
+            "question": "What is the output of the second statement print(\"Hello\" + \"World\")?",
+            "kind": "mcq",
+            "options": [
+              "HelloWorld",
+              "Hello World",
+              "Hello-World",
+              "Error"
+            ],
+            "answer": 0,
+            "explanation": "The + operator joins (concatenates) the two strings with no space, giving HelloWorld.",
+            "marks": 1
+          },
+          {
+            "question": "What command did Ravi use to run the program, and from where?",
+            "kind": "short",
+            "answer": "He used 'python hello.py' from the Command Prompt (terminal), in the folder containing hello.py.",
+            "explanation": "The interpreter is invoked as python followed by the script filename.",
+            "marks": 1
+          },
+          {
+            "question": "What does REPL stand for, and is Ravi using REPL here?",
+            "kind": "short",
+            "answer": "REPL stands for Read, Eval, Print, Loop. No — he is running a saved script file, not typing at the >>> prompt, so he is using script mode rather than the REPL.",
+            "explanation": "REPL describes the interactive shell; running python hello.py executes a file in script mode.",
+            "marks": 2
+          }
+        ]
+      },
+      "explanation": "This case compares comma-separated values with string concatenation and tests running a script from the terminal.",
+      "relatedConcepts": [
+        "print()",
+        "string concatenation",
+        "comma separator",
+        "command line"
+      ]
+    },
+    {
+      "id": "ch3-case-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "case",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Read the passage and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "A school wants to introduce programming to Class 11 students. The teacher recommends Python because it is high-level, interpreted, free and open source, and platform independent. She explains that the same program written on a Windows computer can be run on a Linux machine without any change, and that mistakes are reported as soon as the faulty line is reached.",
+        "subQuestions": [
+          {
+            "question": "Which property of Python allows the same program to run on Windows and Linux without change?",
+            "kind": "mcq",
+            "options": [
+              "Compilation",
+              "Portability",
+              "Interpretation",
+              "Concatenation"
+            ],
+            "answer": 1,
+            "explanation": "Portability (platform independence) lets the same source code run on different operating systems.",
+            "marks": 1
+          },
+          {
+            "question": "Why does Python report a mistake as soon as the faulty line is reached?",
+            "kind": "short",
+            "answer": "Because Python is an interpreted language: the interpreter executes the code line by line, so it reaches and reports the error as soon as that line runs.",
+            "explanation": "Line-by-line execution means errors surface immediately rather than only after a full compile.",
+            "marks": 2
+          },
+          {
+            "question": "Which of the following statements is TRUE about Python?",
+            "kind": "mcq",
+            "options": [
+              "Python is a low-level compiled language",
+              "Python is a high-level interpreted language",
+              "Python is not free to use",
+              "Python works only on Windows"
+            ],
+            "answer": 1,
+            "explanation": "Python is a high-level, interpreted, free and open source, platform-independent language.",
+            "marks": 1
+          },
+          {
+            "question": "Name the creator of Python and the year of its first release.",
+            "kind": "short",
+            "answer": "Guido van Rossum; first released in 1991.",
+            "explanation": "Python was created by Guido van Rossum and first released in 1991.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case tests the features of Python (portability, interpretation, high-level nature) and the creator/year fact.",
+      "relatedConcepts": [
+        "portability",
+        "interpreted",
+        "high-level",
+        "Guido van Rossum"
+      ]
+    },
+    {
+      "id": "ch3-assertion-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Assertion (A): Python is called an interpreted language.\nReason (R): Python code is executed line by line by the interpreter without a separate compilation step.",
+      "assertion": "Python is called an interpreted language.",
+      "reason": "Python code is executed line by line by the interpreter without a separate compilation step.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both statements are true and the reason correctly explains why Python is called interpreted.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-assertion-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "assertion",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Assertion (A): Python programs are portable.\nReason (R): Python source code is compiled into machine code for one specific processor.",
+      "assertion": "Python programs are portable.",
+      "reason": "Python source code is compiled into machine code for one specific processor.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 2,
+      "explanation": "A is true (Python is portable), but R is false — Python is interpreted and is not compiled into machine code for a specific processor.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-assertion-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Assertion (A): Python uses curly braces to mark blocks of code.\nReason (R): Python uses indentation to define blocks of code.",
+      "assertion": "Python uses curly braces to mark blocks of code.",
+      "reason": "Python uses indentation to define blocks of code.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 3,
+      "explanation": "A is false (Python does not use curly braces), but R is true (Python uses indentation).",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-assertion-04",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Assertion (A): Python is a high-level programming language.\nReason (R): Python was created by Guido van Rossum.",
+      "assertion": "Python is a high-level programming language.",
+      "reason": "Python was created by Guido van Rossum.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Both statements are true, but the creator of Python does not explain why it is a high-level language, so R is not the correct explanation of A.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-truefalse-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python is a compiled language.",
+      "correctAnswer": "False",
+      "correction": "Python is an interpreted language — the interpreter executes the code line by line.",
+      "explanation": "Python is interpreted; there is no separate compilation step for the programmer.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-truefalse-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python is a case-sensitive language.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "In Python, Print and print are different names, so case matters.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-truefalse-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The extension of a Python program file is .python.",
+      "correctAnswer": "False",
+      "correction": "The extension of a Python program file is .py.",
+      "explanation": "Python script files use the .py extension.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-truefalse-04",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In interactive mode, the code you type is saved permanently and can be reused later.",
+      "correctAnswer": "False",
+      "correction": "Interactive mode does not save code; script mode is used to save and reuse programs.",
+      "explanation": "Only script mode saves the program in a .py file that can be reused.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-truefalse-05",
+      "chapterId": "ch3",
+      "topicId": "ch3-installation",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "IDLE is bundled with the standard Python installation.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "IDLE (Integrated Development and Learning Environment) is installed along with Python.",
+      "relatedConcepts": [
+        "Python installation",
+        "IDLE",
+        "python.org"
+      ]
+    },
+    {
+      "id": "ch3-truefalse-06",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Guido van Rossum developed the Python language.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "Python was created by Guido van Rossum and first released in 1991.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-fillblank-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python was created by ______.",
+      "correctAnswer": "Guido van Rossum",
+      "acceptedAnswers": [
+        "Guido van Rossum",
+        "Guido Van Rossum",
+        "Guido van rossum"
+      ],
+      "explanation": "Python was created by Guido van Rossum and first released in 1991.",
+      "relatedConcepts": [
+        "Python basics",
+        "features of Python",
+        "Python history"
+      ]
+    },
+    {
+      "id": "ch3-fillblank-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python source files are saved with the ______ extension.",
+      "correctAnswer": ".py",
+      "acceptedAnswers": [
+        ".py",
+        "py"
+      ],
+      "explanation": "Python script files use the .py extension, e.g. hello.py.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-fillblank-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The prompt shown in Python's interactive mode is ______.",
+      "correctAnswer": ">>>",
+      "acceptedAnswers": [
+        ">>>",
+        ">>> "
+      ],
+      "explanation": "The interactive shell displays the >>> prompt.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-fillblank-04",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In Python, blocks of code are defined by ______.",
+      "correctAnswer": "indentation",
+      "acceptedAnswers": [
+        "indentation",
+        "indent",
+        "indentation (whitespace)"
+      ],
+      "explanation": "Python uses indentation (whitespace) to define blocks, unlike languages that use braces.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        ".py file"
+      ]
+    },
+    {
+      "id": "ch3-fillblank-05",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The ______ function is used to display output on the screen.",
+      "correctAnswer": "print",
+      "acceptedAnswers": [
+        "print",
+        "print()",
+        "print( )"
+      ],
+      "explanation": "print() is Python's built-in function for displaying output.",
+      "relatedConcepts": [
+        "print()",
+        "output",
+        "command line"
+      ]
+    },
+    {
+      "id": "ch3-fillblank-06",
+      "chapterId": "ch3",
+      "topicId": "ch3-installation",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python can be downloaded from the official website ______.",
+      "correctAnswer": "python.org",
+      "acceptedAnswers": [
+        "python.org",
+        "www.python.org",
+        "https://www.python.org",
+        "http://www.python.org"
+      ],
+      "explanation": "The official website for downloading Python is www.python.org.",
+      "relatedConcepts": [
+        "Python installation",
+        "IDLE",
+        "python.org"
+      ]
+    },
+    {
+      "id": "ch3-match-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "match",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match the terms in Column A with the correct descriptions in Column B.",
+      "matchPairs": [
+        {
+          "left": "High-level language",
+          "right": "Close to human language and hides machine details"
+        },
+        {
+          "left": "Interpreted",
+          "right": "Executes the code line by line"
+        },
+        {
+          "left": "Guido van Rossum",
+          "right": "Creator of Python"
+        },
+        {
+          "left": "IDLE",
+          "right": "Python's default editor and interactive shell"
+        },
+        {
+          "left": ".py",
+          "right": "Extension of a Python script file"
+        }
+      ],
+      "explanation": "These terms describe the nature of Python, its creator, and the tools and file format used with it.",
+      "relatedConcepts": [
+        "high-level",
+        "interpreted",
+        "Guido van Rossum",
+        "IDLE"
+      ]
+    },
+    {
+      "id": "ch3-match-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-working",
+      "type": "match",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match the items in Column A with the correct descriptions in Column B.",
+      "matchPairs": [
+        {
+          "left": "Interactive mode",
+          "right": "Statements executed immediately at the >>> prompt"
+        },
+        {
+          "left": "Script mode",
+          "right": "A complete program saved in a file and run as a whole"
+        },
+        {
+          "left": "print()",
+          "right": "Displays output on the screen"
+        },
+        {
+          "left": "sep",
+          "right": "String placed between multiple values printed together"
+        },
+        {
+          "left": "end",
+          "right": "String printed after the values (default: newline)"
+        }
+      ],
+      "explanation": "These items describe the two modes of working and the parts of the print() function.",
+      "relatedConcepts": [
+        "interactive mode",
+        "script mode",
+        "print()",
+        "sep"
+      ]
+    },
+    {
+      "id": "ch3-output-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Write the exact output produced by the following code.",
+      "code": "x = 10\ny = 3\nprint(x + y)\nprint(x // y)\nprint(x % y)\nprint(x ** y)",
+      "correctAnswer": "13\n3\n1\n1000",
+      "executionSteps": [
+        "x is assigned 10 and y is assigned 3.",
+        "print(x + y) prints 13 (addition).",
+        "print(x // y) prints 3 (integer/floored division: 10 // 3 = 3).",
+        "print(x % y) prints 1 (remainder: 10 % 3 = 1).",
+        "print(x ** y) prints 1000 (power: 10 raised to 3)."
+      ],
+      "explanation": "This tests arithmetic operators: +, // (floored division), % (modulus) and ** (exponent).",
+      "relatedConcepts": [
+        "arithmetic operators",
+        "print()",
+        "floored division"
+      ]
+    },
+    {
+      "id": "ch3-output-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Write the exact output produced by the following code.",
+      "code": "name = \"Python\"\nprint(\"Hello\", name)\nprint(\"Hello \" + name)\nprint(len(name))",
+      "correctAnswer": "Hello Python\nHello Python\n6",
+      "executionSteps": [
+        "name stores the string \"Python\".",
+        "print(\"Hello\", name) separates the two values with a space: Hello Python.",
+        "print(\"Hello \" + name) concatenates the strings; note the space inside the first string: Hello Python.",
+        "print(len(name)) prints the number of characters in \"Python\", which is 6."
+      ],
+      "explanation": "This tests comma separation, string concatenation and the len() function.",
+      "relatedConcepts": [
+        "print()",
+        "string concatenation",
+        "len()"
+      ]
+    },
+    {
+      "id": "ch3-output-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "output",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "Write the exact output produced by the following code.",
+      "code": "print(\"A\", \"B\", \"C\", sep=\"-\")\nprint(\"Line1\")\nprint(\"Line2\", end=\" \")\nprint(\"Line3\")",
+      "correctAnswer": "A-B-C\nLine1\nLine2 Line3",
+      "executionSteps": [
+        "print(\"A\", \"B\", \"C\", sep=\"-\") joins the three values with hyphens: A-B-C.",
+        "print(\"Line1\") prints Line1 followed by a newline.",
+        "print(\"Line2\", end=\" \") prints Line2 but ends with a space instead of a newline.",
+        "print(\"Line3\") therefore continues on the same line: Line2 Line3."
+      ],
+      "explanation": "This tests the sep and end parameters of print().",
+      "relatedConcepts": [
+        "sep parameter",
+        "end parameter",
+        "print()"
+      ]
+    },
+    {
+      "id": "ch3-output-04",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "output",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "Write the exact output produced by the following code.",
+      "code": "a = 5\nb = 2\nprint(a / b)\nprint(a > b)\nprint(type(a))",
+      "correctAnswer": "2.5\nTrue\n<class 'int'>",
+      "executionSteps": [
+        "a is 5 and b is 2.",
+        "print(a / b) prints 2.5 — the / operator always gives a float.",
+        "print(a > b) evaluates the comparison 5 > 2 and prints True.",
+        "print(type(a)) prints the data type of a, which is <class 'int'>."
+      ],
+      "explanation": "This tests true division, comparison operators and the type() function.",
+      "relatedConcepts": [
+        "division",
+        "comparison operators",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch3-debug-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "The following program gives an error. Identify the type of error, correct it, and write the corrected code.",
+      "code": "print(\"Hello World\"",
+      "errorType": "syntax",
+      "correctAnswer": "print(\"Hello World\")",
+      "executionSteps": [
+        "The opening bracket after print is not closed.",
+        "Python reports a SyntaxError because the parentheses do not match.",
+        "Adding the closing bracket ) fixes the program.",
+        "The corrected statement print(\"Hello World\") runs and prints Hello World."
+      ],
+      "explanation": "A missing closing parenthesis is a syntax error: the code cannot even be parsed.",
+      "relatedConcepts": [
+        "syntax error",
+        "print()",
+        "parentheses"
+      ]
+    },
+    {
+      "id": "ch3-debug-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "The following program runs without error but produces a wrong result. Identify the type of error and write the corrected code.",
+      "code": "length = 10\nbreadth = 5\narea = length + breadth\nprint(\"Area =\", area)",
+      "errorType": "logical",
+      "correctAnswer": "length = 10\nbreadth = 5\narea = length * breadth\nprint(\"Area =\", area)",
+      "executionSteps": [
+        "The program runs and prints Area = 15, but the area of a rectangle is length x breadth.",
+        "Using + instead of * gives the sum, not the area — this is a logical error.",
+        "Replacing + with * gives area = 10 * 5 = 50.",
+        "The corrected program prints Area = 50."
+      ],
+      "explanation": "A logical error produces a valid but incorrect result; here the wrong operator was used.",
+      "relatedConcepts": [
+        "logical error",
+        "operators",
+        "area of rectangle"
+      ]
+    },
+    {
+      "id": "ch3-debug-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "The following program stops with an error when run. Identify the type of error and write a corrected version that does not crash.",
+      "code": "a = 10\nb = 0\nprint(a / b)",
+      "errorType": "runtime",
+      "correctAnswer": "a = 10\nb = 0\nif b != 0:\n    print(a / b)\nelse:\n    print(\"Cannot divide by zero\")",
+      "executionSteps": [
+        "The statement print(a / b) attempts to divide 10 by 0.",
+        "Division by zero is not allowed, so Python raises a ZeroDivisionError at run time.",
+        "This is a runtime error — the program starts but fails while running.",
+        "Checking b != 0 before dividing prevents the crash and prints a helpful message instead."
+      ],
+      "explanation": "A runtime error occurs during execution; guarding against division by zero avoids the ZeroDivisionError.",
+      "relatedConcepts": [
+        "runtime error",
+        "ZeroDivisionError",
+        "if-else"
+      ]
+    },
+    {
+      "id": "ch3-program-01",
+      "chapterId": "ch3",
+      "topicId": "ch3-hello-world",
+      "type": "program",
+      "difficulty": "easy",
+      "marks": 4,
+      "question": "Write a Python program that prints \"Hello World\" on the first line and your name on the second line.",
+      "hints": [
+        "Use the print() function.",
+        "Write one print() statement per line of output.",
+        "Text must be enclosed in quotes."
+      ],
+      "modelSolution": "print(\"Hello World\")\nprint(\"My name is Aarav\")",
+      "lineExplanations": [
+        {
+          "line": "print(\"Hello World\")",
+          "explanation": "Prints the text Hello World and moves to a new line."
+        },
+        {
+          "line": "print(\"My name is Aarav\")",
+          "explanation": "Prints the second line of text on a new line."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "(no input required)",
+          "output": "Hello World\nMy name is Aarav"
+        },
+        {
+          "input": "name changed to Priya",
+          "output": "Hello World\nMy name is Priya"
+        }
+      ],
+      "rubric": [
+        "Uses print() correctly (1 mark).",
+        "Encloses both strings in quotes (1 mark).",
+        "Produces two lines of output in the correct order (2 marks)."
+      ],
+      "explanation": "This is the classic first program; each print() call outputs one line.",
+      "relatedConcepts": [
+        "print()",
+        "string",
+        "Hello World"
+      ]
+    },
+    {
+      "id": "ch3-program-02",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program to find the area and perimeter of a rectangle with length 12 and breadth 5.",
+      "hints": [
+        "Area of a rectangle = length x breadth.",
+        "Perimeter = 2 x (length + breadth).",
+        "Use print() to display the results with suitable labels."
+      ],
+      "modelSolution": "length = 12\nbreadth = 5\narea = length * breadth\nperimeter = 2 * (length + breadth)\nprint(\"Area =\", area)\nprint(\"Perimeter =\", perimeter)",
+      "lineExplanations": [
+        {
+          "line": "length = 12",
+          "explanation": "Stores the length in a variable."
+        },
+        {
+          "line": "breadth = 5",
+          "explanation": "Stores the breadth in a variable."
+        },
+        {
+          "line": "area = length * breadth",
+          "explanation": "Computes the area as length x breadth = 60."
+        },
+        {
+          "line": "perimeter = 2 * (length + breadth)",
+          "explanation": "Computes the perimeter as 2 x (12 + 5) = 34."
+        },
+        {
+          "line": "print(\"Area =\", area)",
+          "explanation": "Displays the label and the area value."
+        },
+        {
+          "line": "print(\"Perimeter =\", perimeter)",
+          "explanation": "Displays the label and the perimeter value."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "length = 12, breadth = 5",
+          "output": "Area = 60\nPerimeter = 34"
+        },
+        {
+          "input": "length = 8, breadth = 3",
+          "output": "Area = 24\nPerimeter = 22"
+        }
+      ],
+      "rubric": [
+        "Correct formula for area (2 marks).",
+        "Correct formula for perimeter (1 mark).",
+        "Correct use of variables and print() with labels (2 marks)."
+      ],
+      "explanation": "This program practises variables, arithmetic operators and printing labelled results.",
+      "relatedConcepts": [
+        "variables",
+        "arithmetic operators",
+        "print()",
+        "area and perimeter"
+      ]
+    },
+    {
+      "id": "ch3-program-03",
+      "chapterId": "ch3",
+      "topicId": "ch3-introduction",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 6,
+      "question": "Write a Python program that stores two numbers, 20 and 6, in variables and prints their sum, difference, product and quotient with suitable labels.",
+      "hints": [
+        "Use +, -, * and / for the four operations.",
+        "The / operator gives a decimal (float) result.",
+        "Label each result using print() with a comma."
+      ],
+      "modelSolution": "a = 20\nb = 6\nprint(\"Sum =\", a + b)\nprint(\"Difference =\", a - b)\nprint(\"Product =\", a * b)\nprint(\"Quotient =\", a / b)",
+      "lineExplanations": [
+        {
+          "line": "a = 20",
+          "explanation": "Stores the first number."
+        },
+        {
+          "line": "b = 6",
+          "explanation": "Stores the second number."
+        },
+        {
+          "line": "print(\"Sum =\", a + b)",
+          "explanation": "Prints the sum, 26."
+        },
+        {
+          "line": "print(\"Difference =\", a - b)",
+          "explanation": "Prints the difference, 14."
+        },
+        {
+          "line": "print(\"Product =\", a * b)",
+          "explanation": "Prints the product, 120."
+        },
+        {
+          "line": "print(\"Quotient =\", a / b)",
+          "explanation": "Prints the quotient; / gives a float, 3.3333333333333335."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "a = 20, b = 6",
+          "output": "Sum = 26\nDifference = 14\nProduct = 120\nQuotient = 3.3333333333333335"
+        },
+        {
+          "input": "a = 15, b = 4",
+          "output": "Sum = 19\nDifference = 11\nProduct = 60\nQuotient = 3.75"
+        }
+      ],
+      "rubric": [
+        "Correct use of +, -, *, / (2 marks).",
+        "Correct values for all four results (2 marks).",
+        "Suitable labels with print() (1 mark).",
+        "Correct understanding that / gives a float (1 mark)."
+      ],
+      "explanation": "This program practises all four basic arithmetic operators and printing labelled output.",
+      "relatedConcepts": [
+        "arithmetic operators",
+        "variables",
+        "print()",
+        "float"
+      ]
+    }
+  ]
+}

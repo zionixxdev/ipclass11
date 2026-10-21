@@ -1,0 +1,2995 @@
+{
+  "chapter": {
+    "id": "ch7",
+    "number": 7,
+    "title": "Debugging Programs",
+    "summary": "This chapter explains how Python reports and raises errors. It covers the meaning of error messages and tracebacks, the difference between syntax, runtime and logical errors, the concept of exceptions, and how to handle them with try, except, else and finally. It also describes the common built-in exceptions such as ZeroDivisionError, NameError, TypeError, ValueError, IndexError, KeyError, AttributeError, ImportError, FileNotFoundError, OverflowError, EOFError and StopIteration, and shows how to identify and correct syntax, runtime and logical errors in a program."
+  },
+  "topics": [
+    {
+      "id": "ch7-error-messages",
+      "title": "Error Messages",
+      "content": {
+        "hinglish": "Jab hamara Python program galat chalta hai to interpreter ek error message deta hai. Ye message teen cheezein batata hai — error ka type, problem ka description, aur traceback mein line number. Syntax error program chalne se pehle hi mil jaati hai, jabki runtime error program chalte waqt aati hai. Error message ko dhyan se padhna debugging ka sabse pehla aur zaroori step hai. Isliye error ko ignore karke aage nahi badhna chahiye, balki uske message se hi solution milta hai.",
+        "formalDefinition": "An error message is the diagnostic output produced by the Python interpreter when it cannot parse or execute a program. For a syntax error it reports the offending line and a short description; for a run-time error it prints a traceback showing the sequence of calls, the file name and line number, the exception class and its message. The message is the primary clue used during debugging.",
+        "keywords": [
+          "error message",
+          "traceback",
+          "syntax error",
+          "runtime error",
+          "logical error",
+          "line number",
+          "debugging",
+          "interpreter"
+        ],
+        "examples": [
+          "SyntaxError: expected ':' — a colon is missing at the end of an if/for/def header line.",
+          "NameError: name 'totl' is not defined — a variable name is misspelled or used before it is created.",
+          "ZeroDivisionError: division by zero — a number is divided by zero at run time.",
+          "IndentationError: expected an indented block — the body of a block is not indented after a colon.",
+          "A logical error shows no message at all; the program runs to completion but produces a wrong result."
+        ],
+        "tables": [
+          {
+            "title": "Common error messages and their meanings",
+            "columns": [
+              "Error message",
+              "Meaning"
+            ],
+            "rows": [
+              [
+                "SyntaxError: invalid syntax",
+                "The grammar of the line is wrong, e.g. a missing colon or bracket."
+              ],
+              [
+                "IndentationError: expected an indented block",
+                "The block body is not indented after a colon."
+              ],
+              [
+                "NameError: name 'x' is not defined",
+                "A variable or function is used before it is created, or is misspelled."
+              ],
+              [
+                "TypeError: unsupported operand type(s) for +: 'int' and 'str'",
+                "Two incompatible data types are combined."
+              ],
+              [
+                "ValueError: invalid literal for int() with base 10: 'abc'",
+                "int() received a string that is not a valid number."
+              ],
+              [
+                "ZeroDivisionError: division by zero",
+                "A number is divided (or modulo) by zero."
+              ],
+              [
+                "IndexError: list index out of range",
+                "A sequence index is outside the valid range."
+              ],
+              [
+                "KeyError: 'c'",
+                "A dictionary key that does not exist is accessed."
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Traceback layout (read bottom-up): line 1 'Traceback (most recent call last):' -> 'File \"prog.py\", line N, in <module>' -> the source line -> final line 'ExceptionType: message'.",
+          "Error flow: Source code -> Parser (SyntaxError here) -> Interpreter executes -> Run-time exception (traceback) OR program finishes -> (if result wrong) Logical error found by the programmer."
+        ],
+        "differences": {
+          "title": "Syntax error vs Runtime error vs Logical error",
+          "columns": [
+            "Basis",
+            "Syntax error",
+            "Runtime error",
+            "Logical error"
+          ],
+          "rows": [
+            [
+              "Also called",
+              "Compile-time / parsing error",
+              "Execution error / exception",
+              "Semantic error"
+            ],
+            [
+              "When detected",
+              "Before execution, during parsing",
+              "During execution",
+              "After execution, by checking the output"
+            ],
+            [
+              "Message shown",
+              "Yes, by the interpreter",
+              "Yes, as a traceback",
+              "No message"
+            ],
+            [
+              "Program runs?",
+              "No",
+              "Partly, until the error is reached",
+              "Yes, fully, but wrongly"
+            ],
+            [
+              "Example",
+              "for i in range(5)  (missing colon)",
+              "print(10/0)",
+              "average = a + b / 2 instead of (a + b) / 2"
+            ]
+          ]
+        },
+        "pythonSyntax": "Reading a traceback:\nTraceback (most recent call last):\n  File \"prog.py\", line 3, in <module>\n    print(10 / 0)\nZeroDivisionError: division by zero\n# The LAST line gives the exception type and message; the 'File ..., line N' line gives the location.",
+        "codeExamples": [
+          {
+            "code": "x = 10\ny = 0\nprint(x / y)",
+            "output": "Traceback (most recent call last):\n  File \"prog.py\", line 3, in <module>\n    print(x / y)\nZeroDivisionError: division by zero",
+            "explanation": "The program is syntactically correct, so it starts running. At line 3 the division by zero raises ZeroDivisionError and Python prints a traceback naming the file, line number and exception."
+          },
+          {
+            "code": "total = 0\nfor i in range(1, 4):\n    total = total + i\nprint(totl)",
+            "output": "Traceback (most recent call last):\n  File \"prog.py\", line 4, in <module>\n    print(totl)\nNameError: name 'totl' is not defined",
+            "explanation": "The variable was created as 'total' but printed as 'totl'. Python cannot find the name, so it raises NameError at run time and points to line 4."
+          },
+          {
+            "code": "a = 10\nb = 20\naverage = a + b / 2\nprint(average)",
+            "output": "20.0",
+            "explanation": "No error message appears, yet the answer is wrong: / has higher precedence than +, so b/2 is computed first. This is a logical error and must be found by reasoning about the output, not from a message."
+          }
+        ],
+        "commonMistakes": [
+          "Ignoring the line number in the traceback and guessing where the error is.",
+          "Assuming a program with no error message is always correct — logical errors produce no message.",
+          "Reading only the last line of a traceback and missing the file and line number reported above it.",
+          "Confusing a SyntaxError (the program never runs) with a runtime error (it runs and then fails).",
+          "Editing a random line instead of the exact line named in the message."
+        ],
+        "examNotes": [
+          "Syntax errors are detected before execution, runtime errors during execution, and logical errors not at all.",
+          "A traceback is read bottom-up: the last line gives the exception type and message; the lines above give the file and line number.",
+          "An error message always states the exception class, followed by a colon and a description.",
+          "Logical errors do not raise exceptions; they are found by comparing actual output with expected output.",
+          "Debugging means locating, understanding and removing errors; the error message is the primary clue."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between an error message and a traceback?",
+            "a": "The error message is the final line naming the exception; the traceback is the whole report, including the file, line number and the sequence of calls."
+          },
+          {
+            "q": "Why does a logical error show no message?",
+            "a": "Because the program is legal to run; Python has no way of knowing your intended result, so it cannot flag a wrong answer."
+          },
+          {
+            "q": "Which line does a SyntaxError point to?",
+            "a": "It points to the line where the interpreter could not continue; the real cause is often on that line or just before it."
+          },
+          {
+            "q": "Can a program have a runtime error and still not crash?",
+            "a": "Yes. If the exception is handled with try-except, the program continues instead of stopping."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which error is detected before the program starts running?",
+            "options": [
+              "Runtime error",
+              "Syntax error",
+              "Logical error",
+              "All of these"
+            ],
+            "answer": 1,
+            "explanation": "A syntax error is caught while the interpreter parses the code, before any statement executes."
+          },
+          {
+            "question": "Which error produces no message but a wrong output?",
+            "options": [
+              "Syntax error",
+              "Runtime error",
+              "Logical error",
+              "IndentationError"
+            ],
+            "answer": 2,
+            "explanation": "A logical error is a flaw in the program's logic; the code runs fully but gives an incorrect result, so no exception is raised."
+          },
+          {
+            "question": "In a traceback, the failing line number appears in the line beginning with:",
+            "options": [
+              "'ZeroDivisionError:'",
+              "'File \"prog.py\", line N'",
+              "'Traceback (most recent call last):'",
+              "'print(...)'"
+            ],
+            "answer": 1,
+            "explanation": "The 'File ..., line N' line records the location of the statement that raised the exception."
+          },
+          {
+            "question": "Which exception is raised by the statement print(10 % 0)?",
+            "options": [
+              "ValueError",
+              "TypeError",
+              "ZeroDivisionError",
+              "ArithmeticWarning"
+            ],
+            "answer": 2,
+            "explanation": "Integer modulo by zero raises ZeroDivisionError: integer modulo by zero."
+          }
+        ],
+        "checklist": [
+          "I can define an error message and a traceback.",
+          "I can distinguish syntax, runtime and logical errors.",
+          "I can read the exception name and the line number from a message.",
+          "I know that logical errors produce no message.",
+          "I can match a given error message to its cause."
+        ]
+      }
+    },
+    {
+      "id": "ch7-exceptions",
+      "title": "Python Exceptions",
+      "content": {
+        "hinglish": "Exception ek aisi error hai jo program chalte waqt (run time par) aati hai. Agar exception handle nahi kiya jaye to program turant band ho jata hai. Python mein hum try aur except block use karke exception ko handle karte hain, jisse program crash hone ke bajaye aage chalta rahe. else block tab chalta hai jab koi exception na aaye, aur finally block hamesha chalta hai chahe exception aaye ya na aaye. Hum raise statement se khud bhi apni marzi ka exception create kar sakte hain.",
+        "formalDefinition": "An exception is an event, raised at run time, that disrupts the normal flow of a program's instructions. In Python, exceptions are objects derived from the BaseException class. A program handles them using the try, except, else and finally clauses; an unhandled exception terminates the program and prints a traceback. Programmers may also raise exceptions explicitly with the raise statement.",
+        "keywords": [
+          "exception",
+          "try",
+          "except",
+          "else",
+          "finally",
+          "raise",
+          "handle",
+          "traceback",
+          "BaseException"
+        ],
+        "examples": [
+          "10/0 raises ZeroDivisionError, which can be caught with try-except.",
+          "int('abc') raises ValueError.",
+          "An unhandled exception stops the program and prints a traceback.",
+          "raise ValueError('Age cannot be negative') creates a custom error message.",
+          "A finally block runs even if the try block raises an exception or returns from a function."
+        ],
+        "tables": [
+          {
+            "title": "The four exception-handling clauses",
+            "columns": [
+              "Clause",
+              "Purpose",
+              "Runs when"
+            ],
+            "rows": [
+              [
+                "try",
+                "Holds the code that may raise an exception",
+                "Always, first"
+              ],
+              [
+                "except",
+                "Handles a matching exception",
+                "An exception of the listed type occurs"
+              ],
+              [
+                "else",
+                "Runs code only if no exception occurred",
+                "No exception occurs in the try block"
+              ],
+              [
+                "finally",
+                "Cleanup code that must always run",
+                "Always, whether or not an exception occurs"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Control flow: try (execute) -> exception? --no--> else -> finally -> next statement; exception? --yes--> matching except -> finally -> next statement; exception? --no match--> program stops (traceback).",
+          "Exception hierarchy (top to bottom): BaseException -> Exception -> {ZeroDivisionError, NameError, TypeError, ValueError, IndexError, KeyError, ...}; SyntaxError and IndentationError also fall under Exception."
+        ],
+        "differences": {
+          "title": "try-except vs if-else for error checking",
+          "columns": [
+            "Basis",
+            "try-except",
+            "if-else"
+          ],
+          "rows": [
+            [
+              "Purpose",
+              "Handles run-time exceptions",
+              "Checks conditions before acting"
+            ],
+            [
+              "Detects",
+              "Errors that actually occur",
+              "Only conditions the programmer foresees"
+            ],
+            [
+              "Covers external causes",
+              "Yes (files, input, division by zero)",
+              "Not reliably"
+            ],
+            [
+              "Readability",
+              "Keeps normal logic together",
+              "Error checks get mixed with the main logic"
+            ]
+          ]
+        },
+        "pythonSyntax": "try:\n    # statements that may raise an exception\nexcept ExceptionType:\n    # statements that handle the exception\nelse:\n    # runs only if no exception occurred\nfinally:\n    # always runs (cleanup)",
+        "codeExamples": [
+          {
+            "code": "try:\n    a = int(input(\"Enter a number: \"))\n    print(10 / a)\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")\nexcept ValueError:\n    print(\"Please enter digits only\")",
+            "output": "Enter a number: 0\nCannot divide by zero",
+            "explanation": "When the user enters 0, the division 10/0 raises ZeroDivisionError, which is caught by the first matching except block, so the program does not crash."
+          },
+          {
+            "code": "try:\n    x = 10 / 2\nexcept ZeroDivisionError:\n    print(\"Error\")\nelse:\n    print(\"Result is\", x)\nfinally:\n    print(\"Execution complete\")",
+            "output": "Result is 5.0\nExecution complete",
+            "explanation": "No exception occurs, so the else block runs and prints the result; finally runs regardless and prints the completion message."
+          },
+          {
+            "code": "age = -5\nif age < 0:\n    raise ValueError(\"Age cannot be negative\")",
+            "output": "Traceback (most recent call last):\n  File \"prog.py\", line 3, in <module>\n    raise ValueError(\"Age cannot be negative\")\nValueError: Age cannot be negative",
+            "explanation": "The raise statement manually creates a ValueError with a custom message; since it is not caught, Python stops the program and prints a traceback."
+          }
+        ],
+        "commonMistakes": [
+          "Writing a bare except: with no type, which also catches KeyboardInterrupt and hides real bugs.",
+          "Placing the risky statement outside the try block, so the exception is never caught.",
+          "Putting finally before except, which is itself a SyntaxError.",
+          "Thinking else runs after the except block; else runs only when no exception occurred.",
+          "Catching an exception but leaving the handler empty, so the error is silently ignored."
+        ],
+        "examNotes": [
+          "Order of clauses is fixed: try, then one or more except blocks, then else, then finally.",
+          "Multiple except blocks are checked from top to bottom; the first matching type is used.",
+          "A bare except catches everything but is discouraged; catching Exception is more controlled.",
+          "finally executes even if the try block raises an exception or returns from a function.",
+          "raise creates or re-raises an exception; 'as e' binds the exception object to the name e."
+        ],
+        "faqs": [
+          {
+            "q": "Can we have a try without an except?",
+            "a": "Yes, if it has a finally clause; a try must be followed by at least one except or a finally."
+          },
+          {
+            "q": "What is the difference between else and finally?",
+            "a": "else runs only when no exception occurred; finally runs always, whether or not an exception occurred."
+          },
+          {
+            "q": "Does finally run if the try block returns?",
+            "a": "Yes; finally executes before the function actually returns."
+          },
+          {
+            "q": "What happens if an exception is not handled?",
+            "a": "The program stops immediately and a traceback is printed."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which block always executes, whether or not an exception occurs?",
+            "options": [
+              "try",
+              "except",
+              "else",
+              "finally"
+            ],
+            "answer": 3,
+            "explanation": "finally is used for cleanup and runs in every case, even if the try block raises an exception or returns."
+          },
+          {
+            "question": "The else block of a try statement executes:",
+            "options": [
+              "always",
+              "only when an exception occurs",
+              "only when no exception occurs",
+              "never"
+            ],
+            "answer": 2,
+            "explanation": "else runs only if the try block completes without raising any exception."
+          },
+          {
+            "question": "Which keyword is used to throw an exception manually?",
+            "options": [
+              "throw",
+              "raise",
+              "except",
+              "catch"
+            ],
+            "answer": 1,
+            "explanation": "Python uses raise to create or re-raise an exception; throw and catch belong to other languages."
+          },
+          {
+            "question": "Which of these is the correct order of clauses?",
+            "options": [
+              "try, finally, except, else",
+              "try, except, else, finally",
+              "except, try, else, finally",
+              "try, else, except, finally"
+            ],
+            "answer": 1,
+            "explanation": "The grammar requires try first, then except blocks, then else, and finally last."
+          }
+        ],
+        "checklist": [
+          "I can explain what an exception is.",
+          "I can write a try-except block to handle a specific exception.",
+          "I know when else and finally run.",
+          "I can use raise to create a custom exception.",
+          "I know the fixed order of the four clauses."
+        ]
+      }
+    },
+    {
+      "id": "ch7-builtin-exceptions",
+      "title": "Python Built-in Exceptions",
+      "content": {
+        "hinglish": "Python mein bahut si built-in exceptions hoti hain jo alag-alag galtiyon ke liye khud raise hoti hain. Jaise ZeroDivisionError tab aati hai jab hum kisi number ko zero se divide karte hain. NameError tab aati hai jab hum kisi aise variable ka naam use karte hain jo define hi nahi hua. TypeError alag data types ko galat tarike se milane par aati hai, aur ValueError tab jab value sahi type ki ho par galat ho. Har exception ko uske sahi naam se catch karna chahiye taaki sirf wahi error handle ho aur baaki errors chhupe na.",
+        "formalDefinition": "Python provides a hierarchy of built-in exception classes, all derived from BaseException, that represent standard run-time errors. Each is raised automatically by the interpreter for a specific condition and can be caught by naming the class in an except clause. Common built-in exceptions include ZeroDivisionError, NameError, TypeError, ValueError, IndexError, KeyError, AttributeError, ImportError, FileNotFoundError, IndentationError, SyntaxError, OverflowError, EOFError and StopIteration.",
+        "keywords": [
+          "ZeroDivisionError",
+          "NameError",
+          "TypeError",
+          "ValueError",
+          "IndexError",
+          "KeyError",
+          "AttributeError",
+          "ImportError",
+          "FileNotFoundError",
+          "OverflowError",
+          "EOFError",
+          "StopIteration"
+        ],
+        "examples": [
+          "10/0 raises ZeroDivisionError.",
+          "print(x) where x is undefined raises NameError.",
+          "int('abc') raises ValueError.",
+          "[1, 2, 3][5] raises IndexError.",
+          "{'a': 1}['b'] raises KeyError.",
+          "(5).append(1) raises AttributeError."
+        ],
+        "tables": [
+          {
+            "title": "Built-in exceptions and their causes",
+            "columns": [
+              "Exception",
+              "Raised when",
+              "Example"
+            ],
+            "rows": [
+              [
+                "ZeroDivisionError",
+                "A number is divided or modulo by zero",
+                "10/0"
+              ],
+              [
+                "NameError",
+                "A name is used that is not defined",
+                "print(marks) before marks is assigned"
+              ],
+              [
+                "TypeError",
+                "An operation is applied to an object of the wrong type",
+                "5 + 'a'"
+              ],
+              [
+                "ValueError",
+                "A function receives an argument of the right type but an invalid value",
+                "int('abc')"
+              ],
+              [
+                "IndexError",
+                "A sequence subscript is out of range",
+                "[1, 2, 3][7]"
+              ],
+              [
+                "KeyError",
+                "A dictionary key is not found",
+                "{'a': 1}['z']"
+              ],
+              [
+                "IndentationError",
+                "Indentation is incorrect",
+                "A block body that is not indented"
+              ],
+              [
+                "SyntaxError",
+                "The code violates Python grammar",
+                "if x = 5:"
+              ],
+              [
+                "AttributeError",
+                "An attribute or method is used that the object does not have",
+                "(5).append(1)"
+              ],
+              [
+                "ImportError",
+                "A module or name cannot be imported",
+                "import maths"
+              ],
+              [
+                "FileNotFoundError",
+                "The file to be opened does not exist",
+                "open('no.txt')"
+              ],
+              [
+                "OverflowError",
+                "A numeric result is too large to represent",
+                "math.exp(1000)"
+              ],
+              [
+                "EOFError",
+                "input() reaches end of file before reading a line",
+                "input() with no data available"
+              ],
+              [
+                "StopIteration",
+                "next() is called on an exhausted iterator",
+                "next(iter([]))"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Exception family tree: BaseException -> Exception -> {ArithmeticError -> ZeroDivisionError, OverflowError}; {LookupError -> IndexError, KeyError}; {OSError -> FileNotFoundError}; {TypeError, ValueError, NameError, AttributeError, ImportError, StopIteration, EOFError}; SyntaxError -> IndentationError."
+        ],
+        "differences": {
+          "title": "ValueError vs TypeError",
+          "columns": [
+            "Basis",
+            "ValueError",
+            "TypeError"
+          ],
+          "rows": [
+            [
+              "Meaning",
+              "Right type, wrong value",
+              "Wrong type for the operation"
+            ],
+            [
+              "Example",
+              "int('abc')",
+              "'5' + 5"
+            ],
+            [
+              "Cause",
+              "The data does not fit the expected value",
+              "Incompatible types are combined"
+            ],
+            [
+              "Typical use",
+              "int(), float() conversion",
+              "Arithmetic or concatenation of mixed types"
+            ]
+          ]
+        },
+        "pythonSyntax": "try:\n    risky_code()\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')\nexcept (TypeError, ValueError) as e:\n    print('Data problem:', e)\nexcept Exception:\n    print('Some other error')",
+        "codeExamples": [
+          {
+            "code": "print(marks)",
+            "output": "Traceback (most recent call last):\n  File \"prog.py\", line 1, in <module>\n    print(marks)\nNameError: name 'marks' is not defined",
+            "explanation": "The variable marks was never assigned, so Python cannot resolve the name and raises NameError."
+          },
+          {
+            "code": "print(\"Total: \" + 50)",
+            "output": "Traceback (most recent call last):\n  File \"prog.py\", line 1, in <module>\n    print(\"Total: \" + 50)\nTypeError: can only concatenate str (not \"int\") to str",
+            "explanation": "A string and an integer cannot be joined with +. This is a TypeError; converting with str(50) fixes it."
+          },
+          {
+            "code": "student = {\"name\": \"Asha\"}\nprint(student[\"age\"])",
+            "output": "Traceback (most recent call last):\n  File \"prog.py\", line 2, in <module>\n    print(student[\"age\"])\nKeyError: 'age'",
+            "explanation": "The dictionary has no key 'age', so Python raises KeyError and prints the missing key in quotes."
+          }
+        ],
+        "commonMistakes": [
+          "Using except Exception to catch everything instead of naming the exact exception.",
+          "Mixing up ValueError and TypeError: ValueError is right type with a wrong value; TypeError is a wrong type.",
+          "Expecting IndexError where a KeyError is raised (IndexError is for sequences, KeyError for dictionaries).",
+          "Forgetting that ModuleNotFoundError is a subclass of ImportError.",
+          "Assuming IndentationError is unrelated to SyntaxError; IndentationError is a subclass of SyntaxError."
+        ],
+        "examNotes": [
+          "Learn the exact cause of each common built-in exception.",
+          "KeyError -> dictionary, IndexError -> sequence, NameError -> undefined name.",
+          "The TypeError vs ValueError distinction is asked frequently.",
+          "ImportError (and its subclass ModuleNotFoundError) is raised for a bad import.",
+          "OverflowError is numeric; EOFError relates to input() reaching end of file."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between IndexError and KeyError?",
+            "a": "IndexError is raised when a sequence (list, tuple, string) is indexed out of range; KeyError is raised when a dictionary key is missing."
+          },
+          {
+            "q": "Is ModuleNotFoundError the same as ImportError?",
+            "a": "No, ModuleNotFoundError is a subclass of ImportError; it is raised specifically when the named module cannot be found."
+          },
+          {
+            "q": "Why does int('12a') fail while int('12') works?",
+            "a": "int() accepts only a string that represents a valid integer; '12a' is the right type but an invalid value, so it raises ValueError."
+          },
+          {
+            "q": "Which exception is raised when too large a float is computed?",
+            "a": "OverflowError, for example math.exp(1000) raises OverflowError: math range error."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which exception is raised by the statement {'a': 1}['b']?",
+            "options": [
+              "IndexError",
+              "KeyError",
+              "ValueError",
+              "NameError"
+            ],
+            "answer": 1,
+            "explanation": "Accessing a dictionary key that does not exist raises KeyError: 'b'."
+          },
+          {
+            "question": "The statement int('abc') raises:",
+            "options": [
+              "TypeError",
+              "ValueError",
+              "NameError",
+              "AttributeError"
+            ],
+            "answer": 1,
+            "explanation": "'abc' is of the correct type (str) but an invalid value for int(), so ValueError is raised."
+          },
+          {
+            "question": "Which exception is raised by 5 + 'a'?",
+            "options": [
+              "ValueError",
+              "TypeError",
+              "SyntaxError",
+              "KeyError"
+            ],
+            "answer": 1,
+            "explanation": "Combining an int and a str with + is an unsupported operation, so TypeError is raised."
+          },
+          {
+            "question": "Which exception is raised by (5).append(1)?",
+            "options": [
+              "TypeError",
+              "AttributeError",
+              "ValueError",
+              "NameError"
+            ],
+            "answer": 1,
+            "explanation": "An int object has no attribute or method named append, so Python raises AttributeError."
+          }
+        ],
+        "checklist": [
+          "I can name at least eight built-in exceptions.",
+          "I can match each common exception to its cause.",
+          "I can distinguish ValueError from TypeError.",
+          "I can distinguish IndexError from KeyError.",
+          "I can write except clauses for specific built-in exceptions."
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "ch7-mcq-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which type of error is detected before the program starts running?",
+      "options": [
+        "Runtime error",
+        "Syntax error",
+        "Logical error",
+        "Exception"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Runtime errors occur only while the program executes.",
+        "Correct: a syntax error is caught during parsing, before execution.",
+        "Logical errors are not detected by Python at all.",
+        "An exception is a runtime event, not a pre-execution error."
+      ],
+      "explanation": "Syntax errors are found by the parser before any statement runs, so the program never starts.",
+      "relatedConcepts": [
+        "syntax error",
+        "parsing",
+        "runtime error"
+      ]
+    },
+    {
+      "id": "ch7-mcq-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which exception is raised by the statement print(10 / 0)?",
+      "options": [
+        "ValueError",
+        "TypeError",
+        "ZeroDivisionError",
+        "ArithmeticWarning"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "ValueError is for an invalid value, not division by zero.",
+        "TypeError is for wrong data types.",
+        "Correct: division by zero raises ZeroDivisionError.",
+        "There is no ArithmeticWarning class in Python."
+      ],
+      "explanation": "Dividing a number by zero raises ZeroDivisionError: division by zero.",
+      "relatedConcepts": [
+        "ZeroDivisionError",
+        "division",
+        "runtime error"
+      ]
+    },
+    {
+      "id": "ch7-mcq-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which exception is raised by int('abc')?",
+      "options": [
+        "TypeError",
+        "ValueError",
+        "NameError",
+        "KeyError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "The type (str) is correct, so it is not a TypeError.",
+        "Correct: 'abc' is an invalid value for int(), so ValueError is raised.",
+        "NameError is for undefined names.",
+        "KeyError is for missing dictionary keys."
+      ],
+      "explanation": "int() accepts a string only if it represents a valid integer; 'abc' is an invalid value, raising ValueError.",
+      "relatedConcepts": [
+        "ValueError",
+        "int()",
+        "type conversion"
+      ]
+    },
+    {
+      "id": "ch7-mcq-04",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which exception is raised by print(marks) when marks has never been assigned?",
+      "options": [
+        "NameError",
+        "ValueError",
+        "TypeError",
+        "AttributeError"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: using an undefined name raises NameError.",
+        "ValueError is for invalid values.",
+        "TypeError is for wrong types.",
+        "AttributeError is for a missing attribute on a valid object."
+      ],
+      "explanation": "If a name is not defined anywhere in the program, Python cannot resolve it and raises NameError.",
+      "relatedConcepts": [
+        "NameError",
+        "undefined name",
+        "variable"
+      ]
+    },
+    {
+      "id": "ch7-mcq-05",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which exception is raised by [1, 2, 3][5]?",
+      "options": [
+        "KeyError",
+        "IndexError",
+        "ValueError",
+        "TypeError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "KeyError is for dictionaries, not lists.",
+        "Correct: the index 5 is out of range for a 3-element list, so IndexError is raised.",
+        "ValueError is for invalid values in conversion.",
+        "TypeError is for wrong types."
+      ],
+      "explanation": "A list index must be within 0 to len-1; index 5 is out of range, so IndexError is raised.",
+      "relatedConcepts": [
+        "IndexError",
+        "list",
+        "subscript"
+      ]
+    },
+    {
+      "id": "ch7-mcq-06",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which exception is raised by {'a': 1}['b']?",
+      "options": [
+        "IndexError",
+        "ValueError",
+        "KeyError",
+        "NameError"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "IndexError is for sequences, not dictionaries.",
+        "ValueError is for invalid values.",
+        "Correct: the key 'b' is absent, so KeyError is raised.",
+        "NameError is for undefined names."
+      ],
+      "explanation": "Accessing a dictionary key that does not exist raises KeyError, and the missing key is shown in quotes.",
+      "relatedConcepts": [
+        "KeyError",
+        "dictionary",
+        "key"
+      ]
+    },
+    {
+      "id": "ch7-mcq-07",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which block always executes, whether or not an exception occurs?",
+      "options": [
+        "try",
+        "except",
+        "else",
+        "finally"
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "try holds the risky code and is entered first, not 'always executed' in the cleanup sense.",
+        "except runs only when a matching exception occurs.",
+        "else runs only when no exception occurs.",
+        "Correct: finally runs in every case."
+      ],
+      "explanation": "finally is meant for cleanup and executes whether the try block succeeds, raises, or returns.",
+      "relatedConcepts": [
+        "finally",
+        "cleanup",
+        "exception handling"
+      ]
+    },
+    {
+      "id": "ch7-mcq-08",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The else block of a try statement executes:",
+      "options": [
+        "always",
+        "only when an exception occurs",
+        "only when no exception occurs",
+        "never"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "finally, not else, always runs.",
+        "The except block, not else, runs on an exception.",
+        "Correct: else runs only when the try block raises no exception.",
+        "else does run, so 'never' is wrong."
+      ],
+      "explanation": "The else clause holds code that should run only if the try block completed without any exception.",
+      "relatedConcepts": [
+        "else",
+        "try",
+        "no exception"
+      ]
+    },
+    {
+      "id": "ch7-mcq-09",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which keyword is used to throw an exception manually in Python?",
+      "options": [
+        "throw",
+        "raise",
+        "except",
+        "catch"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "'throw' is not a Python keyword.",
+        "Correct: Python uses raise to create or re-raise an exception.",
+        "except is used to catch, not to throw.",
+        "'catch' is not a Python keyword."
+      ],
+      "explanation": "The raise statement lets a programmer signal an error explicitly, e.g. raise ValueError('bad').",
+      "relatedConcepts": [
+        "raise",
+        "custom exception"
+      ]
+    },
+    {
+      "id": "ch7-mcq-10",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which exception is raised by the statement 5 + 'a'?",
+      "options": [
+        "ValueError",
+        "TypeError",
+        "SyntaxError",
+        "OverflowError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "ValueError is for a right-type wrong-value case.",
+        "Correct: adding an int and a str is unsupported, so TypeError is raised.",
+        "The syntax is valid, so it is not a SyntaxError.",
+        "OverflowError is for numeric overflow."
+      ],
+      "explanation": "The + operator cannot combine an int and a str, so Python raises TypeError: unsupported operand type(s).",
+      "relatedConcepts": [
+        "TypeError",
+        "operand",
+        "data types"
+      ]
+    },
+    {
+      "id": "ch7-mcq-11",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which exception is raised when you try to open a file that does not exist?",
+      "options": [
+        "ImportError",
+        "FileNotFoundError",
+        "EOFError",
+        "IOError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "ImportError is for a failed module import.",
+        "Correct: opening a missing file raises FileNotFoundError.",
+        "EOFError is raised by input() at end of file.",
+        "IOError is a general alias; the specific one here is FileNotFoundError."
+      ],
+      "explanation": "FileNotFoundError: [Errno 2] No such file or directory is raised when the named file cannot be found.",
+      "relatedConcepts": [
+        "FileNotFoundError",
+        "file handling",
+        "open()"
+      ]
+    },
+    {
+      "id": "ch7-mcq-12",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which exception is raised by import maths (a misspelled module name)?",
+      "options": [
+        "ImportError",
+        "NameError",
+        "AttributeError",
+        "ModuleError"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: a failed import raises ImportError (ModuleNotFoundError is its subclass).",
+        "NameError is for an undefined variable.",
+        "AttributeError is for a missing attribute.",
+        "There is no ModuleError class."
+      ],
+      "explanation": "When Python cannot locate the requested module it raises ModuleNotFoundError, a subclass of ImportError.",
+      "relatedConcepts": [
+        "ImportError",
+        "module",
+        "import"
+      ]
+    },
+    {
+      "id": "ch7-mcq-13",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which exception is raised by a numeric result that is too large to represent, e.g. math.exp(1000)?",
+      "options": [
+        "ValueError",
+        "OverflowError",
+        "MemoryError",
+        "TypeError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "ValueError is for an invalid value.",
+        "Correct: the result exceeds the float range, so OverflowError is raised.",
+        "MemoryError is about running out of memory.",
+        "TypeError is for wrong types."
+      ],
+      "explanation": "When a floating-point computation is larger than the largest representable float, Python raises OverflowError.",
+      "relatedConcepts": [
+        "OverflowError",
+        "float range",
+        "math"
+      ]
+    },
+    {
+      "id": "ch7-mcq-14",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "IndentationError is a subclass of which exception?",
+      "options": [
+        "ValueError",
+        "SyntaxError",
+        "NameError",
+        "TypeError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "ValueError is unrelated to indentation.",
+        "Correct: IndentationError is a subclass of SyntaxError.",
+        "NameError is for undefined names.",
+        "TypeError is for wrong types."
+      ],
+      "explanation": "Bad indentation is a kind of syntax problem, so IndentationError inherits from SyntaxError.",
+      "relatedConcepts": [
+        "IndentationError",
+        "SyntaxError",
+        "exception hierarchy"
+      ]
+    },
+    {
+      "id": "ch7-mcq-15",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is NOT a Python error/exception type?",
+      "options": [
+        "ValueError",
+        "TypeError",
+        "LogicalError",
+        "KeyError"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "ValueError is a real built-in exception.",
+        "TypeError is a real built-in exception.",
+        "Correct: there is no LogicalError class; logical errors are found by the programmer, not raised by Python.",
+        "KeyError is a real built-in exception."
+      ],
+      "explanation": "Logical errors produce wrong results but no exception, so no LogicalError class exists.",
+      "relatedConcepts": [
+        "logical error",
+        "exception types"
+      ]
+    },
+    {
+      "id": "ch7-mcq-16",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "A try block must be followed by at least one:",
+      "options": [
+        "else block",
+        "except or finally block",
+        "raise statement",
+        "return statement"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "else cannot appear without at least one except.",
+        "Correct: a try must be followed by one or more except blocks or a finally block.",
+        "raise is not required after try.",
+        "return is unrelated."
+      ],
+      "explanation": "The grammar requires a try to be paired with at least one except clause or a finally clause.",
+      "relatedConcepts": [
+        "try",
+        "except",
+        "finally",
+        "syntax"
+      ]
+    },
+    {
+      "id": "ch7-mcq-17",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Which exception is raised by next(iter([]))?",
+      "options": [
+        "IndexError",
+        "StopIteration",
+        "EOFError",
+        "ValueError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "IndexError is for sequence subscripting.",
+        "Correct: calling next() on an exhausted iterator raises StopIteration.",
+        "EOFError is for input() at end of file.",
+        "ValueError is for invalid values."
+      ],
+      "explanation": "When an iterator has no more items, next() raises StopIteration.",
+      "relatedConcepts": [
+        "StopIteration",
+        "iterator",
+        "next()"
+      ]
+    },
+    {
+      "id": "ch7-mcq-18",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which exception is raised when input() reaches the end of file before reading a line?",
+      "options": [
+        "EOFError",
+        "ValueError",
+        "StopIteration",
+        "OSError"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: input() at end of file raises EOFError.",
+        "ValueError is for invalid values.",
+        "StopIteration is for exhausted iterators.",
+        "OSError is a general I/O error, not the specific one here."
+      ],
+      "explanation": "If input() finds no data to read, it raises EOFError: EOF when reading a line.",
+      "relatedConcepts": [
+        "EOFError",
+        "input()",
+        "end of file"
+      ]
+    },
+    {
+      "id": "ch7-mcq-19",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which statement about logical errors is correct?",
+      "options": [
+        "They stop the program with a traceback.",
+        "They are detected by the parser.",
+        "They produce no error message but a wrong result.",
+        "They are always SyntaxErrors."
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "A traceback is produced by an exception, not a logical error.",
+        "The parser cannot detect logical errors.",
+        "Correct: the program runs fully but gives an incorrect output.",
+        "They are not syntax errors."
+      ],
+      "explanation": "A logical error is a flaw in reasoning; Python cannot detect it, so it must be found by checking the output.",
+      "relatedConcepts": [
+        "logical error",
+        "debugging"
+      ]
+    },
+    {
+      "id": "ch7-mcq-20",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the correct order of clauses in a Python try statement?",
+      "options": [
+        "try, finally, except, else",
+        "try, except, else, finally",
+        "except, try, else, finally",
+        "try, else, except, finally"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "finally cannot come before except.",
+        "Correct: try, then except, then else, then finally.",
+        "try must come first.",
+        "else must come after all except blocks."
+      ],
+      "explanation": "Python requires try first, then except blocks, then else, and finally last.",
+      "relatedConcepts": [
+        "try",
+        "except",
+        "else",
+        "finally",
+        "order"
+      ]
+    },
+    {
+      "id": "ch7-mcq-21",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Which of the following catches every possible exception?",
+      "options": [
+        "except ValueError:",
+        "except Exception:",
+        "except ZeroDivisionError:",
+        "except ArithmeticError:"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "except ValueError catches only ValueErrors.",
+        "Correct: except Exception catches almost all standard exceptions.",
+        "except ZeroDivisionError catches only that one type.",
+        "except ArithmeticError catches only arithmetic errors."
+      ],
+      "explanation": "Catching Exception catches all built-in exceptions that derive from Exception, which is the safe general handler.",
+      "relatedConcepts": [
+        "except",
+        "Exception",
+        "exception handling"
+      ]
+    },
+    {
+      "id": "ch7-mcq-22",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which exception is raised by the statement (5).append(1)?",
+      "options": [
+        "TypeError",
+        "AttributeError",
+        "ValueError",
+        "IndexError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "TypeError is for wrong types in operations.",
+        "Correct: an int object has no attribute named append, so AttributeError is raised.",
+        "ValueError is for invalid values.",
+        "IndexError is for out-of-range subscripts."
+      ],
+      "explanation": "AttributeError is raised when you use an attribute or method that the object does not have.",
+      "relatedConcepts": [
+        "AttributeError",
+        "method",
+        "object"
+      ]
+    },
+    {
+      "id": "ch7-mcq-23",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In the statement 'except ValueError as e:', what does 'as e' do?",
+      "options": [
+        "renames the ValueError class",
+        "binds the exception object to the name e",
+        "suppresses the exception",
+        "raises a new exception"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "It does not rename the class.",
+        "Correct: it assigns the caught exception object to the variable e so its message can be used.",
+        "It does not suppress the exception.",
+        "It does not raise a new exception."
+      ],
+      "explanation": "'as e' captures the exception instance so you can read e (for example, print(e)) inside the handler.",
+      "relatedConcepts": [
+        "except as",
+        "exception object",
+        "handler"
+      ]
+    },
+    {
+      "id": "ch7-mcq-24",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which of these is a runtime error?",
+      "options": [
+        "Missing colon after an if header",
+        "ZeroDivisionError on 10/0",
+        "Unmatched opening bracket",
+        "A block that is not indented"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "A missing colon is a syntax error found before execution.",
+        "Correct: ZeroDivisionError occurs while the program is running.",
+        "An unmatched bracket is a syntax error.",
+        "Bad indentation is an IndentationError found before execution."
+      ],
+      "explanation": "A runtime error happens during execution; the other three are detected by the parser before the program runs.",
+      "relatedConcepts": [
+        "runtime error",
+        "ZeroDivisionError",
+        "syntax error"
+      ]
+    },
+    {
+      "id": "ch7-mcq-25",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The last line of a traceback typically contains:",
+      "options": [
+        "only the file name",
+        "the exception type and its message",
+        "the line number of the first statement",
+        "the program's output"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "The file name appears higher up in the traceback.",
+        "Correct: the final line is 'ExceptionType: message'.",
+        "The line number appears in the 'File ... line N' line above.",
+        "Program output is not part of a traceback."
+      ],
+      "explanation": "A traceback ends with the exception class and its description, e.g. 'ZeroDivisionError: division by zero'.",
+      "relatedConcepts": [
+        "traceback",
+        "error message"
+      ]
+    },
+    {
+      "id": "ch7-vsa-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define an exception.",
+      "modelAnswer": "An exception is a run-time event, represented by an object derived from BaseException, that disrupts the normal flow of a program's instructions if it is not handled.",
+      "keywords": [
+        "run-time event",
+        "BaseException",
+        "normal flow",
+        "handle"
+      ],
+      "explanation": "Exceptions occur while the program runs and, if unhandled, stop it and print a traceback.",
+      "relatedConcepts": [
+        "exception handling",
+        "try-except",
+        "BaseException"
+      ]
+    },
+    {
+      "id": "ch7-vsa-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is a traceback?",
+      "modelAnswer": "A traceback is the report Python prints when an unhandled exception occurs; it shows the sequence of calls, the file name and line number, and the exception type with its message.",
+      "keywords": [
+        "report",
+        "line number",
+        "exception type",
+        "sequence of calls"
+      ],
+      "explanation": "The traceback helps locate the error: read the last line for the exception and the 'File, line N' line for the location.",
+      "relatedConcepts": [
+        "error message",
+        "debugging",
+        "exception"
+      ]
+    },
+    {
+      "id": "ch7-vsa-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "State one difference between a syntax error and a logical error.",
+      "modelAnswer": "A syntax error is detected before the program runs and stops it, whereas a logical error is not detected by Python and the program runs fully but produces a wrong result.",
+      "keywords": [
+        "before execution",
+        "no detection",
+        "wrong result"
+      ],
+      "explanation": "Syntax errors block execution; logical errors allow execution but give incorrect output.",
+      "relatedConcepts": [
+        "syntax error",
+        "logical error",
+        "debugging"
+      ]
+    },
+    {
+      "id": "ch7-vsa-04",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the purpose of the finally block?",
+      "modelAnswer": "The finally block holds cleanup code that must run in every case — whether or not an exception occurs in the try block.",
+      "keywords": [
+        "cleanup",
+        "always runs",
+        "finally"
+      ],
+      "explanation": "finally guarantees execution, so it is used to close files or release resources.",
+      "relatedConcepts": [
+        "finally",
+        "cleanup",
+        "try-except"
+      ]
+    },
+    {
+      "id": "ch7-vsa-05",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "When does the else block of a try statement execute?",
+      "modelAnswer": "The else block executes only when the try block completes without raising any exception.",
+      "keywords": [
+        "else",
+        "no exception",
+        "try"
+      ],
+      "explanation": "else separates the 'success' path from the error-handling path.",
+      "relatedConcepts": [
+        "else",
+        "try-except",
+        "exception handling"
+      ]
+    },
+    {
+      "id": "ch7-vsa-06",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Name any four built-in exceptions in Python.",
+      "modelAnswer": "Any four of: ZeroDivisionError, NameError, TypeError, ValueError, IndexError, KeyError, AttributeError, ImportError, FileNotFoundError, OverflowError, EOFError, StopIteration.",
+      "keywords": [
+        "ZeroDivisionError",
+        "NameError",
+        "TypeError",
+        "ValueError"
+      ],
+      "explanation": "These are standard exceptions raised automatically by the interpreter for common error conditions.",
+      "relatedConcepts": [
+        "built-in exceptions",
+        "exception hierarchy"
+      ]
+    },
+    {
+      "id": "ch7-vsa-07",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What does the raise statement do?",
+      "modelAnswer": "The raise statement creates and throws an exception explicitly, either a new one (raise ValueError('msg')) or by re-raising the current exception (raise).",
+      "keywords": [
+        "raise",
+        "explicit",
+        "custom exception"
+      ],
+      "explanation": "raise lets a programmer signal an error condition that Python would not otherwise detect.",
+      "relatedConcepts": [
+        "raise",
+        "custom exception"
+      ]
+    },
+    {
+      "id": "ch7-vsa-08",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "vsa",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Why is a bare 'except:' generally discouraged?",
+      "modelAnswer": "A bare except catches every exception, including unintended ones such as KeyboardInterrupt and real bugs, and hides their cause, making debugging harder. It is better to catch specific exceptions or Exception.",
+      "keywords": [
+        "bare except",
+        "catches everything",
+        "hides bugs"
+      ],
+      "explanation": "Catching only the expected exception type keeps other errors visible.",
+      "relatedConcepts": [
+        "except",
+        "best practice",
+        "debugging"
+      ]
+    },
+    {
+      "id": "ch7-vsa-09",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Give one difference between IndexError and KeyError.",
+      "modelAnswer": "IndexError is raised when a sequence (list, tuple, string) is indexed outside its valid range, while KeyError is raised when a dictionary key that does not exist is accessed.",
+      "keywords": [
+        "IndexError",
+        "KeyError",
+        "sequence",
+        "dictionary"
+      ],
+      "explanation": "IndexError relates to positional subscripts; KeyError relates to missing dictionary keys.",
+      "relatedConcepts": [
+        "IndexError",
+        "KeyError",
+        "LookupError"
+      ]
+    },
+    {
+      "id": "ch7-vsa-10",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which exception is raised by int('12a')?",
+      "modelAnswer": "ValueError, because '12a' is a string of the correct type but not a valid integer value.",
+      "keywords": [
+        "ValueError",
+        "int()",
+        "invalid value"
+      ],
+      "explanation": "int() raises ValueError: invalid literal for int() with base 10: '12a'.",
+      "relatedConcepts": [
+        "ValueError",
+        "int()",
+        "type conversion"
+      ]
+    },
+    {
+      "id": "ch7-sa-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Explain try-except with a small example.",
+      "modelAnswer": "A try block contains code that may raise an exception; if an exception occurs, the matching except block handles it so the program does not stop. Example:\ntry:\n    print(10 / 0)\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')\nOutput: Cannot divide by zero",
+      "rubric": [
+        "States the role of try (risky code)",
+        "States the role of except (handler)",
+        "Gives a correct example",
+        "States the resulting output"
+      ],
+      "explanation": "The exception is caught by the except block and normal execution continues.",
+      "relatedConcepts": [
+        "try",
+        "except",
+        "ZeroDivisionError"
+      ]
+    },
+    {
+      "id": "ch7-sa-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain the else and finally clauses of a try statement with an example.",
+      "modelAnswer": "else runs only when the try block raises no exception; finally runs always, whether or not an exception occurs. Example:\ntry:\n    x = 10 / 2\nexcept ZeroDivisionError:\n    print('Error')\nelse:\n    print('Result', x)\nfinally:\n    print('Done')\nOutput: Result 5.0 / Done",
+      "rubric": [
+        "Correct condition for else",
+        "Correct condition for finally",
+        "Working example",
+        "Correct output"
+      ],
+      "explanation": "Since 10/2 succeeds, else runs and prints the result; finally always runs.",
+      "relatedConcepts": [
+        "else",
+        "finally",
+        "try-except"
+      ]
+    },
+    {
+      "id": "ch7-sa-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Distinguish between ValueError and TypeError with one example each.",
+      "modelAnswer": "ValueError is raised when a function gets an argument of the correct type but an invalid value, e.g. int('abc'). TypeError is raised when an operation is applied to objects of incompatible types, e.g. 5 + 'a'. In short, ValueError is 'right type, wrong value' while TypeError is 'wrong type'.",
+      "rubric": [
+        "Definition of ValueError",
+        "Definition of TypeError",
+        "Correct example of each",
+        "Clear distinction"
+      ],
+      "explanation": "The type is correct in a ValueError case; the value is the problem. In TypeError the type itself is wrong.",
+      "relatedConcepts": [
+        "ValueError",
+        "TypeError",
+        "type conversion"
+      ]
+    },
+    {
+      "id": "ch7-sa-04",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the three types of errors in Python with an example of each.",
+      "modelAnswer": "Syntax errors break the grammar and are detected before execution (for i in range(5) without a colon). Runtime errors occur during execution and raise an exception (print(10/0) raises ZeroDivisionError). Logical errors are not detected by Python; the program runs but gives a wrong result (average = a + b / 2 instead of (a + b) / 2).",
+      "rubric": [
+        "Syntax error with example",
+        "Runtime error with example",
+        "Logical error with example",
+        "Correct distinction of when each is detected"
+      ],
+      "explanation": "Only syntax and runtime errors produce messages; logical errors must be found by testing.",
+      "relatedConcepts": [
+        "syntax error",
+        "runtime error",
+        "logical error"
+      ]
+    },
+    {
+      "id": "ch7-sa-05",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Write the general syntax of exception handling in Python and explain each clause briefly.",
+      "modelAnswer": "try:\n    risky statements\nexcept ExceptionType:\n    handler\nelse:\n    runs if no exception\nfinally:\n    always runs\ntry encloses the code that may fail; except handles a matching exception; else runs when no exception occurs; finally always runs for cleanup.",
+      "rubric": [
+        "Correct syntax",
+        "Explanation of try",
+        "Explanation of except",
+        "Explanation of else and finally"
+      ],
+      "explanation": "The order try, except, else, finally is fixed by Python's grammar.",
+      "relatedConcepts": [
+        "try",
+        "except",
+        "else",
+        "finally"
+      ]
+    },
+    {
+      "id": "ch7-sa-06",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain NameError, ZeroDivisionError and IndexError with a code example each.",
+      "modelAnswer": "NameError: using an undefined name, e.g. print(total) before total is assigned -> NameError: name 'total' is not defined. ZeroDivisionError: dividing by zero, e.g. 10/0 -> ZeroDivisionError: division by zero. IndexError: indexing a sequence out of range, e.g. [1,2,3][5] -> IndexError: list index out of range.",
+      "rubric": [
+        "NameError with example",
+        "ZeroDivisionError with example",
+        "IndexError with example"
+      ],
+      "explanation": "Each exception is raised automatically by the interpreter for its specific condition.",
+      "relatedConcepts": [
+        "NameError",
+        "ZeroDivisionError",
+        "IndexError"
+      ]
+    },
+    {
+      "id": "ch7-sa-07",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "sa",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "How do multiple except blocks work in Python? Illustrate with an example.",
+      "modelAnswer": "When several except blocks follow a try, Python checks them from top to bottom and runs the first one whose exception type matches. Example:\ntry:\n    a = int(input())\n    print(10 / a)\nexcept ValueError:\n    print('Not a number')\nexcept ZeroDivisionError:\n    print('Divide by zero')\nIf the input is 'abc', ValueError matches; if it is 0, ZeroDivisionError matches.",
+      "rubric": [
+        "Top-to-bottom checking",
+        "First matching block runs",
+        "Working example",
+        "Correct behaviour for each input"
+      ],
+      "explanation": "Only one except block runs for a given exception — the first that matches its type.",
+      "relatedConcepts": [
+        "multiple except",
+        "matching",
+        "try-except"
+      ]
+    },
+    {
+      "id": "ch7-sa-08",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "sa",
+      "difficulty": "hard",
+      "marks": 3,
+      "question": "What is the significance of the exception hierarchy in Python?",
+      "modelAnswer": "All exceptions derive from BaseException; most standard errors derive from Exception. Because a class catches its own type and all its subclasses, catching Exception catches almost all standard errors, and catching LookupError catches both IndexError and KeyError. The hierarchy lets programmers write general or specific handlers as needed.",
+      "rubric": [
+        "BaseException at the top",
+        "Exception as the common base",
+        "Subclass relationship",
+        "Effect of catching a superclass"
+      ],
+      "explanation": "An except clause catches the named class and every subclass of it, which is why the hierarchy matters.",
+      "relatedConcepts": [
+        "exception hierarchy",
+        "BaseException",
+        "LookupError"
+      ]
+    },
+    {
+      "id": "ch7-sa-09",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain FileNotFoundError and ImportError with an example each.",
+      "modelAnswer": "FileNotFoundError is raised when a file to be opened does not exist, e.g. open('data.txt') -> FileNotFoundError: [Errno 2] No such file or directory: 'data.txt'. ImportError (with its subclass ModuleNotFoundError) is raised when a module cannot be imported, e.g. import maths -> ModuleNotFoundError: No module named 'maths'.",
+      "rubric": [
+        "FileNotFoundError with example",
+        "ImportError with example",
+        "Correct error text"
+      ],
+      "explanation": "Both are runtime exceptions raised when an external resource (file or module) is unavailable.",
+      "relatedConcepts": [
+        "FileNotFoundError",
+        "ImportError",
+        "file handling"
+      ]
+    },
+    {
+      "id": "ch7-sa-10",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain how the raise statement and 'as e' are used together with try-except.",
+      "modelAnswer": "raise creates an exception explicitly, e.g. raise ValueError('Age cannot be negative'). Inside an except clause, 'as e' binds the caught exception object to the name e so its message can be used, e.g. except ValueError as e: print(e). Together they let a program signal and inspect custom error messages.",
+      "rubric": [
+        "Use of raise",
+        "Use of 'as e'",
+        "Example showing both",
+        "Reading the message via e"
+      ],
+      "explanation": "raise signals the error; 'as e' lets the handler read the exception's data.",
+      "relatedConcepts": [
+        "raise",
+        "except as",
+        "custom exception"
+      ]
+    },
+    {
+      "id": "ch7-la-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain the types of errors in a Python program and describe how a programmer goes about debugging each. Illustrate with examples.",
+      "modelAnswer": "Errors are of three kinds. (1) Syntax errors: the code violates Python grammar, so the parser stops before execution, e.g. for i in range(5) without a colon raises SyntaxError. (2) Runtime errors (exceptions): the code is grammatically correct but fails during execution, e.g. print(10/0) raises ZeroDivisionError; Python prints a traceback giving the file, line number and exception. (3) Logical errors: the program runs fully but produces a wrong result, e.g. average = a + b / 2 instead of (a + b) / 2; Python gives no message. Debugging: for syntax errors, read the reported line and fix the grammar; for runtime errors, read the last line of the traceback for the exception type and the 'File, line N' line for the location, then fix or handle it with try-except; for logical errors, compare the actual output with the expected output, trace the variables step by step, and correct the logic.",
+      "rubric": [
+        "Defines all three error types",
+        "Correct example for each",
+        "Explains that logical errors give no message",
+        "Describes using the traceback",
+        "Describes testing/tracing for logical errors"
+      ],
+      "keywords": [
+        "syntax error",
+        "runtime error",
+        "logical error",
+        "traceback",
+        "debugging"
+      ],
+      "explanation": "The key point is that only two of the three produce messages, so logical errors need testing.",
+      "relatedConcepts": [
+        "debugging",
+        "traceback",
+        "logical error"
+      ]
+    },
+    {
+      "id": "ch7-la-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain Python's exception-handling mechanism with all four clauses, and write a program that reads two numbers and divides them, handling both invalid input and division by zero.",
+      "modelAnswer": "Python handles run-time exceptions with try, except, else and finally. try encloses the code that may fail; except handles a matching exception; else runs only when no exception occurred; finally runs in every case for cleanup. Program:\ntry:\n    a = int(input('Enter first number: '))\n    b = int(input('Enter second number: '))\n    print('Result =', a / b)\nexcept ValueError:\n    print('Please enter numbers only')\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')\nelse:\n    print('Division done successfully')\nfinally:\n    print('Program finished')\nIf the input is invalid, ValueError is caught; if b is 0, ZeroDivisionError is caught; otherwise else and finally run.",
+      "rubric": [
+        "Explains try",
+        "Explains except",
+        "Explains else",
+        "Explains finally",
+        "Correct program structure",
+        "Handles both exceptions correctly"
+      ],
+      "keywords": [
+        "try",
+        "except",
+        "else",
+        "finally",
+        "ZeroDivisionError",
+        "ValueError"
+      ],
+      "explanation": "A complete answer shows the four clauses and a working program that catches two different exceptions.",
+      "relatedConcepts": [
+        "exception handling",
+        "multiple except",
+        "input()"
+      ]
+    },
+    {
+      "id": "ch7-la-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Explain any six built-in exceptions in Python, stating the condition that raises each and giving a code example.",
+      "modelAnswer": "(1) ZeroDivisionError — dividing by zero, e.g. 10/0. (2) NameError — using an undefined name, e.g. print(total) before assigning total. (3) TypeError — combining incompatible types, e.g. 5 + 'a'. (4) ValueError — right type but invalid value, e.g. int('abc'). (5) IndexError — sequence subscript out of range, e.g. [1,2,3][5]. (6) KeyError — missing dictionary key, e.g. {'a':1}['b']. Other valid choices: AttributeError ((5).append(1)), ImportError (import maths), FileNotFoundError (open('no.txt')), OverflowError (math.exp(1000)), EOFError (input() at end of file), StopIteration (next(iter([]))).",
+      "rubric": [
+        "Names six exceptions",
+        "Correct cause for each",
+        "Correct example for each",
+        "Accurate error message",
+        "Clear organisation",
+        "No wrong pairings"
+      ],
+      "keywords": [
+        "ZeroDivisionError",
+        "NameError",
+        "TypeError",
+        "ValueError",
+        "IndexError",
+        "KeyError"
+      ],
+      "explanation": "Each exception maps to one specific error condition, and the example must actually trigger it.",
+      "relatedConcepts": [
+        "built-in exceptions",
+        "exception hierarchy"
+      ]
+    },
+    {
+      "id": "ch7-la-04",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Write a program that uses multiple except clauses and a finally block, and explain the output for two different inputs.",
+      "modelAnswer": "Program:\ntry:\n    nums = [10, 20, 30]\n    i = int(input('Enter index: '))\n    print('Value =', nums[i])\nexcept ValueError:\n    print('Index must be an integer')\nexcept IndexError:\n    print('Index out of range')\nfinally:\n    print('Done')\nIf the input is 'abc', ValueError is caught and 'Index must be an integer' is printed, then 'Done'. If the input is 5, IndexError is caught and 'Index out of range' is printed, then 'Done'. If the input is 1, 'Value = 20' is printed and then 'Done'. In every case finally runs.",
+      "rubric": [
+        "Uses try with multiple except",
+        "Uses finally",
+        "Correct output for a bad value",
+        "Correct output for an out-of-range index",
+        "Notes that finally always runs"
+      ],
+      "keywords": [
+        "multiple except",
+        "finally",
+        "IndexError",
+        "ValueError"
+      ],
+      "explanation": "finally runs regardless of which exception is caught or whether any is raised.",
+      "relatedConcepts": [
+        "finally",
+        "multiple except",
+        "IndexError"
+      ]
+    },
+    {
+      "id": "ch7-la-05",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 4,
+      "question": "Discuss why logical errors are difficult to find and describe strategies a programmer can use to debug them.",
+      "modelAnswer": "A logical error does not violate Python's grammar or raise an exception; the program runs to completion, so Python has no way to detect that the result is wrong. It is therefore difficult to find and depends on the programmer's reasoning. Strategies: (1) compare the actual output with the expected output for known inputs; (2) trace the values of variables step by step, either by hand or with print() statements; (3) break the problem into smaller parts and test each; (4) check the logic of conditions, loops and operator precedence (e.g. average = a + b / 2 instead of (a + b) / 2); (5) re-read the requirement carefully. Example: a loop meant to add 1 to 5 written as range(1, 5) adds only 1 to 4, giving 10 instead of 15.",
+      "rubric": [
+        "Explains why logical errors are undetected",
+        "Mentions comparing expected vs actual output",
+        "Mentions tracing variables / print debugging",
+        "Gives a concrete logical-error example",
+        "Mentions operator precedence or loop bounds"
+      ],
+      "keywords": [
+        "logical error",
+        "tracing",
+        "test cases",
+        "operator precedence"
+      ],
+      "explanation": "Because no message is produced, logical errors are found only by testing and reasoning about the code.",
+      "relatedConcepts": [
+        "logical error",
+        "debugging",
+        "testing"
+      ]
+    },
+    {
+      "id": "ch7-case-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Read the case study and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "A student writes a program to print the average of three marks. The program is meant to read three integers, compute their average and print it. When run, it sometimes crashes with an error message, and once it printed a wrong average without any error at all.",
+        "table": {
+          "columns": [
+            "Run",
+            "Input given",
+            "Result"
+          ],
+          "rows": [
+            [
+              "1",
+              "40, 50, abc",
+              "Error message printed"
+            ],
+            [
+              "2",
+              "30, 40, 50",
+              "A wrong average was printed (no error)"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "In Run 1, which exception is most likely raised when the input 'abc' is converted using int()?",
+            "kind": "mcq",
+            "options": [
+              "TypeError",
+              "ValueError",
+              "NameError",
+              "IndexError"
+            ],
+            "answer": 1,
+            "explanation": "int('abc') raises ValueError: invalid literal for int() with base 10: 'abc'.",
+            "marks": 1
+          },
+          {
+            "question": "Run 2 gave no error message yet a wrong answer. What type of error is this?",
+            "kind": "mcq",
+            "options": [
+              "Syntax error",
+              "Runtime error",
+              "Logical error",
+              "Indentation error"
+            ],
+            "answer": 2,
+            "explanation": "A logical error does not raise an exception; the program runs but produces an incorrect result.",
+            "marks": 1
+          },
+          {
+            "question": "Which block should the student add so that invalid input does not crash the program?",
+            "kind": "short",
+            "answer": "A try-except block, catching ValueError, so that a non-numeric entry is handled gracefully.",
+            "explanation": "try-except catches the ValueError and lets the program continue instead of stopping.",
+            "marks": 1
+          },
+          {
+            "question": "Write the corrected statement to compute the average of a, b and c correctly.",
+            "kind": "short",
+            "answer": "average = (a + b + c) / 3",
+            "explanation": "The parentheses ensure the sum is computed before dividing, avoiding an operator-precedence logical error.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "The case links three ideas: ValueError from bad input, logical errors that give no message, and using try-except plus correct precedence to fix both.",
+      "relatedConcepts": [
+        "ValueError",
+        "logical error",
+        "try-except",
+        "operator precedence"
+      ]
+    },
+    {
+      "id": "ch7-case-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Read the case study and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "Consider the following program:\ntry:\n    n = int(input('Enter a number: '))\n    print(100 / n)\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')\nfinally:\n    print('Bye')",
+        "subQuestions": [
+          {
+            "question": "What is printed when the user enters 0?",
+            "kind": "mcq",
+            "options": [
+              "100.0",
+              "Cannot divide by zero then Bye",
+              "Bye then Cannot divide by zero",
+              "A traceback"
+            ],
+            "answer": 1,
+            "explanation": "100/0 raises ZeroDivisionError, caught by the except block; then finally prints 'Bye'.",
+            "marks": 1
+          },
+          {
+            "question": "What is printed when the user enters 4?",
+            "kind": "mcq",
+            "options": [
+              "25.0 then Bye",
+              "Bye then 25.0",
+              "25.0 only",
+              "Cannot divide by zero"
+            ],
+            "answer": 0,
+            "explanation": "100/4 = 25.0 is printed, then finally prints 'Bye'.",
+            "marks": 1
+          },
+          {
+            "question": "Is there an else block in this program? What would it print if the user enters 4 and an else block printing 'No error' were added?",
+            "kind": "short",
+            "answer": "No else block is present. If added, it would print 'No error' when the user enters 4, because no exception occurs.",
+            "explanation": "else runs only when the try block completes without an exception.",
+            "marks": 1
+          },
+          {
+            "question": "If the user enters 'abc', which exception is raised, and is it handled by this program?",
+            "kind": "short",
+            "answer": "ValueError is raised by int('abc'); it is NOT handled here (only ZeroDivisionError is caught), so the program stops with a traceback after finally runs.",
+            "explanation": "Only the listed exception type is caught; other exceptions are not handled.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "The case tests how except, finally and (a missing) else behave for different inputs.",
+      "relatedConcepts": [
+        "try-except",
+        "finally",
+        "else",
+        "ValueError"
+      ]
+    },
+    {
+      "id": "ch7-case-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "case",
+      "difficulty": "hard",
+      "marks": 5,
+      "question": "Read the case study and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "A teacher keeps student marks in a dictionary marks = {'Ravi': 78, 'Asha': 91}. She also keeps a list of roll numbers roll = [101, 102, 103]. She writes code to look up a student's marks and a roll number, but some lookups fail.",
+        "table": {
+          "columns": [
+            "Statement",
+            "Result"
+          ],
+          "rows": [
+            [
+              "marks['Ravi']",
+              "78"
+            ],
+            [
+              "marks['Meena']",
+              "raises an exception"
+            ],
+            [
+              "roll[3]",
+              "raises an exception"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "Which exception is raised by marks['Meena']?",
+            "kind": "mcq",
+            "options": [
+              "IndexError",
+              "KeyError",
+              "ValueError",
+              "NameError"
+            ],
+            "answer": 1,
+            "explanation": "A missing dictionary key raises KeyError: 'Meena'.",
+            "marks": 1
+          },
+          {
+            "question": "Which exception is raised by roll[3] when the list has only three elements (indices 0-2)?",
+            "kind": "mcq",
+            "options": [
+              "KeyError",
+              "ValueError",
+              "IndexError",
+              "TypeError"
+            ],
+            "answer": 2,
+            "explanation": "Index 3 is out of range for a 3-element list, so IndexError is raised.",
+            "marks": 1
+          },
+          {
+            "question": "Both IndexError and KeyError belong to which common parent class?",
+            "kind": "mcq",
+            "options": [
+              "ArithmeticError",
+              "LookupError",
+              "OSError",
+              "SyntaxError"
+            ],
+            "answer": 1,
+            "explanation": "LookupError is the base class of both IndexError and KeyError.",
+            "marks": 1
+          },
+          {
+            "question": "Rewrite marks['Meena'] so that a missing key is handled safely.",
+            "kind": "short",
+            "answer": "marks.get('Meena') returns None instead of raising KeyError, or use try-except KeyError.",
+            "explanation": "dict.get() returns None (or a default) when the key is absent, avoiding the exception.",
+            "marks": 1
+          },
+          {
+            "question": "State one difference between how a list and a dictionary are indexed.",
+            "kind": "short",
+            "answer": "A list is indexed by an integer position (0, 1, 2, ...), while a dictionary is indexed by its key (any hashable value such as a string).",
+            "explanation": "This difference is why out-of-range positions give IndexError and missing keys give KeyError.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "The case contrasts sequence indexing (IndexError) with dictionary key access (KeyError) and their shared parent LookupError.",
+      "relatedConcepts": [
+        "KeyError",
+        "IndexError",
+        "LookupError",
+        "dictionary"
+      ]
+    },
+    {
+      "id": "ch7-assertion-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Assertion (A): An unhandled exception stops the program. Reason (R): When an exception is not caught, Python terminates the program and prints a traceback. Choose the correct option.",
+      "assertion": "An unhandled exception stops the program.",
+      "reason": "When an exception is not caught, Python terminates the program and prints a traceback.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both are true and the reason explains the assertion: an uncaught exception ends execution and produces a traceback.",
+      "relatedConcepts": [
+        "exception",
+        "traceback",
+        "handling"
+      ]
+    },
+    {
+      "id": "ch7-assertion-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Assertion (A): The finally block always executes. Reason (R): The finally block executes only when an exception is raised. Choose the correct option.",
+      "assertion": "The finally block always executes.",
+      "reason": "The finally block executes only when an exception is raised.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The assertion is true (finally always runs), but the reason is false because finally runs whether or not an exception occurs.",
+      "relatedConcepts": [
+        "finally",
+        "exception handling"
+      ]
+    },
+    {
+      "id": "ch7-assertion-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "assertion",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "Assertion (A): A syntax error is detected during execution of the program. Reason (R): A syntax error occurs because the code violates Python's grammar. Choose the correct option.",
+      "assertion": "A syntax error is detected during execution of the program.",
+      "reason": "A syntax error occurs because the code violates Python's grammar.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 3,
+      "explanation": "The assertion is false (syntax errors are detected before execution, while parsing), but the reason is true.",
+      "relatedConcepts": [
+        "syntax error",
+        "parsing",
+        "grammar"
+      ]
+    },
+    {
+      "id": "ch7-assertion-04",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Assertion (A): int('abc') raises a ValueError. Reason (R): 'abc' is of the correct type (string) but is an invalid value for int(). Choose the correct option.",
+      "assertion": "int('abc') raises a ValueError.",
+      "reason": "'abc' is of the correct type (string) but is an invalid value for int().",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both are true and the reason correctly explains why the ValueError is raised: right type, invalid value.",
+      "relatedConcepts": [
+        "ValueError",
+        "int()",
+        "type conversion"
+      ]
+    },
+    {
+      "id": "ch7-truefalse-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A syntax error is detected before the program starts running.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "The parser checks the grammar before execution, so a syntax error prevents the program from running.",
+      "relatedConcepts": [
+        "syntax error",
+        "parsing"
+      ]
+    },
+    {
+      "id": "ch7-truefalse-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The else block of a try statement executes even if an exception occurs.",
+      "correctAnswer": "False",
+      "correction": "The else block executes only when no exception occurs in the try block.",
+      "explanation": "else is the 'no exception' path; on an exception the matching except block runs instead.",
+      "relatedConcepts": [
+        "else",
+        "try-except"
+      ]
+    },
+    {
+      "id": "ch7-truefalse-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The finally block always executes, whether or not an exception occurs.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "finally is designed for cleanup and runs in every case, even if the try block returns.",
+      "relatedConcepts": [
+        "finally",
+        "cleanup"
+      ]
+    },
+    {
+      "id": "ch7-truefalse-04",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Logical errors produce an error message.",
+      "correctAnswer": "False",
+      "correction": "Logical errors produce no error message; the program runs but gives a wrong result.",
+      "explanation": "Python cannot detect a logical error, so no message is shown.",
+      "relatedConcepts": [
+        "logical error",
+        "debugging"
+      ]
+    },
+    {
+      "id": "ch7-truefalse-05",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "IndexError is raised when a dictionary key is missing.",
+      "correctAnswer": "False",
+      "correction": "KeyError is raised when a dictionary key is missing; IndexError is raised when a sequence index is out of range.",
+      "explanation": "Dictionaries raise KeyError; sequences (lists, tuples, strings) raise IndexError.",
+      "relatedConcepts": [
+        "IndexError",
+        "KeyError"
+      ]
+    },
+    {
+      "id": "ch7-truefalse-06",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The raise statement can be used to throw an exception manually.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "raise creates or re-raises an exception, allowing custom error messages.",
+      "relatedConcepts": [
+        "raise",
+        "custom exception"
+      ]
+    },
+    {
+      "id": "ch7-fillblank-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A ______ error is detected before the program starts running.",
+      "correctAnswer": "syntax",
+      "acceptedAnswers": [
+        "syntax",
+        "syntax error"
+      ],
+      "explanation": "The parser detects grammar mistakes before execution, giving a SyntaxError.",
+      "relatedConcepts": [
+        "syntax error",
+        "parsing"
+      ]
+    },
+    {
+      "id": "ch7-fillblank-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The ______ block always executes whether or not an exception occurs.",
+      "correctAnswer": "finally",
+      "acceptedAnswers": [
+        "finally",
+        "finally block"
+      ],
+      "explanation": "finally is used for cleanup and runs in every case.",
+      "relatedConcepts": [
+        "finally",
+        "exception handling"
+      ]
+    },
+    {
+      "id": "ch7-fillblank-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The expression 10/0 raises ______ .",
+      "correctAnswer": "ZeroDivisionError",
+      "acceptedAnswers": [
+        "ZeroDivisionError",
+        "Zero Division Error"
+      ],
+      "explanation": "Division by zero raises ZeroDivisionError: division by zero.",
+      "relatedConcepts": [
+        "ZeroDivisionError",
+        "division"
+      ]
+    },
+    {
+      "id": "ch7-fillblank-04",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "int('abc') raises ______ .",
+      "correctAnswer": "ValueError",
+      "acceptedAnswers": [
+        "ValueError",
+        "Value Error"
+      ],
+      "explanation": "'abc' is the right type but an invalid value for int(), so ValueError is raised.",
+      "relatedConcepts": [
+        "ValueError",
+        "int()"
+      ]
+    },
+    {
+      "id": "ch7-fillblank-05",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The ______ statement is used to raise an exception manually.",
+      "correctAnswer": "raise",
+      "acceptedAnswers": [
+        "raise"
+      ],
+      "explanation": "raise creates or re-raises an exception explicitly.",
+      "relatedConcepts": [
+        "raise",
+        "custom exception"
+      ]
+    },
+    {
+      "id": "ch7-fillblank-06",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "A missing dictionary key raises ______ .",
+      "correctAnswer": "KeyError",
+      "acceptedAnswers": [
+        "KeyError",
+        "Key Error"
+      ],
+      "explanation": "Accessing an absent dictionary key raises KeyError, showing the key in quotes.",
+      "relatedConcepts": [
+        "KeyError",
+        "dictionary"
+      ]
+    },
+    {
+      "id": "ch7-match-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "match",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Match each built-in exception with the condition that raises it.",
+      "matchPairs": [
+        {
+          "left": "ZeroDivisionError",
+          "right": "Dividing a number by zero"
+        },
+        {
+          "left": "NameError",
+          "right": "Using a variable before it is defined"
+        },
+        {
+          "left": "IndexError",
+          "right": "Accessing a list position that does not exist"
+        },
+        {
+          "left": "KeyError",
+          "right": "Accessing a dictionary key that does not exist"
+        },
+        {
+          "left": "ValueError",
+          "right": "Passing an invalid value to int()"
+        }
+      ],
+      "explanation": "Each exception maps to one specific condition; Value, Index and Key all involve 'not found' but in different data structures.",
+      "relatedConcepts": [
+        "ZeroDivisionError",
+        "NameError",
+        "IndexError",
+        "KeyError",
+        "ValueError"
+      ]
+    },
+    {
+      "id": "ch7-match-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "match",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match each exception with the code that triggers it.",
+      "matchPairs": [
+        {
+          "left": "TypeError",
+          "right": "5 + 'a'"
+        },
+        {
+          "left": "IndentationError",
+          "right": "A block body that is not indented"
+        },
+        {
+          "left": "ImportError",
+          "right": "import maths"
+        },
+        {
+          "left": "FileNotFoundError",
+          "right": "open('data.txt') when the file is missing"
+        },
+        {
+          "left": "OverflowError",
+          "right": "math.exp(1000)"
+        }
+      ],
+      "explanation": "The example must actually trigger the named exception; e.g. 5 + 'a' combines an int and a str and raises TypeError.",
+      "relatedConcepts": [
+        "TypeError",
+        "IndentationError",
+        "ImportError",
+        "FileNotFoundError",
+        "OverflowError"
+      ]
+    },
+    {
+      "id": "ch7-match-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "match",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match each clause or keyword with its behaviour.",
+      "matchPairs": [
+        {
+          "left": "try",
+          "right": "Holds code that may raise an exception"
+        },
+        {
+          "left": "except",
+          "right": "Handles a matching exception"
+        },
+        {
+          "left": "else",
+          "right": "Runs when no exception occurs"
+        },
+        {
+          "left": "finally",
+          "right": "Runs always, whether or not an exception occurs"
+        },
+        {
+          "left": "raise",
+          "right": "Throws an exception manually"
+        }
+      ],
+      "explanation": "These five describe the whole exception-handling mechanism in Python.",
+      "relatedConcepts": [
+        "try",
+        "except",
+        "else",
+        "finally",
+        "raise"
+      ]
+    },
+    {
+      "id": "ch7-output-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What output does the following program produce?",
+      "code": "try:\n    print(\"Start\")\n    print(10 / 2)\nexcept ZeroDivisionError:\n    print(\"Error\")\nelse:\n    print(\"No error\")\nfinally:\n    print(\"End\")",
+      "correctAnswer": "Start\n5.0\nNo error\nEnd",
+      "executionSteps": [
+        "The try block runs: 'Start' is printed, then 10/2 = 5.0 is printed.",
+        "No exception occurs, so the except block is skipped.",
+        "The else block runs because there was no exception: 'No error' is printed.",
+        "finally always runs: 'End' is printed."
+      ],
+      "explanation": "With no exception, the order of execution is try -> else -> finally.",
+      "relatedConcepts": [
+        "try",
+        "else",
+        "finally"
+      ]
+    },
+    {
+      "id": "ch7-output-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "What output or error message does the following program produce?",
+      "code": "a = 5\nb = 0\nprint(a / b)",
+      "correctAnswer": "ZeroDivisionError: division by zero",
+      "executionSteps": [
+        "a is assigned 5 and b is assigned 0.",
+        "The expression a / b evaluates to 5 / 0.",
+        "Division by zero is illegal, so Python raises ZeroDivisionError with the message 'division by zero'.",
+        "Because it is not handled, the program stops with a traceback ending in that message."
+      ],
+      "explanation": "The exact error text is 'ZeroDivisionError: division by zero'.",
+      "relatedConcepts": [
+        "ZeroDivisionError",
+        "runtime error"
+      ]
+    },
+    {
+      "id": "ch7-output-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What output or error message does the following program produce?",
+      "code": "d = {\"a\": 1, \"b\": 2}\nprint(d[\"c\"])",
+      "correctAnswer": "KeyError: 'c'",
+      "executionSteps": [
+        "The dictionary d is created with keys 'a' and 'b'.",
+        "The expression d['c'] looks up the key 'c'.",
+        "The key 'c' does not exist, so Python raises KeyError and shows the missing key in quotes.",
+        "The program stops with a traceback ending in KeyError: 'c'."
+      ],
+      "explanation": "The exact error text is KeyError: 'c' — the missing key is printed inside single quotes.",
+      "relatedConcepts": [
+        "KeyError",
+        "dictionary"
+      ]
+    },
+    {
+      "id": "ch7-debug-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "errorType": "syntax",
+      "question": "Identify the error in the code, state its type, and write the corrected code.",
+      "code": "for i in range(5)\n    print(i)",
+      "correctAnswer": "for i in range(5):\n    print(i)",
+      "executionSteps": [
+        "The for header must end with a colon (:).",
+        "Without the colon, Python raises SyntaxError: expected ':' before the body.",
+        "Adding the colon makes the statement grammatically correct."
+      ],
+      "explanation": "A missing colon after a compound-statement header (for/while/if/def) is a syntax error.",
+      "relatedConcepts": [
+        "SyntaxError",
+        "for loop",
+        "colon"
+      ]
+    },
+    {
+      "id": "ch7-debug-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "errorType": "syntax",
+      "question": "Identify the error in the code, state its type, and write the corrected code.",
+      "code": "def greet():\nprint(\"Hello\")",
+      "correctAnswer": "def greet():\n    print(\"Hello\")",
+      "executionSteps": [
+        "The body of a function must be indented below the def line.",
+        "As written, the print is at column 0, so Python raises IndentationError: expected an indented block.",
+        "Indenting the print statement by four spaces corrects it."
+      ],
+      "explanation": "IndentationError (a subclass of SyntaxError) is raised when a block body is not indented.",
+      "relatedConcepts": [
+        "IndentationError",
+        "function",
+        "indentation"
+      ]
+    },
+    {
+      "id": "ch7-debug-03",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 2,
+      "errorType": "runtime",
+      "question": "Identify the error in the code, state its type, and write the corrected code.",
+      "code": "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(totl)",
+      "correctAnswer": "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(total)",
+      "executionSteps": [
+        "The variable is created as 'total' but printed as 'totl'.",
+        "Python cannot resolve the name 'totl', so it raises NameError: name 'totl' is not defined.",
+        "Changing 'totl' to 'total' fixes the runtime error."
+      ],
+      "explanation": "A misspelled variable name raises NameError at run time.",
+      "relatedConcepts": [
+        "NameError",
+        "variable",
+        "typo"
+      ]
+    },
+    {
+      "id": "ch7-debug-04",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 2,
+      "errorType": "runtime",
+      "question": "Identify the error in the code, state its type, and write the corrected code.",
+      "code": "name = \"Ram\"\nage = 15\nprint(\"Age is \" + age)",
+      "correctAnswer": "name = \"Ram\"\nage = 15\nprint(\"Age is \" + str(age))",
+      "executionSteps": [
+        "The + operator cannot join a str and an int.",
+        "Python raises TypeError: can only concatenate str (not \"int\") to str.",
+        "Converting age with str(age) makes both operands strings, so the concatenation works."
+      ],
+      "explanation": "Mixing str and int with + raises TypeError; convert the int to str first.",
+      "relatedConcepts": [
+        "TypeError",
+        "concatenation",
+        "str()"
+      ]
+    },
+    {
+      "id": "ch7-debug-05",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 3,
+      "errorType": "logical",
+      "question": "The code runs without any error but gives the wrong average. Identify the logical error and write the corrected code.",
+      "code": "a = 10\nb = 20\naverage = a + b / 2\nprint(average)",
+      "correctAnswer": "a = 10\nb = 20\naverage = (a + b) / 2\nprint(average)",
+      "executionSteps": [
+        "The / operator has higher precedence than +, so b / 2 is computed first.",
+        "The code actually computes a + (b/2) = 10 + 10.0 = 20.0, not the average 15.0.",
+        "Wrapping the sum in parentheses gives (a + b) / 2 = 15.0, which is correct."
+      ],
+      "explanation": "No exception is raised, so this is a logical error caused by operator precedence.",
+      "relatedConcepts": [
+        "logical error",
+        "operator precedence",
+        "parentheses"
+      ]
+    },
+    {
+      "id": "ch7-debug-06",
+      "chapterId": "ch7",
+      "topicId": "ch7-error-messages",
+      "type": "debug",
+      "difficulty": "hard",
+      "marks": 3,
+      "errorType": "logical",
+      "question": "The code is meant to add the numbers 1 to 5 but gives the wrong total. Identify the logical error and write the corrected code.",
+      "code": "n = 5\ntotal = 0\nfor i in range(1, n):\n    total += i\nprint(total)",
+      "correctAnswer": "n = 5\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\nprint(total)",
+      "executionSteps": [
+        "range(1, n) yields 1, 2, 3, 4 — it stops before n.",
+        "So the loop adds 1+2+3+4 = 10, not 1+2+3+4+5 = 15.",
+        "range(1, n + 1) yields 1 to 5, giving the correct total 15."
+      ],
+      "explanation": "range(a, b) excludes b, so an off-by-one logical error gives a wrong total with no message.",
+      "relatedConcepts": [
+        "logical error",
+        "range()",
+        "off-by-one"
+      ]
+    },
+    {
+      "id": "ch7-debug-07",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 2,
+      "errorType": "runtime",
+      "question": "Identify the error in the code, state its type, and write the corrected code.",
+      "code": "nums = [10, 20, 30]\ni = 3\nprint(nums[i])",
+      "correctAnswer": "nums = [10, 20, 30]\ni = 2\nprint(nums[i])",
+      "executionSteps": [
+        "The list has three elements with valid indices 0, 1 and 2.",
+        "Using i = 3 is out of range, so Python raises IndexError: list index out of range.",
+        "Setting i to a valid index such as 2 fixes the runtime error."
+      ],
+      "explanation": "An index outside 0 to len-1 raises IndexError.",
+      "relatedConcepts": [
+        "IndexError",
+        "list",
+        "index"
+      ]
+    },
+    {
+      "id": "ch7-debug-08",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 2,
+      "errorType": "runtime",
+      "question": "Identify the error in the code, state its type, and write the corrected code.",
+      "code": "nums = [1, 2, 3]\nnums.push(4)\nprint(nums)",
+      "correctAnswer": "nums = [1, 2, 3]\nnums.append(4)\nprint(nums)",
+      "executionSteps": [
+        "A list has no method named push.",
+        "Calling nums.push(4) raises AttributeError: 'list' object has no attribute 'push'.",
+        "The correct method to add an item at the end of a list is append(), so nums.append(4) works."
+      ],
+      "explanation": "Using a method the object does not have raises AttributeError; Python lists use append, not push.",
+      "relatedConcepts": [
+        "AttributeError",
+        "list",
+        "append()"
+      ]
+    },
+    {
+      "id": "ch7-program-01",
+      "chapterId": "ch7",
+      "topicId": "ch7-exceptions",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program that reads two integers from the user and prints their quotient. Handle the case where the second number is zero, and also handle non-numeric input.",
+      "hints": [
+        "Use int(input()) to read each number.",
+        "Catch ZeroDivisionError and ValueError in separate except blocks.",
+        "Use a finally block to print a closing message."
+      ],
+      "modelSolution": "try:\n    a = int(input(\"Enter first number: \"))\n    b = int(input(\"Enter second number: \"))\n    print(\"Quotient =\", a / b)\nexcept ValueError:\n    print(\"Please enter integers only\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")\nfinally:\n    print(\"Program finished\")",
+      "lineExplanations": [
+        {
+          "line": "try:",
+          "explanation": "Starts the block of code that may raise an exception."
+        },
+        {
+          "line": "a = int(input(...))",
+          "explanation": "Reads and converts the first number; raises ValueError if it is not an integer."
+        },
+        {
+          "line": "print(\"Quotient =\", a / b)",
+          "explanation": "Performs the division; raises ZeroDivisionError if b is 0."
+        },
+        {
+          "line": "except ValueError:",
+          "explanation": "Handles non-numeric input."
+        },
+        {
+          "line": "except ZeroDivisionError:",
+          "explanation": "Handles division by zero."
+        },
+        {
+          "line": "finally:",
+          "explanation": "Runs the closing message in every case."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "10\n2",
+          "output": "Quotient = 5.0\nProgram finished"
+        },
+        {
+          "input": "10\n0",
+          "output": "Cannot divide by zero\nProgram finished"
+        },
+        {
+          "input": "10\nabc",
+          "output": "Please enter integers only\nProgram finished"
+        }
+      ],
+      "rubric": [
+        "Reads two integers correctly",
+        "Uses try-except",
+        "Catches ZeroDivisionError",
+        "Catches ValueError",
+        "Uses finally or correct program flow"
+      ],
+      "explanation": "The program demonstrates reading input, two except clauses for two different exceptions, and a finally block.",
+      "relatedConcepts": [
+        "try-except",
+        "ZeroDivisionError",
+        "ValueError",
+        "finally"
+      ]
+    },
+    {
+      "id": "ch7-program-02",
+      "chapterId": "ch7",
+      "topicId": "ch7-builtin-exceptions",
+      "type": "program",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Write a Python program that asks the user for the number of values, then reads that many integers and prints their sum. If a non-integer is entered, print an error message and skip it. Use exception handling so that the program never crashes.",
+      "hints": [
+        "Use a for loop with range() for the number of values.",
+        "Wrap int(input()) inside a try-except ValueError to skip bad entries.",
+        "Keep a running total and print it at the end."
+      ],
+      "modelSolution": "total = 0\ncount = 0\ntry:\n    n = int(input(\"How many values? \"))\nexcept ValueError:\n    print(\"Please enter a whole number\")\nelse:\n    for i in range(n):\n        try:\n            total += int(input(\"Enter value: \"))\n            count += 1\n        except ValueError:\n            print(\"Not an integer, skipped\")\n    print(\"Sum of\", count, \"values is\", total)\nfinally:\n    print(\"Done\")",
+      "lineExplanations": [
+        {
+          "line": "total = 0; count = 0",
+          "explanation": "Initialise the running total and the count of valid values."
+        },
+        {
+          "line": "try: n = int(input(...))",
+          "explanation": "Read the count of values, handling a bad count with except ValueError."
+        },
+        {
+          "line": "else:",
+          "explanation": "Runs the loop only if the count was read successfully."
+        },
+        {
+          "line": "try: total += int(input(...))",
+          "explanation": "Inside the loop, convert each entry; a bad entry raises ValueError."
+        },
+        {
+          "line": "except ValueError: print(...)",
+          "explanation": "Skips a non-integer entry without stopping the program."
+        },
+        {
+          "line": "finally:",
+          "explanation": "Always runs, printing 'Done' at the end."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "3\n10\n20\n30",
+          "output": "Sum of 3 values is 60\nDone"
+        },
+        {
+          "input": "3\n10\nabc\n20",
+          "output": "Not an integer, skipped\nSum of 2 values is 30\nDone"
+        }
+      ],
+      "rubric": [
+        "Reads the count with error handling",
+        "Loops the correct number of times",
+        "Handles a non-integer entry inside the loop",
+        "Keeps a correct running total",
+        "Uses else and finally appropriately",
+        "Program never crashes"
+      ],
+      "explanation": "This program combines a try-except inside a loop with an outer try-else-finally, showing nested handling and graceful skipping of bad input.",
+      "relatedConcepts": [
+        "ValueError",
+        "try-except",
+        "else",
+        "finally",
+        "nested handling"
+      ]
+    }
+  ]
+}

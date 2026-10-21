@@ -1,0 +1,3316 @@
+{
+  "chapter": {
+    "id": "ch4",
+    "number": 4,
+    "title": "Python Fundamentals",
+    "summary": "Chapter 4 introduces the fundamentals of Python programming. It covers the Python character set (letters, digits, special symbols, whitespace and Unicode), the five kinds of tokens (keywords, identifiers, literals, operators and punctuators), variables and their naming rules with dynamic typing and multiple assignment, input() and print() with type casting and the sep and end arguments, and the basic structure of a Python program including comments, imports, indentation and blocks."
+  },
+  "topics": [
+    {
+      "id": "ch4-character-set",
+      "title": "Python Character Set",
+      "content": {
+        "hinglish": "Python ka character set un sab characters ka group hai jo program likhne ke liye allowed hote hain. Isme letters (A se Z, a se z), digits (0 se 9), special symbols jaise + - * / ( ) aur whitespace (space, tab, newline) sab aate hain. Python case-sensitive hai, matlab 'a' aur 'A' do alag characters hain. Aaj kal Python Unicode support karta hai, isliye aap Hindi ya kisi bhi bhasha ke characters bhi strings ke andar use kar sakte ho. Lekin dhyan rahe, variable ke naam mein sirf letters, digits aur underscore allowed hai, aur naam kabhi digit se shuru nahi ho sakta.",
+        "formalDefinition": "The Python character set is the complete collection of characters that the Python interpreter recognises and permits inside a program. It consists of letters (A-Z and a-z), digits (0-9), special symbols, whitespace characters (space, tab and newline) and every other character defined by the Unicode standard. All valid Python tokens are constructed from characters belonging to this set.",
+        "keywords": [
+          "character set",
+          "letters",
+          "digits",
+          "special symbols",
+          "whitespace",
+          "Unicode",
+          "ASCII",
+          "case-sensitive"
+        ],
+        "examples": [
+          "A-Z and a-z are used inside identifiers, keywords and strings.",
+          "0-9 are used to form numeric literals such as 25, 3.14 and 0.",
+          "Special symbols + - * / % = < > ( ) [ ] { } , : . ; ' \" # _ carry special meaning.",
+          "Whitespace: space, tab and newline separate one token from another.",
+          "Unicode characters such as the rupee sign or Devanagari letters may appear inside strings."
+        ],
+        "tables": [
+          {
+            "title": "Categories of the Python Character Set",
+            "headers": [
+              "Category",
+              "Examples",
+              "Where it is used"
+            ],
+            "rows": [
+              [
+                "Letters",
+                "A-Z, a-z",
+                "Identifiers, keywords, string contents"
+              ],
+              [
+                "Digits",
+                "0-9",
+                "Numeric literals, positions inside identifiers"
+              ],
+              [
+                "Special symbols",
+                "+ - * / % = < > ( ) [ ] { } , : . ; ' \" # _",
+                "Operators, delimiters, string quotes, comments"
+              ],
+              [
+                "Whitespace",
+                "space, tab, newline",
+                "Separating tokens; indentation of blocks"
+              ],
+              [
+                "Other (Unicode)",
+                "e.g. the rupee sign, accented letters, Devanagari letters",
+                "String literals and comments"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Python Character Set\n  |-- Letters ............ A-Z, a-z\n  |-- Digits ............. 0-9\n  |-- Special Symbols .... + - * / % = < > ( ) [ ] { } , : . ; ' \" # _\n  |-- Whitespace ......... space, tab, newline\n  `-- Other Unicode ...... any character defined by Unicode"
+        ],
+        "pythonSyntax": "# A comment starts with the hash character\nname = \"Riya\"      # letters and an underscore\nmarks = 95         # digits form the numeric literal\nprint(name, marks) # parentheses, comma and quotes are special symbols",
+        "codeExamples": [
+          {
+            "code": "print(\"A\", \"a\")\nprint(ord(\"A\"), ord(\"a\"))\nprint(ord(\"0\"))",
+            "output": "A a\n65 97\n48",
+            "explanation": "Because Python is case-sensitive, 'A' and 'a' are two different characters. The ord() function returns the Unicode (ASCII) code point of a character: 'A' is 65, 'a' is 97 and the digit character '0' is 48."
+          },
+          {
+            "code": "message = \"Total: 50 rupees\"\nprint(message)\nprint(len(message))",
+            "output": "Total: 50 rupees\n17",
+            "explanation": "Letters, digits, spaces and the colon are all ordinary characters inside a string literal. len() counts every character of the string including the spaces."
+          }
+        ],
+        "commonMistakes": [
+          "Assuming 'A' and 'a' are the same - Python is case-sensitive, so they are different characters.",
+          "Trying to begin a variable name with a digit, for example 2marks; this is invalid.",
+          "Believing only English letters are allowed; Python 3 supports the full Unicode character set.",
+          "Using a symbol such as @ or $ inside an identifier name, which is not permitted.",
+          "Forgetting that whitespace is significant - indentation decides the block in Python."
+        ],
+        "examNotes": [
+          "Python is a case-sensitive language: Sum, sum and SUM are three different names.",
+          "Python 3 stores text as Unicode, so characters from any language can appear inside strings.",
+          "Identifiers may use only letters, digits and the underscore, and must not begin with a digit.",
+          "Whitespace is not just a separator in Python - leading whitespace (indentation) defines blocks.",
+          "Useful ASCII values to remember: 'A' = 65, 'a' = 97, '0' = 48, space = 32."
+        ],
+        "faqs": [
+          {
+            "q": "What is the character set of Python?",
+            "a": "It is the set of all characters Python allows in a program: letters, digits, special symbols, whitespace and any Unicode character."
+          },
+          {
+            "q": "Is Python case-sensitive?",
+            "a": "Yes. 'A' and 'a' are treated as completely different characters, so Sum and sum are different identifiers."
+          },
+          {
+            "q": "Which characters may be used in an identifier?",
+            "a": "Only letters (A-Z, a-z), digits (0-9) and the underscore (_). The first character must not be a digit."
+          },
+          {
+            "q": "Does Python allow characters of Indian languages inside strings?",
+            "a": "Yes. Python 3 strings are Unicode, so Devanagari letters, the rupee sign and accented letters can all appear inside string literals."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which of the following is NOT allowed in a Python identifier?",
+            "options": [
+              "A letter",
+              "A digit",
+              "An underscore",
+              "The @ symbol"
+            ],
+            "answer": 3,
+            "explanation": "Identifiers may contain only letters, digits and the underscore. The @ symbol is not permitted in an identifier."
+          },
+          {
+            "question": "How does Python treat the characters 'A' and 'a'?",
+            "options": [
+              "As the same character",
+              "As two different characters",
+              "As invalid characters",
+              "As digits"
+            ],
+            "answer": 1,
+            "explanation": "Python is case-sensitive, so 'A' (ASCII 65) and 'a' (ASCII 97) are different characters."
+          },
+          {
+            "question": "What is the ASCII value of the character '0'?",
+            "options": [
+              "0",
+              "48",
+              "65",
+              "97"
+            ],
+            "answer": 1,
+            "explanation": "The digit character '0' has ASCII value 48, while the number zero and the character '0' are different things."
+          },
+          {
+            "question": "Which of these is a whitespace character in Python?",
+            "options": [
+              "Comma",
+              "Tab",
+              "Semicolon",
+              "Hash"
+            ],
+            "answer": 1,
+            "explanation": "Space, tab and newline are whitespace characters. Comma, semicolon and hash are special symbols."
+          }
+        ],
+        "checklist": [
+          "I can list the five categories of the Python character set.",
+          "I know Python is case-sensitive and can give an example.",
+          "I can state the ASCII values of 'A', 'a' and '0'.",
+          "I know which characters are allowed in an identifier.",
+          "I understand that whitespace includes space, tab and newline.",
+          "I know Python 3 supports Unicode inside strings."
+        ]
+      }
+    },
+    {
+      "id": "ch4-tokens",
+      "title": "Python Tokens",
+      "content": {
+        "hinglish": "Token matlab program ka sabse chhota meaningful tukda, jise interpreter ek saath padhta hai. Python mein paanch tarah ke tokens hote hain: keywords, identifiers, literals, operators aur punctuators ya delimiters. Keyword wo reserved words hain jinhe Python ne apne liye rakha hai, jaise if, else, for, while, def - inhe variable naam ke roop mein use nahi kar sakte. Identifier wo naam hote hain jo hum khud dete hain, jaise student_name ya total. Literal fixed value hoti hai jaise 25, 3.14, 'Hello', True ya None. Operator koi operation karta hai (+ - * /) aur punctuator structure banata hai, jaise ( ) [ ] { } , : . ;",
+        "formalDefinition": "A token is the smallest individual unit of a program that the interpreter treats as a single logical entity. Python recognises five kinds of tokens: keywords, identifiers, literals, operators and punctuators (also called delimiters). The lexical analyser splits the source code into these tokens before parsing it.",
+        "keywords": [
+          "token",
+          "keyword",
+          "identifier",
+          "literal",
+          "operator",
+          "punctuator",
+          "delimiter",
+          "lexical analysis"
+        ],
+        "examples": [
+          "Keywords: if, else, elif, for, while, def, return, import, True, False, None.",
+          "Identifiers: marks, total_marks, _count, Student1.",
+          "Literals: 42, 3.14, 2+3j, 'Python', True, None, [1, 2, 3].",
+          "Operators: + - * / // % ** == != < > and or not.",
+          "Punctuators / delimiters: ( ) [ ] { } , : . ;"
+        ],
+        "tables": [
+          {
+            "title": "The Five Types of Python Tokens",
+            "headers": [
+              "Token type",
+              "Meaning",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "Keyword",
+                "Reserved word with fixed meaning",
+                "if, else, for, while, def, return, True, None"
+              ],
+              [
+                "Identifier",
+                "Name given by the programmer",
+                "marks, total_marks, _count, Student1"
+              ],
+              [
+                "Literal",
+                "A fixed (constant) value written in the code",
+                "25, 3.14, 'Hello', True, None, [1, 2]"
+              ],
+              [
+                "Operator",
+                "Performs an operation on values",
+                "+ - * / // % ** == and or not"
+              ],
+              [
+                "Punctuator / Delimiter",
+                "Defines structure and grouping",
+                "( ) [ ] { } , : . ;"
+              ]
+            ]
+          },
+          {
+            "title": "Commonly Used Python 3 Keywords",
+            "headers": [
+              "Category",
+              "Keywords"
+            ],
+            "rows": [
+              [
+                "Values",
+                "True, False, None"
+              ],
+              [
+                "Decision / Loop",
+                "if, elif, else, for, while, break, continue, pass"
+              ],
+              [
+                "Functions / Classes",
+                "def, return, lambda, class, yield"
+              ],
+              [
+                "Exceptions",
+                "try, except, finally, raise, assert"
+              ],
+              [
+                "Modules / Scope",
+                "import, from, as, global, nonlocal"
+              ],
+              [
+                "Operators (word forms)",
+                "and, or, not, in, is"
+              ],
+              [
+                "Other",
+                "with, del, async, await"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "statement:  total = marks + 5\n\n  total     ->  identifier\n  =         ->  operator (assignment)\n  marks     ->  identifier\n  +         ->  operator (arithmetic)\n  5         ->  literal (integer)\n  (nothing here is a keyword, so the statement is valid)"
+        ],
+        "pythonSyntax": "import math            # 'import' is a keyword; 'math' is an identifier\nradius = 7.0           # 'radius' is an identifier; 7.0 is a float literal\narea = math.pi * radius ** 2   # operators: = * **\nprint(area)            # 'print' is an identifier (built-in function)",
+        "codeExamples": [
+          {
+            "code": "x = 10\ny = 3\nprint(x + y, x > y, x == y)",
+            "output": "13 True False",
+            "explanation": "x and y are identifiers, 10 and 3 are integer literals, = is the assignment operator and + > == are arithmetic/relational operators. The values 13, True and False printed are results."
+          },
+          {
+            "code": "name = \"Aman\"\nage = 16\nprint(name, age, type(name), type(age))",
+            "output": "Aman 16 <class 'str'> <class 'int'>",
+            "explanation": "The literal \"Aman\" is a string literal and 16 is an integer literal. type() shows that the string literal created a str object and the integer literal created an int object."
+          }
+        ],
+        "commonMistakes": [
+          "Using a keyword as an identifier, for example writing class = 10 or if = 5.",
+          "Confusing a literal with a variable - 25 is a literal, marks is an identifier.",
+          "Thinking print and input are keywords; they are built-in function names (identifiers).",
+          "Mixing up the assignment operator = with the equality operator ==.",
+          "Forgetting that True, False and None are keywords and cannot be reassigned."
+        ],
+        "examNotes": [
+          "Python 3 has 35 reserved keywords; none of them may be used as an identifier.",
+          "True, False and None are keywords and are written with a capital first letter.",
+          "print and input are built-in functions, not keywords, so they can technically be reassigned (but should not be).",
+          "A token is the smallest meaningful unit; the interpreter tokenises code before parsing it.",
+          "Punctuators are also called delimiters because they delimit (mark the boundaries of) program elements."
+        ],
+        "faqs": [
+          {
+            "q": "What is a token in Python?",
+            "a": "A token is the smallest individual meaningful unit of a program, such as a keyword, identifier, literal, operator or punctuator."
+          },
+          {
+            "q": "How many types of tokens does Python have?",
+            "a": "Five: keywords, identifiers, literals, operators and punctuators (delimiters)."
+          },
+          {
+            "q": "Is print a keyword?",
+            "a": "No. print is a built-in function name, which is an identifier. Keywords are reserved words such as if, for and def."
+          },
+          {
+            "q": "What is the difference between a literal and a variable?",
+            "a": "A literal is a fixed value written directly in the code (25, 'Hi'), while a variable is a named reference whose value can change."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "How many types of tokens are there in Python?",
+            "options": [
+              "Three",
+              "Four",
+              "Five",
+              "Six"
+            ],
+            "answer": 2,
+            "explanation": "Python has five token types: keywords, identifiers, literals, operators and punctuators/delimiters."
+          },
+          {
+            "question": "In the statement total = marks + 5, which token is a literal?",
+            "options": [
+              "total",
+              "marks",
+              "=",
+              "5"
+            ],
+            "answer": 3,
+            "explanation": "5 is a fixed value written in the code, so it is an integer literal. total and marks are identifiers and = is an operator."
+          },
+          {
+            "question": "Which of the following is a keyword in Python 3?",
+            "options": [
+              "print",
+              "input",
+              "None",
+              "main"
+            ],
+            "answer": 2,
+            "explanation": "None is a reserved keyword. print and input are built-in functions, and main is an ordinary identifier."
+          },
+          {
+            "question": "The symbols ( ) [ ] { } , : ; are examples of:",
+            "options": [
+              "Literals",
+              "Punctuators/delimiters",
+              "Keywords",
+              "Operators"
+            ],
+            "answer": 1,
+            "explanation": "These symbols define the structure and grouping of code, so they are punctuators, also called delimiters."
+          }
+        ],
+        "checklist": [
+          "I can name the five types of Python tokens.",
+          "I can classify any token in a simple statement.",
+          "I know True, False and None are keywords.",
+          "I know print and input are not keywords.",
+          "I can give at least four examples of punctuators.",
+          "I can distinguish a literal from an identifier and an operator."
+        ]
+      }
+    },
+    {
+      "id": "ch4-variables",
+      "title": "Variables in Python",
+      "content": {
+        "hinglish": "Variable ek naam hai jo computer ki memory mein rakhi kisi value ko point karta hai. Python mein variable banane ke liye sirf assignment karna hota hai - jaise marks = 90. Yahan type likhne ki zarurat nahi hoti, kyunki Python dynamically typed hai; value dekh kar wo khud type decide karta hai. Ek hi line mein kai variables ko value de sakte ho: a = b = c = 5, ya a, b = 10, 20. Kisi variable ka data type dekhne ke liye type() aur uski memory address dekhne ke liye id() use karte hain. Naam rakhne ke rules yaad rakho: letter ya underscore se shuru, phir letters, digits ya underscore, aur keywords ka use nahi.",
+        "formalDefinition": "A variable is a named reference to a value stored in memory. In Python a variable is created the moment a value is assigned to it using the assignment operator (=); no explicit declaration is required. Python is dynamically typed, so the data type of a variable is determined at run time from the value it currently refers to, and the same name may later refer to a value of a different type.",
+        "keywords": [
+          "variable",
+          "assignment operator",
+          "dynamic typing",
+          "identifier",
+          "type()",
+          "id()",
+          "multiple assignment",
+          "memory address"
+        ],
+        "examples": [
+          "marks = 90 creates an int variable named marks.",
+          "name = \"Riya\" creates a str variable.",
+          "a = b = c = 5 assigns the same value to three variables at once.",
+          "a, b = b, a swaps the values of two variables.",
+          "type(marks) returns <class 'int'> and id(marks) returns the memory address."
+        ],
+        "tables": [
+          {
+            "title": "Rules for Naming a Variable (Identifier)",
+            "headers": [
+              "Rule",
+              "Valid example",
+              "Invalid example"
+            ],
+            "rows": [
+              [
+                "Must begin with a letter or underscore",
+                "marks, _total",
+                "2marks, $rate"
+              ],
+              [
+                "After the first character, letters, digits and underscore are allowed",
+                "student_1, roll_no",
+                "roll-no, total marks"
+              ],
+              [
+                "Must not be a keyword",
+                "value, count",
+                "if, class, True"
+              ],
+              [
+                "Case-sensitive",
+                "Marks and marks are different",
+                "using them as one name"
+              ],
+              [
+                "No spaces or special symbols",
+                "total_marks",
+                "total marks, a@b"
+              ]
+            ]
+          },
+          {
+            "title": "Multiple Assignment Forms",
+            "headers": [
+              "Form",
+              "Statement",
+              "Effect"
+            ],
+            "rows": [
+              [
+                "Same value to many names",
+                "a = b = c = 10",
+                "a, b and c all refer to 10"
+              ],
+              [
+                "Different values to many names",
+                "x, y = 5, 8",
+                "x is 5 and y is 8"
+              ],
+              [
+                "Swapping two variables",
+                "x, y = y, x",
+                "values of x and y are exchanged"
+              ],
+              [
+                "Unpacking",
+                "p, q, r = 1, 2, 3",
+                "p=1, q=2, r=3"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "marks = 90\n\n  variable name        value object\n  +--------+           +-----------+\n  | marks  |---------->|   90      |   type: int\n  +--------+           +-----------+\n\nRe-assignment changes the arrow, not the number:\n  marks = 95   ->  | marks |---->| 95 |"
+        ],
+        "pythonSyntax": "marks = 90            # simple assignment\nname = \"Riya\"         # string variable\na = b = 5             # multiple assignment (same value)\nx, y = 10, 20         # multiple assignment (different values)\nprint(type(marks))    # <class 'int'>\nprint(id(marks))      # memory address of the object",
+        "codeExamples": [
+          {
+            "code": "marks = 90\nprint(type(marks))\nmarks = \"ninety\"\nprint(type(marks))",
+            "output": "<class 'int'>\n<class 'str'>",
+            "explanation": "The same name marks first refers to an integer and later to a string. This is dynamic typing: the type belongs to the value, not to the variable name."
+          },
+          {
+            "code": "a = b = c = 5\na, b = 10, 20\nprint(a, b, c)",
+            "output": "10 20 5",
+            "explanation": "a, b and c all started at 5. The second statement reassigned a to 10 and b to 20, but c was never changed, so it still prints 5."
+          },
+          {
+            "code": "x = 5\ny = 5\nprint(x == y, id(x) == id(y))",
+            "output": "True True",
+            "explanation": "== compares the values (both 5) while id() gives the memory address. For small integers Python reuses the same object, so both the values and the addresses match."
+          }
+        ],
+        "commonMistakes": [
+          "Starting a variable name with a digit, for example 1st_marks.",
+          "Using a keyword such as class or if as a variable name.",
+          "Assuming you must declare a type - in Python the type comes from the assigned value.",
+          "Thinking id() returns the value; it returns the identity (memory address) of the object.",
+          "Forgetting that variable names are case-sensitive, so Marks and marks are different."
+        ],
+        "examNotes": [
+          "No declaration is needed: a variable comes into existence the first time it is assigned.",
+          "Python is dynamically typed - a name can refer to different data types at different times.",
+          "type() returns the class of the value; id() returns the unique identity (address) of the object.",
+          "a = b = c = 5 assigns the same object to all three names.",
+          "The assignment operator = is right-associative: x = y = 5 evaluates the right side first."
+        ],
+        "faqs": [
+          {
+            "q": "Do we need to declare the data type of a variable in Python?",
+            "a": "No. Python is dynamically typed, so the type is decided automatically from the value assigned."
+          },
+          {
+            "q": "What does id() return?",
+            "a": "id() returns the identity of an object, which is its memory address during the life of the program."
+          },
+          {
+            "q": "Can a variable change its type later?",
+            "a": "Yes. After marks = 90 you may write marks = \"ninety\"; the same name now refers to a string."
+          },
+          {
+            "q": "How do you swap two variables in one line?",
+            "a": "Use tuple assignment: a, b = b, a."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which of the following is a valid Python variable name?",
+            "options": [
+              "2marks",
+              "total-marks",
+              "_total1",
+              "class"
+            ],
+            "answer": 2,
+            "explanation": "_total1 is valid: it begins with an underscore and then uses letters and a digit. 2marks begins with a digit, total-marks uses a hyphen, and class is a keyword."
+          },
+          {
+            "question": "What does the statement a, b = b, a do?",
+            "options": [
+              "Raises an error",
+              "Swaps the values of a and b",
+              "Sets both to zero",
+              "Creates a list"
+            ],
+            "answer": 1,
+            "explanation": "The right-hand side is evaluated first as the tuple (b, a), then unpacked into a and b, so the two values are swapped."
+          },
+          {
+            "question": "Python is called a dynamically typed language because:",
+            "options": [
+              "Variables must be declared",
+              "The data type is decided from the value at run time",
+              "Only numbers are allowed",
+              "Types cannot change"
+            ],
+            "answer": 1,
+            "explanation": "In a dynamically typed language the type is associated with the value and is determined at run time, not declared by the programmer."
+          },
+          {
+            "question": "What is the output of: x = 7; y = 7; print(id(x) == id(y))?",
+            "options": [
+              "False",
+              "True",
+              "Error",
+              "None"
+            ],
+            "answer": 1,
+            "explanation": "Small integers are cached by Python, so x and y refer to the same object and their ids are equal, giving True."
+          }
+        ],
+        "checklist": [
+          "I can write the rules for naming a variable.",
+          "I can create variables using simple, multiple and tuple assignment.",
+          "I can use type() and id() correctly.",
+          "I understand what dynamic typing means.",
+          "I can swap two variables in a single statement.",
+          "I know variable names are case-sensitive."
+        ]
+      }
+    },
+    {
+      "id": "ch4-input-output",
+      "title": "Input and Output in Python",
+      "content": {
+        "hinglish": "User se data lene ke liye input() function use karte hain aur screen par dikhane ke liye print(). Sabse important baat: input() hamesha string return karta hai, chahe aap number hi kyun na type karo. Agar calculation karni hai to us string ko int() ya float() se convert karna padta hai - isi ko type casting kehte hain. print() mein sep aur end do useful arguments hote hain: sep decide karta hai values ke beech kya aaye (default ek space) aur end decide karta hai line ke baad kya aaye (default newline). Aakhir mein, f-string ya comma se formatted output aasani se likh sakte ho.",
+        "formalDefinition": "input() is a built-in function that pauses the program, reads a line typed by the user and returns it as a string. print() is a built-in function that displays its arguments on the standard output device. Because input() always returns a string, numeric input must be converted using int() or float(); this conversion is called type casting. The print() function accepts the optional keyword arguments sep (separator between values, default a single space) and end (string printed after the last value, default a newline character).",
+        "keywords": [
+          "input()",
+          "print()",
+          "type casting",
+          "int()",
+          "float()",
+          "sep",
+          "end",
+          "f-string"
+        ],
+        "examples": [
+          "name = input(\"Enter your name: \") reads text and returns a string.",
+          "age = int(input(\"Enter age: \")) reads text and converts it to an integer.",
+          "print(\"A\", \"B\", sep=\"-\") gives A-B.",
+          "print(\"Hi\", end=\" \") suppresses the newline so the next print continues on the same line.",
+          "print(f\"Hello {name}\") uses an f-string for formatted output."
+        ],
+        "tables": [
+          {
+            "title": "Type Casting Functions for Input",
+            "headers": [
+              "Function",
+              "Converts a string to",
+              "Example"
+            ],
+            "rows": [
+              [
+                "int()",
+                "Integer",
+                "int(\"25\") gives 25"
+              ],
+              [
+                "float()",
+                "Floating-point number",
+                "float(\"3.5\") gives 3.5"
+              ],
+              [
+                "str()",
+                "String",
+                "str(25) gives '25'"
+              ],
+              [
+                "bool()",
+                "Boolean",
+                "bool(\"True\") gives True"
+              ],
+              [
+                "eval()",
+                "Evaluates the expression typed",
+                "eval(\"3+4\") gives 7"
+              ]
+            ]
+          },
+          {
+            "title": "The sep and end Arguments of print()",
+            "headers": [
+              "Statement",
+              "Output",
+              "Why"
+            ],
+            "rows": [
+              [
+                "print(\"a\", \"b\")",
+                "a b",
+                "Default separator is a single space"
+              ],
+              [
+                "print(\"a\", \"b\", sep=\"-\")",
+                "a-b",
+                "sep is changed to a hyphen"
+              ],
+              [
+                "print(\"a\", end=\"\")",
+                "a (no newline)",
+                "end is set to an empty string"
+              ],
+              [
+                "print(\"a\", \"b\", sep=\"\", end=\"!\")",
+                "ab!",
+                "No separator and an exclamation mark at the end"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "  keyboard ---- input() ----> STRING value ----> int()/float() ----> number\n\n  Example:\n  user types 25  ->  input() returns \"25\" (str)  ->  int(\"25\") gives 25 (int)"
+        ],
+        "pythonSyntax": "name = input(\"Enter your name: \")        # always returns a string\nage = int(input(\"Enter your age: \"))     # type casting to int\nprint(\"Hello\", name)\nprint(\"Name:\", name, \"Age:\", age, sep=\" \")\nprint(\"Done\", end=\"!\\n\")                 # custom end",
+        "codeExamples": [
+          {
+            "code": "a = input(\"Enter first number: \")\nb = input(\"Enter second number: \")\nprint(\"Sum =\", a + b)",
+            "output": "Enter first number: 5\nEnter second number: 3\nSum = 53",
+            "explanation": "input() returns strings, so a and b are '5' and '3'. The + operator joins the two strings to give '53' instead of adding 5 and 3. This is why type casting is needed."
+          },
+          {
+            "code": "a = int(input(\"Enter first number: \"))\nb = int(input(\"Enter second number: \"))\nprint(\"Sum =\", a + b)",
+            "output": "Enter first number: 5\nEnter second number: 3\nSum = 8",
+            "explanation": "int() converts each string to an integer, so the + operator now performs arithmetic addition and prints the correct sum 8."
+          },
+          {
+            "code": "print(\"A\", \"B\", \"C\", sep=\"-\", end=\"...\")\nprint(\"next\")",
+            "output": "A-B-C...next",
+            "explanation": "sep=\"-\" puts a hyphen between values and end=\"...\" replaces the newline with three dots, so the second print continues on the same line."
+          }
+        ],
+        "commonMistakes": [
+          "Forgetting that input() returns a string and using it directly in arithmetic.",
+          "Writing int(input) instead of int(input()).",
+          "Trying to add a string and a number, for example \"5\" + 3, which raises a TypeError.",
+          "Confusing sep (between values) with end (after the last value).",
+          "Calling int(\"3.5\") which raises a ValueError because 3.5 is not an integer string; float() is needed."
+        ],
+        "examNotes": [
+          "input() always returns a str object, even if the user types digits.",
+          "Use int() for whole numbers, float() for decimals and str() to convert a number back to text.",
+          "int(\"3.5\") raises ValueError, but int(3.5) truncates to 3.",
+          "print() separator defaults to a space; the end argument defaults to a newline character.",
+          "f-strings, written as f\"...{expression}...\", are the most readable way to format output in Python 3."
+        ],
+        "faqs": [
+          {
+            "q": "What does input() return?",
+            "a": "It always returns a string, no matter what the user types."
+          },
+          {
+            "q": "Why do we write int(input()) for numeric input?",
+            "a": "Because input() gives a string; int() converts that string into an integer so arithmetic can be done."
+          },
+          {
+            "q": "What is the default value of sep and end in print()?",
+            "a": "The default separator is a single space and the default end is the newline character."
+          },
+          {
+            "q": "How do you print two values without a newline between them?",
+            "a": "Use the end argument, for example print(value, end=\"\")."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What is the data type of the value returned by input()?",
+            "options": [
+              "int",
+              "float",
+              "str",
+              "bool"
+            ],
+            "answer": 2,
+            "explanation": "input() always returns a string (str), even when the user types digits."
+          },
+          {
+            "question": "What is the output of: print(\"10\", \"20\", sep=\"+\")?",
+            "options": [
+              "30",
+              "10+20",
+              "10 20",
+              "1020"
+            ],
+            "answer": 1,
+            "explanation": "sep=\"+\" places a plus sign between the two string arguments, giving 10+20."
+          },
+          {
+            "question": "Which function converts a string of digits into a whole number?",
+            "options": [
+              "str()",
+              "float()",
+              "int()",
+              "input()"
+            ],
+            "answer": 2,
+            "explanation": "int() converts a numeric string such as \"25\" into the integer 25. float() would give 25.0."
+          },
+          {
+            "question": "What does the end argument of print() control?",
+            "options": [
+              "The separator between values",
+              "What is printed after the last value",
+              "The data type printed",
+              "The colour of the text"
+            ],
+            "answer": 1,
+            "explanation": "The end argument is printed after the last value; by default it is a newline character."
+          }
+        ],
+        "checklist": [
+          "I know input() always returns a string.",
+          "I can cast input using int(), float() and str().",
+          "I can use the sep and end arguments of print().",
+          "I can write output using commas and f-strings.",
+          "I can explain why \"5\" + 3 causes a TypeError.",
+          "I know the default values of sep and end."
+        ]
+      }
+    },
+    {
+      "id": "ch4-structure",
+      "title": "Basic Structure of a Python Program",
+      "content": {
+        "hinglish": "Ek Python program aam taur par kuch hisson se milta hai: comments, imports, phir statements, aur zarurat padne par blocks. Comment # se shuru hota hai aur interpreter usko ignore kar deta hai - ye code ko samjhane ke liye hota hai. Import statement kisi module ko use karne ke liye likhte hain, jaise import math. Python mein indentation bahut important hai: ek block ke saare statements ka same indentation hona chahiye, warna IndentationError aata hai. if, for, while, def ke baad colon (:) lagta hai aur uske baad ka indented code us block ka body hota hai. Python line-by-line execute hota hai, isliye statement ka order matter karta hai.",
+        "formalDefinition": "A Python program is a sequence of statements executed one after another from top to bottom. It may begin with comments and import statements, followed by the executable statements and, where required, blocks. A comment begins with the hash symbol (#) and is ignored by the interpreter. An import statement makes the names of a module available to the program. Python uses indentation (leading whitespace) instead of braces to define a block; all statements of a block must have the same indentation, and a header line such as if, for, while or def must end with a colon.",
+        "keywords": [
+          "comment",
+          "import statement",
+          "statement",
+          "indentation",
+          "block",
+          "colon",
+          "IndentationError",
+          "line-by-line execution"
+        ],
+        "examples": [
+          "# This is a single-line comment and Python ignores it.",
+          "import math brings the math module into the program.",
+          "from math import sqrt imports only the sqrt function.",
+          "An if statement ends with a colon and its body is indented.",
+          "All statements in one block must use the same indentation (commonly four spaces)."
+        ],
+        "tables": [
+          {
+            "title": "Parts of a Python Program",
+            "headers": [
+              "Part",
+              "Purpose",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Comment",
+                "Explains the code; ignored by Python",
+                "# calculate the area"
+              ],
+              [
+                "Import",
+                "Brings a module into the program",
+                "import math"
+              ],
+              [
+                "Statement",
+                "A single instruction",
+                "area = 3.14 * r * r"
+              ],
+              [
+                "Block",
+                "A group of indented statements",
+                "the body of an if or for"
+              ],
+              [
+                "Header line",
+                "Ends with a colon and opens a block",
+                "if marks > 40:"
+              ]
+            ]
+          },
+          {
+            "title": "Common Indentation Errors",
+            "headers": [
+              "Situation",
+              "Error raised"
+            ],
+            "rows": [
+              [
+                "Block body not indented at all",
+                "IndentationError: expected an indented block"
+              ],
+              [
+                "Some lines indented, others not, inside one block",
+                "IndentationError: unindent does not match"
+              ],
+              [
+                "Tabs and spaces mixed",
+                "TabError / IndentationError"
+              ],
+              [
+                "Indented code written without any header line",
+                "IndentationError: unexpected indent"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Structure of a typical Python program\n\n  # 1. Comments and docstring\n  import math            # 2. Import statements\n\n  radius = 7             # 3. Executable statements\n  area = math.pi * radius ** 2\n\n  if area > 100:         # 4. Header line ending with a colon\n      print(\"Large\")     #    indented block (same indentation)\n  else:\n      print(\"Small\")"
+        ],
+        "pythonSyntax": "# Program: area of a circle\nimport math                      # import statement\n\nradius = float(input(\"Enter radius: \"))\narea = math.pi * radius * radius\n\nif area > 100:                   # header line ends with a colon\n    print(\"Large circle\")         # indented block (4 spaces)\nelse:\n    print(\"Small circle\")",
+        "codeExamples": [
+          {
+            "code": "import math\nr = 7\narea = math.pi * r * r\nprint(round(area, 2))",
+            "output": "153.94",
+            "explanation": "The import statement makes math available; math.pi is the constant 3.14159.... The area of a circle with radius 7 is about 153.94 when rounded to two decimal places."
+          },
+          {
+            "code": "for i in range(3):\n    print(\"Line\", i)\nprint(\"Done\")",
+            "output": "Line 0\nLine 1\nLine 2\nDone",
+            "explanation": "The header line ends with a colon and the indented print forms the body of the loop. The final print is not indented, so it runs once after the loop ends."
+          }
+        ],
+        "commonMistakes": [
+          "Forgetting the colon at the end of a header line such as if, for, while or def.",
+          "Not indenting the body of a block, which causes an IndentationError.",
+          "Mixing tabs and spaces for indentation, which can raise a TabError.",
+          "Putting an import statement after the code that uses the module.",
+          "Indenting the first line of the program without any header line, giving 'unexpected indent'."
+        ],
+        "examNotes": [
+          "Python uses indentation to define blocks; there are no braces like in C or Java.",
+          "Statements are executed one after another, from top to bottom.",
+          "A comment begins with # and is completely ignored by the interpreter.",
+          "An import statement should normally appear at the top of the program, before the code that uses the module.",
+          "The conventional indentation is four spaces; be consistent within a program."
+        ],
+        "faqs": [
+          {
+            "q": "Why is indentation important in Python?",
+            "a": "Python uses indentation to define blocks of code, so incorrect indentation causes an IndentationError."
+          },
+          {
+            "q": "How do you write a comment in Python?",
+            "a": "Begin the line with the hash symbol (#). Everything after it on that line is ignored by Python."
+          },
+          {
+            "q": "What does an import statement do?",
+            "a": "It makes the contents of a module available so that its functions and constants can be used in the program."
+          },
+          {
+            "q": "Does Python use braces to mark a block?",
+            "a": "No. Python uses indentation and a colon on the header line instead of braces."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which symbol begins a comment in Python?",
+            "options": [
+              "//",
+              "#",
+              "--",
+              "/*"
+            ],
+            "answer": 1,
+            "explanation": "A hash symbol (#) begins a single-line comment in Python; everything after it is ignored."
+          },
+          {
+            "question": "What defines a block of code in Python?",
+            "options": [
+              "Curly braces",
+              "Parentheses",
+              "Indentation",
+              "Semicolons"
+            ],
+            "answer": 2,
+            "explanation": "Python uses indentation to group statements into a block; there are no curly braces."
+          },
+          {
+            "question": "What must a header line such as if x > 0 end with?",
+            "options": [
+              "A semicolon",
+              "A colon",
+              "A comma",
+              "A full stop"
+            ],
+            "answer": 1,
+            "explanation": "Every header line that opens a block (if, for, while, def, class) must end with a colon."
+          },
+          {
+            "question": "Which error is raised when the body of a block is not indented?",
+            "options": [
+              "SyntaxError",
+              "TypeError",
+              "IndentationError",
+              "NameError"
+            ],
+            "answer": 2,
+            "explanation": "Python raises an IndentationError with the message 'expected an indented block'."
+          }
+        ],
+        "checklist": [
+          "I can list the parts of a Python program in order.",
+          "I can write single-line comments correctly.",
+          "I can import a module and use it.",
+          "I know why indentation is required and how blocks are formed.",
+          "I can spot a missing colon on a header line.",
+          "I understand that statements execute from top to bottom."
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "ch4-mcq-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python is a case-sensitive language. Which statement is correct?",
+      "options": [
+        "Sum and sum refer to the same name",
+        "Sum and sum are two different identifiers",
+        "Python ignores the case of letters while running",
+        "Only keywords are case-sensitive"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. Python does not treat them as the same name.",
+        "Correct. Because Python is case-sensitive, Sum and sum are two different identifiers.",
+        "Incorrect. Python does not ignore case at all.",
+        "Incorrect. Identifiers are also case-sensitive, not only keywords."
+      ],
+      "explanation": "Python is case-sensitive: it distinguishes between uppercase and lowercase letters everywhere, so Sum, sum and SUM are three different identifiers.",
+      "relatedConcepts": [
+        "case-sensitive",
+        "identifier",
+        "character set"
+      ]
+    },
+    {
+      "id": "ch4-mcq-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the ASCII value of the character 'a'?",
+      "options": [
+        "65",
+        "97",
+        "48",
+        "32"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "65 is the ASCII value of uppercase 'A'.",
+        "Correct. Lowercase 'a' has ASCII value 97.",
+        "48 is the ASCII value of the digit character '0'.",
+        "32 is the ASCII value of the space character."
+      ],
+      "explanation": "The ASCII value of 'a' is 97 and of 'A' is 65. Remembering these helps in output-based and conversion questions.",
+      "relatedConcepts": [
+        "ASCII",
+        "Unicode",
+        "character set"
+      ]
+    },
+    {
+      "id": "ch4-mcq-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is a whitespace character in Python?",
+      "options": [
+        "Comma (,)",
+        "Newline",
+        "Semicolon (;)",
+        "Hash (#)"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "A comma is a punctuator, not whitespace.",
+        "Correct. Space, tab and newline are whitespace characters.",
+        "A semicolon is a punctuator.",
+        "A hash begins a comment; it is a special symbol."
+      ],
+      "explanation": "Whitespace in Python means the space character, the tab character and the newline character. Whitespace is significant because it controls indentation.",
+      "relatedConcepts": [
+        "whitespace",
+        "indentation",
+        "punctuator"
+      ]
+    },
+    {
+      "id": "ch4-mcq-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which of these may appear as the FIRST character of a Python identifier?",
+      "options": [
+        "A digit",
+        "An underscore",
+        "The symbol @",
+        "A hyphen"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "An identifier must not begin with a digit.",
+        "Correct. An identifier may begin with a letter or an underscore.",
+        "The @ symbol is not allowed in an identifier at all.",
+        "A hyphen is not allowed in an identifier."
+      ],
+      "explanation": "An identifier may start with a letter (A-Z, a-z) or an underscore (_), and after that may contain letters, digits and underscores.",
+      "relatedConcepts": [
+        "identifier",
+        "naming rules",
+        "character set"
+      ]
+    },
+    {
+      "id": "ch4-mcq-05",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A token in Python is best defined as:",
+      "options": [
+        "A complete line of code",
+        "The smallest individual meaningful unit of a program",
+        "A group of statements",
+        "A comment written by the programmer"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "A line may contain several tokens.",
+        "Correct. A token is the smallest individual meaningful unit, such as a keyword or a literal.",
+        "A group of statements is a block, not a token.",
+        "Comments are ignored and are not tokens."
+      ],
+      "explanation": "A token is the smallest unit that the interpreter reads as one logical entity. Python has five kinds: keywords, identifiers, literals, operators and punctuators.",
+      "relatedConcepts": [
+        "token",
+        "lexical analysis",
+        "keyword"
+      ]
+    },
+    {
+      "id": "ch4-mcq-06",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is a keyword in Python 3?",
+      "options": [
+        "print",
+        "lambda",
+        "input",
+        "main"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "print is a built-in function, not a keyword.",
+        "Correct. lambda is a reserved keyword used to create anonymous functions.",
+        "input is a built-in function, not a keyword.",
+        "main is an ordinary identifier."
+      ],
+      "explanation": "lambda is one of the 35 reserved keywords of Python 3. print and input are built-in function names (identifiers).",
+      "relatedConcepts": [
+        "keyword",
+        "identifier",
+        "lambda"
+      ]
+    },
+    {
+      "id": "ch4-mcq-07",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is an identifier?",
+      "options": [
+        "25",
+        "\"Hello\"",
+        "_total",
+        "if"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "25 is an integer literal.",
+        "\"Hello\" is a string literal.",
+        "Correct. _total is an identifier - a name given by the programmer.",
+        "if is a keyword and cannot be used as an identifier."
+      ],
+      "explanation": "An identifier is a name given by the programmer to a variable, function or class. _total follows the naming rules, so it is a valid identifier.",
+      "relatedConcepts": [
+        "identifier",
+        "literal",
+        "keyword"
+      ]
+    },
+    {
+      "id": "ch4-mcq-08",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In Python, True, False and None are:",
+      "options": [
+        "Literals only",
+        "Keywords",
+        "Operators",
+        "Punctuators"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "They are values, but Python reserves them as keywords as well.",
+        "Correct. True, False and None are reserved keywords and cannot be used as variable names.",
+        "They do not perform any operation.",
+        "They are not delimiters."
+      ],
+      "explanation": "True, False and None are keywords in Python 3. Although they represent values, their names are reserved and cannot be reassigned.",
+      "relatedConcepts": [
+        "keyword",
+        "literal",
+        "boolean"
+      ]
+    },
+    {
+      "id": "ch4-mcq-09",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which of the following is a punctuator (delimiter) in Python?",
+      "options": [
+        "+",
+        "(",
+        "and",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "+ is an arithmetic operator.",
+        "Correct. Parentheses are punctuators used for grouping.",
+        "and is a keyword (a logical operator in word form).",
+        "5 is an integer literal."
+      ],
+      "explanation": "Punctuators, also called delimiters, are symbols such as ( ) [ ] { } , : . ; that mark the structure of the code.",
+      "relatedConcepts": [
+        "punctuator",
+        "delimiter",
+        "operator"
+      ]
+    },
+    {
+      "id": "ch4-mcq-10",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "How many reserved keywords does Python 3 have?",
+      "options": [
+        "25",
+        "30",
+        "35",
+        "40"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Not 25.",
+        "Not 30.",
+        "Correct. Python 3 has 35 reserved keywords, including True, False, None, async and await.",
+        "Not 40."
+      ],
+      "explanation": "Python 3 reserves 35 keywords. None of them may be used as an identifier.",
+      "relatedConcepts": [
+        "keyword",
+        "reserved words",
+        "identifier"
+      ]
+    },
+    {
+      "id": "ch4-mcq-11",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is a valid Python variable name?",
+      "options": [
+        "2nd_value",
+        "total-marks",
+        "student_1",
+        "while"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "A name cannot begin with a digit.",
+        "A hyphen is not allowed in a name.",
+        "Correct. student_1 begins with a letter and then uses letters, a digit and an underscore.",
+        "while is a keyword and cannot be used as a variable name."
+      ],
+      "explanation": "A valid identifier must begin with a letter or underscore and then contain only letters, digits and underscores; it must not be a keyword.",
+      "relatedConcepts": [
+        "variable",
+        "naming rules",
+        "identifier"
+      ]
+    },
+    {
+      "id": "ch4-mcq-12",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What does the statement x = y = 10 do?",
+      "options": [
+        "Assigns 10 only to y",
+        "Assigns 10 to both x and y",
+        "Raises a SyntaxError",
+        "Creates a tuple"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Both names are assigned.",
+        "Correct. The value 10 is assigned to x and to y in a single statement.",
+        "The statement is valid Python.",
+        "No tuple is created; this is multiple assignment."
+      ],
+      "explanation": "This is multiple assignment: the right-hand value is assigned to every name on the left, so x and y both refer to 10.",
+      "relatedConcepts": [
+        "multiple assignment",
+        "assignment operator",
+        "variable"
+      ]
+    },
+    {
+      "id": "ch4-mcq-13",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Python is called a dynamically typed language because:",
+      "options": [
+        "Every variable must be declared with a type",
+        "The data type is decided from the value at run time",
+        "Only one data type is supported",
+        "The type of a variable can never change"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "No type declaration is required in Python.",
+        "Correct. The type belongs to the value and is determined at run time.",
+        "Python supports many data types.",
+        "The same name may refer to a different type later."
+      ],
+      "explanation": "In a dynamically typed language the interpreter decides the type of a variable from the value assigned to it while the program runs, so the type of a name may change.",
+      "relatedConcepts": [
+        "dynamic typing",
+        "data type",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch4-mcq-14",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What does the function id() return?",
+      "options": [
+        "The data type of a value",
+        "The value stored in a variable",
+        "The identity (memory address) of an object",
+        "The length of a string"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "type() returns the data type.",
+        "The value is returned by the variable itself, not by id().",
+        "Correct. id() returns the unique identity of an object, which is its memory address during execution.",
+        "len() returns the length of a string."
+      ],
+      "explanation": "id() returns the identity of an object, which is the memory address where the object is stored during the life of the program.",
+      "relatedConcepts": [
+        "id()",
+        "memory address",
+        "object identity"
+      ]
+    },
+    {
+      "id": "ch4-mcq-15",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the output of:\na = 5\na = \"five\"\nprint(type(a))",
+      "options": [
+        "<class 'int'>",
+        "<class 'str'>",
+        "<class 'float'>",
+        "Error"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "The first value was an integer, but it was replaced.",
+        "Correct. After the reassignment a refers to the string \"five\", so type(a) is <class 'str'>.",
+        "No float is involved.",
+        "Reassigning to a different type is allowed in Python."
+      ],
+      "explanation": "Because Python is dynamically typed, the same name may refer to a different type later. After a = \"five\", a refers to a string.",
+      "relatedConcepts": [
+        "dynamic typing",
+        "type()",
+        "reassignment"
+      ]
+    },
+    {
+      "id": "ch4-mcq-16",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the data type of the value returned by input()?",
+      "options": [
+        "int",
+        "float",
+        "str",
+        "bool"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "input() never returns an int directly.",
+        "input() never returns a float directly.",
+        "Correct. input() always returns a string.",
+        "input() does not return a bool."
+      ],
+      "explanation": "input() reads a line typed by the user and always returns it as a string, even if the user types digits. Type casting is needed for arithmetic.",
+      "relatedConcepts": [
+        "input()",
+        "str",
+        "type casting"
+      ]
+    },
+    {
+      "id": "ch4-mcq-17",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the output of: print(\"a\", \"b\", sep=\"-\")?",
+      "options": [
+        "a b",
+        "a-b",
+        "ab",
+        "a,b"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "This would be the output with the default separator.",
+        "Correct. sep=\"-\" places a hyphen between the two values.",
+        "A separator is still printed between the values.",
+        "The separator is a hyphen, not a comma."
+      ],
+      "explanation": "The sep argument of print() is printed between the values. With sep=\"-\", the two values are joined by a hyphen.",
+      "relatedConcepts": [
+        "print()",
+        "sep",
+        "output"
+      ]
+    },
+    {
+      "id": "ch4-mcq-18",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the default value of the end argument of print()?",
+      "options": [
+        "An empty string",
+        "A single space",
+        "A newline character (\\n)",
+        "A comma"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "An empty string would keep the next output on the same line.",
+        "A single space is the default separator, not the default end.",
+        "Correct. By default print() ends with a newline, so each print starts on a new line.",
+        "A comma is never the default end."
+      ],
+      "explanation": "By default the end argument is the newline character, which is why consecutive print() calls appear on separate lines.",
+      "relatedConcepts": [
+        "print()",
+        "end",
+        "newline"
+      ]
+    },
+    {
+      "id": "ch4-mcq-19",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "What happens when the statement int(\"3.5\") is executed?",
+      "options": [
+        "It returns 3",
+        "It returns 3.5",
+        "It raises a ValueError",
+        "It returns 4"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "int(\"3.5\") does not truncate; it cannot read a decimal string as an integer.",
+        "int() never returns a float.",
+        "Correct. The string \"3.5\" is not a valid integer string, so a ValueError is raised.",
+        "No rounding takes place."
+      ],
+      "explanation": "int() can convert only a string that represents a whole number. \"3.5\" contains a decimal point, so int(\"3.5\") raises a ValueError; float(\"3.5\") would give 3.5.",
+      "relatedConcepts": [
+        "int()",
+        "float()",
+        "ValueError",
+        "type casting"
+      ]
+    },
+    {
+      "id": "ch4-mcq-20",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which statement correctly reads a decimal number entered by the user into a variable price?",
+      "options": [
+        "price = int(input())",
+        "price = input()",
+        "price = float(input())",
+        "price = str(input())"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "int() would reject a value such as 45.75.",
+        "input() alone returns a string, not a number.",
+        "Correct. float() converts the string returned by input() into a decimal number.",
+        "str() would keep it as a string."
+      ],
+      "explanation": "To read a decimal value, convert the string returned by input() using float(). int() would raise an error for values containing a decimal point.",
+      "relatedConcepts": [
+        "float()",
+        "input()",
+        "type casting"
+      ]
+    },
+    {
+      "id": "ch4-mcq-21",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "mcq",
+      "difficulty": "hard",
+      "marks": 1,
+      "question": "What is the output of: print(\"5\" + str(3))?",
+      "options": [
+        "8",
+        "53",
+        "5 3",
+        "TypeError"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "The + operator joins strings here; it does not add numbers.",
+        "Correct. str(3) gives \"3\", and \"5\" + \"3\" concatenates to \"53\".",
+        "No space is inserted by string concatenation.",
+        "Both operands are strings, so no error occurs."
+      ],
+      "explanation": "When both operands of + are strings, Python joins them instead of adding. \"5\" + str(3) gives \"53\".",
+      "relatedConcepts": [
+        "string concatenation",
+        "str()",
+        "operator"
+      ]
+    },
+    {
+      "id": "ch4-mcq-22",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which symbol begins a comment in Python?",
+      "options": [
+        "//",
+        "#",
+        "--",
+        "/*"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "// is used for comments in some other languages, not Python.",
+        "Correct. A hash symbol (#) begins a comment, and the rest of the line is ignored.",
+        "-- is not used in Python.",
+        "/* */ is used in C and Java."
+      ],
+      "explanation": "A comment in Python begins with the hash symbol (#). Everything after it on that line is ignored by the interpreter.",
+      "relatedConcepts": [
+        "comment",
+        "hash symbol",
+        "program structure"
+      ]
+    },
+    {
+      "id": "ch4-mcq-23",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "In Python, a block of code is defined by:",
+      "options": [
+        "Curly braces { }",
+        "Indentation",
+        "Parentheses ( )",
+        "Semicolons"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Python does not use curly braces for blocks.",
+        "Correct. Leading whitespace (indentation) groups statements into a block.",
+        "Parentheses are used for grouping expressions, not for blocks.",
+        "Semicolons are not used to end statements in Python."
+      ],
+      "explanation": "Python uses indentation to define blocks instead of braces. All statements of one block must have the same indentation.",
+      "relatedConcepts": [
+        "indentation",
+        "block",
+        "program structure"
+      ]
+    },
+    {
+      "id": "ch4-mcq-24",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What must a header line such as if marks > 40 or for i in range(3) end with?",
+      "options": [
+        "A semicolon",
+        "A colon",
+        "A comma",
+        "A full stop"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "A semicolon is not required in Python.",
+        "Correct. A colon marks the start of the block that follows.",
+        "A comma is used to separate items, not to open a block.",
+        "A full stop has no special meaning here."
+      ],
+      "explanation": "Every header line that opens a block (if, elif, else, for, while, def, class) must end with a colon, and the body of the block must be indented.",
+      "relatedConcepts": [
+        "colon",
+        "block",
+        "indentation"
+      ]
+    },
+    {
+      "id": "ch4-mcq-25",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the effect of the statement import math in a program?",
+      "options": [
+        "It defines a new variable named math",
+        "It makes the contents of the math module available",
+        "It prints the value of pi",
+        "It creates a comment"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "import does not create an ordinary variable.",
+        "Correct. It brings the module's functions and constants, such as math.pi and math.sqrt, into the program.",
+        "Nothing is printed by an import statement.",
+        "import is a statement, not a comment."
+      ],
+      "explanation": "An import statement makes a module available to the program so that its functions and constants can be used, for example math.sqrt() and math.pi.",
+      "relatedConcepts": [
+        "import",
+        "module",
+        "program structure"
+      ]
+    },
+    {
+      "id": "ch4-vsa-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is meant by the character set of Python?",
+      "modelAnswer": "The character set of Python is the set of all characters that may be used in a Python program. It includes letters (A-Z, a-z), digits (0-9), special symbols, whitespace and Unicode characters.",
+      "keywords": [
+        "character set",
+        "letters",
+        "digits",
+        "Unicode"
+      ],
+      "explanation": "The character set defines which characters the interpreter accepts. Everything in a program is built from characters in this set.",
+      "relatedConcepts": [
+        "character set",
+        "Unicode"
+      ]
+    },
+    {
+      "id": "ch4-vsa-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What does it mean to say that Python is case-sensitive?",
+      "modelAnswer": "It means that Python treats uppercase and lowercase letters as different characters. For example, Sum and sum are two different identifiers, and 'A' (ASCII 65) and 'a' (ASCII 97) are different characters.",
+      "keywords": [
+        "case-sensitive",
+        "identifier",
+        "ASCII"
+      ],
+      "explanation": "Case sensitivity applies everywhere - to identifiers, keywords and string contents. Sum, sum and SUM are three different names.",
+      "relatedConcepts": [
+        "case-sensitive",
+        "ASCII",
+        "identifier"
+      ]
+    },
+    {
+      "id": "ch4-vsa-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define a token in Python.",
+      "modelAnswer": "A token is the smallest individual meaningful unit of a Python program, such as a keyword, identifier, literal, operator or punctuator, which the interpreter reads as a single entity.",
+      "keywords": [
+        "token",
+        "smallest unit",
+        "keyword"
+      ],
+      "explanation": "The interpreter splits the source code into tokens before analysing it. Python has five kinds of tokens.",
+      "relatedConcepts": [
+        "token",
+        "lexical analysis"
+      ]
+    },
+    {
+      "id": "ch4-vsa-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Name any two keywords of Python.",
+      "modelAnswer": "Any two of: if, else, for, while, def, return, import, True, False, None, and, or, not, class.",
+      "keywords": [
+        "keyword",
+        "reserved word"
+      ],
+      "explanation": "Keywords are reserved words that have a fixed meaning and cannot be used as identifiers.",
+      "relatedConcepts": [
+        "keyword",
+        "identifier"
+      ]
+    },
+    {
+      "id": "ch4-vsa-05",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is a literal? Give one example.",
+      "modelAnswer": "A literal is a fixed value written directly in the program code, which does not change during execution. Examples: 25 (integer), 3.14 (float), \"Hello\" (string), True (boolean).",
+      "keywords": [
+        "literal",
+        "constant",
+        "fixed value"
+      ],
+      "explanation": "A literal is a constant value appearing in the source code; a variable, by contrast, is a name whose value may change.",
+      "relatedConcepts": [
+        "literal",
+        "variable"
+      ]
+    },
+    {
+      "id": "ch4-vsa-06",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define a variable in Python.",
+      "modelAnswer": "A variable is a named reference to a value stored in memory. In Python a variable is created by assigning a value to a name using the = operator, and no separate declaration is needed.",
+      "keywords": [
+        "variable",
+        "assignment",
+        "name"
+      ],
+      "explanation": "The name is the identifier and the value is stored as an object in memory; the variable refers to that object.",
+      "relatedConcepts": [
+        "variable",
+        "assignment operator"
+      ]
+    },
+    {
+      "id": "ch4-vsa-07",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is dynamic typing in Python?",
+      "modelAnswer": "Dynamic typing means the data type of a variable is decided automatically at run time from the value assigned to it, rather than being declared by the programmer. The same name may later refer to a value of a different type.",
+      "keywords": [
+        "dynamic typing",
+        "run time",
+        "data type"
+      ],
+      "explanation": "Because Python is dynamically typed, no type declaration is needed and a name can be reassigned to a different type later.",
+      "relatedConcepts": [
+        "dynamic typing",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch4-vsa-08",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the data type of the value returned by input()?",
+      "modelAnswer": "input() always returns a string (str), even when the user types digits. To use the value in arithmetic it must be converted with int() or float().",
+      "keywords": [
+        "input()",
+        "str",
+        "type casting"
+      ],
+      "explanation": "This is the most commonly tested fact about input(): it returns text, not numbers.",
+      "relatedConcepts": [
+        "input()",
+        "str",
+        "type casting"
+      ]
+    },
+    {
+      "id": "ch4-vsa-09",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is type casting? Give one example.",
+      "modelAnswer": "Type casting is the conversion of a value from one data type to another. Example: age = int(input(\"Enter age: \")) converts the string returned by input() into an integer so that arithmetic can be performed on it.",
+      "keywords": [
+        "type casting",
+        "int()",
+        "float()",
+        "conversion"
+      ],
+      "explanation": "Because input() returns a string, type casting is essential whenever numeric input is needed.",
+      "relatedConcepts": [
+        "type casting",
+        "int()",
+        "input()"
+      ]
+    },
+    {
+      "id": "ch4-vsa-10",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the purpose of indentation in Python?",
+      "modelAnswer": "Indentation is the leading whitespace at the start of a line. Python uses it to define blocks of code; all statements of one block must have the same indentation. Incorrect indentation causes an IndentationError.",
+      "keywords": [
+        "indentation",
+        "block",
+        "IndentationError"
+      ],
+      "explanation": "Unlike C or Java, Python uses indentation instead of braces to group statements into a block.",
+      "relatedConcepts": [
+        "indentation",
+        "block",
+        "IndentationError"
+      ]
+    },
+    {
+      "id": "ch4-sa-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "List the main categories of the Python character set with one example of each.",
+      "modelAnswer": "Letters: A-Z, a-z (e.g. a). Digits: 0-9 (e.g. 5). Special symbols: + - * / ( ) [ ] { } , : . ; # (e.g. #). Whitespace: space, tab, newline. Other Unicode characters (e.g. the rupee sign inside a string).",
+      "rubric": [
+        "Names the four/five categories",
+        "Gives a valid example for each",
+        "Mentions whitespace",
+        "Mentions Unicode"
+      ],
+      "explanation": "The character set groups all characters Python accepts. Letters, digits, special symbols, whitespace and Unicode characters form the full set.",
+      "relatedConcepts": [
+        "character set",
+        "letters",
+        "digits",
+        "whitespace"
+      ]
+    },
+    {
+      "id": "ch4-sa-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the five types of tokens in Python with one example each.",
+      "modelAnswer": "1. Keywords - reserved words: if, else, None. 2. Identifiers - programmer-defined names: total_marks. 3. Literals - fixed values: 25, 3.14, \"Hi\", True. 4. Operators - perform operations: +, -, *, ==, and. 5. Punctuators/delimiters - define structure: ( ) [ ] { } , : . ;",
+      "rubric": [
+        "Lists all five types",
+        "Correct example for each",
+        "Correct meaning of each type",
+        "Uses Python-valid examples"
+      ],
+      "explanation": "Tokens are the smallest units of a program. Python recognises exactly five kinds: keywords, identifiers, literals, operators and punctuators.",
+      "relatedConcepts": [
+        "token",
+        "keyword",
+        "identifier",
+        "literal"
+      ]
+    },
+    {
+      "id": "ch4-sa-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "State any three differences between a keyword and an identifier.",
+      "modelAnswer": "1. A keyword is a reserved word with a fixed meaning; an identifier is a name given by the programmer. 2. A keyword cannot be used as a variable name; an identifier is used to name variables, functions or classes. 3. Keywords are a fixed list (35 in Python 3); identifiers are unlimited and chosen by the programmer. 4. Keywords are usually lowercase words such as if and for, while identifiers follow the naming rules.",
+      "rubric": [
+        "Any three valid differences",
+        "Correct meaning of keyword",
+        "Correct meaning of identifier",
+        "Clear tabular or point-wise form"
+      ],
+      "explanation": "Keywords are reserved by the language and may not be used as names; identifiers are the names the programmer creates following the naming rules.",
+      "relatedConcepts": [
+        "keyword",
+        "identifier",
+        "reserved word"
+      ]
+    },
+    {
+      "id": "ch4-sa-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Write the rules for naming a variable (identifier) in Python.",
+      "modelAnswer": "1. The name must begin with a letter (A-Z, a-z) or an underscore (_). 2. After the first character, only letters, digits and underscores are allowed. 3. The name must not be a keyword. 4. No spaces or special symbols such as @, -, $ are allowed. 5. Names are case-sensitive, so Marks and marks are different. Example: student_1 is valid; 2marks and total-marks are not.",
+      "rubric": [
+        "All main rules stated",
+        "Correct valid and invalid examples",
+        "Mentions keywords",
+        "Mentions case sensitivity"
+      ],
+      "explanation": "These rules ensure that the interpreter can recognise a name unambiguously. A valid example is _count1 and an invalid one is 1count.",
+      "relatedConcepts": [
+        "naming rules",
+        "identifier",
+        "keyword",
+        "case-sensitive"
+      ]
+    },
+    {
+      "id": "ch4-sa-05",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Explain multiple assignment in Python with an example.",
+      "modelAnswer": "Multiple assignment allows several variables to be given values in a single statement. In a = b = c = 5 all three names refer to 5. In x, y = 10, 20 the values are assigned in order, so x is 10 and y is 20. It can also be used to swap values: a, b = b, a.",
+      "rubric": [
+        "Correct definition",
+        "Example of same value to many names",
+        "Example of different values",
+        "Correct explanation of the result"
+      ],
+      "explanation": "Multiple assignment is a compact way of assigning values. The right-hand side is evaluated first and then unpacked into the names on the left.",
+      "relatedConcepts": [
+        "multiple assignment",
+        "assignment operator",
+        "swapping"
+      ]
+    },
+    {
+      "id": "ch4-sa-06",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain dynamic typing in Python with an example.",
+      "modelAnswer": "Dynamic typing means the type of a variable is determined at run time from the value assigned to it, and it can change later. Example: a = 5 makes a an int; a = \"five\" then makes the same name a str. No type declaration is required. type() can be used to check the current type.",
+      "rubric": [
+        "Correct definition",
+        "Shows the type changing",
+        "Uses type() correctly",
+        "Mentions that no declaration is needed"
+      ],
+      "explanation": "Because the type is attached to the value rather than the name, a variable may refer to different types at different times.",
+      "relatedConcepts": [
+        "dynamic typing",
+        "type()",
+        "reassignment"
+      ]
+    },
+    {
+      "id": "ch4-sa-07",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Why is type casting necessary when taking numeric input? Explain with an example.",
+      "modelAnswer": "input() always returns a string, even when the user types digits. If we add two such values directly, Python joins the strings instead of adding the numbers. Type casting converts the string into a number. Example: a = int(input()) and b = int(input()) then print(a + b) gives the arithmetic sum. Without int(), entering 5 and 3 would print 53.",
+      "rubric": [
+        "States that input() returns a string",
+        "Explains the wrong output without casting",
+        "Shows correct casting code",
+        "Gives the correct result"
+      ],
+      "explanation": "Since input() gives a string, arithmetic requires conversion using int() for whole numbers or float() for decimals.",
+      "relatedConcepts": [
+        "input()",
+        "type casting",
+        "int()",
+        "string concatenation"
+      ]
+    },
+    {
+      "id": "ch4-sa-08",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain the sep and end arguments of print() with examples.",
+      "modelAnswer": "sep specifies the string placed between the values printed, and its default is a single space. end specifies the string printed after the last value, and its default is a newline. Example: print(\"a\", \"b\", sep=\"-\") prints a-b. Example: print(\"a\", end=\"\") prints a with no newline, so the next print continues on the same line.",
+      "rubric": [
+        "Correct meaning of sep",
+        "Correct meaning of end",
+        "States both defaults",
+        "Gives a valid example of each"
+      ],
+      "explanation": "Both sep and end are keyword arguments of print() that control the formatting of the output.",
+      "relatedConcepts": [
+        "print()",
+        "sep",
+        "end",
+        "newline"
+      ]
+    },
+    {
+      "id": "ch4-sa-09",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Describe the basic parts of a Python program with a small example.",
+      "modelAnswer": "A Python program usually contains comments (#), import statements, executable statements and blocks. Example: # area of circle; import math; r = 7; area = math.pi * r * r; if area > 100: print(\"Large\"). Statements run one after another from top to bottom, and the body of a block is indented.",
+      "rubric": [
+        "Mentions comments",
+        "Mentions import statements",
+        "Mentions statements and blocks",
+        "Gives a valid example"
+      ],
+      "explanation": "A program is a sequence of statements executed from top to bottom, optionally with comments, imports and indented blocks.",
+      "relatedConcepts": [
+        "program structure",
+        "comment",
+        "import",
+        "block"
+      ]
+    },
+    {
+      "id": "ch4-sa-10",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Why is indentation important in Python? What error occurs if it is incorrect?",
+      "modelAnswer": "Python uses indentation to define a block of code, so all statements belonging to one block must have the same indentation. If the body of a block is not indented, or if indentation is inconsistent, Python raises an IndentationError (for example, 'expected an indented block').",
+      "rubric": [
+        "States that indentation defines blocks",
+        "Mentions consistency",
+        "Names IndentationError",
+        "Gives the typical message or cause"
+      ],
+      "explanation": "Indentation replaces braces in Python, so it is part of the syntax and not merely a style choice.",
+      "relatedConcepts": [
+        "indentation",
+        "block",
+        "IndentationError"
+      ]
+    },
+    {
+      "id": "ch4-la-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain in detail the five types of tokens in Python. Give at least two examples of each type.",
+      "modelAnswer": "A token is the smallest individual meaningful unit of a program. Python has five types. (1) Keywords: reserved words with a fixed meaning that cannot be used as names - if, else, for, while, def, return, True, False, None. (2) Identifiers: names given by the programmer to variables, functions or classes - marks, total_marks, _count, Student1. (3) Literals: fixed values written in the code - 25, 3.14, 2+3j, \"Hello\", True, None, [1, 2, 3]. (4) Operators: symbols or words that perform an operation - +, -, *, /, //, %, **, ==, !=, and, or, not. (5) Punctuators or delimiters: symbols that mark the structure of code - ( ) [ ] { } , : . ; .",
+      "rubric": [
+        "Defines a token",
+        "Lists all five types",
+        "Two valid examples per type",
+        "Correct meaning for each type",
+        "Clear organisation"
+      ],
+      "keywords": [
+        "token",
+        "keyword",
+        "identifier",
+        "literal",
+        "operator",
+        "punctuator"
+      ],
+      "explanation": "Recognising token types is the first step in reading any Python statement, and it is a frequently asked long-answer question.",
+      "relatedConcepts": [
+        "token",
+        "keyword",
+        "identifier",
+        "literal"
+      ]
+    },
+    {
+      "id": "ch4-la-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain variables in Python. Cover how a variable is created, the naming rules, dynamic typing, multiple assignment and the use of type() and id().",
+      "modelAnswer": "(1) Creation: a variable is created by assignment, for example marks = 90; no declaration is needed. (2) Naming rules: begin with a letter or underscore; then letters, digits and underscores only; no keywords; case-sensitive. (3) Dynamic typing: the type is decided from the value at run time, so a = 5 then a = \"five\" is allowed. (4) Multiple assignment: a = b = c = 5 assigns the same value to three names, and x, y = 10, 20 assigns different values; a, b = b, a swaps values. (5) type() returns the class of a value and id() returns its memory address. Example: marks = 90; print(type(marks)) gives <class 'int'>.",
+      "rubric": [
+        "Explains creation by assignment",
+        "States the naming rules",
+        "Explains dynamic typing with example",
+        "Explains multiple assignment",
+        "Correct use of type() and id()"
+      ],
+      "keywords": [
+        "variable",
+        "assignment",
+        "dynamic typing",
+        "type()",
+        "id()",
+        "multiple assignment"
+      ],
+      "explanation": "This question ties together everything about variables: creation, naming, typing and inspection.",
+      "relatedConcepts": [
+        "variable",
+        "dynamic typing",
+        "type()",
+        "id()"
+      ]
+    },
+    {
+      "id": "ch4-la-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 6,
+      "question": "Explain input() and print() in Python. Include the return type of input(), type casting, and the sep and end arguments of print(), with a complete example program.",
+      "modelAnswer": "input() pauses the program, reads a line typed by the user and returns it as a string. Because it returns a string, numeric input must be converted using int() or float(); this is called type casting. print() displays its arguments; sep sets the string between values (default a space) and end sets the string after the last value (default a newline). Example program: a = int(input(\"Enter first number: \")); b = int(input(\"Enter second number: \")); print(\"Sum =\", a + b, sep=\" \", end=\"!\\n\"). If the user enters 5 and 3, the output is Sum = 8!. Without int(), the output would be Sum = 53 because the strings would be joined.",
+      "rubric": [
+        "States that input() returns a string",
+        "Explains type casting",
+        "Explains sep and end with defaults",
+        "Gives a correct example program",
+        "Shows correct expected output"
+      ],
+      "keywords": [
+        "input()",
+        "print()",
+        "type casting",
+        "sep",
+        "end"
+      ],
+      "explanation": "This is the standard input/output long answer, combining the return type of input(), type casting and the formatting arguments of print().",
+      "relatedConcepts": [
+        "input()",
+        "print()",
+        "type casting",
+        "sep"
+      ]
+    },
+    {
+      "id": "ch4-la-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Describe the basic structure of a Python program, explaining comments, import statements, statements, indentation and blocks. Support your answer with an example.",
+      "modelAnswer": "A Python program is a sequence of statements executed from top to bottom. Comments begin with # and are ignored by the interpreter. Import statements, such as import math, make a module available. Statements are individual instructions such as r = 7. A header line (if, for, while, def) ends with a colon and is followed by an indented block; all lines of one block must share the same indentation, and incorrect indentation raises an IndentationError. Example: import math; r = 7; area = math.pi * r * r; if area > 100: print(\"Large\") else: print(\"Small\").",
+      "rubric": [
+        "Explains comments",
+        "Explains imports",
+        "Explains statements and top-to-bottom execution",
+        "Explains indentation and blocks with the colon",
+        "Gives a valid example"
+      ],
+      "keywords": [
+        "program structure",
+        "comment",
+        "import",
+        "indentation",
+        "block"
+      ],
+      "explanation": "The structure of a program shows how comments, imports, statements and blocks fit together, and why indentation is part of Python's syntax.",
+      "relatedConcepts": [
+        "program structure",
+        "comment",
+        "import",
+        "indentation"
+      ]
+    },
+    {
+      "id": "ch4-la-05",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Describe the character set of Python and explain the terms case-sensitive, ASCII and Unicode with suitable examples.",
+      "modelAnswer": "The character set of Python is the set of all characters allowed in a program: letters (A-Z, a-z), digits (0-9), special symbols such as + - * / ( ) [ ] { } , : . ; # and whitespace (space, tab, newline). Case-sensitive means uppercase and lowercase letters are different, so Sum and sum are different identifiers and 'A' (65) differs from 'a' (97). ASCII is a 7-bit code that assigns numbers 0-127 to characters; for example '0' is 48 and space is 32. Unicode is a much larger standard that covers characters of all languages, and Python 3 uses Unicode, so Devanagari letters or the rupee sign may appear inside strings.",
+      "rubric": [
+        "Lists the categories of the character set",
+        "Explains case sensitivity with an example",
+        "Explains ASCII with values",
+        "Explains Unicode and Python 3 support"
+      ],
+      "keywords": [
+        "character set",
+        "case-sensitive",
+        "ASCII",
+        "Unicode"
+      ],
+      "explanation": "This answer combines the character set with the two encoding terms that are commonly asked alongside it.",
+      "relatedConcepts": [
+        "character set",
+        "ASCII",
+        "Unicode",
+        "case-sensitive"
+      ]
+    },
+    {
+      "id": "ch4-case-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Read the case study given below and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "Riya writes a small program to add two numbers entered by the user. She runs it twice with the same input, 5 and 3.\n\nProgram A:\na = input(\"Enter first number: \")\nb = input(\"Enter second number: \")\nprint(\"Sum =\", a + b)\n\nProgram B:\na = int(input(\"Enter first number: \"))\nb = int(input(\"Enter second number: \"))\nprint(\"Sum =\", a + b)\n\nFor both runs the user types 5 and then 3.",
+        "table": {
+          "title": "Behaviour of the two programs for input 5 and 3",
+          "headers": [
+            "Program",
+            "Values of a and b",
+            "Output"
+          ],
+          "rows": [
+            [
+              "A",
+              "'5' and '3' (str)",
+              "Sum = 53"
+            ],
+            [
+              "B",
+              "5 and 3 (int)",
+              "Sum = 8"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "What data type do a and b have in Program A?",
+            "kind": "mcq",
+            "options": [
+              "int",
+              "float",
+              "str",
+              "bool"
+            ],
+            "answer": 2,
+            "explanation": "input() always returns a string, so a and b are '5' and '3', both of type str.",
+            "marks": 1
+          },
+          {
+            "question": "Why does Program A print Sum = 53 instead of Sum = 8?",
+            "kind": "short",
+            "answer": "Because a and b are strings, the + operator joins (concatenates) them, giving '53' instead of adding 5 and 3.",
+            "explanation": "The + operator adds numbers but concatenates strings; since input() gave strings, the result is the joined string '53'.",
+            "marks": 1
+          },
+          {
+            "question": "What change in Program B produces the correct sum?",
+            "kind": "short",
+            "answer": "Each input is converted to an integer using int(), so int(input(...)) gives a number and + performs arithmetic addition.",
+            "explanation": "Type casting with int() changes the string into an integer, allowing arithmetic.",
+            "marks": 1
+          },
+          {
+            "question": "If the user wanted to enter the decimal 5.5 instead of 5, which function should replace int()?",
+            "kind": "mcq",
+            "options": [
+              "str()",
+              "float()",
+              "bool()",
+              "eval()"
+            ],
+            "answer": 1,
+            "explanation": "float() converts a numeric string containing a decimal point into a floating-point number; int() would raise a ValueError.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "The case shows why input() must be cast: it returns a string, so string concatenation happens instead of arithmetic addition.",
+      "relatedConcepts": [
+        "input()",
+        "type casting",
+        "int()",
+        "string concatenation"
+      ]
+    },
+    {
+      "id": "ch4-case-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Read the case study given below and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "A student writes the following code and studies the values printed.\n\nx = 5\ny = x\nx = 10\nprint(x, y)\n\nShe then writes a second snippet:\n\na = b = c = 7\na, b = 1, 2\nprint(a, b, c)",
+        "table": {
+          "title": "Values after each program runs",
+          "headers": [
+            "Snippet",
+            "Output"
+          ],
+          "rows": [
+            [
+              "First snippet",
+              "10 5"
+            ],
+            [
+              "Second snippet",
+              "1 2 7"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "What is the output of the first snippet?",
+            "kind": "mcq",
+            "options": [
+              "10 10",
+              "5 5",
+              "10 5",
+              "5 10"
+            ],
+            "answer": 2,
+            "explanation": "y = x copies the value 5 into y. Later x = 10 changes only x, so x is 10 and y is still 5.",
+            "marks": 1
+          },
+          {
+            "question": "In the second snippet, why is c still 7?",
+            "kind": "short",
+            "answer": "The statement a = b = c = 7 assigned 7 to all three names. The later statement a, b = 1, 2 reassigned only a and b, so c was never changed.",
+            "explanation": "Multiple assignment gives the same value to all names; reassigning a and b does not affect c.",
+            "marks": 1
+          },
+          {
+            "question": "What does the statement a, b = 1, 2 demonstrate?",
+            "kind": "mcq",
+            "options": [
+              "Same value to many names",
+              "Different values assigned in one statement",
+              "A syntax error",
+              "String concatenation"
+            ],
+            "answer": 1,
+            "explanation": "Tuple assignment lets different values be given to different names in a single statement.",
+            "marks": 1
+          },
+          {
+            "question": "Which function would you use to confirm the data type of y after the first snippet?",
+            "kind": "short",
+            "answer": "type(y) would return <class 'int'>, confirming that y refers to an integer.",
+            "explanation": "type() returns the class of the value a name refers to.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case tests how assignment binds values to names, including multiple assignment and later reassignment.",
+      "relatedConcepts": [
+        "variable",
+        "multiple assignment",
+        "reassignment",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch4-case-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Read the case study given below and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "A student writes the following program to print the numbers 0, 1 and 2, but Python refuses to run it.\n\nfor i in range(3):\nprint(i)\n\nAfter correcting it, she also adds a comment and an import at the top:\n\n# print numbers\nimport math\nfor i in range(3):\n    print(i)",
+        "table": {
+          "title": "Parts of the corrected program",
+          "headers": [
+            "Line",
+            "Role"
+          ],
+          "rows": [
+            [
+              "# print numbers",
+              "Comment - ignored by Python"
+            ],
+            [
+              "import math",
+              "Import statement - makes the module available"
+            ],
+            [
+              "for i in range(3):",
+              "Header line ending with a colon"
+            ],
+            [
+              "    print(i)",
+              "Indented block body"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "Why does the first version fail to run?",
+            "kind": "mcq",
+            "options": [
+              "The keyword for is misspelled",
+              "The body of the loop is not indented",
+              "range(3) is invalid",
+              "A semicolon is missing"
+            ],
+            "answer": 1,
+            "explanation": "The body of a block must be indented; without indentation Python raises an IndentationError ('expected an indented block').",
+            "marks": 1
+          },
+          {
+            "question": "What is the correct way to fix the first version?",
+            "kind": "short",
+            "answer": "Indent the print(i) line so that it lies inside the loop, for example by writing four spaces before it.",
+            "explanation": "The colon on the header line opens a block, and the block body must be indented.",
+            "marks": 1
+          },
+          {
+            "question": "What is the role of the line # print numbers?",
+            "kind": "mcq",
+            "options": [
+              "It prints the words",
+              "It is a comment ignored by Python",
+              "It is a keyword",
+              "It imports a module"
+            ],
+            "answer": 1,
+            "explanation": "A line beginning with # is a comment and is completely ignored by the interpreter.",
+            "marks": 1
+          },
+          {
+            "question": "In the corrected program, what does the line import math do?",
+            "kind": "short",
+            "answer": "It makes the contents of the math module available to the program so that its functions and constants can be used.",
+            "explanation": "An import statement brings a module into the program; math is not otherwise used here but is available.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case tests indentation, comments and import statements - the structural parts of a Python program.",
+      "relatedConcepts": [
+        "indentation",
+        "comment",
+        "import",
+        "block"
+      ]
+    },
+    {
+      "id": "ch4-assertion-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "For the given Assertion (A) and Reason (R), choose the correct option.",
+      "assertion": "Assertion (A): Python is a case-sensitive language.",
+      "reason": "Reason (R): The characters 'A' and 'a' have different ASCII values (65 and 97).",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both statements are true, and the reason explains the assertion: because 'A' and 'a' are different characters, Python treats uppercase and lowercase letters as distinct, which is exactly what case sensitivity means.",
+      "relatedConcepts": [
+        "case-sensitive",
+        "ASCII",
+        "character set"
+      ]
+    },
+    {
+      "id": "ch4-assertion-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "For the given Assertion (A) and Reason (R), choose the correct option.",
+      "assertion": "Assertion (A): input() always returns a string.",
+      "reason": "Reason (R): Python automatically converts a number typed by the user into an int when input() is used.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 2,
+      "explanation": "The assertion is true - input() always returns a str. The reason is false, because Python does not convert the input automatically; the programmer must use int() or float() explicitly.",
+      "relatedConcepts": [
+        "input()",
+        "str",
+        "type casting"
+      ]
+    },
+    {
+      "id": "ch4-assertion-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "assertion",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "For the given Assertion (A) and Reason (R), choose the correct option.",
+      "assertion": "Assertion (A): Indentation is compulsory in Python.",
+      "reason": "Reason (R): Python uses indentation to define a block of code instead of braces.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both are true and the reason correctly explains the assertion: since Python has no braces, indentation is the only way to mark a block, which makes it part of the syntax.",
+      "relatedConcepts": [
+        "indentation",
+        "block",
+        "program structure"
+      ]
+    },
+    {
+      "id": "ch4-assertion-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "For the given Assertion (A) and Reason (R), choose the correct option.",
+      "assertion": "Assertion (A): A variable name in Python may begin with a digit.",
+      "reason": "Reason (R): Identifiers in Python may contain digits after the first character.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 3,
+      "explanation": "The assertion is false - a name may not begin with a digit (2marks is invalid). The reason is true: after the first character, digits are allowed (for example student_1).",
+      "relatedConcepts": [
+        "identifier",
+        "naming rules",
+        "variable"
+      ]
+    },
+    {
+      "id": "ch4-tf-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Python is a case-sensitive language.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "True. Python distinguishes uppercase from lowercase, so Sum and sum are different identifiers.",
+      "relatedConcepts": [
+        "case-sensitive",
+        "identifier"
+      ]
+    },
+    {
+      "id": "ch4-tf-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "input() returns an integer by default.",
+      "correctAnswer": "False",
+      "correction": "input() returns a string (str) by default; int() or float() must be used to convert it.",
+      "explanation": "False. input() always returns a string, regardless of what the user types.",
+      "relatedConcepts": [
+        "input()",
+        "str",
+        "type casting"
+      ]
+    },
+    {
+      "id": "ch4-tf-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A keyword may be used as a variable name.",
+      "correctAnswer": "False",
+      "correction": "Keywords are reserved words and cannot be used as variable names.",
+      "explanation": "False. Keywords such as if, for and class are reserved by the language and cannot be used as identifiers.",
+      "relatedConcepts": [
+        "keyword",
+        "identifier"
+      ]
+    },
+    {
+      "id": "ch4-tf-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "In Python, curly braces { } are used to define a block of code.",
+      "correctAnswer": "False",
+      "correction": "Python uses indentation to define a block of code, not curly braces.",
+      "explanation": "False. Python has no braces for blocks; indentation marks the block.",
+      "relatedConcepts": [
+        "block",
+        "indentation"
+      ]
+    },
+    {
+      "id": "ch4-tf-05",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "print() can print several values separated by a separator of our choice.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "True. The sep argument of print() sets the separator between values, for example sep=\"-\".",
+      "relatedConcepts": [
+        "print()",
+        "sep"
+      ]
+    },
+    {
+      "id": "ch4-tf-06",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In Python, a variable may refer to a value of a different type after it is reassigned.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "True. Because Python is dynamically typed, a name such as a = 5 can later be reassigned as a = \"five\" and its type changes.",
+      "relatedConcepts": [
+        "dynamic typing",
+        "reassignment",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch4-fb-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Every token in a Python program is built from characters of the Python __________.",
+      "correctAnswer": "character set",
+      "acceptedAnswers": [
+        "character set",
+        "character-set",
+        "characterset"
+      ],
+      "explanation": "The character set is the complete set of characters that Python allows in a program.",
+      "relatedConcepts": [
+        "character set",
+        "token"
+      ]
+    },
+    {
+      "id": "ch4-fb-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A __________ is a reserved word in Python that cannot be used as an identifier.",
+      "correctAnswer": "keyword",
+      "acceptedAnswers": [
+        "keyword",
+        "keywords"
+      ],
+      "explanation": "Keywords are reserved words such as if, for and def that have a fixed meaning.",
+      "relatedConcepts": [
+        "keyword",
+        "identifier"
+      ]
+    },
+    {
+      "id": "ch4-fb-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The built-in function __________ returns the identity (memory address) of an object.",
+      "correctAnswer": "id()",
+      "acceptedAnswers": [
+        "id()",
+        "id",
+        "id( )"
+      ],
+      "explanation": "id() returns the unique identity of an object, which is its memory address during execution.",
+      "relatedConcepts": [
+        "id()",
+        "memory address"
+      ]
+    },
+    {
+      "id": "ch4-fb-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The function input() always returns a value of the type __________.",
+      "correctAnswer": "str",
+      "acceptedAnswers": [
+        "str",
+        "string",
+        "str()",
+        "string (str)"
+      ],
+      "explanation": "input() returns the text typed by the user as a string, whatever the user enters.",
+      "relatedConcepts": [
+        "input()",
+        "str"
+      ]
+    },
+    {
+      "id": "ch4-fb-05",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The __________ argument of print() decides what is printed after the last value.",
+      "correctAnswer": "end",
+      "acceptedAnswers": [
+        "end",
+        "end argument"
+      ],
+      "explanation": "The end argument is printed after the last value and its default is a newline character.",
+      "relatedConcepts": [
+        "print()",
+        "end"
+      ]
+    },
+    {
+      "id": "ch4-fb-06",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A comment in Python begins with the __________ symbol.",
+      "correctAnswer": "#",
+      "acceptedAnswers": [
+        "#",
+        "hash",
+        "hash symbol",
+        "pound"
+      ],
+      "explanation": "A hash symbol (#) begins a comment; the rest of the line is ignored by the interpreter.",
+      "relatedConcepts": [
+        "comment",
+        "hash symbol"
+      ]
+    },
+    {
+      "id": "ch4-match-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "match",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Match each type of token with a correct example.",
+      "matchPairs": [
+        {
+          "left": "Keyword",
+          "right": "if"
+        },
+        {
+          "left": "Identifier",
+          "right": "total_marks"
+        },
+        {
+          "left": "Literal",
+          "right": "3.14"
+        },
+        {
+          "left": "Operator",
+          "right": "**"
+        },
+        {
+          "left": "Punctuator / Delimiter",
+          "right": ":"
+        }
+      ],
+      "explanation": "if is a reserved keyword; total_marks is a programmer-defined identifier; 3.14 is a float literal; ** is the exponentiation operator; and : is a punctuator that opens a block.",
+      "relatedConcepts": [
+        "token",
+        "keyword",
+        "identifier",
+        "literal"
+      ]
+    },
+    {
+      "id": "ch4-match-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "match",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match each built-in function with its purpose.",
+      "matchPairs": [
+        {
+          "left": "input()",
+          "right": "Reads a line typed by the user and returns a string"
+        },
+        {
+          "left": "print()",
+          "right": "Displays values on the screen"
+        },
+        {
+          "left": "int()",
+          "right": "Converts a string to a whole number"
+        },
+        {
+          "left": "id()",
+          "right": "Returns the memory address of an object"
+        },
+        {
+          "left": "type()",
+          "right": "Returns the data type of a value"
+        }
+      ],
+      "explanation": "input() reads text and returns a string; print() shows output; int() casts a numeric string to an integer; id() gives the identity of an object; type() gives its class.",
+      "relatedConcepts": [
+        "input()",
+        "print()",
+        "int()",
+        "type()"
+      ]
+    },
+    {
+      "id": "ch4-out-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "What will be the exact output of the following Python code?",
+      "code": "print(\"Hello\", \"World\", sep=\"-\", end=\"!\")\nprint(\"Done\")",
+      "correctAnswer": "Hello-World!Done",
+      "executionSteps": [
+        "print() prints its two arguments \"Hello\" and \"World\" with the separator \"-\" between them, giving Hello-World.",
+        "The end argument is \"!\", so instead of a newline an exclamation mark is printed.",
+        "The cursor stays on the same line, so the next print() adds Done.",
+        "Final output: Hello-World!Done"
+      ],
+      "explanation": "sep controls what goes between values and end controls what is printed after the last value. Because end is \"!\" instead of the default newline, the second print continues on the same line.",
+      "relatedConcepts": [
+        "print()",
+        "sep",
+        "end"
+      ]
+    },
+    {
+      "id": "ch4-out-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "What will be the exact output of the following Python code?",
+      "code": "x = 10\ny = 3\nprint(x // y, x % y, x / y)",
+      "correctAnswer": "3 1 3.3333333333333335",
+      "executionSteps": [
+        "x is 10 and y is 3.",
+        "x // y is floor division: 10 // 3 = 3.",
+        "x % y is the remainder: 10 % 3 = 1.",
+        "x / y is true division and always gives a float: 10 / 3 = 3.3333333333333335.",
+        "The three results are printed separated by the default space."
+      ],
+      "explanation": "// gives the quotient without the remainder (an integer here), % gives the remainder, and / always produces a float even when the division is exact.",
+      "relatedConcepts": [
+        "//",
+        "%",
+        "/",
+        "operator"
+      ]
+    },
+    {
+      "id": "ch4-out-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "What will be the exact output of the following Python code?",
+      "code": "name = \"Python\"\nprint(name[0], name[-1], name[2:5])",
+      "correctAnswer": "P n tho",
+      "executionSteps": [
+        "name is the string \"Python\".",
+        "name[0] is the first character: P.",
+        "name[-1] is the last character: n.",
+        "name[2:5] slices characters at index 2, 3 and 4: t, h, o, giving tho.",
+        "The three values are printed separated by spaces."
+      ],
+      "explanation": "Indexing takes a single character (0 is the first, -1 is the last) and slicing takes a range that includes the start index but excludes the end index.",
+      "relatedConcepts": [
+        "indexing",
+        "slicing",
+        "string"
+      ]
+    },
+    {
+      "id": "ch4-out-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "What will be the exact output of the following Python code?",
+      "code": "print(type(5), type(5.0), type(\"5\"), type(True))",
+      "correctAnswer": "<class 'int'> <class 'float'> <class 'str'> <class 'bool'>",
+      "executionSteps": [
+        "5 is an integer literal, so type(5) is <class 'int'>.",
+        "5.0 contains a decimal point, so type(5.0) is <class 'float'>.",
+        "\"5\" is in quotes, so it is a string: <class 'str'>.",
+        "True is a boolean value: <class 'bool'>.",
+        "All four are printed on one line separated by spaces."
+      ],
+      "explanation": "The quotes and the decimal point decide the type of a literal: 5 is int, 5.0 is float, \"5\" is str, and True is bool.",
+      "relatedConcepts": [
+        "type()",
+        "int",
+        "float",
+        "str"
+      ]
+    },
+    {
+      "id": "ch4-out-05",
+      "chapterId": "ch4",
+      "topicId": "ch4-variables",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What will be the exact output of the following Python code?",
+      "code": "a = b = c = 5\na, b = 10, 20\nprint(a, b, c)",
+      "correctAnswer": "10 20 5",
+      "executionSteps": [
+        "a = b = c = 5 makes all three names refer to 5.",
+        "a, b = 10, 20 reassigns a to 10 and b to 20.",
+        "c was never reassigned, so it is still 5.",
+        "print() prints 10, 20 and 5 separated by spaces."
+      ],
+      "explanation": "Multiple assignment gives the same value to several names, but a later reassignment affects only the names mentioned in that statement.",
+      "relatedConcepts": [
+        "multiple assignment",
+        "reassignment",
+        "variable"
+      ]
+    },
+    {
+      "id": "ch4-debug-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Identify the type of error in the following code and write the corrected code.",
+      "code": "print(\"Hello)",
+      "errorType": "syntax",
+      "correctAnswer": "print(\"Hello\")",
+      "executionSteps": [
+        "The string literal starts with a double quote but is never closed.",
+        "Python reports a SyntaxError because a string cannot end at the end of the line.",
+        "Add the missing closing double quote after Hello.",
+        "Corrected statement: print(\"Hello\")"
+      ],
+      "explanation": "Every string literal must be closed with the same kind of quote that opened it. The missing closing quote makes the statement a syntax error.",
+      "relatedConcepts": [
+        "syntax error",
+        "string literal",
+        "print()"
+      ]
+    },
+    {
+      "id": "ch4-debug-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Identify the type of error in the following code and write the corrected code.",
+      "code": "a = input(\"Enter first number: \")\nb = input(\"Enter second number: \")\nprint(\"Sum =\", a + b)",
+      "errorType": "logical",
+      "correctAnswer": "a = int(input(\"Enter first number: \"))\nb = int(input(\"Enter second number: \"))\nprint(\"Sum =\", a + b)",
+      "executionSteps": [
+        "The program runs without an error, so this is a logical error, not a syntax or runtime error.",
+        "input() returns strings, so a and b are text such as \"5\" and \"3\".",
+        "The + operator then joins the strings, giving \"53\" instead of 8.",
+        "Convert each input with int() so that + performs arithmetic addition.",
+        "Corrected program prints the true sum."
+      ],
+      "explanation": "The error is logical: the code is syntactically valid but produces the wrong result because string concatenation happens instead of addition. Type casting with int() fixes it.",
+      "relatedConcepts": [
+        "logical error",
+        "input()",
+        "type casting",
+        "string concatenation"
+      ]
+    },
+    {
+      "id": "ch4-debug-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Identify the type of error in the following code and write the corrected code.",
+      "code": "for i in range(3):\nprint(i)",
+      "errorType": "syntax",
+      "correctAnswer": "for i in range(3):\n    print(i)",
+      "executionSteps": [
+        "The header line for i in range(3): ends with a colon, which opens a block.",
+        "The body of the block must be indented, but print(i) starts at the left margin.",
+        "Python raises an IndentationError ('expected an indented block').",
+        "Indent print(i) with four spaces so that it lies inside the loop.",
+        "Corrected program prints 0, 1 and 2."
+      ],
+      "explanation": "IndentationError is a kind of SyntaxError in Python. The body of any block opened by a colon must be indented consistently.",
+      "relatedConcepts": [
+        "IndentationError",
+        "indentation",
+        "block",
+        "for loop"
+      ]
+    },
+    {
+      "id": "ch4-debug-04",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Identify the type of error in the following code and write the corrected code.",
+      "code": "x = 10\ny = 0\nprint(x / y)",
+      "errorType": "runtime",
+      "correctAnswer": "x = 10\ny = 0\nif y != 0:\n    print(x / y)\nelse:\n    print(\"Cannot divide by zero\")",
+      "executionSteps": [
+        "The program is syntactically correct, so the error appears only when it runs.",
+        "Dividing by y, which is 0, is not allowed in arithmetic.",
+        "Python raises ZeroDivisionError at run time.",
+        "Guard the division with a check so that the program handles the zero case.",
+        "Corrected program prints 'Cannot divide by zero' for y = 0."
+      ],
+      "explanation": "ZeroDivisionError is a runtime error - it occurs while the program is executing. Checking the divisor before dividing prevents it.",
+      "relatedConcepts": [
+        "runtime error",
+        "ZeroDivisionError",
+        "if statement"
+      ]
+    },
+    {
+      "id": "ch4-prog-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "program",
+      "difficulty": "easy",
+      "marks": 4,
+      "question": "Write a Python program that takes two integers from the user and prints their sum and their product, each on a separate line with a proper label.",
+      "hints": [
+        "Remember that input() returns a string, so use int() for each value.",
+        "Use two separate print() statements, or one print() with a newline."
+      ],
+      "modelSolution": "a = int(input(\"Enter first number: \"))\nb = int(input(\"Enter second number: \"))\nprint(\"Sum =\", a + b)\nprint(\"Product =\", a * b)",
+      "lineExplanations": [
+        {
+          "line": "a = int(input(\"Enter first number: \"))",
+          "explanation": "Reads the first value as a string and converts it to an integer with int()."
+        },
+        {
+          "line": "b = int(input(\"Enter second number: \"))",
+          "explanation": "Reads the second value and converts it to an integer."
+        },
+        {
+          "line": "print(\"Sum =\", a + b)",
+          "explanation": "Prints the label and the arithmetic sum of the two integers."
+        },
+        {
+          "line": "print(\"Product =\", a * b)",
+          "explanation": "Prints the label and the product of the two integers."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "5\n3",
+          "output": "Sum = 8\nProduct = 15"
+        },
+        {
+          "input": "10\n4",
+          "output": "Sum = 14\nProduct = 40"
+        },
+        {
+          "input": "0\n7",
+          "output": "Sum = 7\nProduct = 0"
+        }
+      ],
+      "rubric": [
+        "Uses input() for both values",
+        "Casts both inputs with int()",
+        "Prints the sum correctly",
+        "Prints the product correctly"
+      ],
+      "explanation": "The key point is type casting: without int(), the two values would be joined as strings instead of added.",
+      "relatedConcepts": [
+        "input()",
+        "int()",
+        "type casting",
+        "print()"
+      ]
+    },
+    {
+      "id": "ch4-prog-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-input-output",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Write a Python program that reads a student's name and marks, and prints a formatted line using the sep argument: Name, then marks, separated by a colon and a space.",
+      "hints": [
+        "input() returns a string, so the marks may stay as a string if you only print them.",
+        "You can use print(name, marks, sep=\": \") to place a colon and a space between the two values."
+      ],
+      "modelSolution": "name = input(\"Enter name: \")\nmarks = input(\"Enter marks: \")\nprint(name, marks, sep=\": \")",
+      "lineExplanations": [
+        {
+          "line": "name = input(\"Enter name: \")",
+          "explanation": "Reads the student's name as a string."
+        },
+        {
+          "line": "marks = input(\"Enter marks: \")",
+          "explanation": "Reads the marks as a string (no arithmetic is needed, so no casting is required)."
+        },
+        {
+          "line": "print(name, marks, sep=\": \")",
+          "explanation": "Prints both values with a colon and a space between them, using the sep argument."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "Aman\n95",
+          "output": "Aman: 95"
+        },
+        {
+          "input": "Riya\n88",
+          "output": "Riya: 88"
+        }
+      ],
+      "rubric": [
+        "Reads the name with input()",
+        "Reads the marks",
+        "Uses sep to place the colon correctly",
+        "Produces exactly the required format"
+      ],
+      "explanation": "This program shows how the sep argument of print() controls the separator between values, producing a clean formatted line.",
+      "relatedConcepts": [
+        "input()",
+        "print()",
+        "sep",
+        "formatting"
+      ]
+    },
+    {
+      "id": "ch4-prog-03",
+      "chapterId": "ch4",
+      "topicId": "ch4-structure",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program that imports the math module, reads the radius of a circle from the user and prints its area and circumference rounded to two decimal places.",
+      "hints": [
+        "Import math and use math.pi for the value of pi.",
+        "Use float(input()) because the radius may contain a decimal point.",
+        "Use round(value, 2) to round to two decimal places."
+      ],
+      "modelSolution": "import math\nr = float(input(\"Enter radius: \"))\narea = math.pi * r * r\ncircumference = 2 * math.pi * r\nprint(\"Area =\", round(area, 2))\nprint(\"Circumference =\", round(circumference, 2))",
+      "lineExplanations": [
+        {
+          "line": "import math",
+          "explanation": "Makes the math module available so that math.pi can be used."
+        },
+        {
+          "line": "r = float(input(\"Enter radius: \"))",
+          "explanation": "Reads the radius and converts the string to a float, since it may be a decimal."
+        },
+        {
+          "line": "area = math.pi * r * r",
+          "explanation": "Computes the area of the circle using the formula pi * r squared."
+        },
+        {
+          "line": "circumference = 2 * math.pi * r",
+          "explanation": "Computes the circumference using the formula 2 * pi * r."
+        },
+        {
+          "line": "print(\"Area =\", round(area, 2))",
+          "explanation": "Prints the area rounded to two decimal places."
+        },
+        {
+          "line": "print(\"Circumference =\", round(circumference, 2))",
+          "explanation": "Prints the circumference rounded to two decimal places."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "7",
+          "output": "Area = 153.94\nCircumference = 43.98"
+        },
+        {
+          "input": "1",
+          "output": "Area = 3.14\nCircumference = 6.28"
+        }
+      ],
+      "rubric": [
+        "Imports the math module",
+        "Reads the radius with float(input())",
+        "Uses math.pi correctly",
+        "Computes both area and circumference",
+        "Rounds the output to two decimal places"
+      ],
+      "explanation": "The program combines an import statement, type casting with float() and the use of a module constant, and shows how rounded output is produced with round().",
+      "relatedConcepts": [
+        "import",
+        "float()",
+        "math module",
+        "round()"
+      ]
+    },
+    {
+      "id": "ch4-num-01",
+      "chapterId": "ch4",
+      "topicId": "ch4-character-set",
+      "type": "numerical",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the ASCII value of the uppercase letter 'A'?",
+      "correctAnswer": "65",
+      "unit": "ASCII code",
+      "explanation": "In the ASCII table uppercase 'A' has the code 65, lowercase 'a' has 97 and the digit character '0' has 48.",
+      "relatedConcepts": [
+        "ASCII",
+        "character set",
+        "Unicode"
+      ]
+    },
+    {
+      "id": "ch4-num-02",
+      "chapterId": "ch4",
+      "topicId": "ch4-tokens",
+      "type": "numerical",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Evaluate the value of the expression 17 // 5 + 17 % 5.",
+      "correctAnswer": "5",
+      "unit": "integer value",
+      "explanation": "17 // 5 is 3 (floor division) and 17 % 5 is 2 (remainder). Their sum is 3 + 2 = 5.",
+      "relatedConcepts": [
+        "//",
+        "%",
+        "operator precedence"
+      ]
+    }
+  ]
+}

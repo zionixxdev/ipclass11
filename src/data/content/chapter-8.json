@@ -1,0 +1,3746 @@
+{
+  "chapter": {
+    "id": "ch8",
+    "number": 8,
+    "title": "Lists",
+    "summary": "This chapter covers Python lists: how to create and initialise them (empty lists, list literals, list(), mixed-type and nested lists), access elements using positive and negative indexing and slicing with a step, traverse lists with for loops, range(len()) and enumerate(), use list operators (+, *, in, not in and comparisons), apply list methods (append, extend, insert, remove, pop, clear, index, count, reverse, sort, copy), use built-in functions (len, min, max, sum, sorted, list) and write standard list programs for sum, average, maximum, minimum, searching, reversing and counting even/odd elements."
+  },
+  "topics": [
+    {
+      "id": "ch8-creating-lists",
+      "title": "Creating and Initializing a List",
+      "content": {
+        "hinglish": "List Python ka ek ordered collection hai jisme hum ek se zyada values ek hi variable mein store kar sakte hain. List banane ke liye square brackets [] ka use hota hai aur values ko comma se alag karte hain. List mutable hoti hai, matlab ek baar banane ke baad uske elements ko badla ja sakta hai. Aap empty list [] likh kar shuru kar sakte hain, ya list() function se kisi iterable ko list mein convert kar sakte hain. List mein different data types (int, float, string, boolean) ek saath rakh sakte hain, aur ek list ke andar doosri list (nested list) bhi rakh sakte hain.",
+        "formalDefinition": "A list is a mutable, ordered sequence of elements enclosed within square brackets [ ], where the elements are separated by commas. A list can hold heterogeneous data types, permits duplicate values, and may be nested to form multidimensional structures. Lists can be created using a list literal, the list() constructor, or by converting any other iterable (such as a string, tuple or range) into a list.",
+        "keywords": [
+          "list",
+          "mutable",
+          "ordered sequence",
+          "square brackets",
+          "list() constructor",
+          "heterogeneous elements",
+          "nested list",
+          "empty list"
+        ],
+        "examples": [
+          "[10, 20, 30, 40]  # list of integers",
+          "['Maths', 'Physics', 'Chemistry']  # list of strings",
+          "[]  # an empty list",
+          "[1, 'two', 3.5, True]  # heterogeneous list",
+          "list(range(5))  # converts a range to [0, 1, 2, 3, 4]"
+        ],
+        "tables": [
+          {
+            "caption": "Ways to create a list",
+            "headers": [
+              "Method",
+              "Statement",
+              "Result"
+            ],
+            "rows": [
+              [
+                "Empty list literal",
+                "L = []",
+                "[]"
+              ],
+              [
+                "List literal",
+                "L = [1, 2, 3]",
+                "[1, 2, 3]"
+              ],
+              [
+                "list() constructor",
+                "L = list()",
+                "[]"
+              ],
+              [
+                "From a string",
+                "list('abc')",
+                "['a', 'b', 'c']"
+              ],
+              [
+                "From range()",
+                "list(range(1, 4))",
+                "[1, 2, 3]"
+              ],
+              [
+                "Nested list",
+                "L = [1, [2, 3], 4]",
+                "[1, [2, 3], 4]"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Memory view: variable L -> [ 10 | 20 | 30 | 40 ] with index 0,1,2,3 underneath the elements.",
+          "A nested list drawn as a box containing another smaller box, showing that one element is itself a list."
+        ],
+        "pythonSyntax": "L = [element1, element2, element3]\nL = []                 # empty list\nL = list(iterable)     # from a string, tuple, range or another list",
+        "codeExamples": [
+          {
+            "code": "marks = [78, 85, 92, 66]\nprint(marks)\nprint(type(marks))",
+            "output": "[78, 85, 92, 66]\n<class 'list'>",
+            "explanation": "A list literal is assigned to marks. type() confirms the object is of class list."
+          },
+          {
+            "code": "empty = []\nletters = list('abc')\nnums = list(range(3))\nprint(empty, letters, nums)",
+            "output": "[] ['a', 'b', 'c'] [0, 1, 2]",
+            "explanation": "list() splits a string into characters and a range into its numbers, while [] simply makes an empty list."
+          },
+          {
+            "code": "mixed = [1, 'two', 3.5, True]\nnested = [1, [2, 3], 4]\nprint(mixed)\nprint(nested)",
+            "output": "[1, 'two', 3.5, True]\n[1, [2, 3], 4]",
+            "explanation": "A list may contain elements of different types, and an element may itself be a list (nested list)."
+          }
+        ],
+        "commonMistakes": [
+          "Writing L = list[] instead of L = list() — list() is a function, so it always uses round brackets.",
+          "Forgetting the comma between elements, e.g. [1 2 3], which is a syntax error.",
+          "Confusing a list [1, 2, 3] with a tuple (1, 2, 3); lists use square brackets and are mutable.",
+          "Using a name like list as a variable (list = [1, 2]) which shadows the built-in list() function.",
+          "Assuming a nested list is flattened automatically — [1, [2, 3], 4] still has only 3 top-level elements."
+        ],
+        "examNotes": [
+          "Define a list as an ordered, mutable sequence of elements — examiners look for the words 'ordered' and 'mutable'.",
+          "Remember that list('abc') gives ['a', 'b', 'c'] because a string is iterable.",
+          "list() with no argument returns an empty list, which is a common one-mark answer.",
+          "Heterogeneous lists are allowed in Python, unlike arrays in C that hold only one type.",
+          "A nested list has fewer top-level elements than the total count of values written inside it."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between [] and list()?",
+            "a": "Both create lists. [] creates an empty list directly, while list() is a constructor that can also convert any iterable (string, tuple, range) into a list."
+          },
+          {
+            "q": "Can a Python list store different data types?",
+            "a": "Yes. Python lists are heterogeneous, so [1, 'two', 3.5, True] is perfectly valid."
+          },
+          {
+            "q": "Is a list mutable?",
+            "a": "Yes. After creation you can change, add or remove elements without creating a new list object."
+          },
+          {
+            "q": "How do you create a nested list?",
+            "a": "Place a list inside another list, e.g. matrix = [[1, 2], [3, 4]]."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which of the following creates an empty list?",
+            "options": [
+              "L = list()",
+              "L = list[]",
+              "L = {}",
+              "L = ()"
+            ],
+            "answer": 0,
+            "explanation": "list() returns an empty list. list[] is invalid syntax, {} is a dictionary and () is a tuple."
+          },
+          {
+            "question": "What does list('abc') produce?",
+            "options": [
+              "['abc']",
+              "['a', 'b', 'c']",
+              "['a b c']",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "A string is iterable, so list() splits it into its individual characters."
+          },
+          {
+            "question": "How many top-level elements does [1, [2, 3], 4] contain?",
+            "options": [
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "answer": 1,
+            "explanation": "The elements are 1, the inner list [2, 3], and 4 — three top-level elements."
+          },
+          {
+            "question": "Which statement about Python lists is TRUE?",
+            "options": [
+              "They can hold only integers",
+              "They are immutable",
+              "They are ordered and mutable",
+              "They cannot be nested"
+            ],
+            "answer": 2,
+            "explanation": "Lists preserve order and can be changed after creation, i.e. they are ordered and mutable."
+          }
+        ],
+        "checklist": [
+          "I can create an empty list using [] and list().",
+          "I can write a list literal with correct comma separation.",
+          "I can explain why a list is called ordered and mutable.",
+          "I can build a heterogeneous list with mixed data types.",
+          "I can create and read a nested list."
+        ]
+      }
+    },
+    {
+      "id": "ch8-accessing",
+      "title": "Accessing Lists",
+      "content": {
+        "hinglish": "List ke individual elements ko access karne ke liye hum index ka use karte hain, jo 0 se shuru hota hai. Pehla element L[0] hota hai, doosra L[1], aur isi tarah aage. Python negative indexing bhi support karta hai, jisme L[-1] last element deta hai, L[-2] second-last, aur so on. Agar aap ek saath kai elements chahate hain to slicing ka use hota hai — L[start:stop:step], jisme stop index include nahi hota. Index out of range hone par IndexError aata hai, aur slicing mein out-of-range index chup-chaap adjust ho jata hai.",
+        "formalDefinition": "Each element of a list is accessed by an integer index. Positive indices run from 0 to length-1, while negative indices count from the end, with -1 denoting the last element. A contiguous group of elements is obtained by slicing using the form L[start:stop:step], where the element at stop is excluded and step is the increment. Accessing an index outside the valid range raises an IndexError, whereas a slice with an out-of-range index is silently truncated rather than raising an error.",
+        "keywords": [
+          "index",
+          "positive index",
+          "negative index",
+          "slicing",
+          "start:stop:step",
+          "IndexError",
+          "zero-based",
+          "sub-list"
+        ],
+        "examples": [
+          "L = [10, 20, 30, 40, 50]; L[0] gives 10",
+          "L[-1] gives 50 and L[-2] gives 40",
+          "L[1:4] gives [20, 30, 40]",
+          "L[0:5:2] gives [10, 30, 50]",
+          "L[::-1] gives [50, 40, 30, 20, 10]"
+        ],
+        "tables": [
+          {
+            "caption": "Indexing of L = [10, 20, 30, 40, 50]",
+            "headers": [
+              "Element",
+              "10",
+              "20",
+              "30",
+              "40",
+              "50"
+            ],
+            "rows": [
+              [
+                "Positive index",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              [
+                "Negative index",
+                "-5",
+                "-4",
+                "-3",
+                "-2",
+                "-1"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Index map:  [10, 20, 30, 40, 50]  with 0..4 written below and -5..-1 written above each element.",
+          "Slice L[1:4] highlighted over the same list showing elements 20, 30, 40 selected and stop index 4 excluded."
+        ],
+        "pythonSyntax": "L[index]            # single element\nL[start:stop]       # from start up to stop-1\nL[start:stop:step]  # with a step\nL[:]                # whole list (a copy)",
+        "codeExamples": [
+          {
+            "code": "L = [10, 20, 30, 40, 50]\nprint(L[2])\nprint(L[-1])\nprint(L[-3])",
+            "output": "30\n50\n30",
+            "explanation": "L[2] is the third element (30); L[-1] is the last (50); L[-3] counts back three places to 30."
+          },
+          {
+            "code": "L = [10, 20, 30, 40, 50]\nprint(L[1:4])\nprint(L[:3])\nprint(L[2:])",
+            "output": "[20, 30, 40]\n[10, 20, 30]\n[30, 40, 50]",
+            "explanation": "The stop index is excluded. Omitting start defaults to 0, and omitting stop defaults to the end."
+          },
+          {
+            "code": "L = [10, 20, 30, 40, 50]\nprint(L[0:5:2])\nprint(L[::-1])",
+            "output": "[10, 30, 50]\n[50, 40, 30, 20, 10]",
+            "explanation": "A step of 2 picks every second element; a step of -1 reverses the list."
+          }
+        ],
+        "commonMistakes": [
+          "Assuming indexing starts at 1 — Python indices start at 0, so the last index is len(L)-1.",
+          "Thinking L[1:4] includes the element at index 4; the stop index is always excluded.",
+          "Believing L[-1] is an error; negative indices are valid and count from the end.",
+          "Expecting an IndexError from a slice like L[0:100] — slicing truncates silently instead.",
+          "Mixing up L[::-1] (reverse copy) with L.sort(reverse=True) (in-place sort)."
+        ],
+        "examNotes": [
+          "State clearly that Python indexing is zero-based and that the stop index in a slice is excluded.",
+          "For negative indexing, the last element is always -1.",
+          "Slicing always returns a new list; it never raises an IndexError for out-of-range bounds.",
+          "L[:] returns a shallow copy of the whole list, a favourite one-mark question.",
+          "For a list of length n, valid positive indices are 0 to n-1 and valid negative indices are -1 to -n."
+        ],
+        "faqs": [
+          {
+            "q": "Why does indexing start at 0?",
+            "a": "The index represents an offset from the start of the list, so the first element is at offset 0."
+          },
+          {
+            "q": "Does slicing change the original list?",
+            "a": "No. Slicing returns a new list; the original list is left unchanged."
+          },
+          {
+            "q": "What happens with L[0:10] when the list has only 5 elements?",
+            "a": "Python silently returns the available elements without raising an error."
+          },
+          {
+            "q": "How do you reverse a list using slicing?",
+            "a": "Use L[::-1], which returns a reversed copy of the list."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "For L = [5, 10, 15, 20, 25], what is L[-2]?",
+            "options": [
+              "15",
+              "20",
+              "25",
+              "10"
+            ],
+            "answer": 1,
+            "explanation": "-1 is the last element (25) and -2 is the one before it, i.e. 20."
+          },
+          {
+            "question": "What does L[1:4] return for L = [5, 10, 15, 20, 25]?",
+            "options": [
+              "[10, 15, 20]",
+              "[10, 15, 20, 25]",
+              "[5, 10, 15]",
+              "[15, 20]"
+            ],
+            "answer": 0,
+            "explanation": "It starts at index 1 and stops before index 4, giving elements 10, 15 and 20."
+          },
+          {
+            "question": "Which of these raises an IndexError?",
+            "options": [
+              "L[0:100]",
+              "L[-1]",
+              "L[10] on a 5-element list",
+              "L[:]"
+            ],
+            "answer": 2,
+            "explanation": "A single out-of-range index raises IndexError, but slices are truncated without error."
+          },
+          {
+            "question": "L[::-1] on [1, 2, 3, 4] gives:",
+            "options": [
+              "[1, 2, 3, 4]",
+              "[4, 3, 2, 1]",
+              "[4, 3, 2]",
+              "Error"
+            ],
+            "answer": 1,
+            "explanation": "A negative step of -1 walks the list backwards, producing a reversed copy."
+          }
+        ],
+        "checklist": [
+          "I can access any element by its positive index.",
+          "I can access elements using negative indices.",
+          "I can slice a list with start, stop and step.",
+          "I know the stop index is excluded in a slice.",
+          "I can explain the difference between IndexError and slice truncation."
+        ]
+      }
+    },
+    {
+      "id": "ch8-traversing",
+      "title": "Traversing a List",
+      "content": {
+        "hinglish": "Traversing ka matlab hai list ke har element ko ek-ek karke visit karna. Iske liye hum for loop ka use karte hain, jaise for item in L: print(item). Agar humein index ke saath element chahiye to hum range(len(L)) ka use kar sakte hain, jaise for i in range(len(L)). enumerate() function index aur value dono ek saath deta hai, jo bahut convenient hai. while loop bhi traversal ke liye use ho sakta hai, jisme hum ek counter i ko 0 se badhate hain jab tak wo len(L) se chhota hai. Traversal ka use sum, max, min, searching jaise kaam karne ke liye hota hai.",
+        "formalDefinition": "Traversal means visiting every element of a list exactly once, usually to read, process or aggregate its values. In Python a list can be traversed by iterating directly over its elements with a for loop, by iterating over its indices using range(len(L)), by using enumerate() to obtain both index and value together, or by using a while loop with a manually updated counter. Traversal is the basis of algorithms such as finding a sum, maximum, minimum or a search.",
+        "keywords": [
+          "traversal",
+          "for loop",
+          "while loop",
+          "range(len())",
+          "enumerate()",
+          "iteration",
+          "counter",
+          "element access"
+        ],
+        "examples": [
+          "for x in L: print(x)",
+          "for i in range(len(L)): print(L[i])",
+          "for i, v in enumerate(L): print(i, v)",
+          "i = 0\nwhile i < len(L): print(L[i]); i += 1"
+        ],
+        "tables": [
+          {
+            "caption": "Ways to traverse a list",
+            "headers": [
+              "Method",
+              "Code",
+              "Gives"
+            ],
+            "rows": [
+              [
+                "for over elements",
+                "for x in L:",
+                "each element"
+              ],
+              [
+                "for over indices",
+                "for i in range(len(L)):",
+                "index i, access L[i]"
+              ],
+              [
+                "enumerate()",
+                "for i, x in enumerate(L):",
+                "index and element"
+              ],
+              [
+                "while loop",
+                "while i < len(L):",
+                "manual control"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Flowchart of a for loop: start -> is there a next element? -> yes: process it, loop back -> no: stop.",
+          "Counter trace table showing i = 0, 1, 2, ... alongside L[i] values during a while-loop traversal."
+        ],
+        "pythonSyntax": "for element in L:\n    # use element\n\nfor i in range(len(L)):\n    # use L[i]\n\nfor i, element in enumerate(L):\n    # use i and element",
+        "codeExamples": [
+          {
+            "code": "L = [4, 8, 15]\nfor x in L:\n    print(x * 2)",
+            "output": "8\n16\n30",
+            "explanation": "The for loop takes each element of L in turn and prints double its value."
+          },
+          {
+            "code": "L = [4, 8, 15]\ntotal = 0\nfor i in range(len(L)):\n    total += L[i]\nprint(total)",
+            "output": "27",
+            "explanation": "range(len(L)) gives 0, 1, 2; each index is used to fetch the element, which is added to total."
+          },
+          {
+            "code": "L = ['a', 'b', 'c']\nfor i, ch in enumerate(L):\n    print(i, ch)",
+            "output": "0 a\n1 b\n2 c",
+            "explanation": "enumerate() yields the index and the corresponding element together in each iteration."
+          }
+        ],
+        "commonMistakes": [
+          "Writing for i in L when you need the index — iterate range(len(L)) instead.",
+          "Forgetting to increment the counter in a while loop, causing an infinite loop.",
+          "Using for i in range(L) instead of range(len(L)) — range() needs an integer.",
+          "Modifying the list (adding/removing elements) while traversing it, which changes iteration behaviour.",
+          "Confusing enumerate() output — it returns (index, value) pairs, not (value, index)."
+        ],
+        "examNotes": [
+          "Know at least two traversal techniques: direct for loop and index-based for loop with range(len(L)).",
+          "enumerate() is the standard answer when both index and value are needed.",
+          "A while loop traversal always needs a counter initialised before the loop and updated inside it.",
+          "Traversal order is always the stored order because a list is an ordered sequence.",
+          "Many classic programs (sum, max, min, search) are simply traversals with an accumulator."
+        ],
+        "faqs": [
+          {
+            "q": "Which is better, for over elements or for over indices?",
+            "a": "Use for over elements when you only need values; use indices when you need positions or plan to modify by position."
+          },
+          {
+            "q": "What does enumerate() return?",
+            "a": "Each iteration yields a tuple of (index, element), which can be unpacked as for i, x in enumerate(L)."
+          },
+          {
+            "q": "Why is my while loop running forever?",
+            "a": "Most likely the counter is not being incremented inside the loop, so the condition never becomes false."
+          },
+          {
+            "q": "Can I traverse a list in reverse?",
+            "a": "Yes, e.g. for i in range(len(L)-1, -1, -1) or by using reversed(L)."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which loop directly gives each element of L without an index?",
+            "options": [
+              "for x in L:",
+              "for x in range(L):",
+              "while L:",
+              "for x in len(L):"
+            ],
+            "answer": 0,
+            "explanation": "for x in L: iterates over the elements themselves."
+          },
+          {
+            "question": "What does enumerate(L) provide in each iteration?",
+            "options": [
+              "Only the value",
+              "Only the index",
+              "Index and value together",
+              "The length"
+            ],
+            "answer": 2,
+            "explanation": "enumerate() yields (index, value) pairs."
+          },
+          {
+            "question": "In for i in range(len(L)), i takes values:",
+            "options": [
+              "1 to len(L)",
+              "0 to len(L)-1",
+              "the elements of L",
+              "0 to len(L)"
+            ],
+            "answer": 1,
+            "explanation": "range(len(L)) produces 0, 1, ..., len(L)-1."
+          },
+          {
+            "question": "What is missing in: i=0; while i < len(L): print(L[i])?",
+            "options": [
+              "A break statement",
+              "i += 1",
+              "range()",
+              "an else clause"
+            ],
+            "answer": 1,
+            "explanation": "Without i += 1 the counter never changes and the loop never ends."
+          }
+        ],
+        "checklist": [
+          "I can traverse a list with a for loop over elements.",
+          "I can traverse using range(len(L)) when I need indices.",
+          "I can use enumerate() to get index and value together.",
+          "I can write a correct while-loop traversal with a counter.",
+          "I can use traversal to compute a sum or search a value."
+        ]
+      }
+    },
+    {
+      "id": "ch8-operators",
+      "title": "List Operators",
+      "content": {
+        "hinglish": "Lists ke saath hum kuch operators bhi use kar sakte hain. Concatenation operator (+) do lists ko jodta hai, jaise [1,2] + [3,4] se [1,2,3,4] banta hai. Repetition operator (*) ek list ko kai baar dohora deta hai, jaise [0]*3 se [0,0,0]. Membership operators in aur not in check karte hain ki koi element list mein hai ya nahi. Comparison operators (<, >, ==) lists ko element-by-element compare karte hain, jaise dictionaries mein word order hota hai. Ye sab operations ek nayi list banate hain, original list change nahi hoti.",
+        "formalDefinition": "Lists support several operators. The concatenation operator (+) joins two lists into a new list. The repetition operator (*) with an integer repeats a list. The membership operators in and not in test whether a value occurs in a list, returning a Boolean. Comparison operators (==, !=, <, >, <=, >=) compare two lists lexicographically, element by element, returning a Boolean; the first unequal pair decides the result, and if one list is a prefix of the other, the shorter list is considered smaller. These operators return new objects and do not modify the operands.",
+        "keywords": [
+          "concatenation",
+          "+",
+          "repetition",
+          "*",
+          "membership",
+          "in",
+          "not in",
+          "lexicographic comparison"
+        ],
+        "examples": [
+          "[1, 2] + [3, 4] gives [1, 2, 3, 4]",
+          "['a', 'b'] * 2 gives ['a', 'b', 'a', 'b']",
+          "3 in [1, 2, 3] gives True",
+          "5 not in [1, 2, 3] gives True",
+          "[1, 2, 3] < [1, 2, 4] gives True"
+        ],
+        "tables": [
+          {
+            "caption": "List operators",
+            "headers": [
+              "Operator",
+              "Name",
+              "Example",
+              "Result"
+            ],
+            "rows": [
+              [
+                "+",
+                "Concatenation",
+                "[1, 2] + [3]",
+                "[1, 2, 3]"
+              ],
+              [
+                "*",
+                "Repetition",
+                "[0] * 3",
+                "[0, 0, 0]"
+              ],
+              [
+                "in",
+                "Membership",
+                "2 in [1, 2, 3]",
+                "True"
+              ],
+              [
+                "not in",
+                "Non-membership",
+                "9 not in [1, 2]",
+                "True"
+              ],
+              [
+                "<",
+                "Comparison",
+                "[1, 2] < [1, 3]",
+                "True"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Concatenation picture: list A joined to list B end-to-end producing a longer list C.",
+          "Lexicographic comparison trace of [1, 2, 3] vs [1, 2, 4]: first two elements equal, third pair 3 < 4 decides the result."
+        ],
+        "pythonSyntax": "L1 + L2          # concatenation\nL * n            # repetition\nvalue in L       # membership\nvalue not in L   # non-membership\nL1 < L2          # comparison",
+        "codeExamples": [
+          {
+            "code": "a = [1, 2]\nb = [3, 4]\nprint(a + b)\nprint(a * 2)",
+            "output": "[1, 2, 3, 4]\n[1, 2, 1, 2]",
+            "explanation": "+ joins the two lists and * repeats the list; both create new lists and leave a and b unchanged."
+          },
+          {
+            "code": "L = [10, 20, 30]\nprint(20 in L)\nprint(50 not in L)",
+            "output": "True\nTrue",
+            "explanation": "in checks presence and not in checks absence; both return Booleans."
+          },
+          {
+            "code": "print([1, 2, 3] < [1, 2, 4])\nprint([1, 2] < [1, 2, 3])\nprint([1, 2] == [1, 2])",
+            "output": "True\nTrue\nTrue",
+            "explanation": "Comparison is element-by-element; a shorter list that is a prefix of the longer one is smaller, and equal lists are ==."
+          }
+        ],
+        "commonMistakes": [
+          "Writing L + 5 to add an element — + needs two lists; use append() to add a single value.",
+          "Expecting L * 0 to keep the list; it returns an empty list [].",
+          "Thinking + modifies the original list — it creates and returns a new list.",
+          "Comparing a list with a scalar, e.g. [1, 2] < 3, which raises a TypeError.",
+          "Forgetting that membership tests for the whole element, so [2] in [1, 2, 3] is False while 2 in [1, 2, 3] is True."
+        ],
+        "examNotes": [
+          "+ performs concatenation only between two lists; unlike strings, list + list is valid but list + int is not.",
+          "* repeats a list a whole number of times; the multiplier must be an integer.",
+          "in and not in always return True or False.",
+          "List comparison is lexicographic and stops at the first unequal element.",
+          "All these operators return new objects; none of them modify the original lists."
+        ],
+        "faqs": [
+          {
+            "q": "Can I use + to add a single element?",
+            "a": "No. [1, 2] + 3 raises a TypeError. Use L.append(3) or L = L + [3]."
+          },
+          {
+            "q": "How does [1, 2] < [1, 2, 3] evaluate?",
+            "a": "The common part is equal, so the shorter list is considered smaller; the result is True."
+          },
+          {
+            "q": "What does [0] * 4 give?",
+            "a": "[0, 0, 0, 0] — the list [0] repeated four times."
+          },
+          {
+            "q": "Does 'in' search nested lists?",
+            "a": "It searches only the top-level elements, so 'in' will not find a value hidden inside a nested list."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What is [1, 2] + [3, 4]?",
+            "options": [
+              "[1, 2, 3, 4]",
+              "[4, 6]",
+              "[[1, 2], [3, 4]]",
+              "Error"
+            ],
+            "answer": 0,
+            "explanation": "+ concatenates the two lists end to end."
+          },
+          {
+            "question": "What is ['x', 'y'] * 2?",
+            "options": [
+              "['x', 'y', 'x', 'y']",
+              "['x', 'y', 2]",
+              "['xx', 'yy']",
+              "Error"
+            ],
+            "answer": 0,
+            "explanation": "* repeats the whole list twice."
+          },
+          {
+            "question": "What does 30 in [10, 20, 30] return?",
+            "options": [
+              "0",
+              "2",
+              "True",
+              "False"
+            ],
+            "answer": 2,
+            "explanation": "Membership operators return a Boolean; 30 is present so the result is True."
+          },
+          {
+            "question": "Which comparison gives True?",
+            "options": [
+              "[1, 3] < [1, 2]",
+              "[2] < [1, 5]",
+              "[1, 2] == [2, 1]",
+              "[1, 2, 3] > [1, 2]"
+            ],
+            "answer": 3,
+            "explanation": "[1, 2, 3] is greater than [1, 2] because the latter is a shorter prefix; the others are False."
+          }
+        ],
+        "checklist": [
+          "I can concatenate two lists with +.",
+          "I can repeat a list with * and an integer.",
+          "I can test membership with in and not in.",
+          "I can compare two lists element by element.",
+          "I know these operators do not modify the original lists."
+        ]
+      }
+    },
+    {
+      "id": "ch8-operations",
+      "title": "List Operations",
+      "content": {
+        "hinglish": "List methods ka use karke hum list ko modify kar sakte hain. append() ek element ko end mein jodta hai, extend() doosri list ke saare elements jodta hai, aur insert() kisi bhi position par element daalta hai. remove() kisi value ko delete karta hai, pop() last ya di gayi index ka element hata kar return karta hai, aur clear() poori list khaali kar deta hai. index() kisi value ki position deta hai, count() ginti batata hai ki value kitni baar aayi, reverse() list ko ulta kar deta hai, sort() ascending order mein arrange karta hai, aur copy() ek shallow copy banata hai. Ye methods original list ko hi badalte hain (in-place), siwaay copy() ke.",
+        "formalDefinition": "Python provides built-in list methods to modify and query a list. append(x) adds x to the end; extend(iterable) appends all elements of another iterable; insert(i, x) inserts x before index i; remove(x) deletes the first occurrence of x; pop([i]) removes and returns the element at index i (the last element by default); clear() removes all elements; index(x) returns the index of the first occurrence of x; count(x) returns the number of occurrences of x; reverse() reverses the list in place; sort() sorts the list in place in ascending order (reverse=True for descending); and copy() returns a shallow copy. Except copy() and the query methods, these operations modify the list in place and return None.",
+        "keywords": [
+          "append",
+          "extend",
+          "insert",
+          "remove",
+          "pop",
+          "sort",
+          "reverse",
+          "in-place"
+        ],
+        "examples": [
+          "L.append(9) adds 9 at the end",
+          "L.insert(1, 99) puts 99 at index 1",
+          "L.pop() removes and returns the last element",
+          "L.count(3) counts how many 3s are present",
+          "L.sort() arranges elements in ascending order"
+        ],
+        "tables": [
+          {
+            "caption": "Common list methods",
+            "headers": [
+              "Method",
+              "Purpose",
+              "Modifies list?"
+            ],
+            "rows": [
+              [
+                "append(x)",
+                "Add one element at the end",
+                "Yes"
+              ],
+              [
+                "extend(seq)",
+                "Add all elements of a sequence",
+                "Yes"
+              ],
+              [
+                "insert(i, x)",
+                "Insert x before index i",
+                "Yes"
+              ],
+              [
+                "remove(x)",
+                "Delete first occurrence of x",
+                "Yes"
+              ],
+              [
+                "pop([i])",
+                "Remove and return element at i",
+                "Yes"
+              ],
+              [
+                "clear()",
+                "Remove all elements",
+                "Yes"
+              ],
+              [
+                "index(x)",
+                "Return index of first x",
+                "No"
+              ],
+              [
+                "count(x)",
+                "Return number of occurrences of x",
+                "No"
+              ],
+              [
+                "reverse()",
+                "Reverse the list in place",
+                "Yes"
+              ],
+              [
+                "sort()",
+                "Sort the list in place",
+                "Yes"
+              ],
+              [
+                "copy()",
+                "Return a shallow copy",
+                "No"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "append vs extend: append adds one box at the end, extend merges a whole group of boxes.",
+          "pop() picture showing the last box removed from the list and handed back to the program."
+        ],
+        "pythonSyntax": "L.append(x)\nL.extend(seq)\nL.insert(i, x)\nL.remove(x)\nvalue = L.pop([i])\nL.clear()\nL.index(x)\nL.count(x)\nL.reverse()\nL.sort()\nL2 = L.copy()",
+        "codeExamples": [
+          {
+            "code": "L = [1, 2, 3]\nL.append(4)\nL.insert(0, 0)\nL.extend([5, 6])\nprint(L)",
+            "output": "[0, 1, 2, 3, 4, 5, 6]",
+            "explanation": "append adds 4 at the end, insert puts 0 at index 0, and extend adds 5 and 6 individually."
+          },
+          {
+            "code": "L = [10, 20, 30, 20]\nprint(L.count(20))\nprint(L.index(30))\nprint(L.pop())\nprint(L)",
+            "output": "2\n2\n20\n[10, 20, 30]",
+            "explanation": "count gives the number of 20s, index gives the position of 30, and pop removes and returns the last element."
+          },
+          {
+            "code": "L = [3, 1, 2]\nL.sort()\nprint(L)\nL.reverse()\nprint(L)",
+            "output": "[1, 2, 3]\n[3, 2, 1]",
+            "explanation": "sort() arranges the list in ascending order and reverse() flips it, both modifying L in place."
+          }
+        ],
+        "commonMistakes": [
+          "Assigning the result of sort() or append(), e.g. L = L.sort(), which sets L to None.",
+          "Using append() to merge a list, which adds the whole list as one element; extend() is needed instead.",
+          "Calling remove(x) for a value that is absent, which raises a ValueError.",
+          "Confusing L.sort() (in place, returns None) with sorted(L) (returns a new sorted list).",
+          "Assuming L2 = L makes a copy — it only makes another reference; use L.copy() for a real copy."
+        ],
+        "examNotes": [
+          "append adds one element; extend adds several — a classic comparison question.",
+          "insert(i, x) places x before the current element at index i.",
+          "pop() returns the removed element, whereas remove() and clear() return None.",
+          "sort() and reverse() act in place and return None; sorted() returns a new list.",
+          "index() and count() are query methods that do not modify the list."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between append() and extend()?",
+            "a": "append(x) adds x as a single element; extend(seq) adds each element of seq separately."
+          },
+          {
+            "q": "What does pop() return?",
+            "a": "The element it removes — the last element by default, or the element at the given index."
+          },
+          {
+            "q": "Why does L = L.append(5) give None?",
+            "a": "append() modifies the list in place and returns None, so the assignment overwrites L with None."
+          },
+          {
+            "q": "Does sort() work on mixed types?",
+            "a": "No. Sorting a list with incomparable types, such as an int and a string, raises a TypeError."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which method adds all elements of another list individually?",
+            "options": [
+              "append()",
+              "extend()",
+              "insert()",
+              "add()"
+            ],
+            "answer": 1,
+            "explanation": "extend() appends each element of the given iterable separately."
+          },
+          {
+            "question": "What does L.pop() do?",
+            "options": [
+              "Removes the first element",
+              "Removes and returns the last element",
+              "Returns the last element without removing",
+              "Clears the list"
+            ],
+            "answer": 1,
+            "explanation": "pop() with no argument removes the last element and returns it."
+          },
+          {
+            "question": "What is the return value of L.sort()?",
+            "options": [
+              "The sorted list",
+              "None",
+              "0",
+              "The original list"
+            ],
+            "answer": 1,
+            "explanation": "sort() sorts in place and returns None."
+          },
+          {
+            "question": "Which method gives the position of the first occurrence of a value?",
+            "options": [
+              "count()",
+              "find()",
+              "index()",
+              "search()"
+            ],
+            "answer": 2,
+            "explanation": "index(x) returns the index of the first occurrence of x; count(x) returns how many times it occurs."
+          }
+        ],
+        "checklist": [
+          "I can add elements with append(), extend() and insert().",
+          "I can remove elements with remove(), pop() and clear().",
+          "I can query a list with index() and count().",
+          "I can reverse and sort a list in place.",
+          "I know which methods return None and which return a value."
+        ]
+      }
+    },
+    {
+      "id": "ch8-builtin-functions",
+      "title": "Built-in Functions",
+      "content": {
+        "hinglish": "Python kuch built-in functions deta hai jo lists ke saath kaam karte hain. len(L) list ke elements ki ginti batata hai, min(L) sabse chhota aur max(L) sabse bada element deta hai. sum(L) saare numeric elements ka total deta hai. sorted(L) ek nayi sorted list return karta hai, jabki L.sort() original list ko hi sort karta hai. list() kisi bhi iterable ko list mein convert kar deta hai. Yaad rakhiye — sorted() aur list() nayi list banate hain aur min, max, sum ko numbers chahiye hote hain.",
+        "formalDefinition": "Python supplies built-in functions that operate on lists. len(L) returns the number of elements. min(L) and max(L) return the smallest and largest elements respectively and require the elements to be comparable. sum(L) returns the total of numeric elements and accepts an optional start value. sorted(L) returns a new list containing the elements in ascending order without modifying L. list(iterable) constructs a list from any iterable. With the exception of the in-place methods sort() and reverse(), these functions do not modify the list on which they act.",
+        "keywords": [
+          "len()",
+          "min()",
+          "max()",
+          "sum()",
+          "sorted()",
+          "list()",
+          "built-in function",
+          "iterable"
+        ],
+        "examples": [
+          "len([10, 20, 30]) gives 3",
+          "min([4, 1, 9]) gives 1",
+          "max([4, 1, 9]) gives 9",
+          "sum([10, 20, 30]) gives 60",
+          "sorted([3, 1, 2]) gives [1, 2, 3]"
+        ],
+        "tables": [
+          {
+            "caption": "Built-in functions for lists",
+            "headers": [
+              "Function",
+              "Purpose",
+              "Example",
+              "Result"
+            ],
+            "rows": [
+              [
+                "len(L)",
+                "Number of elements",
+                "len([1, 2, 3])",
+                "3"
+              ],
+              [
+                "min(L)",
+                "Smallest element",
+                "min([3, 1, 2])",
+                "1"
+              ],
+              [
+                "max(L)",
+                "Largest element",
+                "max([3, 1, 2])",
+                "3"
+              ],
+              [
+                "sum(L)",
+                "Total of elements",
+                "sum([3, 1, 2])",
+                "6"
+              ],
+              [
+                "sorted(L)",
+                "New sorted list",
+                "sorted([3, 1, 2])",
+                "[1, 2, 3]"
+              ],
+              [
+                "list(seq)",
+                "Convert to a list",
+                "list('ab')",
+                "['a', 'b']"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "sorted() vs sort(): one arrow leaves the original list untouched and returns a new list, the other arrow loops back into the same list.",
+          "Pipeline picture: an iterable flows into list() and comes out as a list object."
+        ],
+        "pythonSyntax": "len(L)\nmin(L)\nmax(L)\nsum(L)\nsorted(L)          # returns a new list\nlist(iterable)     # builds a list",
+        "codeExamples": [
+          {
+            "code": "L = [12, 5, 8, 20]\nprint(len(L))\nprint(min(L))\nprint(max(L))\nprint(sum(L))",
+            "output": "4\n5\n20\n45",
+            "explanation": "len gives the count, min and max give the extremes, and sum adds all four numbers."
+          },
+          {
+            "code": "L = [3, 1, 2]\nnew = sorted(L)\nprint(new)\nprint(L)",
+            "output": "[1, 2, 3]\n[3, 1, 2]",
+            "explanation": "sorted() returns a new list; the original L remains unchanged."
+          },
+          {
+            "code": "print(list('hey'))\nprint(sum([1, 2, 3], 10))",
+            "output": "['h', 'e', 'y']\n16",
+            "explanation": "list() converts the string to a list of characters, and sum() with a start value of 10 adds 10 to the total of 6."
+          }
+        ],
+        "commonMistakes": [
+          "Using sum() on strings or mixed types, which raises a TypeError — sum() needs numbers.",
+          "Thinking sorted() modifies the list; it returns a new list while sort() works in place.",
+          "Calling min() or max() on an empty list, which raises a ValueError.",
+          "Using len as len(L) when it is a function; len is not a method of the list.",
+          "Assuming min()/max() work on a mixed list such as [1, 'a'] — the elements must be comparable."
+        ],
+        "examNotes": [
+          "len() returns the number of elements, which is also the index just past the last element.",
+          "sum(), min() and max() require numeric (or comparable) elements.",
+          "sorted(L) returns a new list; L.sort() sorts in place and returns None — know the difference.",
+          "sum(L, start) adds the optional start value to the total.",
+          "min() and max() on an empty list raise a ValueError."
+        ],
+        "faqs": [
+          {
+            "q": "What is the difference between sorted(L) and L.sort()?",
+            "a": "sorted(L) returns a new sorted list and leaves L unchanged; L.sort() sorts L in place and returns None."
+          },
+          {
+            "q": "Can sum() add strings?",
+            "a": "No. sum() works on numbers; to join strings use the join() method."
+          },
+          {
+            "q": "What does len([ ]) return?",
+            "a": "0, because the list is empty."
+          },
+          {
+            "q": "Why does max([]) give an error?",
+            "a": "An empty list has no element to compare, so max() and min() raise a ValueError."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What is sum([5, 10, 15])?",
+            "options": [
+              "30",
+              "15",
+              "3",
+              "[5, 10, 15]"
+            ],
+            "answer": 0,
+            "explanation": "sum() adds all elements: 5 + 10 + 15 = 30."
+          },
+          {
+            "question": "Which function returns a NEW sorted list without changing the original?",
+            "options": [
+              "sort()",
+              "sorted()",
+              "reverse()",
+              "arrange()"
+            ],
+            "answer": 1,
+            "explanation": "sorted() returns a new list; sort() modifies the list in place."
+          },
+          {
+            "question": "What is len(['a', 'b', 'c', 'd'])?",
+            "options": [
+              "3",
+              "4",
+              "5",
+              "8"
+            ],
+            "answer": 1,
+            "explanation": "There are four elements, so len() returns 4."
+          },
+          {
+            "question": "max([2, 9, 4]) returns:",
+            "options": [
+              "2",
+              "4",
+              "9",
+              "15"
+            ],
+            "answer": 2,
+            "explanation": "max() returns the largest element, which is 9."
+          }
+        ],
+        "checklist": [
+          "I can use len() to count elements.",
+          "I can use min() and max() to find extremes.",
+          "I can use sum() to total numeric elements.",
+          "I can use sorted() to get a new sorted list.",
+          "I know sorted() differs from sort()."
+        ]
+      }
+    },
+    {
+      "id": "ch8-programs",
+      "title": "Python Programs",
+      "content": {
+        "hinglish": "Ab hum list par based kuch common programs likhna seekhenge. Sum aur average nikalne ke liye hum ek accumulator variable lete hain aur loop mein saare elements jodte hain, phir sum ko len(L) se divide karte hain. Maximum aur minimum dhoondhne ke liye hum pehle element ko maan lete hain sabse bada/chhota aur baaki elements se compare karte jaate hain. Searching ke liye hum ek flag ya loop ka use karte hain. Reverse karne ke liye slicing L[::-1] ya swap method use hota hai, aur sorting ke liye sort() ya bubble sort. Count even/odd ke liye hum har element par n % 2 check karte hain, aur ye programs exam mein bahut aate hain isliye logic clear hona chahiye.",
+        "formalDefinition": "Standard list programs combine traversal with accumulators and comparisons. A sum program accumulates elements into a total and divides by len(L) to obtain the average. Maximum and minimum programs initialise a candidate from the first element and update it during traversal. A search program scans for a target and reports its position or a not-found message. Reversal can be done with slicing or by swapping elements from the two ends. Sorting can use the built-in sort() or an algorithm such as bubble sort. Counting even and odd numbers tests each element with the modulus operator.",
+        "keywords": [
+          "sum",
+          "average",
+          "maximum",
+          "minimum",
+          "search",
+          "reverse",
+          "sort",
+          "even/odd"
+        ],
+        "examples": [
+          "total = 0; for x in L: total += x; avg = total/len(L)",
+          "largest = L[0]; for x in L: if x > largest: largest = x",
+          "found = False; for x in L: if x == key: found = True",
+          "rev = L[::-1]",
+          "L.sort() for ascending order"
+        ],
+        "tables": [
+          {
+            "caption": "Common list programs and their key idea",
+            "headers": [
+              "Program",
+              "Key idea"
+            ],
+            "rows": [
+              [
+                "Sum and average",
+                "Accumulate in a total, then divide by len(L)"
+              ],
+              [
+                "Maximum / minimum",
+                "Initialise with the first element and update on comparison"
+              ],
+              [
+                "Search",
+                "Use a flag or loop to test each element against the key"
+              ],
+              [
+                "Reverse",
+                "Swap from both ends or use L[::-1]"
+              ],
+              [
+                "Sort",
+                "Use sort() or bubble sort with swaps"
+              ],
+              [
+                "Count even / odd",
+                "Test each element with n % 2"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Flowchart for finding the maximum: read an element -> is it greater than largest? -> yes: update largest -> continue -> print largest.",
+          "Bubble sort pass diagram showing adjacent elements swapped until the largest bubbles to the end."
+        ],
+        "pythonSyntax": "# Sum and average\ntotal = 0\nfor x in L:\n    total += x\navg = total / len(L)\n\n# Maximum\nlargest = L[0]\nfor x in L:\n    if x > largest:\n        largest = x",
+        "codeExamples": [
+          {
+            "code": "L = [10, 20, 30, 40]\ntotal = 0\nfor x in L:\n    total += x\nprint(total)\nprint(total / len(L))",
+            "output": "100\n25.0",
+            "explanation": "The loop accumulates the sum 100, and dividing by the number of elements gives the average 25.0."
+          },
+          {
+            "code": "L = [7, 3, 9, 2]\nlargest = L[0]\nfor x in L:\n    if x > largest:\n        largest = x\nprint(largest)",
+            "output": "9",
+            "explanation": "largest starts at the first element 7 and is updated whenever a bigger element is found, ending at 9."
+          },
+          {
+            "code": "L = [4, 7, 10, 13]\neven = 0\nodd = 0\nfor x in L:\n    if x % 2 == 0:\n        even += 1\n    else:\n        odd += 1\nprint('Even:', even, 'Odd:', odd)",
+            "output": "Even: 2 Odd: 2",
+            "explanation": "Each element is tested with n % 2; two are even (4, 10) and two are odd (7, 13)."
+          }
+        ],
+        "commonMistakes": [
+          "Initialising largest to 0, which fails for a list of negative numbers; initialise with the first element.",
+          "Dividing by len(L) without checking that the list is non-empty, causing a ZeroDivisionError.",
+          "Using = instead of == in the comparison inside an if statement.",
+          "Reversing a list with a loop that goes too far, causing elements to be swapped twice.",
+          "Forgetting to reset an accumulator or flag between program runs."
+        ],
+        "examNotes": [
+          "Always initialise an accumulator (sum) to 0 and a counter to 0 before the loop.",
+          "For maximum/minimum, initialise with the first element (or the list's first value), not with 0.",
+          "A search program should report both the position when found and a clear message when absent.",
+          "For reversal, L[::-1] is the shortest correct answer; the swap method needs care with the loop bounds.",
+          "Bubble sort uses nested loops: the outer loop for passes and the inner loop for adjacent comparisons."
+        ],
+        "faqs": [
+          {
+            "q": "How do I find the average of a list?",
+            "a": "Add all elements into a total, then divide by len(L), e.g. total / len(L)."
+          },
+          {
+            "q": "Why does my maximum program fail for negative numbers?",
+            "a": "Because largest was initialised to 0, which is already bigger than every negative number; initialise it with the first element instead."
+          },
+          {
+            "q": "What is the easiest way to reverse a list?",
+            "a": "Use slicing: L[::-1] returns a reversed copy."
+          },
+          {
+            "q": "How do I sort a list without using sort()?",
+            "a": "Use an algorithm such as bubble sort, which repeatedly compares and swaps adjacent elements."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "What should 'largest' be initialised to when finding the maximum?",
+            "options": [
+              "0",
+              "1",
+              "the first element L[0]",
+              "-1"
+            ],
+            "answer": 2,
+            "explanation": "Initialising with L[0] works for any list, including all-negative lists."
+          },
+          {
+            "question": "To compute the average you divide the total by:",
+            "options": [
+              "len(L)",
+              "the last element",
+              "the maximum",
+              "sum(L)"
+            ],
+            "answer": 0,
+            "explanation": "The average is total divided by the number of elements, len(L)."
+          },
+          {
+            "question": "Which test identifies an even number?",
+            "options": [
+              "n / 2 == 0",
+              "n % 2 == 0",
+              "n % 2 == 1",
+              "n // 2 == 0"
+            ],
+            "answer": 1,
+            "explanation": "A number is even when the remainder on division by 2 is 0."
+          },
+          {
+            "question": "The shortest way to reverse L = [1, 2, 3] is:",
+            "options": [
+              "L[::-1]",
+              "L[1:3]",
+              "L.sort()",
+              "L.pop()"
+            ],
+            "answer": 0,
+            "explanation": "L[::-1] returns a reversed copy using a negative step."
+          }
+        ],
+        "checklist": [
+          "I can write a program to find the sum and average of a list.",
+          "I can find the maximum and minimum of a list.",
+          "I can search for an element in a list.",
+          "I can reverse a list using slicing.",
+          "I can count even and odd elements in a list."
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "ch8-mcq-01",
+      "topicId": "ch8-creating-lists",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is a valid way to create an empty list?",
+      "options": [
+        "L = []",
+        "L = ()",
+        "L = {}",
+        "L = list[]"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: [] is the empty list literal.",
+        "() creates an empty tuple, not a list.",
+        "{} creates an empty dictionary.",
+        "list[] is invalid syntax; the constructor uses round brackets, list()."
+      ],
+      "explanation": "An empty list is written as [] or created with list(). Parentheses give a tuple and braces give a dictionary.",
+      "relatedConcepts": [
+        "empty list",
+        "list literal",
+        "list()",
+        "data types"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-02",
+      "topicId": "ch8-creating-lists",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the output of print(list(range(3, 6)))?",
+      "options": [
+        "[3, 4, 5]",
+        "[3, 4, 5, 6]",
+        "[0, 1, 2, 3, 4, 5]",
+        "[1, 2, 3]"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: range(3, 6) yields 3, 4, 5 and list() converts it to a list.",
+        "range stops before the end value, so 6 is excluded.",
+        "That would be range(6).",
+        "The start is 3, so it does not begin at 1."
+      ],
+      "explanation": "range(3, 6) produces 3, 4 and 5 (the stop value 6 is excluded), and list() turns the range into a list.",
+      "relatedConcepts": [
+        "range()",
+        "list()",
+        "conversion"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-03",
+      "topicId": "ch8-creating-lists",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which statement about a Python list is FALSE?",
+      "options": [
+        "A list can contain duplicate values",
+        "A list is immutable",
+        "A list can be nested",
+        "A list can hold mixed data types"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "True statement: duplicates are allowed.",
+        "Correct answer: a list is mutable, so this statement is false.",
+        "True statement: lists can be nested.",
+        "True statement: lists are heterogeneous."
+      ],
+      "explanation": "Lists are mutable, meaning their elements can be changed after creation. The other three statements are all true.",
+      "relatedConcepts": [
+        "mutable",
+        "duplicate values",
+        "nested list",
+        "heterogeneous"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-04",
+      "topicId": "ch8-accessing",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "For L = [2, 4, 6, 8, 10], what is the value of L[-1] + L[1]?",
+      "options": [
+        "12",
+        "14",
+        "16",
+        "18"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "12 would be L[-1] + L[0].",
+        "Correct: L[-1] is 10 and L[1] is 4, so 10 + 4 = 14.",
+        "16 is not the sum of these two elements.",
+        "18 is not the sum of these two elements."
+      ],
+      "explanation": "L[-1] is the last element (10) and L[1] is the second element (4), giving 14.",
+      "relatedConcepts": [
+        "negative index",
+        "positive index",
+        "arithmetic on elements"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-05",
+      "topicId": "ch8-accessing",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "For L = [1, 2, 3, 4, 5, 6], what does L[1:5:2] return?",
+      "options": [
+        "[2, 4]",
+        "[2, 4, 6]",
+        "[1, 3, 5]",
+        "[2, 3, 4]"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: indices 1 and 3 are picked, giving [2, 4].",
+        "[2, 4, 6] would need a stop beyond index 5.",
+        "[1, 3, 5] would be L[0:6:2].",
+        "[2, 3, 4] ignores the step of 2."
+      ],
+      "explanation": "The slice starts at index 1, stops before index 5, and steps by 2, so it selects indices 1 and 3: [2, 4].",
+      "relatedConcepts": [
+        "slicing",
+        "step",
+        "start:stop:step"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-06",
+      "topicId": "ch8-accessing",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "For L = [10, 20, 30, 40, 50], which expression raises an IndexError?",
+      "options": [
+        "L[0:100]",
+        "L[-1]",
+        "L[5]",
+        "L[4]"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "L[0:100] is a slice and is silently truncated; no error.",
+        "L[-1] is the last element, 50.",
+        "Correct: valid indices are 0-4, so L[5] is out of range and raises IndexError.",
+        "L[4] is the last element, 50."
+      ],
+      "explanation": "A single out-of-range index raises IndexError, whereas a slice with out-of-range bounds is simply truncated.",
+      "relatedConcepts": [
+        "IndexError",
+        "index range",
+        "slice truncation"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-07",
+      "topicId": "ch8-accessing",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "For L = [10, 20, 30], what does L[1:] return?",
+      "options": [
+        "[10, 20]",
+        "[20, 30]",
+        "[30]",
+        "[10, 20, 30]"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "[10, 20] would be L[:2].",
+        "Correct: from index 1 to the end gives [20, 30].",
+        "[30] would be L[2:].",
+        "[10, 20, 30] is the whole list."
+      ],
+      "explanation": "When the stop is omitted, the slice runs to the end of the list, so L[1:] gives [20, 30].",
+      "relatedConcepts": [
+        "slicing",
+        "omitted stop"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-08",
+      "topicId": "ch8-traversing",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which construct gives both the index and the element while traversing a list?",
+      "options": [
+        "for x in L:",
+        "for i in range(len(L)):",
+        "for i, x in enumerate(L):",
+        "while L:"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "for x in L: gives only the element.",
+        "for i in range(len(L)): gives only the index (you then fetch L[i]).",
+        "Correct: enumerate() yields the index and element together.",
+        "while L: does not provide an index either."
+      ],
+      "explanation": "enumerate(L) returns (index, element) pairs, so 'for i, x in enumerate(L):' unpacks both at once.",
+      "relatedConcepts": [
+        "enumerate()",
+        "traversal",
+        "index and value"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-09",
+      "topicId": "ch8-traversing",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "In the loop 'for i in range(len(L)):' over a list of 5 elements, i takes the values:",
+      "options": [
+        "1, 2, 3, 4, 5",
+        "0, 1, 2, 3, 4",
+        "0, 1, 2, 3, 4, 5",
+        "the elements of L"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Indexing is zero-based, so it does not start at 1.",
+        "Correct: range(len(L)) gives 0 to len(L)-1, i.e. 0 to 4.",
+        "range(5) excludes 5.",
+        "range() gives indices, not the elements."
+      ],
+      "explanation": "range(len(L)) produces the valid indices 0 through len(L)-1, which is 0 to 4 for a 5-element list.",
+      "relatedConcepts": [
+        "range(len())",
+        "index",
+        "for loop"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-10",
+      "topicId": "ch8-traversing",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "How many times does the loop body execute for 'for i in range(2, 6):'?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "3 would be range(2, 5).",
+        "Correct: range(2, 6) gives 2, 3, 4, 5 — four values.",
+        "5 would be range(2, 7).",
+        "6 would be range(2, 8)."
+      ],
+      "explanation": "range(2, 6) yields 2, 3, 4 and 5, so the body runs 4 times.",
+      "relatedConcepts": [
+        "range()",
+        "iteration count"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-11",
+      "topicId": "ch8-operators",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is the result of [1, 2] * 3?",
+      "options": [
+        "[1, 2, 1, 2, 1, 2]",
+        "[3, 6]",
+        "[1, 2, 3]",
+        "Error"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: the list [1, 2] is repeated three times.",
+        "[3, 6] would be element-wise multiplication, which lists do not do.",
+        "[1, 2, 3] ignores the repetition.",
+        "No error occurs; * with an integer repeats a list."
+      ],
+      "explanation": "The * operator repeats a list a whole number of times, giving [1, 2, 1, 2, 1, 2].",
+      "relatedConcepts": [
+        "repetition",
+        "* operator"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-12",
+      "topicId": "ch8-operators",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What type of value do the operators 'in' and 'not in' return?",
+      "options": [
+        "An integer",
+        "A Boolean",
+        "A list",
+        "A string"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "They do not return an integer index.",
+        "Correct: membership operators return True or False.",
+        "They do not return a list.",
+        "They do not return a string."
+      ],
+      "explanation": "in and not in are membership operators and always return a Boolean value, True or False.",
+      "relatedConcepts": [
+        "membership",
+        "in",
+        "not in",
+        "Boolean"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-13",
+      "topicId": "ch8-operators",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is the result of [1, 2, 3] < [1, 2, 3, 4]?",
+      "options": [
+        "True",
+        "False",
+        "Error",
+        "[1, 2, 3]"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: the shorter list is a prefix of the longer one, so it is smaller.",
+        "False is incorrect; prefix lists are smaller.",
+        "Comparing two lists is valid.",
+        "Comparison returns a Boolean, not a list."
+      ],
+      "explanation": "Lists are compared element by element; since [1, 2, 3] is a prefix of the longer list, it is considered smaller, so the result is True.",
+      "relatedConcepts": [
+        "lexicographic comparison",
+        "prefix",
+        "comparison operator"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-14",
+      "topicId": "ch8-operations",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "L = [1, 2, 3]. What does L.append([4, 5]) do?",
+      "options": [
+        "Adds 4 and 5 as separate elements",
+        "Adds the list [4, 5] as one element",
+        "Raises an error",
+        "Adds only 4"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "That is what extend([4, 5]) would do.",
+        "Correct: append adds its argument as a single element, so the result is [1, 2, 3, [4, 5]].",
+        "append() accepts any object, so no error occurs.",
+        "append adds the whole object, not just its first value."
+      ],
+      "explanation": "append() adds its argument as one element. To add 4 and 5 separately you must use extend().",
+      "relatedConcepts": [
+        "append()",
+        "extend()",
+        "nested element"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-15",
+      "topicId": "ch8-operations",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "L = [1, 2, 3]. After L.insert(1, 9), what is L?",
+      "options": [
+        "[1, 9, 2, 3]",
+        "[9, 1, 2, 3]",
+        "[1, 2, 9, 3]",
+        "[1, 2, 3, 9]"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: 9 is inserted before index 1, pushing 2 and 3 to the right.",
+        "[9, 1, 2, 3] would be insert(0, 9).",
+        "[1, 2, 9, 3] would be insert(2, 9).",
+        "[1, 2, 3, 9] would be append(9)."
+      ],
+      "explanation": "insert(i, x) places x before the current element at index i, so 9 goes before 2, giving [1, 9, 2, 3].",
+      "relatedConcepts": [
+        "insert()",
+        "index position"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-16",
+      "topicId": "ch8-operations",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "L = [5, 3, 8]. After L.sort(), what is L?",
+      "options": [
+        "[3, 5, 8]",
+        "[8, 5, 3]",
+        "[5, 3, 8]",
+        "None"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: sort() arranges the list in ascending order.",
+        "[8, 5, 3] would need reverse=True.",
+        "The list is sorted, so it does not stay the same.",
+        "sort() returns None, but L itself becomes sorted."
+      ],
+      "explanation": "sort() sorts the list in place in ascending order, so L becomes [3, 5, 8]. The method itself returns None.",
+      "relatedConcepts": [
+        "sort()",
+        "in-place",
+        "ascending order"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-17",
+      "topicId": "ch8-operations",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which list method removes an element AND returns it?",
+      "options": [
+        "remove()",
+        "pop()",
+        "clear()",
+        "delete()"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "remove(x) deletes a value but returns None.",
+        "Correct: pop() removes the element and returns it.",
+        "clear() empties the list and returns None.",
+        "delete is not a list method; del is a statement."
+      ],
+      "explanation": "pop([i]) removes the element at index i (the last element by default) and returns that element.",
+      "relatedConcepts": [
+        "pop()",
+        "remove()",
+        "return value"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-18",
+      "topicId": "ch8-operations",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "L = [1, 2, 2, 3, 2]. What is L.count(2)?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "1 would mean only one occurrence.",
+        "2 would mean two occurrences.",
+        "Correct: the value 2 appears three times.",
+        "5 is the length of the list."
+      ],
+      "explanation": "count(x) returns how many times x occurs in the list; 2 appears at indices 1, 2 and 4, so the count is 3.",
+      "relatedConcepts": [
+        "count()",
+        "occurrences"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-19",
+      "topicId": "ch8-builtin-functions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is sum([1, 2, 3, 4])?",
+      "options": [
+        "4",
+        "10",
+        "[1, 2, 3, 4]",
+        "24"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "4 is the length, which is len().",
+        "Correct: 1 + 2 + 3 + 4 = 10.",
+        "sum() returns a number, not the list.",
+        "24 is the product, not the sum."
+      ],
+      "explanation": "sum() adds all numeric elements of the list, giving 10 here.",
+      "relatedConcepts": [
+        "sum()",
+        "aggregate"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-20",
+      "topicId": "ch8-builtin-functions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "L = [3, 1, 2]. Which statement leaves L unchanged and produces a sorted list in another variable?",
+      "options": [
+        "L.sort()",
+        "L = L.sort()",
+        "sorted(L)",
+        "L.reverse()"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "L.sort() sorts L in place, so L changes.",
+        "L = L.sort() sets L to None, which is a bug.",
+        "Correct: sorted(L) returns a new sorted list and leaves L unchanged.",
+        "L.reverse() changes L and does not sort."
+      ],
+      "explanation": "sorted(L) returns a new sorted list; the original list L is not modified. sort(), by contrast, works in place.",
+      "relatedConcepts": [
+        "sorted()",
+        "sort()",
+        "non-destructive"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-21",
+      "topicId": "ch8-builtin-functions",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "What is len([1, [2, 3], 4])?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "2 ignores one top-level element.",
+        "Correct: the top-level elements are 1, [2, 3] and 4 — three of them.",
+        "4 counts the inner elements as separate top-level elements, which is wrong.",
+        "5 counts every number."
+      ],
+      "explanation": "len() counts only top-level elements, and [1, [2, 3], 4] has three: 1, the nested list, and 4.",
+      "relatedConcepts": [
+        "len()",
+        "nested list",
+        "top-level elements"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-22",
+      "topicId": "ch8-builtin-functions",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is min(['banana', 'apple', 'cherry'])?",
+      "options": [
+        "'banana'",
+        "'apple'",
+        "'cherry'",
+        "Error"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "'banana' is not the smallest alphabetically.",
+        "Correct: 'apple' is the smallest string in alphabetical order.",
+        "'cherry' is the largest.",
+        "min() works on strings; no error occurs."
+      ],
+      "explanation": "Strings are compared alphabetically, so the smallest is 'apple'.",
+      "relatedConcepts": [
+        "min()",
+        "string comparison"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-23",
+      "topicId": "ch8-programs",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which method tells you how many times the value 7 appears in a list?",
+      "options": [
+        "index()",
+        "count()",
+        "find()",
+        "search()"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "index() returns the position of the first occurrence, not the total count.",
+        "Correct: count(7) returns the number of times 7 appears.",
+        "find() is a string method, not a list method.",
+        "search() is not a list method."
+      ],
+      "explanation": "count(x) returns the number of occurrences of x, whereas index(x) returns the position of the first occurrence.",
+      "relatedConcepts": [
+        "count()",
+        "index()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-24",
+      "topicId": "ch8-programs",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "In a bubble sort that arranges a list in ascending order, two adjacent elements are swapped when:",
+      "options": [
+        "the left element is greater than the right",
+        "the left element is smaller than the right",
+        "they are equal",
+        "the list is empty"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct: a larger left element is swapped with a smaller right element.",
+        "If the left is smaller, the order is already correct for ascending sort.",
+        "Equal elements need no swap.",
+        "An empty list has nothing to sort."
+      ],
+      "explanation": "For ascending order, bubble sort swaps adjacent elements when the one on the left is greater than the one on the right, so larger values bubble to the end.",
+      "relatedConcepts": [
+        "bubble sort",
+        "swapping",
+        "ascending order"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-mcq-25",
+      "topicId": "ch8-programs",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which list method returns the position of the first occurrence of a value?",
+      "options": [
+        "count()",
+        "index()",
+        "pop()",
+        "insert()"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "count() returns how many times the value occurs.",
+        "Correct: index(x) returns the position of the first occurrence of x.",
+        "pop() removes an element.",
+        "insert() adds an element."
+      ],
+      "explanation": "index(x) returns the index of the first occurrence of x; it raises a ValueError if x is not present.",
+      "relatedConcepts": [
+        "index()",
+        "position",
+        "ValueError"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-assertion-01",
+      "topicId": "ch8-creating-lists",
+      "type": "assertion",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Read the assertion (A) and reason (R) and select the correct option.",
+      "assertion": "A Python list is mutable.",
+      "reason": "The elements of a list can be modified, added or removed after the list is created.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both statements are true, and the reason correctly explains the assertion: because elements can be changed after creation, the list is said to be mutable.",
+      "relatedConcepts": [
+        "mutable",
+        "modification",
+        "definition"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-assertion-02",
+      "topicId": "ch8-creating-lists",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Read the assertion (A) and reason (R) and select the correct option.",
+      "assertion": "A Python list can contain duplicate elements.",
+      "reason": "A list is an ordered sequence of elements.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Both statements are true, but being ordered does not explain why duplicates are allowed. Duplicates are permitted because a list stores values by position and does not require uniqueness.",
+      "relatedConcepts": [
+        "duplicate elements",
+        "ordered sequence",
+        "uniqueness"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-assertion-03",
+      "topicId": "ch8-accessing",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Read the assertion (A) and reason (R) and select the correct option.",
+      "assertion": "For L = [10, 20, 30, 40], the slice L[1:3] includes the element 40.",
+      "reason": "In a slice, the element at the stop index is excluded.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctAnswer": 3,
+      "explanation": "The assertion is false: L[1:3] gives [20, 30] and does not include 40. The reason is true — the stop index is excluded — but it does not make the assertion correct.",
+      "relatedConcepts": [
+        "slicing",
+        "stop index excluded",
+        "sub-list"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-assertion-04",
+      "topicId": "ch8-operations",
+      "type": "assertion",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Read the assertion (A) and reason (R) and select the correct option.",
+      "assertion": "The pop() method removes an element from a list.",
+      "reason": "The pop() method always removes the first element of the list.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctAnswer": 2,
+      "explanation": "The assertion is true, but the reason is false: pop() with no argument removes the LAST element, and pop(i) removes the element at index i, not necessarily the first.",
+      "relatedConcepts": [
+        "pop()",
+        "last element",
+        "index argument"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-tf-01",
+      "topicId": "ch8-creating-lists",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A list in Python can contain elements of different data types.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "Python lists are heterogeneous, so a single list can hold integers, strings, floats and Booleans together, e.g. [1, 'two', 3.5, True].",
+      "relatedConcepts": [
+        "heterogeneous",
+        "data types"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-tf-02",
+      "topicId": "ch8-accessing",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Indexing of a list in Python starts at 1.",
+      "correctAnswer": "False",
+      "correction": "Indexing starts at 0, so the first element is at index 0.",
+      "explanation": "Python uses zero-based indexing: the first element is L[0] and the last is L[len(L)-1] or L[-1].",
+      "relatedConcepts": [
+        "zero-based indexing",
+        "index"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-tf-03",
+      "topicId": "ch8-accessing",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "For L = [1, 2, 3, 4, 5], the slice L[1:4] includes the element at index 4.",
+      "correctAnswer": "False",
+      "correction": "The stop index is excluded, so L[1:4] includes indices 1, 2 and 3, giving [2, 3, 4].",
+      "explanation": "In a slice the element at the stop index is not included, so L[1:4] contains indices 1, 2 and 3.",
+      "relatedConcepts": [
+        "slicing",
+        "stop index excluded"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-tf-04",
+      "topicId": "ch8-operations",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The append() method returns the modified list.",
+      "correctAnswer": "False",
+      "correction": "append() modifies the list in place and returns None.",
+      "explanation": "append() changes the list but returns None. Assigning L = L.append(x) would wrongly set L to None.",
+      "relatedConcepts": [
+        "append()",
+        "return value",
+        "None"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-tf-05",
+      "topicId": "ch8-builtin-functions",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "sorted(L) leaves the original list L unchanged.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "sorted(L) returns a new sorted list and does not modify L, unlike L.sort() which sorts in place.",
+      "relatedConcepts": [
+        "sorted()",
+        "non-destructive",
+        "sort()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-tf-06",
+      "topicId": "ch8-operators",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The + operator can be used to add a single element to a list.",
+      "correctAnswer": "False",
+      "correction": "The + operator concatenates two lists; to add a single element use append() (or L = L + [x]).",
+      "explanation": "+ needs a list on both sides. Writing L + 5 raises a TypeError; use append(5) to add a single value.",
+      "relatedConcepts": [
+        "concatenation",
+        "+ operator",
+        "append()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-fb-01",
+      "topicId": "ch8-operations",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The list method that adds an element at the end of a list is __________.",
+      "correctAnswer": "append",
+      "acceptedAnswers": [
+        "append",
+        "append()",
+        ".append()",
+        "append method"
+      ],
+      "explanation": "append(x) adds x as a single element at the end of the list.",
+      "relatedConcepts": [
+        "append()",
+        "adding elements"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-fb-02",
+      "topicId": "ch8-accessing",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "For a list L, the last element can be accessed using negative indexing as L[__________].",
+      "correctAnswer": "-1",
+      "acceptedAnswers": [
+        "-1",
+        "- 1"
+      ],
+      "explanation": "Negative indexing counts from the end, so L[-1] is the last element, L[-2] the second-last, and so on.",
+      "relatedConcepts": [
+        "negative index",
+        "last element"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-fb-03",
+      "topicId": "ch8-operators",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The operator used to concatenate (join) two lists is __________.",
+      "correctAnswer": "+",
+      "acceptedAnswers": [
+        "+",
+        "plus",
+        "plus operator",
+        "the + operator"
+      ],
+      "explanation": "The + operator concatenates two lists into a new list, e.g. [1, 2] + [3] gives [1, 2, 3].",
+      "relatedConcepts": [
+        "concatenation",
+        "+ operator"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-fb-04",
+      "topicId": "ch8-builtin-functions",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The built-in function that returns the number of elements in a list is __________.",
+      "correctAnswer": "len",
+      "acceptedAnswers": [
+        "len",
+        "len()",
+        "len function"
+      ],
+      "explanation": "len(L) returns the count of elements in the list L.",
+      "relatedConcepts": [
+        "len()",
+        "number of elements"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-fb-05",
+      "topicId": "ch8-operations",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The __________ method removes and returns the last element of a list.",
+      "correctAnswer": "pop",
+      "acceptedAnswers": [
+        "pop",
+        "pop()",
+        ".pop()"
+      ],
+      "explanation": "pop() with no argument removes the last element and returns it; pop(i) removes the element at index i.",
+      "relatedConcepts": [
+        "pop()",
+        "remove and return"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-fb-06",
+      "topicId": "ch8-operators",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The output of the expression [0] * 3 is __________.",
+      "correctAnswer": "[0, 0, 0]",
+      "acceptedAnswers": [
+        "[0, 0, 0]",
+        "[0,0,0]",
+        "[0, 0, 0] "
+      ],
+      "explanation": "The repetition operator * repeats the list [0] three times, producing [0, 0, 0].",
+      "relatedConcepts": [
+        "repetition",
+        "* operator"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-match-01",
+      "topicId": "ch8-operations",
+      "type": "match",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Match each list method with its purpose.",
+      "matchPairs": [
+        {
+          "left": "append(x)",
+          "right": "Adds x at the end of the list"
+        },
+        {
+          "left": "insert(i, x)",
+          "right": "Inserts x before index i"
+        },
+        {
+          "left": "remove(x)",
+          "right": "Deletes the first occurrence of x"
+        },
+        {
+          "left": "pop()",
+          "right": "Removes and returns the last element"
+        },
+        {
+          "left": "sort()",
+          "right": "Arranges the list in ascending order in place"
+        }
+      ],
+      "explanation": "These methods modify the list in place. append adds at the end, insert places a value at a position, remove deletes by value, pop removes and returns, and sort orders the list.",
+      "relatedConcepts": [
+        "list methods",
+        "adding elements",
+        "removing elements",
+        "sorting"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-match-02",
+      "topicId": "ch8-operators",
+      "type": "match",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match each list operator with the operation it performs.",
+      "matchPairs": [
+        {
+          "left": "+",
+          "right": "Concatenation of two lists"
+        },
+        {
+          "left": "*",
+          "right": "Repetition of a list"
+        },
+        {
+          "left": "in",
+          "right": "Membership test"
+        },
+        {
+          "left": "==",
+          "right": "Equality comparison of two lists"
+        },
+        {
+          "left": "L[start:stop]",
+          "right": "Slicing a part of the list"
+        }
+      ],
+      "explanation": "+ joins two lists, * repeats a list, in checks membership, == compares lists for equality, and the colon form extracts a slice.",
+      "relatedConcepts": [
+        "operators",
+        "concatenation",
+        "repetition",
+        "membership"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-match-03",
+      "topicId": "ch8-builtin-functions",
+      "type": "match",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Match each built-in function with what it returns for a list.",
+      "matchPairs": [
+        {
+          "left": "len(L)",
+          "right": "Number of elements in the list"
+        },
+        {
+          "left": "max(L)",
+          "right": "Largest element of the list"
+        },
+        {
+          "left": "sum(L)",
+          "right": "Total of the numeric elements"
+        },
+        {
+          "left": "sorted(L)",
+          "right": "A new list in ascending order"
+        },
+        {
+          "left": "list(seq)",
+          "right": "A list built from an iterable"
+        }
+      ],
+      "explanation": "len gives the count, max gives the largest element, sum totals the numbers, sorted returns a new sorted list, and list() converts an iterable into a list.",
+      "relatedConcepts": [
+        "built-in functions",
+        "len/min/max",
+        "sum()",
+        "sorted()/list()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-01",
+      "topicId": "ch8-creating-lists",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define a list in Python.",
+      "modelAnswer": "A list is an ordered, mutable sequence of elements enclosed in square brackets [ ], with elements separated by commas.",
+      "keywords": [
+        "ordered",
+        "mutable",
+        "square brackets",
+        "sequence"
+      ],
+      "explanation": "The key ideas are that a list is ordered, mutable and written with square brackets.",
+      "relatedConcepts": [
+        "list definition",
+        "mutable",
+        "ordered"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-02",
+      "topicId": "ch8-creating-lists",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Write a statement to create an empty list named marks.",
+      "modelAnswer": "marks = []   (or marks = list())",
+      "keywords": [
+        "empty list",
+        "[]",
+        "list()"
+      ],
+      "explanation": "An empty list can be created either with the literal [] or with the constructor list().",
+      "relatedConcepts": [
+        "empty list",
+        "list literal"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-03",
+      "topicId": "ch8-accessing",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is negative indexing? Give one example.",
+      "modelAnswer": "Negative indexing accesses elements from the end of the list: -1 is the last element, -2 the second-last, and so on. For L = [10, 20, 30], L[-1] gives 30.",
+      "keywords": [
+        "negative index",
+        "-1",
+        "last element"
+      ],
+      "explanation": "Negative indices count backwards from the end of the list, so -1 always refers to the last element.",
+      "relatedConcepts": [
+        "negative indexing",
+        "last element"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-04",
+      "topicId": "ch8-accessing",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "For L = [5, 10, 15, 20, 25], what does L[1:4] return?",
+      "modelAnswer": "[10, 15, 20]",
+      "keywords": [
+        "slicing",
+        "stop excluded"
+      ],
+      "explanation": "The slice starts at index 1 and stops before index 4, returning elements at indices 1, 2 and 3.",
+      "relatedConcepts": [
+        "slicing",
+        "start:stop"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-05",
+      "topicId": "ch8-traversing",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Name any two ways to traverse a list.",
+      "modelAnswer": "(i) Using a for loop over elements: for x in L: ...  (ii) Using indices: for i in range(len(L)): ...  (enumerate() or a while loop are also valid.)",
+      "keywords": [
+        "for loop",
+        "range(len())",
+        "enumerate()",
+        "while loop"
+      ],
+      "explanation": "Traversal can be done directly over elements, over indices with range(len(L)), with enumerate(), or with a while loop.",
+      "relatedConcepts": [
+        "traversal",
+        "for loop",
+        "while loop"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-06",
+      "topicId": "ch8-operators",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What does the membership operator 'in' do? Give an example.",
+      "modelAnswer": "The 'in' operator checks whether a value is present in a list and returns True or False. Example: 3 in [1, 2, 3] returns True.",
+      "keywords": [
+        "in",
+        "membership",
+        "True/False"
+      ],
+      "explanation": "in tests membership and returns a Boolean; not in returns the opposite.",
+      "relatedConcepts": [
+        "membership",
+        "in",
+        "not in"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-07",
+      "topicId": "ch8-operations",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Differentiate between append() and extend() in one line each.",
+      "modelAnswer": "append(x) adds x as a single element at the end of the list, whereas extend(seq) adds each element of the sequence seq separately.",
+      "keywords": [
+        "append",
+        "extend",
+        "single element",
+        "iterable"
+      ],
+      "explanation": "append adds one object; extend unpacks an iterable and adds its items one by one.",
+      "relatedConcepts": [
+        "append()",
+        "extend()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-08",
+      "topicId": "ch8-operations",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What does the pop() method return?",
+      "modelAnswer": "pop() removes an element from the list and returns that removed element — the last element by default, or the element at the given index.",
+      "keywords": [
+        "pop",
+        "removes",
+        "returns element"
+      ],
+      "explanation": "Unlike remove(), which returns None, pop() gives back the element it deleted.",
+      "relatedConcepts": [
+        "pop()",
+        "return value"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-09",
+      "topicId": "ch8-builtin-functions",
+      "type": "vsa",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "State one difference between sort() and sorted().",
+      "modelAnswer": "sort() sorts the list in place and returns None, whereas sorted() returns a new sorted list and leaves the original list unchanged.",
+      "keywords": [
+        "sort()",
+        "sorted()",
+        "in place",
+        "new list"
+      ],
+      "explanation": "sort() modifies the existing list; sorted() creates and returns a new list.",
+      "relatedConcepts": [
+        "sort()",
+        "sorted()",
+        "in-place"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-vsa-10",
+      "topicId": "ch8-programs",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Write a single statement to reverse a list L.",
+      "modelAnswer": "L = L[::-1]   (this creates a reversed copy). To reverse in place you may use L.reverse().",
+      "keywords": [
+        "slicing",
+        "negative step",
+        "reverse()"
+      ],
+      "explanation": "L[::-1] uses a negative step to return a reversed copy; L.reverse() reverses the list in place.",
+      "relatedConcepts": [
+        "reversal",
+        "slicing",
+        "reverse()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-01",
+      "topicId": "ch8-creating-lists",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Explain any three ways of creating a list in Python with examples.",
+      "modelAnswer": "(i) Empty list literal: L = [].  (ii) List literal with values: L = [10, 20, 30] or a heterogeneous list [1, 'two', 3.5].  (iii) Using the list() constructor: list('abc') gives ['a', 'b', 'c'] and list(range(3)) gives [0, 1, 2]. A nested list such as [[1, 2], [3, 4]] is also a valid way of creating a list.",
+      "rubric": [
+        "Mentions the empty list literal [] (1 mark)",
+        "Gives a list literal with values (1 mark)",
+        "Mentions the list() constructor with an example (1 mark)",
+        "Award up to full marks for any three correct methods with examples"
+      ],
+      "explanation": "The three standard ways are the literal, the constructor list(), and conversion from another iterable.",
+      "relatedConcepts": [
+        "list literal",
+        "list()",
+        "nested list"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-02",
+      "topicId": "ch8-accessing",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain positive and negative indexing of a list with an example.",
+      "modelAnswer": "Positive indices count from the start beginning at 0, so for L = [10, 20, 30, 40], L[0] = 10 and L[3] = 40. Negative indices count from the end beginning at -1, so L[-1] = 40 and L[-2] = 30. Both forms refer to the same elements; for example L[3] and L[-1] both give 40.",
+      "rubric": [
+        "Explains zero-based positive indexing with example (1 mark)",
+        "Explains negative indexing starting at -1 with example (1 mark)",
+        "Shows that L[3] and L[-1] refer to the same element for extra clarity"
+      ],
+      "explanation": "Positive indices start at 0 from the left; negative indices start at -1 from the right.",
+      "relatedConcepts": [
+        "positive index",
+        "negative index",
+        "zero-based"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-03",
+      "topicId": "ch8-accessing",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain list slicing using the form L[start:stop:step] with an example.",
+      "modelAnswer": "A slice L[start:stop:step] returns the elements from index start up to (but not including) index stop, taking every step-th element. For L = [10, 20, 30, 40, 50]: L[1:4] gives [20, 30, 40]; L[0:5:2] gives [10, 30, 50]; L[::-1] gives the reversed list [50, 40, 30, 20, 10]. If start is omitted it defaults to 0, if stop is omitted it defaults to the end, and step defaults to 1.",
+      "rubric": [
+        "States that stop is excluded (1 mark)",
+        "Correct example of a slice (1 mark)",
+        "Explains defaults of start/stop/step or gives a step/reverse example"
+      ],
+      "explanation": "Slicing extracts a sub-list; the stop index is excluded and the step controls the increment.",
+      "relatedConcepts": [
+        "slicing",
+        "step",
+        "start:stop:step"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-04",
+      "topicId": "ch8-traversing",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Write a short note on traversing a list, giving an example of each of two methods.",
+      "modelAnswer": "Traversal means visiting every element of a list, usually to process or aggregate values. Method 1, direct iteration: for x in L: print(x) visits each element. Method 2, index-based iteration: for i in range(len(L)): print(L[i]) uses the indices 0 to len(L)-1. A third convenient method uses enumerate(): for i, x in enumerate(L): print(i, x) gives both the index and the value.",
+      "rubric": [
+        "Defines traversal (1 mark)",
+        "Gives two correct methods with examples (1 mark)",
+        "enumerate() mention earns full credit if two methods are already shown"
+      ],
+      "explanation": "Traversal is the base of algorithms such as sum, max, min and search.",
+      "relatedConcepts": [
+        "traversal",
+        "for loop",
+        "range(len())",
+        "enumerate()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-05",
+      "topicId": "ch8-operators",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Explain the concatenation and repetition operators for lists with examples.",
+      "modelAnswer": "The + operator concatenates two lists, joining them end to end: [1, 2] + [3, 4] gives [1, 2, 3, 4]. The * operator repeats a list a whole number of times: ['a', 'b'] * 2 gives ['a', 'b', 'a', 'b'] and [0] * 3 gives [0, 0, 0]. Both operators return a new list and do not modify the original lists.",
+      "rubric": [
+        "Correct explanation and example of + (1 mark)",
+        "Correct explanation and example of * (1 mark)",
+        "Notes that the original lists are unchanged"
+      ],
+      "explanation": "+ joins two lists and * repeats a list; neither modifies the operands.",
+      "relatedConcepts": [
+        "concatenation",
+        "repetition",
+        "+",
+        "*"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-06",
+      "topicId": "ch8-operators",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain the membership and comparison operators used with lists, with examples.",
+      "modelAnswer": "Membership: 'in' returns True if a value is present, e.g. 20 in [10, 20, 30] is True, and 'not in' returns True if absent, e.g. 5 not in [10, 20] is True. Comparison: two lists are compared element by element (lexicographically), e.g. [1, 2, 3] < [1, 2, 4] is True because the first differing pair 3 < 4 decides the result; if one list is a prefix of the other, the shorter list is smaller, so [1, 2] < [1, 2, 3] is True. Both operators return a Boolean.",
+      "rubric": [
+        "Correct explanation of in / not in with example (1 mark)",
+        "Correct explanation of list comparison with example (1 mark)",
+        "Mentions that the result is a Boolean"
+      ],
+      "explanation": "Membership tests presence; comparison compares corresponding elements and returns a Boolean.",
+      "relatedConcepts": [
+        "membership",
+        "in",
+        "comparison",
+        "lexicographic"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-07",
+      "topicId": "ch8-operations",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain any four list methods used to add elements, with examples.",
+      "modelAnswer": "append(x) adds x at the end: L = [1, 2]; L.append(3) gives [1, 2, 3]. extend(seq) adds each element of seq: L = [1]; L.extend([2, 3]) gives [1, 2, 3]. insert(i, x) adds x before index i: L = [1, 3]; L.insert(1, 2) gives [1, 2, 3]. The + operator concatenates two lists to give a new list: [1] + [2] gives [1, 2] (though this creates a new list rather than modifying in place).",
+      "rubric": [
+        "append() with example (0.5-1 mark)",
+        "extend() with example (0.5-1 mark)",
+        "insert() with example (0.5-1 mark)",
+        "Any one more (e.g. +) with example (0.5-1 mark)"
+      ],
+      "explanation": "append adds one element, extend adds many, insert adds at a position, and + joins lists.",
+      "relatedConcepts": [
+        "append()",
+        "extend()",
+        "insert()",
+        "concatenation"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-08",
+      "topicId": "ch8-operations",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain the remove(), pop() and clear() methods with examples.",
+      "modelAnswer": "remove(x) deletes the first occurrence of the value x: L = [1, 2, 2]; L.remove(2) gives [1, 2]. If x is not present it raises a ValueError. pop() removes and returns the last element by default, or the element at a given index: L = [1, 2, 3]; L.pop() returns 3 leaving [1, 2], while L.pop(0) returns 1. clear() removes all elements and leaves an empty list []. remove() and clear() return None, whereas pop() returns the removed element.",
+      "rubric": [
+        "remove() with example and note on ValueError (1 mark)",
+        "pop() with example and return value (0.5-1 mark)",
+        "clear() with example (0.5 mark)"
+      ],
+      "explanation": "remove deletes by value, pop deletes by position and returns the element, clear empties the list.",
+      "relatedConcepts": [
+        "remove()",
+        "pop()",
+        "clear()",
+        "ValueError"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-09",
+      "topicId": "ch8-builtin-functions",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Explain the built-in functions len(), min(), max() and sum() with examples.",
+      "modelAnswer": "len(L) returns the number of elements: len([10, 20, 30]) is 3. min(L) returns the smallest element: min([4, 1, 9]) is 1. max(L) returns the largest element: max([4, 1, 9]) is 9. sum(L) returns the total of the numeric elements: sum([10, 20, 30]) is 60. Note that min(), max() and sum() require comparable or numeric elements, and calling min() or max() on an empty list raises a ValueError.",
+      "rubric": [
+        "len() with example (0.5 mark)",
+        "min() and max() with examples (0.5-1 mark)",
+        "sum() with example (0.5 mark)",
+        "Any note on numeric/comparable requirement (0.5 mark)"
+      ],
+      "explanation": "These built-in functions give the count, extremes and total of a list without modifying it.",
+      "relatedConcepts": [
+        "len()",
+        "min()",
+        "max()",
+        "sum()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-sa-10",
+      "topicId": "ch8-programs",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Write a program to find the sum and average of the elements of a list L.",
+      "modelAnswer": "L = [10, 20, 30, 40]\ntotal = 0\nfor x in L:\n    total += x\navg = total / len(L)\nprint('Sum =', total)\nprint('Average =', avg)\n# Output: Sum = 100, Average = 25.0",
+      "rubric": [
+        "Initialises an accumulator to 0 (1 mark)",
+        "Correct loop to add all elements (1 mark)",
+        "Divides the total by len(L) to get the average (1 mark)"
+      ],
+      "explanation": "The loop accumulates the sum, and dividing by len(L) gives the average; dividing by the number of elements assumes the list is non-empty.",
+      "relatedConcepts": [
+        "sum",
+        "average",
+        "accumulator",
+        "traversal"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-la-01",
+      "topicId": "ch8-operations",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain any six list methods with their syntax and a suitable example each.",
+      "modelAnswer": "1. append(x): adds x at the end. L = [1, 2]; L.append(3) -> [1, 2, 3].\n2. extend(seq): adds all elements of seq. L = [1]; L.extend([2, 3]) -> [1, 2, 3].\n3. insert(i, x): inserts x before index i. L = [1, 3]; L.insert(1, 2) -> [1, 2, 3].\n4. remove(x): removes the first occurrence of x. L = [1, 2, 2]; L.remove(2) -> [1, 2].\n5. pop([i]): removes and returns the element at index i (last by default). L = [1, 2, 3]; L.pop() -> returns 3, list becomes [1, 2].\n6. sort(): sorts the list in place in ascending order (reverse=True for descending). L = [3, 1, 2]; L.sort() -> [1, 2, 3].\nOther valid choices: index(x), count(x), reverse(), clear(), copy().",
+      "rubric": [
+        "Six methods named with correct syntax (3 marks, 0.5 each)",
+        "Correct example for each method (2 marks)",
+        "Bonus credit if the in-place vs return value behaviour is noted"
+      ],
+      "keywords": [
+        "append",
+        "extend",
+        "insert",
+        "remove",
+        "pop",
+        "sort"
+      ],
+      "explanation": "These six methods cover adding, deleting and ordering elements; most modify the list in place and return None.",
+      "relatedConcepts": [
+        "list methods",
+        "in-place",
+        "append",
+        "sort"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-la-02",
+      "topicId": "ch8-accessing",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain list indexing and slicing in detail, including negative indices, with suitable examples.",
+      "modelAnswer": "Indexing accesses a single element. Python uses zero-based positive indices: for L = [10, 20, 30, 40, 50], L[0] = 10 and L[4] = 50. Negative indices count from the end: L[-1] = 50, L[-2] = 40, and L[5] raises an IndexError. Slicing extracts a sub-list using L[start:stop:step], where the element at stop is excluded and step (default 1) is the increment. Examples: L[1:4] -> [20, 30, 40]; L[:3] -> [10, 20, 30] (start defaults to 0); L[2:] -> [30, 40, 50] (stop defaults to the end); L[0:5:2] -> [10, 30, 50]; L[::-1] -> [50, 40, 30, 20, 10]. Slicing never raises an IndexError for out-of-range bounds; it is silently truncated, and it returns a new list.",
+      "rubric": [
+        "Explains zero-based positive indexing with example (1 mark)",
+        "Explains negative indexing with example (1 mark)",
+        "Explains slicing form and that stop is excluded (1 mark)",
+        "Gives examples with step and defaults of start/stop (1 mark)",
+        "Notes slicing returns a new list / no IndexError on slices (1 mark)"
+      ],
+      "keywords": [
+        "index",
+        "negative index",
+        "slicing",
+        "step",
+        "start:stop:step"
+      ],
+      "explanation": "Indexing returns one element, while slicing returns a new sub-list; both support negative positions.",
+      "relatedConcepts": [
+        "indexing",
+        "slicing",
+        "negative index",
+        "step"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-la-03",
+      "topicId": "ch8-programs",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Write a program to find the largest and the smallest element of a list WITHOUT using the built-in max() and min() functions. Explain the logic.",
+      "modelAnswer": "L = [34, 78, 12, 90, 56]\nlargest = L[0]\nsmallest = L[0]\nfor x in L:\n    if x > largest:\n        largest = x\n    if x < smallest:\n        smallest = x\nprint('Largest =', largest)\nprint('Smallest =', smallest)\n# Output: Largest = 90, Smallest = 12\nLogic: both largest and smallest are initialised to the first element L[0]. During a single traversal, each element is compared with the current largest and smallest; whenever a bigger element is found, largest is updated, and whenever a smaller element is found, smallest is updated. Initialising with L[0] (rather than 0) makes the program correct even for lists containing only negative numbers.",
+      "rubric": [
+        "Initialises both variables to L[0], not 0 (1.5 marks)",
+        "Correct single or double traversal logic (1.5 marks)",
+        "Correct comparison conditions for largest and smallest (1.5 marks)",
+        "Correct final output and explanation (1.5 marks)"
+      ],
+      "keywords": [
+        "largest",
+        "smallest",
+        "traversal",
+        "comparison",
+        "L[0]"
+      ],
+      "explanation": "Initialising with the first element and updating on comparison finds both extremes correctly, even for all-negative lists.",
+      "relatedConcepts": [
+        "maximum",
+        "minimum",
+        "traversal",
+        "comparison"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-la-04",
+      "topicId": "ch8-programs",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a program to count the number of even and odd elements in a list L and display both counts.",
+      "modelAnswer": "L = [4, 7, 10, 13, 22]\neven = 0\nodd = 0\nfor x in L:\n    if x % 2 == 0:\n        even += 1\n    else:\n        odd += 1\nprint('Even count =', even)\nprint('Odd count =', odd)\n# Output: Even count = 3, Odd count = 2\nLogic: two counters are initialised to 0. Each element is tested with the modulus operator; if x % 2 is 0 the element is even and the even counter is incremented, otherwise the odd counter is incremented.",
+      "rubric": [
+        "Initialises two counters to 0 (1 mark)",
+        "Correct loop over the list (1 mark)",
+        "Correct even test x % 2 == 0 (1.5 marks)",
+        "Correct output of both counts (1.5 marks)"
+      ],
+      "keywords": [
+        "even",
+        "odd",
+        "modulus",
+        "counter",
+        "traversal"
+      ],
+      "explanation": "The modulus operator n % 2 identifies even numbers (remainder 0) and odd numbers (remainder 1).",
+      "relatedConcepts": [
+        "even/odd",
+        "modulus",
+        "counter"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-la-05",
+      "topicId": "ch8-programs",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Write a program to search for a given element in a list. If found, display its position; otherwise display a message that it is not found. Explain the logic and mention the role of the flag.",
+      "modelAnswer": "L = [10, 25, 40, 55, 70]\nkey = 40\nfound = False\npos = -1\nfor i in range(len(L)):\n    if L[i] == key:\n        found = True\n        pos = i\n        break\nif found:\n    print(key, 'found at position', pos)\nelse:\n    print(key, 'not found')\n# Output: 40 found at position 2\nLogic: a flag 'found' is initialised to False and a variable pos to -1. The loop scans the list index by index; when the key matches L[i], the flag is set to True, the position is stored, and the loop breaks early. After the loop, the flag tells us whether a match occurred: if it is True we print the position, otherwise we print the not-found message.",
+      "rubric": [
+        "Correct initialisation of a flag and/or position variable (1.5 marks)",
+        "Correct loop scanning the list (1.5 marks)",
+        "Correct match test and updating position (1.5 marks)",
+        "Correct final if-else output using the flag (1.5 marks)"
+      ],
+      "keywords": [
+        "search",
+        "flag",
+        "break",
+        "index",
+        "found"
+      ],
+      "explanation": "A flag records whether the search succeeded, and break stops the loop once the element is found.",
+      "relatedConcepts": [
+        "linear search",
+        "flag",
+        "break",
+        "traversal"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-case-01",
+      "topicId": "ch8-builtin-functions",
+      "type": "case",
+      "difficulty": "easy",
+      "marks": 4,
+      "question": "Read the case study and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "A teacher stores the marks of five students in a list: marks = [45, 67, 89, 34, 56]. She wants to analyse these marks using Python's built-in functions and list methods.",
+        "table": {
+          "caption": "The list marks = [45, 67, 89, 34, 56]",
+          "headers": [
+            "Index",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "rows": [
+            [
+              "Value",
+              "45",
+              "67",
+              "89",
+              "34",
+              "56"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "What is len(marks)?",
+            "kind": "mcq",
+            "options": [
+              "4",
+              "5",
+              "6",
+              "89"
+            ],
+            "answer": 1,
+            "explanation": "The list has five elements, so len(marks) is 5.",
+            "marks": 1
+          },
+          {
+            "question": "What is the value of max(marks) - min(marks)?",
+            "kind": "mcq",
+            "options": [
+              "55",
+              "45",
+              "89",
+              "34"
+            ],
+            "answer": 0,
+            "explanation": "max(marks) = 89 and min(marks) = 34, so the difference is 55.",
+            "marks": 1
+          },
+          {
+            "question": "What does sum(marks) return?",
+            "kind": "short",
+            "answer": "291 (45 + 67 + 89 + 34 + 56 = 291).",
+            "explanation": "sum() adds all numeric elements of the list.",
+            "marks": 1
+          },
+          {
+            "question": "If marks.sort() is executed, what will marks contain?",
+            "kind": "short",
+            "answer": "marks becomes [34, 45, 56, 67, 89], sorted in ascending order in place.",
+            "explanation": "sort() arranges the list in ascending order and modifies the original list.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case applies len(), max(), min(), sum() and sort() to a marks list.",
+      "relatedConcepts": [
+        "len()",
+        "max()/min()",
+        "sum()",
+        "sort()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-case-02",
+      "topicId": "ch8-operations",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Read the case study and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "A shopping cart is represented as a list of item names: cart = ['milk', 'bread', 'eggs']. The programmer now performs a series of list operations on it.",
+        "subQuestions": [
+          {
+            "question": "After cart.append('butter'), what is the length of cart?",
+            "kind": "mcq",
+            "options": [
+              "3",
+              "4",
+              "5",
+              "1"
+            ],
+            "answer": 1,
+            "explanation": "append adds one element, taking the list from 3 to 4 elements.",
+            "marks": 1
+          },
+          {
+            "question": "After cart.insert(0, 'rice'), which element is at index 0?",
+            "kind": "mcq",
+            "options": [
+              "'milk'",
+              "'rice'",
+              "'bread'",
+              "'eggs'"
+            ],
+            "answer": 1,
+            "explanation": "insert(0, 'rice') places 'rice' before the current first element, so 'rice' is at index 0.",
+            "marks": 1
+          },
+          {
+            "question": "What does cart.remove('bread') do, and what does it return?",
+            "kind": "short",
+            "answer": "It deletes the first occurrence of 'bread' from the cart and returns None.",
+            "explanation": "remove(x) deletes the value x in place and returns None.",
+            "marks": 1
+          },
+          {
+            "question": "cart = ['milk', 'bread']; cart.extend(['eggs', 'butter']). What is cart now?",
+            "kind": "short",
+            "answer": "['milk', 'bread', 'eggs', 'butter'] — extend adds each element of the given list separately.",
+            "explanation": "extend() adds all elements of the iterable individually, unlike append() which would add the whole list as one element.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case tests append, insert, remove and extend on a shopping cart list.",
+      "relatedConcepts": [
+        "append()",
+        "insert()",
+        "remove()",
+        "extend()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-case-03",
+      "topicId": "ch8-accessing",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 4,
+      "question": "Read the case study and answer the sub-questions.",
+      "caseStudy": {
+        "passage": "A weather station records the maximum temperature (in degrees Celsius) for a week in a list: temps = [31, 33, 29, 35, 34, 30, 32]. The programmer uses indexing and slicing to extract information.",
+        "table": {
+          "caption": "temps = [31, 33, 29, 35, 34, 30, 32]",
+          "headers": [
+            "Index",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "rows": [
+            [
+              "Value",
+              "31",
+              "33",
+              "29",
+              "35",
+              "34",
+              "30",
+              "32"
+            ]
+          ]
+        },
+        "subQuestions": [
+          {
+            "question": "What is temps[-1]?",
+            "kind": "mcq",
+            "options": [
+              "31",
+              "32",
+              "30",
+              "35"
+            ],
+            "answer": 1,
+            "explanation": "temps[-1] is the last element, which is 32.",
+            "marks": 1
+          },
+          {
+            "question": "What does temps[1:4] return?",
+            "kind": "mcq",
+            "options": [
+              "[33, 29, 35]",
+              "[31, 33, 29]",
+              "[33, 29, 35, 34]",
+              "[29, 35, 34]"
+            ],
+            "answer": 0,
+            "explanation": "The slice starts at index 1 and stops before index 4, returning [33, 29, 35].",
+            "marks": 1
+          },
+          {
+            "question": "What does temps[0:7:2] return?",
+            "kind": "short",
+            "answer": "[31, 29, 34, 32] (indices 0, 2, 4 and 6).",
+            "explanation": "A step of 2 selects every second element from index 0 to 6.",
+            "marks": 1
+          },
+          {
+            "question": "What does temps[::-1] return?",
+            "kind": "short",
+            "answer": "[32, 30, 34, 35, 29, 33, 31] — the list reversed.",
+            "explanation": "A negative step of -1 walks the list backwards, producing a reversed copy.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case applies positive/negative indexing and slicing with a step to temperature data.",
+      "relatedConcepts": [
+        "indexing",
+        "negative index",
+        "slicing",
+        "step"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-output-01",
+      "topicId": "ch8-accessing",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Predict the output of the following code.",
+      "code": "L = [10, 20, 30, 40, 50]\nprint(L[0], L[2])\nprint(L[-1], L[-2])",
+      "correctAnswer": "10 30\n50 40",
+      "executionSteps": [
+        "L has five elements at indices 0 to 4.",
+        "L[0] is 10 and L[2] is 30, so the first print shows 10 30.",
+        "L[-1] is the last element 50 and L[-2] is 40, so the second print shows 50 40."
+      ],
+      "explanation": "Positive indices count from the start (0-based) and negative indices count from the end, with -1 being the last element.",
+      "relatedConcepts": [
+        "indexing",
+        "negative index",
+        "print()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-output-02",
+      "topicId": "ch8-accessing",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Predict the output of the following code.",
+      "code": "L = [1, 2, 3, 4, 5, 6, 7, 8]\nprint(L[1:6:2])\nprint(L[::3])\nprint(L[::-1])",
+      "correctAnswer": "[2, 4, 6]\n[1, 4, 7]\n[8, 7, 6, 5, 4, 3, 2, 1]",
+      "executionSteps": [
+        "L[1:6:2] starts at index 1, stops before 6, stepping by 2: indices 1, 3, 5 -> [2, 4, 6].",
+        "L[::3] starts at 0 to the end, stepping by 3: indices 0, 3, 6 -> [1, 4, 7].",
+        "L[::-1] uses a step of -1, reversing the list -> [8, 7, 6, 5, 4, 3, 2, 1]."
+      ],
+      "explanation": "A slice L[start:stop:step] excludes the stop index; a negative step walks the list backwards.",
+      "relatedConcepts": [
+        "slicing",
+        "step",
+        "negative step"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-output-03",
+      "topicId": "ch8-operators",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Predict the output of the following code.",
+      "code": "a = [1, 2]\nb = [3, 4]\nprint(a + b)\nprint(a * 2)\nprint(b + a)",
+      "correctAnswer": "[1, 2, 3, 4]\n[1, 2, 1, 2]\n[3, 4, 1, 2]",
+      "executionSteps": [
+        "a + b concatenates the two lists -> [1, 2, 3, 4].",
+        "a * 2 repeats list a twice -> [1, 2, 1, 2].",
+        "b + a joins b then a -> [3, 4, 1, 2]."
+      ],
+      "explanation": "The + operator joins two lists in the given order and the * operator repeats a list; order matters for concatenation.",
+      "relatedConcepts": [
+        "concatenation",
+        "repetition",
+        "+",
+        "*"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-output-04",
+      "topicId": "ch8-operators",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Predict the output of the following code.",
+      "code": "L = [5, 10, 15, 20]\nprint(10 in L)\nprint(25 in L)\nprint(25 not in L)\nprint([10] in L)",
+      "correctAnswer": "True\nFalse\nTrue\nFalse",
+      "executionSteps": [
+        "10 is present in L, so 10 in L is True.",
+        "25 is absent, so 25 in L is False.",
+        "25 is absent, so 25 not in L is True.",
+        "[10] is a list, and L contains no list element, so [10] in L is False."
+      ],
+      "explanation": "Membership tests compare whole elements; the value 10 is present but the list [10] is not an element of L.",
+      "relatedConcepts": [
+        "membership",
+        "in",
+        "not in",
+        "elements"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-output-05",
+      "topicId": "ch8-operations",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Predict the output of the following code.",
+      "code": "L = [1, 2, 3]\nL.append(4)\nL.insert(1, 99)\nprint(L)\nprint(L.pop())\nprint(L)",
+      "correctAnswer": "[1, 99, 2, 3, 4]\n4\n[1, 99, 2, 3]",
+      "executionSteps": [
+        "After L.append(4), L is [1, 2, 3, 4].",
+        "L.insert(1, 99) inserts 99 before index 1 -> [1, 99, 2, 3, 4].",
+        "print(L) shows [1, 99, 2, 3, 4].",
+        "L.pop() removes and returns the last element 4, and L becomes [1, 99, 2, 3]."
+      ],
+      "explanation": "append adds at the end, insert adds before a given index, and pop removes and returns the last element.",
+      "relatedConcepts": [
+        "append()",
+        "insert()",
+        "pop()",
+        "mutation"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-output-06",
+      "topicId": "ch8-operations",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Predict the output of the following code.",
+      "code": "L = [30, 10, 20, 10]\nprint(L.count(10))\nprint(L.index(20))\nL.sort()\nprint(L)\nL.reverse()\nprint(L)",
+      "correctAnswer": "2\n2\n[10, 10, 20, 30]\n[30, 20, 10, 10]",
+      "executionSteps": [
+        "count(10) counts two occurrences -> 2.",
+        "index(20) finds 20 at index 2 -> 2.",
+        "sort() arranges the list ascending -> [10, 10, 20, 30].",
+        "reverse() flips the sorted list -> [30, 20, 10, 10]."
+      ],
+      "explanation": "count() returns occurrences, index() returns the first position, and sort()/reverse() modify the list in place.",
+      "relatedConcepts": [
+        "count()",
+        "index()",
+        "sort()",
+        "reverse()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-output-07",
+      "topicId": "ch8-builtin-functions",
+      "type": "output",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Predict the output of the following code.",
+      "code": "L = [4, 8, 2, 6]\nprint(len(L))\nprint(sum(L))\nprint(max(L), min(L))\nprint(sorted(L))\nprint(L)",
+      "correctAnswer": "4\n20\n8 2\n[2, 4, 6, 8]\n[4, 8, 2, 6]",
+      "executionSteps": [
+        "len(L) returns 4 (four elements).",
+        "sum(L) = 4 + 8 + 2 + 6 = 20.",
+        "max(L) is 8 and min(L) is 2, printed as '8 2'.",
+        "sorted(L) returns a NEW list [2, 4, 6, 8], so the final print of L is still [4, 8, 2, 6]."
+      ],
+      "explanation": "sorted() returns a new sorted list without modifying L, unlike sort(); this is why L stays unchanged.",
+      "relatedConcepts": [
+        "len()",
+        "sum()",
+        "max()/min()",
+        "sorted()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-debug-01",
+      "topicId": "ch8-creating-lists",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "The following code produces an error. Identify the type of error and write the corrected code.",
+      "code": "L = [1 2 3]\nprint(L)",
+      "errorType": "syntax",
+      "correctAnswer": "L = [1, 2, 3]\nprint(L)",
+      "executionSteps": [
+        "Python reports a SyntaxError because the elements are not separated by commas.",
+        "Each element in a list literal must be separated by a comma.",
+        "Inserting commas gives L = [1, 2, 3], which prints [1, 2, 3]."
+      ],
+      "explanation": "Elements of a list literal must be separated by commas; writing [1 2 3] is a syntax error.",
+      "relatedConcepts": [
+        "syntax error",
+        "list literal",
+        "comma separation"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-debug-02",
+      "topicId": "ch8-accessing",
+      "type": "debug",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "The following code raises an error at runtime. Identify the error and correct it.",
+      "code": "L = [10, 20, 30]\nprint(L[3])",
+      "errorType": "runtime",
+      "correctAnswer": "L = [10, 20, 30]\nprint(L[2])   # or print(L[-1])",
+      "executionSteps": [
+        "L has three elements at indices 0, 1 and 2.",
+        "L[3] is out of range, so Python raises an IndexError.",
+        "Using L[2] or L[-1] accesses the last element correctly."
+      ],
+      "explanation": "Valid indices are 0 to len(L)-1, so L[3] on a 3-element list raises an IndexError; the last element is L[2] or L[-1].",
+      "relatedConcepts": [
+        "IndexError",
+        "index range",
+        "last element"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-debug-03",
+      "topicId": "ch8-programs",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "The following program is meant to find the largest element, but it gives a wrong answer for a list of negative numbers. Identify the logical error and correct it.",
+      "code": "L = [-5, -2, -9]\nlargest = 0\nfor x in L:\n    if x > largest:\n        largest = x\nprint(largest)",
+      "errorType": "logical",
+      "correctAnswer": "L = [-5, -2, -9]\nlargest = L[0]\nfor x in L:\n    if x > largest:\n        largest = x\nprint(largest)",
+      "executionSteps": [
+        "largest is initialised to 0, which is greater than every element of a negative list.",
+        "So no element ever satisfies x > largest and the program prints 0, which is wrong.",
+        "Initialising largest to the first element L[0] makes the comparison valid; the program then prints -2."
+      ],
+      "explanation": "For maximum/minimum programs, initialise the candidate to the first element (L[0]), not to 0, so the logic works for all-negative lists.",
+      "relatedConcepts": [
+        "logical error",
+        "maximum",
+        "initialisation",
+        "L[0]"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-debug-04",
+      "topicId": "ch8-operations",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "The following code raises an error. Identify the error and write the corrected code.",
+      "code": "L = [1, 2, 3]\nL.remove(5)\nprint(L)",
+      "errorType": "runtime",
+      "correctAnswer": "L = [1, 2, 3]\nif 5 in L:\n    L.remove(5)\nprint(L)",
+      "executionSteps": [
+        "remove(5) tries to delete 5, but 5 is not in the list.",
+        "Python raises a ValueError: list.remove(x): x not in list.",
+        "Checking membership with 'if 5 in L' before removing avoids the error; here the list stays [1, 2, 3]."
+      ],
+      "explanation": "remove(x) raises a ValueError when x is absent, so check membership first (or use pop with an index for deletion by position).",
+      "relatedConcepts": [
+        "ValueError",
+        "remove()",
+        "membership check"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-debug-05",
+      "topicId": "ch8-operations",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "The following program is intended to append 4 to a list and print it, but it prints None. Identify the logical error and correct it.",
+      "code": "L = [1, 2, 3]\nL = L.append(4)\nprint(L)",
+      "errorType": "logical",
+      "correctAnswer": "L = [1, 2, 3]\nL.append(4)\nprint(L)",
+      "executionSteps": [
+        "append(4) adds 4 to the list but returns None.",
+        "The assignment L = L.append(4) therefore sets L to None, and print(L) shows None.",
+        "Removing the assignment keeps the list and prints [1, 2, 3, 4]."
+      ],
+      "explanation": "append() modifies the list in place and returns None, so it must not be assigned back to the variable.",
+      "relatedConcepts": [
+        "logical error",
+        "append()",
+        "None",
+        "return value"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-prog-01",
+      "topicId": "ch8-programs",
+      "type": "program",
+      "difficulty": "easy",
+      "marks": 4,
+      "question": "Write a Python program to find the sum and the average of the elements of a list L = [10, 20, 30, 40].",
+      "hints": [
+        "Use a variable 'total' initialised to 0 and add each element in a loop.",
+        "The average is total divided by the number of elements, len(L).",
+        "Remember to convert to float if you want a decimal average — but / already gives a float."
+      ],
+      "modelSolution": "L = [10, 20, 30, 40]\ntotal = 0\nfor x in L:\n    total += x\navg = total / len(L)\nprint('Sum =', total)\nprint('Average =', avg)",
+      "lineExplanations": [
+        {
+          "line": "total = 0",
+          "explanation": "Initialise an accumulator to hold the running sum."
+        },
+        {
+          "line": "for x in L:",
+          "explanation": "Traverse the list, taking one element at a time."
+        },
+        {
+          "line": "total += x",
+          "explanation": "Add the current element to the running total."
+        },
+        {
+          "line": "avg = total / len(L)",
+          "explanation": "Divide the sum by the number of elements to get the average."
+        },
+        {
+          "line": "print('Sum =', total)",
+          "explanation": "Display the computed sum."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "L = [10, 20, 30, 40]",
+          "output": "Sum = 100\nAverage = 25.0"
+        },
+        {
+          "input": "L = [5, 15]",
+          "output": "Sum = 20\nAverage = 10.0"
+        }
+      ],
+      "rubric": [
+        "Correct accumulator initialisation (1 mark)",
+        "Correct loop and addition (1 mark)",
+        "Correct average using len(L) (1 mark)",
+        "Correct output (1 mark)"
+      ],
+      "explanation": "Accumulate the total in a loop, then divide by len(L) for the average.",
+      "relatedConcepts": [
+        "sum",
+        "average",
+        "accumulator",
+        "traversal"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-prog-02",
+      "topicId": "ch8-programs",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program to find the largest and the smallest element of a list L = [34, 78, 12, 90, 56] without using max() or min().",
+      "hints": [
+        "Initialise both 'largest' and 'smallest' to the first element L[0].",
+        "In a single loop, compare each element and update largest or smallest when needed.",
+        "Initialising to 0 would fail for all-negative lists."
+      ],
+      "modelSolution": "L = [34, 78, 12, 90, 56]\nlargest = L[0]\nsmallest = L[0]\nfor x in L:\n    if x > largest:\n        largest = x\n    if x < smallest:\n        smallest = x\nprint('Largest =', largest)\nprint('Smallest =', smallest)",
+      "lineExplanations": [
+        {
+          "line": "largest = L[0]",
+          "explanation": "Start with the first element as the provisional largest."
+        },
+        {
+          "line": "smallest = L[0]",
+          "explanation": "Start with the first element as the provisional smallest."
+        },
+        {
+          "line": "for x in L:",
+          "explanation": "Traverse every element of the list."
+        },
+        {
+          "line": "if x > largest: largest = x",
+          "explanation": "Update the largest whenever a bigger element is found."
+        },
+        {
+          "line": "if x < smallest: smallest = x",
+          "explanation": "Update the smallest whenever a smaller element is found."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "L = [34, 78, 12, 90, 56]",
+          "output": "Largest = 90\nSmallest = 12"
+        },
+        {
+          "input": "L = [-5, -2, -9]",
+          "output": "Largest = -2\nSmallest = -9"
+        }
+      ],
+      "rubric": [
+        "Initialises both to L[0] (1.5 marks)",
+        "Correct traversal (1 mark)",
+        "Correct comparison conditions (1.5 marks)",
+        "Correct output (1 mark)"
+      ],
+      "explanation": "Initialising with the first element and updating on comparison finds both extremes in one pass, even for negative lists.",
+      "relatedConcepts": [
+        "maximum",
+        "minimum",
+        "traversal",
+        "comparison"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-prog-03",
+      "topicId": "ch8-programs",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program to search for a value 'key' in a list L and display its position if found, otherwise display that it is not found. Use L = [10, 25, 40, 55, 70] and key = 40.",
+      "hints": [
+        "Use a flag variable 'found' initialised to False.",
+        "Loop over the indices with range(len(L)) and compare L[i] with key.",
+        "Use break to stop as soon as the element is found, and print the position."
+      ],
+      "modelSolution": "L = [10, 25, 40, 55, 70]\nkey = 40\nfound = False\npos = -1\nfor i in range(len(L)):\n    if L[i] == key:\n        found = True\n        pos = i\n        break\nif found:\n    print(key, 'found at position', pos)\nelse:\n    print(key, 'not found')",
+      "lineExplanations": [
+        {
+          "line": "found = False",
+          "explanation": "A flag records whether the key has been found yet."
+        },
+        {
+          "line": "for i in range(len(L)):",
+          "explanation": "Iterate over the valid indices of the list."
+        },
+        {
+          "line": "if L[i] == key:",
+          "explanation": "Compare the current element with the key to be searched."
+        },
+        {
+          "line": "found = True; pos = i; break",
+          "explanation": "On a match, set the flag, record the position and stop the loop."
+        },
+        {
+          "line": "if found: ... else: ...",
+          "explanation": "After the loop, use the flag to print the position or the not-found message."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "L = [10, 25, 40, 55, 70], key = 40",
+          "output": "40 found at position 2"
+        },
+        {
+          "input": "L = [10, 25, 40, 55, 70], key = 99",
+          "output": "99 not found"
+        }
+      ],
+      "rubric": [
+        "Initialises a flag (and position) correctly (1.5 marks)",
+        "Correct loop and comparison (1.5 marks)",
+        "Correct use of break on match (1 mark)",
+        "Correct final if-else output (1 mark)"
+      ],
+      "explanation": "A flag records whether the search succeeded and break stops the loop early once the element is found.",
+      "relatedConcepts": [
+        "linear search",
+        "flag",
+        "break",
+        "index"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-prog-04",
+      "topicId": "ch8-programs",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program that reverses the list L = [11, 22, 33, 44, 55] and also displays the list sorted in ascending order, keeping the original list unchanged where required.",
+      "hints": [
+        "A reversed copy can be made with the slice L[::-1].",
+        "sorted(L) returns a new sorted list without changing L.",
+        "Do not use L.sort() if you want to keep the original list unchanged."
+      ],
+      "modelSolution": "L = [11, 22, 33, 44, 55]\nrev = L[::-1]\nprint('Reversed =', rev)\nasc = sorted(L)\nprint('Sorted =', asc)\nprint('Original =', L)",
+      "lineExplanations": [
+        {
+          "line": "rev = L[::-1]",
+          "explanation": "A negative step of -1 creates a reversed copy of the list."
+        },
+        {
+          "line": "print('Reversed =', rev)",
+          "explanation": "Display the reversed list."
+        },
+        {
+          "line": "asc = sorted(L)",
+          "explanation": "sorted() returns a new list in ascending order and leaves L unchanged."
+        },
+        {
+          "line": "print('Sorted =', asc)",
+          "explanation": "Display the sorted list."
+        },
+        {
+          "line": "print('Original =', L)",
+          "explanation": "Confirm that the original list is still unchanged."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "L = [11, 22, 33, 44, 55]",
+          "output": "Reversed = [55, 44, 33, 22, 11]\nSorted = [11, 22, 33, 44, 55]\nOriginal = [11, 22, 33, 44, 55]"
+        },
+        {
+          "input": "L = [3, 1, 2]",
+          "output": "Reversed = [2, 1, 3]\nSorted = [1, 2, 3]\nOriginal = [3, 1, 2]"
+        }
+      ],
+      "rubric": [
+        "Correct reversal using slicing (1.5 marks)",
+        "Correct sorting with sorted() (1.5 marks)",
+        "Original list preserved (1 mark)",
+        "Correct output (1 mark)"
+      ],
+      "explanation": "Slicing L[::-1] reverses a copy, and sorted(L) returns a new sorted list, so the original list stays unchanged.",
+      "relatedConcepts": [
+        "reverse",
+        "sort",
+        "slicing",
+        "sorted()"
+      ],
+      "chapterId": "ch8"
+    },
+    {
+      "id": "ch8-prog-05",
+      "topicId": "ch8-programs",
+      "type": "program",
+      "difficulty": "easy",
+      "marks": 4,
+      "question": "Write a Python program to count how many even and how many odd numbers are present in the list L = [4, 7, 10, 13, 22].",
+      "hints": [
+        "Keep two counters, 'even' and 'odd', both initialised to 0.",
+        "Use the modulus operator: a number is even if x % 2 == 0.",
+        "Increment the appropriate counter for each element in a loop."
+      ],
+      "modelSolution": "L = [4, 7, 10, 13, 22]\neven = 0\nodd = 0\nfor x in L:\n    if x % 2 == 0:\n        even += 1\n    else:\n        odd += 1\nprint('Even count =', even)\nprint('Odd count =', odd)",
+      "lineExplanations": [
+        {
+          "line": "even = 0",
+          "explanation": "Initialise the counter for even numbers."
+        },
+        {
+          "line": "odd = 0",
+          "explanation": "Initialise the counter for odd numbers."
+        },
+        {
+          "line": "for x in L:",
+          "explanation": "Traverse each element of the list."
+        },
+        {
+          "line": "if x % 2 == 0:",
+          "explanation": "Test whether the element is even (remainder 0 on division by 2)."
+        },
+        {
+          "line": "even += 1 / odd += 1",
+          "explanation": "Increment the correct counter based on the test."
+        }
+      ],
+      "testCases": [
+        {
+          "input": "L = [4, 7, 10, 13, 22]",
+          "output": "Even count = 3\nOdd count = 2"
+        },
+        {
+          "input": "L = [1, 3, 5]",
+          "output": "Even count = 0\nOdd count = 3"
+        }
+      ],
+      "rubric": [
+        "Two counters initialised to 0 (1 mark)",
+        "Correct loop (1 mark)",
+        "Correct even/odd test with % (1 mark)",
+        "Correct output (1 mark)"
+      ],
+      "explanation": "The modulus operator n % 2 identifies even numbers (remainder 0) and odd numbers (remainder 1).",
+      "relatedConcepts": [
+        "even/odd",
+        "modulus",
+        "counter",
+        "traversal"
+      ],
+      "chapterId": "ch8"
+    }
+  ]
+}

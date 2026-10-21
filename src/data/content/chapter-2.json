@@ -1,0 +1,2743 @@
+{
+  "chapter": {
+    "id": "ch2",
+    "number": 2,
+    "title": "Software",
+    "summary": "Software is the set of programs that instruct a computer what to do. This chapter covers system software (operating systems, translators, drivers, utilities), programming tools, application software and open source concepts."
+  },
+  "topics": [
+    {
+      "id": "ch2-system-software",
+      "title": "System Software",
+      "content": {
+        "hinglish": "System software wo software hai jo computer ke hardware ko manage karta hai aur baaki saare programs ko chalane ke liye base taiyaar karta hai. Ye seedha user ke kaam ke liye nahi hota, balki machine ko chalata hai. Operating system, device drivers, language translators aur utility programs isi ke examples hain. Jab aap computer on karte ho, sabse pehle system software hi load hota hai. Iske bina koi application ya game nahi chal sakti, isliye ise computer ka 'manager' kehte hain.",
+        "formalDefinition": "System software is a set of programs that manage, control and coordinate the computer hardware and provide a platform on which application software runs. It acts as an interface between the user, the application software and the hardware. Operating systems, language translators, device drivers, linkers, loaders and utility programs are the main categories of system software. It is essential for the computer to start and function.",
+        "keywords": [
+          "System Software",
+          "Operating System",
+          "Language Translator",
+          "Device Driver",
+          "Utility Program",
+          "Linker",
+          "Loader",
+          "Firmware"
+        ],
+        "examples": [
+          "Operating systems such as Microsoft Windows, Linux and macOS",
+          "Language translators such as a C++ compiler, a Python interpreter and an assembler",
+          "Device drivers for a printer, a graphics card or a keyboard",
+          "Utility programs such as antivirus, disk defragmenter and backup tools",
+          "Firmware (BIOS/UEFI) stored on the motherboard's ROM chip"
+        ],
+        "tables": [
+          {
+            "title": "Main Types of System Software",
+            "headers": [
+              "Type",
+              "Main Purpose",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "Operating System",
+                "Controls hardware, manages files, memory and processes; provides user interface",
+                "Windows, Linux, macOS, Android"
+              ],
+              [
+                "Language Translator",
+                "Converts program written in one language into machine language",
+                "Compiler, Interpreter, Assembler"
+              ],
+              [
+                "Device Driver",
+                "Allows the operating system to communicate with a specific hardware device",
+                "Printer driver, Display driver, Sound driver"
+              ],
+              [
+                "Utility Program",
+                "Performs housekeeping and maintenance tasks",
+                "Antivirus, Disk Cleanup, Backup, Defragmenter"
+              ],
+              [
+                "Linker / Loader",
+                "Combines object files and loads a program into main memory for execution",
+                "Linker, Loader"
+              ]
+            ]
+          },
+          {
+            "title": "Functions of an Operating System",
+            "headers": [
+              "Function",
+              "What it does"
+            ],
+            "rows": [
+              [
+                "Process Management",
+                "Schedules and runs programs (processes) on the CPU"
+              ],
+              [
+                "Memory Management",
+                "Allocates and frees main memory for programs"
+              ],
+              [
+                "File Management",
+                "Creates, stores, retrieves and organises files and folders"
+              ],
+              [
+                "Device Management",
+                "Controls input/output devices through device drivers"
+              ],
+              [
+                "User Interface",
+                "Provides CLI (command line) or GUI (graphical) to interact with the user"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Layered view of a computer system:\n\n  +---------------------------+\n  |        USER               |\n  +---------------------------+\n  |   APPLICATION SOFTWARE    |\n  +---------------------------+\n  |      SYSTEM SOFTWARE      |\n  |  OS | Translators |       |\n  |  Drivers | Utilities      |\n  +---------------------------+\n  |        HARDWARE           |\n  +---------------------------+\n\nSystem software sits between the user/applications and the hardware."
+        ],
+        "differences": [
+          {
+            "title": "System Software vs Application Software",
+            "headers": [
+              "Basis",
+              "System Software",
+              "Application Software"
+            ],
+            "rows": [
+              [
+                "Meaning",
+                "Manages hardware and provides a platform to run programs",
+                "Performs a specific task for the user"
+              ],
+              [
+                "Interaction",
+                "Works mainly in the background",
+                "Works directly with the user"
+              ],
+              [
+                "Examples",
+                "Windows, Linux, compiler, device driver",
+                "MS Word, Tally, a game, a web browser"
+              ],
+              [
+                "Dependency",
+                "Runs independently and is essential",
+                "Needs system software to run"
+              ],
+              [
+                "Written in",
+                "Often low-level / system programming languages",
+                "Often high-level languages"
+              ]
+            ]
+          }
+        ],
+        "commonMistakes": [
+          "Calling a compiler or an interpreter 'application software' — translators are system software.",
+          "Thinking an operating system is the only system software; device drivers and utilities are also system software.",
+          "Confusing firmware (stored in ROM) with regular software (stored on disk).",
+          "Saying system software 'helps the user do a task' — it actually manages the machine for other programs.",
+          "Forgetting that a loader loads a program into main memory, while a linker joins object files."
+        ],
+        "examNotes": [
+          "System software = OS + language translators + device drivers + utilities + linkers/loaders.",
+          "An OS is the first program that loads (boots) when the computer starts, usually by a bootstrap loader.",
+          "Device drivers are hardware-dependent; each device needs its own driver.",
+          "Utility programs are also called 'service programs' and perform maintenance tasks.",
+          "Firmware is software permanently stored in ROM/hardware; BIOS is a common example.",
+          "Remember the order: source code -> compiler -> object code -> linker -> executable -> loader -> runs."
+        ],
+        "faqs": [
+          {
+            "q": "Is an operating system the same as system software?",
+            "a": "No. An operating system is one (very important) type of system software. System software also includes language translators, device drivers, utilities and linkers/loaders."
+          },
+          {
+            "q": "Can a computer run without system software?",
+            "a": "No. Without system software such as an operating system, the hardware cannot be managed and no application software can run."
+          },
+          {
+            "q": "What is the difference between a device driver and firmware?",
+            "a": "A device driver is software loaded by the OS to control a device; firmware is small software stored permanently in a device's ROM to make the hardware work."
+          },
+          {
+            "q": "Are utility programs optional?",
+            "a": "Yes. Unlike the OS, utility programs are not essential for the computer to run — they are used for maintenance, protection and optimisation."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which of the following is NOT system software?",
+            "options": [
+              "Operating System",
+              "Compiler",
+              "MS Word",
+              "Device Driver"
+            ],
+            "answer": 2,
+            "explanation": "MS Word is application software used to create documents. The OS, compiler and device driver are all system software."
+          },
+          {
+            "question": "Which program loads the operating system into main memory when the computer starts?",
+            "options": [
+              "Linker",
+              "Bootstrap loader",
+              "Compiler",
+              "Debugger"
+            ],
+            "answer": 1,
+            "explanation": "A bootstrap loader is a small program that loads the operating system into memory during startup (booting)."
+          },
+          {
+            "question": "Which of the following is a utility program?",
+            "options": [
+              "Antivirus",
+              "Windows",
+              "C++ compiler",
+              "BIOS"
+            ],
+            "answer": 0,
+            "explanation": "Antivirus performs a maintenance/protective task, so it is utility software. Windows is an OS and the compiler is a translator."
+          },
+          {
+            "question": "The software permanently stored in a ROM chip to start a device is called:",
+            "options": [
+              "Application software",
+              "Firmware",
+              "Utility",
+              "Assembler"
+            ],
+            "answer": 1,
+            "explanation": "Firmware is software embedded in hardware (in ROM). BIOS is a common example of firmware."
+          }
+        ],
+        "checklist": [
+          "I can define system software and list its main types.",
+          "I can name at least five real examples of system software.",
+          "I can explain the functions of an operating system.",
+          "I can explain what a device driver and firmware are.",
+          "I can list examples of utility programs.",
+          "I can state the difference between system and application software."
+        ]
+      }
+    },
+    {
+      "id": "ch2-programming-tools",
+      "title": "Programming Tools",
+      "content": {
+        "hinglish": "Programming tools wo software hain jo programmer ko program likhne, test karne aur errors dhoondhne mein madad karte hain. Program likhne ke liye editor use hota hai, aur IDE mein editor, compiler aur debugger sab ek jagah mil jaate hain. Language translator source code ko machine language mein badalta hai — compiler poora program ek saath convert karta hai jabki interpreter line-by-line chalata hai. Assembler assembly language ko machine code mein badalta hai. Debugger program ko step-by-step chala kar galtiyan pakadne mein help karta hai.",
+        "formalDefinition": "Programming tools are software utilities that assist a programmer in writing, translating, testing and debugging computer programs. They include source code editors, integrated development environments (IDEs), language translators (compiler, interpreter, assembler), linkers, loaders and debuggers. A language translator converts source code written in one language into another, usually machine language. These tools together form the software development environment.",
+        "keywords": [
+          "Editor",
+          "IDE",
+          "Compiler",
+          "Interpreter",
+          "Assembler",
+          "Debugger",
+          "Linker",
+          "Loader"
+        ],
+        "examples": [
+          "Text editors such as Notepad, gedit and VS Code for writing code",
+          "IDEs such as IDLE (for Python), PyCharm, Eclipse and Turbo C++",
+          "A C/C++ compiler (gcc) that converts the whole program at once",
+          "A Python interpreter that runs code line by line",
+          "A debugger that sets breakpoints to inspect a running program"
+        ],
+        "tables": [
+          {
+            "title": "Common Programming Tools",
+            "headers": [
+              "Tool",
+              "Purpose"
+            ],
+            "rows": [
+              [
+                "Editor",
+                "To type and save the source code (e.g. Notepad, gedit)"
+              ],
+              [
+                "IDE",
+                "Editor + compiler/interpreter + debugger in one package"
+              ],
+              [
+                "Compiler",
+                "Translates the entire high-level program into machine code at once"
+              ],
+              [
+                "Interpreter",
+                "Translates and executes the program line by line"
+              ],
+              [
+                "Assembler",
+                "Translates assembly language into machine language"
+              ],
+              [
+                "Debugger",
+                "Helps find and fix errors by running the program step by step"
+              ],
+              [
+                "Linker",
+                "Joins object files and library code into one executable"
+              ],
+              [
+                "Loader",
+                "Loads the executable program into main memory to run"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Translation pipeline:\n\n  Source Code (.c/.py)\n        |\n        v\n   [ Translator ]  (Compiler / Interpreter / Assembler)\n        |\n        v\n   Object Code (.obj/.o)\n        |\n        v\n   [ Linker ] ---> Executable (.exe)\n        |\n        v\n   [ Loader ] ---> Loaded into RAM ---> Runs"
+        ],
+        "differences": [
+          {
+            "title": "Compiler vs Interpreter",
+            "headers": [
+              "Basis",
+              "Compiler",
+              "Interpreter"
+            ],
+            "rows": [
+              [
+                "Translation",
+                "Translates the whole program at once",
+                "Translates and runs line by line"
+              ],
+              [
+                "Error reporting",
+                "Reports all errors together after scanning",
+                "Stops at the first error it meets"
+              ],
+              [
+                "Output",
+                "Produces an object/executable file",
+                "Does not produce a separate object file"
+              ],
+              [
+                "Speed of execution",
+                "Faster (already translated)",
+                "Slower (translates every time)"
+              ],
+              [
+                "Examples",
+                "C, C++ compilers (gcc)",
+                "Python, JavaScript interpreters"
+              ]
+            ]
+          },
+          {
+            "title": "Linker vs Loader",
+            "headers": [
+              "Basis",
+              "Linker",
+              "Loader"
+            ],
+            "rows": [
+              [
+                "Function",
+                "Combines object files and library modules into one executable",
+                "Loads the executable into main memory for execution"
+              ],
+              [
+                "When it works",
+                "After compilation, before running",
+                "Just before the program runs"
+              ],
+              [
+                "Output",
+                "Executable file",
+                "Program placed in RAM, ready to run"
+              ]
+            ]
+          }
+        ],
+        "pythonSyntax": "# Writing and running a Python program\nprint(\"Hello, Class 11\")   # interpreter runs this line by line\n\n# Conceptual C translation (compiler):\n#   gcc hello.c -o hello   -> compiler creates 'hello'\n#   ./hello                -> loader loads it into memory and runs it",
+        "codeExamples": [
+          {
+            "code": "print(\"Hello, Class 11\")\nprint(2 + 3)",
+            "output": "Hello, Class 11\n5",
+            "explanation": "Python is interpreted, so the interpreter executes each line one after the other and shows the output of each."
+          },
+          {
+            "code": "# This program has an error on line 2\nprint(\"Start\")\nprint(\"End\"",
+            "output": "SyntaxError: '(' was never closed",
+            "explanation": "A missing closing bracket is a syntax error. The interpreter reports it and stops before running the program."
+          }
+        ],
+        "commonMistakes": [
+          "Thinking an interpreter also produces an executable file like a compiler — it does not.",
+          "Calling an assembler a 'compiler' — an assembler works on assembly language, not high-level code.",
+          "Confusing a linker (joins object files) with a loader (loads the program into memory).",
+          "Believing an editor can translate code — an editor only lets you type and save it.",
+          "Saying a debugger removes errors automatically — it only helps you locate them."
+        ],
+        "examNotes": [
+          "Translator types: compiler (whole program), interpreter (line by line), assembler (assembly -> machine code).",
+          "An IDE integrates an editor, a translator and a debugger into one application.",
+          "Object code is produced by a compiler; the linker turns object code into an executable.",
+          "A debugger uses breakpoints and step execution to trace program errors.",
+          "Compiled programs generally run faster than interpreted ones.",
+          "The loader is the last step before a program actually executes in main memory."
+        ],
+        "faqs": [
+          {
+            "q": "Is an editor the same as an IDE?",
+            "a": "No. An editor only lets you write and save code, whereas an IDE bundles an editor, a compiler/interpreter, a debugger and other tools together."
+          },
+          {
+            "q": "Why is Python called an interpreted language?",
+            "a": "Because its programs are translated and executed line by line by an interpreter rather than being fully compiled into an executable file first."
+          },
+          {
+            "q": "Does an interpreter produce object code?",
+            "a": "No. An interpreter does not create a separate object/executable file; it directly executes the source program."
+          },
+          {
+            "q": "What is the role of a debugger?",
+            "a": "A debugger helps a programmer find and fix errors (bugs) by running the program step by step and inspecting variables."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which translator converts the entire program into machine code at once?",
+            "options": [
+              "Interpreter",
+              "Compiler",
+              "Assembler",
+              "Loader"
+            ],
+            "answer": 1,
+            "explanation": "A compiler translates the whole high-level program into machine code before it runs."
+          },
+          {
+            "question": "An assembler converts:",
+            "options": [
+              "High-level language to machine language",
+              "Assembly language to machine language",
+              "Machine language to assembly language",
+              "Source code to object code"
+            ],
+            "answer": 1,
+            "explanation": "An assembler translates assembly (low-level symbolic) language into machine language."
+          },
+          {
+            "question": "Which tool combines object files into a single executable program?",
+            "options": [
+              "Loader",
+              "Linker",
+              "Debugger",
+              "Editor"
+            ],
+            "answer": 1,
+            "explanation": "The linker joins object files and library code to produce one executable file."
+          },
+          {
+            "question": "IDE stands for:",
+            "options": [
+              "Integrated Debugging Editor",
+              "Internal Development Engine",
+              "Integrated Development Environment",
+              "Interactive Design Environment"
+            ],
+            "answer": 2,
+            "explanation": "IDE stands for Integrated Development Environment — a single package with editor, translator and debugger."
+          }
+        ],
+        "checklist": [
+          "I can name and explain the main programming tools.",
+          "I can explain compiler, interpreter and assembler.",
+          "I can list three differences between a compiler and an interpreter.",
+          "I can explain the roles of a linker and a loader.",
+          "I can describe what an IDE and a debugger do.",
+          "I can draw the source-code-to-execution pipeline."
+        ]
+      }
+    },
+    {
+      "id": "ch2-application-software",
+      "title": "Application Software",
+      "content": {
+        "hinglish": "Application software wo software hai jo user ke kisi khaas kaam ke liye banaya jaata hai, jaise document likhna, calculation karna ya photo edit karna. Ye system software ke upar chalta hai aur seedha user ke saath interact karta hai. Iske teen mukhya prakar hote hain — general purpose (sab ke liye), customised ya tailor-made (kisi ek organisation ke liye) aur utility software. MS Word, Excel aur web browser general purpose software ke examples hain. Jaise ek school apne students ke records ke liye special software banwaye, wo customised software hoga.",
+        "formalDefinition": "Application software is a set of programs designed to help the user perform a specific, real-world task. It runs on top of system software and interacts directly with the user. Application software is broadly classified into general purpose (packaged) software, customised (tailor-made) software and utility software. Word processors, spreadsheets, browsers, accounting packages and games are common examples.",
+        "keywords": [
+          "Application Software",
+          "General Purpose Software",
+          "Customised Software",
+          "Tailor-made Software",
+          "Utility Software",
+          "Software Package",
+          "Productivity Software"
+        ],
+        "examples": [
+          "MS Word and Google Docs for writing documents (general purpose)",
+          "MS Excel and LibreOffice Calc for spreadsheets (general purpose)",
+          "A school's custom fee-management system built for its own needs (customised)",
+          "Tally for accounting (packaged business software)",
+          "Antivirus and disk defragmenter (utility software)"
+        ],
+        "tables": [
+          {
+            "title": "Types of Application Software",
+            "headers": [
+              "Type",
+              "Meaning",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "General Purpose (Packaged)",
+                "Made for a wide range of users and tasks; sold ready-made",
+                "MS Word, Excel, PowerPoint, web browsers, games"
+              ],
+              [
+                "Customised (Tailor-made)",
+                "Developed for a specific user or organisation's unique requirement",
+                "A bank's core banking system, a school's ERP"
+              ],
+              [
+                "Utility",
+                "Small programs that maintain, protect and optimise the system",
+                "Antivirus, backup tool, disk defragmenter, file manager"
+              ]
+            ]
+          },
+          {
+            "title": "General Purpose vs Customised Software",
+            "headers": [
+              "Basis",
+              "General Purpose",
+              "Customised"
+            ],
+            "rows": [
+              [
+                "Made for",
+                "Many users / common tasks",
+                "One specific user or organisation"
+              ],
+              [
+                "Availability",
+                "Ready-made, available in the market",
+                "Developed on demand"
+              ],
+              [
+                "Cost",
+                "Usually lower (shared by many)",
+                "Usually higher (built for one client)"
+              ],
+              [
+                "Flexibility",
+                "Fixed features, little change",
+                "Built exactly as the client needs"
+              ],
+              [
+                "Examples",
+                "MS Office, Photoshop",
+                "A school's exam-management software"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Classification of software:\n\n  SOFTWARE\n  |-- System Software (OS, translators, drivers, utilities)\n  |-- Application Software\n        |-- General Purpose (Word, Excel, Browser)\n        |-- Customised / Tailor-made (School ERP, Bank software)\n        |-- Utility (Antivirus, Backup, Defragmenter)"
+        ],
+        "commonMistakes": [
+          "Treating the operating system as application software — the OS is system software.",
+          "Calling a customised package 'general purpose' just because it is used by one office.",
+          "Assuming all software sold in shops is application software (some, like antivirus, is utility/system-related).",
+          "Forgetting that application software cannot run without system software beneath it.",
+          "Mixing up utility software (maintenance) with productivity software (user tasks)."
+        ],
+        "examNotes": [
+          "Application software works for the user's task; system software works for the machine.",
+          "General purpose software is also called packaged or off-the-shelf software.",
+          "Customised software is also called tailor-made or bespoke software.",
+          "Utility software is often grouped with system software because it performs maintenance tasks.",
+          "Application software always depends on system software to run.",
+          "Give at least one clear example for each type in exam answers."
+        ],
+        "faqs": [
+          {
+            "q": "Is utility software application software or system software?",
+            "a": "It is usually classified as system software because it performs maintenance and management tasks, but some textbooks group it under application software. In exams, mention that it maintains and optimises the system."
+          },
+          {
+            "q": "What is a software package?",
+            "a": "A software package is a ready-made collection of related programs and files sold together to perform a set of tasks, such as MS Office."
+          },
+          {
+            "q": "Can customised software be bought off the shelf?",
+            "a": "No. Customised (tailor-made) software is developed specifically for one user or organisation, so it is not sold as a ready-made product."
+          },
+          {
+            "q": "Give two examples of general purpose software.",
+            "a": "MS Word (word processor) and MS Excel (spreadsheet) are common general purpose application software."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "MS Excel is an example of:",
+            "options": [
+              "System software",
+              "General purpose application software",
+              "Customised software",
+              "Firmware"
+            ],
+            "answer": 1,
+            "explanation": "MS Excel is a ready-made spreadsheet used by many people for general tasks, so it is general purpose application software."
+          },
+          {
+            "question": "Software developed specially for one organisation's unique needs is called:",
+            "options": [
+              "Packaged software",
+              "Customised software",
+              "System software",
+              "Utility software"
+            ],
+            "answer": 1,
+            "explanation": "Tailor-made or customised software is built for a specific organisation, such as a school's ERP system."
+          },
+          {
+            "question": "Which of the following is application software?",
+            "options": [
+              "Linux",
+              "MS Word",
+              "Device driver",
+              "Linker"
+            ],
+            "answer": 1,
+            "explanation": "MS Word helps the user perform a task, so it is application software. The others are system software."
+          },
+          {
+            "question": "Which of these is utility software?",
+            "options": [
+              "Disk defragmenter",
+              "MS PowerPoint",
+              "Windows",
+              "Compiler"
+            ],
+            "answer": 0,
+            "explanation": "A disk defragmenter maintains and optimises the disk, so it is utility software."
+          }
+        ],
+        "checklist": [
+          "I can define application software.",
+          "I can list the three types of application software with examples.",
+          "I can distinguish general purpose from customised software.",
+          "I can give examples of utility software.",
+          "I can explain why application software needs system software.",
+          "I can classify a given software as system or application software."
+        ]
+      }
+    },
+    {
+      "id": "ch2-open-source",
+      "title": "Open Source Concepts",
+      "content": {
+        "hinglish": "Open source software wo hota hai jiska source code sabke liye available hota hai aur koi bhi use padh, badal aur share kar sakta hai. Proprietary software mein source code chhupa hota hai aur use karne ke liye license kharidna padta hai. Free software mein 'free' ka matlab paise se zyada azaadi (freedom) se hai — user use chalane, samajhne, badalne aur share karne ke liye free hota hai. GPL, Apache aur MIT kuch famous open source licenses hain. Linux, Mozilla Firefox aur Python open source software ke popular examples hain.",
+        "formalDefinition": "Open source software (OSS) is software whose source code is made available to everyone, allowing anyone to study, modify and redistribute it under the terms of an open source licence. Proprietary software, by contrast, keeps its source code secret and is distributed under restrictive licences. Free software, as defined by the Free Software Foundation, grants users four freedoms: to run, study, modify and redistribute the software. Common open source licences include the GPL, Apache License and MIT License.",
+        "keywords": [
+          "Open Source Software",
+          "Proprietary Software",
+          "Free Software",
+          "Source Code",
+          "GPL",
+          "Apache License",
+          "MIT License",
+          "Copyleft"
+        ],
+        "examples": [
+          "Linux (operating system) released under the GPL",
+          "Mozilla Firefox web browser (open source)",
+          "Python programming language and its libraries (open source)",
+          "LibreOffice office suite (open source alternative to MS Office)",
+          "Android (built on the open source Linux kernel)"
+        ],
+        "tables": [
+          {
+            "title": "Open Source vs Proprietary Software",
+            "headers": [
+              "Basis",
+              "Open Source Software",
+              "Proprietary Software"
+            ],
+            "rows": [
+              [
+                "Source code",
+                "Freely available to all",
+                "Kept secret / not shared"
+              ],
+              [
+                "Modification",
+                "Anyone may modify and improve it",
+                "Only the owner may modify it"
+              ],
+              [
+                "Cost",
+                "Usually free of cost",
+                "Usually paid (licence fee)"
+              ],
+              [
+                "Licence",
+                "GPL, Apache, MIT",
+                "End-User Licence Agreement (EULA)"
+              ],
+              [
+                "Examples",
+                "Linux, Firefox, Python",
+                "Windows, MS Office, Adobe Photoshop"
+              ]
+            ]
+          },
+          {
+            "title": "Common Open Source Licences",
+            "headers": [
+              "Licence",
+              "Key Idea"
+            ],
+            "rows": [
+              [
+                "GPL (GNU General Public License)",
+                "Copyleft: derivative works must also stay open source under the GPL"
+              ],
+              [
+                "Apache License 2.0",
+                "Permissive: allows reuse and modification, and also use in proprietary products, with attribution"
+              ],
+              [
+                "MIT License",
+                "Very permissive and short: allows almost any use with only a copyright notice"
+              ]
+            ]
+          }
+        ],
+        "diagrams": [
+          "Licence spectrum (most protective to most permissive):\n\n  GPL  <-------  Apache  ------->  MIT\n  (copyleft)                     (permissive)\n  Derivatives must     Allows use in       Almost no\n  stay open            proprietary code    restrictions"
+        ],
+        "differences": [
+          {
+            "title": "Free Software vs Open Source Software",
+            "headers": [
+              "Basis",
+              "Free Software",
+              "Open Source Software"
+            ],
+            "rows": [
+              [
+                "Focus",
+                "Ethical freedom of the user",
+                "Practical benefits of open development"
+              ],
+              [
+                "Guiding body",
+                "Free Software Foundation (FSF)",
+                "Open Source Initiative (OSI)"
+              ],
+              [
+                "Core idea",
+                "Four freedoms: run, study, modify, redistribute",
+                "Source code is openly available and reusable"
+              ],
+              [
+                "Overlap",
+                "Most free software is also open source",
+                "Most open source software is also free software"
+              ]
+            ]
+          }
+        ],
+        "commonMistakes": [
+          "Thinking 'free software' means only 'zero cost' — it mainly means freedom to use, study, modify and share.",
+          "Believing open source software cannot be sold — it can be sold; the source code must still be available.",
+          "Assuming all freeware is open source — freeware may be free of cost but still closed-source.",
+          "Mixing up GPL (copyleft) with MIT (permissive) — they place very different conditions on reuse.",
+          "Saying proprietary software has no licence — it does, usually a restrictive EULA."
+        ],
+        "examNotes": [
+          "Open source software always shares its source code; proprietary software never does.",
+          "The Free Software Foundation (FSF) defines the four freedoms of free software.",
+          "GPL is a copyleft licence: modified versions must also be released under the GPL.",
+          "Apache and MIT are permissive licences that allow use in closed/proprietary products.",
+          "Freeware (free of cost) and open source (source available) are not the same thing.",
+          "Know at least three open source examples: Linux, Firefox, Python."
+        ],
+        "faqs": [
+          {
+            "q": "Is open source software always free of cost?",
+            "a": "Not necessarily. Open source means the source code is available and can be modified; it can still be sold, though it is usually available free of cost."
+          },
+          {
+            "q": "What does 'copyleft' mean?",
+            "a": "Copyleft is a licensing rule (used by the GPL) that requires any modified or derived version of the software to also be released as open source under the same terms."
+          },
+          {
+            "q": "Can I use an MIT-licensed library in a paid product?",
+            "a": "Yes. The MIT Licence is permissive and allows use in proprietary products as long as you keep the original copyright notice."
+          },
+          {
+            "q": "Give two differences between open source and proprietary software.",
+            "a": "Open source software makes its source code available and can be modified by anyone, while proprietary software keeps the source code secret and can only be modified by its owner."
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which licence is known as a 'copyleft' licence?",
+            "options": [
+              "MIT",
+              "Apache",
+              "GPL",
+              "EULA"
+            ],
+            "answer": 2,
+            "explanation": "The GPL is a copyleft licence: derivative works must also be released under the GPL, keeping them open source."
+          },
+          {
+            "question": "Which of the following is open source software?",
+            "options": [
+              "MS Office",
+              "Linux",
+              "Windows",
+              "Adobe Photoshop"
+            ],
+            "answer": 1,
+            "explanation": "Linux is open source — its source code is freely available. The others are proprietary software."
+          },
+          {
+            "question": "In 'free software', the word 'free' mainly refers to:",
+            "options": [
+              "Zero cost only",
+              "Freedom to use, study, modify and share",
+              "Free technical support",
+              "Free installation"
+            ],
+            "answer": 1,
+            "explanation": "Free software is about the user's freedom (run, study, modify, redistribute), not just about price."
+          },
+          {
+            "question": "Proprietary software is software whose:",
+            "options": [
+              "Source code is available to all",
+              "Source code is kept secret",
+              "Licence is always free",
+              "Code can be modified by anyone"
+            ],
+            "answer": 1,
+            "explanation": "Proprietary software keeps its source code secret and is distributed under restrictive licences."
+          }
+        ],
+        "checklist": [
+          "I can define open source and proprietary software.",
+          "I can explain what 'free software' really means.",
+          "I can name GPL, Apache and MIT licences and one key feature of each.",
+          "I can give three examples of open source software.",
+          "I can list differences between open source and proprietary software.",
+          "I can explain copyleft in one line."
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "ch2-mcq-01",
+      "topicId": "ch2-system-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is NOT system software?",
+      "options": [
+        "Operating System",
+        "Compiler",
+        "MS Word",
+        "Device Driver"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Incorrect. An operating system is the main type of system software.",
+        "Incorrect. A compiler is a language translator, which is system software.",
+        "Correct. MS Word is application software used to create documents.",
+        "Incorrect. A device driver is system software that controls a device."
+      ],
+      "explanation": "System software manages hardware and runs the machine. An operating system, compiler and device driver all belong to it. MS Word is application software, made to do a user's task.",
+      "relatedConcepts": [
+        "System Software",
+        "Application Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-02",
+      "topicId": "ch2-system-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which software acts as an interface between the user, application software and the hardware?",
+      "options": [
+        "Compiler",
+        "Operating System",
+        "Linker",
+        "Utility program"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. A compiler only translates code; it is not a full interface.",
+        "Correct. The operating system sits between the user/applications and the hardware.",
+        "Incorrect. A linker joins object files.",
+        "Incorrect. A utility performs maintenance tasks."
+      ],
+      "explanation": "The operating system is the primary interface that lets the user and applications use the hardware. It manages memory, files, devices and processes.",
+      "relatedConcepts": [
+        "Operating System",
+        "User Interface"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-03",
+      "topicId": "ch2-system-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A program that converts a high-level language program into machine language is called a:",
+      "options": [
+        "Device driver",
+        "Language translator",
+        "Utility program",
+        "Firmware"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. A device driver controls a hardware device.",
+        "Correct. A language translator converts one language into another, usually machine language.",
+        "Incorrect. A utility does maintenance work.",
+        "Incorrect. Firmware is software stored in ROM."
+      ],
+      "explanation": "A language translator changes source code into machine language. Compilers, interpreters and assemblers are all language translators, and they are system software.",
+      "relatedConcepts": [
+        "Language Translator",
+        "Compiler",
+        "Interpreter"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-04",
+      "topicId": "ch2-system-software",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which program loads the operating system into main memory when the computer is switched on?",
+      "options": [
+        "Linker",
+        "Bootstrap loader",
+        "Compiler",
+        "Debugger"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. A linker combines object files.",
+        "Correct. A bootstrap loader loads the operating system during startup (booting).",
+        "Incorrect. A compiler translates high-level code.",
+        "Incorrect. A debugger helps find errors in a program."
+      ],
+      "explanation": "When the computer starts, a small bootstrap loader runs first and loads the operating system into RAM. This process is called booting.",
+      "relatedConcepts": [
+        "Loader",
+        "Booting",
+        "Operating System"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-05",
+      "topicId": "ch2-system-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A device driver is used to:",
+      "options": [
+        "Translate a program into machine code",
+        "Allow the OS to communicate with a hardware device",
+        "Compress files on the disk",
+        "Write and edit source code"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. That is the job of a language translator.",
+        "Correct. A device driver lets the operating system talk to a specific hardware device.",
+        "Incorrect. That is a file utility.",
+        "Incorrect. That is the job of an editor."
+      ],
+      "explanation": "Every hardware device (printer, graphics card, keyboard) needs its own driver so the operating system can control it correctly. Drivers are hardware-dependent system software.",
+      "relatedConcepts": [
+        "Device Driver",
+        "Operating System"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-06",
+      "topicId": "ch2-system-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is a utility program?",
+      "options": [
+        "Antivirus",
+        "Windows",
+        "C++ compiler",
+        "BIOS"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. Antivirus performs a protective maintenance task, so it is a utility program.",
+        "Incorrect. Windows is an operating system.",
+        "Incorrect. A C++ compiler is a language translator.",
+        "Incorrect. BIOS is firmware."
+      ],
+      "explanation": "Utility programs perform housekeeping tasks such as protection, cleanup and backup. Antivirus, disk cleanup and defragmenter are common utilities.",
+      "relatedConcepts": [
+        "Utility Program",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-07",
+      "topicId": "ch2-system-software",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Software that is permanently stored in a ROM chip on a device to start it is called:",
+      "options": [
+        "Application software",
+        "Firmware",
+        "Utility software",
+        "Assembler"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. Application software does a user's task and is stored on disk.",
+        "Correct. Firmware is software embedded in hardware (ROM); BIOS is an example.",
+        "Incorrect. Utility software performs maintenance tasks.",
+        "Incorrect. An assembler is a language translator."
+      ],
+      "explanation": "Firmware is small software stored permanently in ROM inside a device. It contains the basic instructions needed to start the hardware, such as the BIOS/UEFI.",
+      "relatedConcepts": [
+        "Firmware",
+        "ROM",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-08",
+      "topicId": "ch2-system-software",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which system software combines several object files into a single executable file?",
+      "options": [
+        "Loader",
+        "Linker",
+        "Interpreter",
+        "Editor"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. A loader loads the program into memory to run.",
+        "Correct. A linker joins object files and library code into one executable.",
+        "Incorrect. An interpreter runs code line by line.",
+        "Incorrect. An editor is used to type code."
+      ],
+      "explanation": "After compilation, the linker joins the object files with library code to create one executable file. The loader then loads that executable into memory.",
+      "relatedConcepts": [
+        "Linker",
+        "Loader",
+        "Object Code"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-09",
+      "topicId": "ch2-programming-tools",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which translator converts the entire program into machine code at once?",
+      "options": [
+        "Interpreter",
+        "Compiler",
+        "Assembler",
+        "Loader"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. An interpreter translates line by line.",
+        "Correct. A compiler translates the whole program before it runs.",
+        "Incorrect. An assembler works on assembly language.",
+        "Incorrect. A loader only loads a program into memory."
+      ],
+      "explanation": "A compiler scans and translates the complete high-level program into machine code, producing an object/executable file, before execution begins.",
+      "relatedConcepts": [
+        "Compiler",
+        "Language Translator"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-10",
+      "topicId": "ch2-programming-tools",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which translator translates and executes a program line by line?",
+      "options": [
+        "Compiler",
+        "Assembler",
+        "Interpreter",
+        "Linker"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Incorrect. A compiler translates the whole program at once.",
+        "Incorrect. An assembler converts assembly language.",
+        "Correct. An interpreter translates and executes one line at a time.",
+        "Incorrect. A linker joins object files."
+      ],
+      "explanation": "An interpreter translates and runs the program line by line, stopping at the first error it finds. Python and JavaScript use interpreters.",
+      "relatedConcepts": [
+        "Interpreter",
+        "Language Translator"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-11",
+      "topicId": "ch2-programming-tools",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "An assembler converts:",
+      "options": [
+        "High-level language to machine language",
+        "Assembly language to machine language",
+        "Machine language to assembly language",
+        "Source code to object code"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. That is the job of a compiler.",
+        "Correct. An assembler translates assembly language into machine language.",
+        "Incorrect. That would be a disassembler.",
+        "Incorrect. Compilers, not assemblers, turn high-level source into object code."
+      ],
+      "explanation": "Assembly language uses symbols like MOV and ADD. An assembler converts these symbolic instructions into machine code the CPU can run.",
+      "relatedConcepts": [
+        "Assembler",
+        "Assembly Language",
+        "Machine Language"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-12",
+      "topicId": "ch2-programming-tools",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which tool helps a programmer locate errors by running the program step by step?",
+      "options": [
+        "Editor",
+        "Debugger",
+        "Linker",
+        "Assembler"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. An editor is only for typing code.",
+        "Correct. A debugger runs a program step by step to find and fix errors.",
+        "Incorrect. A linker joins object files.",
+        "Incorrect. An assembler translates assembly language."
+      ],
+      "explanation": "A debugger lets you set breakpoints and inspect variables while the program runs, which makes finding logical errors much easier.",
+      "relatedConcepts": [
+        "Debugger",
+        "Programming Tools"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-13",
+      "topicId": "ch2-programming-tools",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "IDE stands for:",
+      "options": [
+        "Integrated Debugging Editor",
+        "Internal Development Engine",
+        "Integrated Development Environment",
+        "Interactive Design Environment"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Incorrect. This is not the full form.",
+        "Incorrect. This is not the full form.",
+        "Correct. IDE stands for Integrated Development Environment.",
+        "Incorrect. This is not the full form."
+      ],
+      "explanation": "An IDE (Integrated Development Environment) combines an editor, a translator and a debugger in one application, e.g. IDLE, PyCharm, Eclipse.",
+      "relatedConcepts": [
+        "IDE",
+        "Programming Tools"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-14",
+      "topicId": "ch2-programming-tools",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which of the following is NOT a programming tool?",
+      "options": [
+        "Source code editor",
+        "Compiler",
+        "Debugger",
+        "Disk defragmenter"
+      ],
+      "correctAnswer": 3,
+      "optionExplanations": [
+        "Incorrect. An editor is a programming tool.",
+        "Incorrect. A compiler is a programming tool.",
+        "Incorrect. A debugger is a programming tool.",
+        "Correct. A disk defragmenter is a utility program, not a programming tool."
+      ],
+      "explanation": "Editors, compilers and debuggers help a programmer write and test code. A disk defragmenter is a maintenance utility, not a programming tool.",
+      "relatedConcepts": [
+        "Programming Tools",
+        "Utility Program"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-15",
+      "topicId": "ch2-application-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "MS Word is an example of:",
+      "options": [
+        "System software",
+        "General purpose application software",
+        "Customised software",
+        "Firmware"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. System software manages hardware.",
+        "Correct. MS Word is ready-made software used by many people for a general task.",
+        "Incorrect. Customised software is built for one organisation.",
+        "Incorrect. Firmware is stored in ROM."
+      ],
+      "explanation": "MS Word is general purpose (packaged) application software — it is sold ready-made and used by a wide range of people for writing documents.",
+      "relatedConcepts": [
+        "General Purpose Software",
+        "Application Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-16",
+      "topicId": "ch2-application-software",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Software developed specially for one organisation's unique requirement is called:",
+      "options": [
+        "Packaged software",
+        "Customised software",
+        "System software",
+        "Firmware"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. Packaged software is ready-made for many users.",
+        "Correct. Customised (tailor-made) software is built for a specific user or organisation.",
+        "Incorrect. System software manages the machine.",
+        "Incorrect. Firmware is stored in ROM."
+      ],
+      "explanation": "Customised or tailor-made software is written on demand for one client, such as a school's exam-management system or a bank's core banking software.",
+      "relatedConcepts": [
+        "Customised Software",
+        "Tailor-made Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-17",
+      "topicId": "ch2-application-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of these is utility software?",
+      "options": [
+        "Disk defragmenter",
+        "MS PowerPoint",
+        "Windows",
+        "Compiler"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. A disk defragmenter maintains and optimises the disk, so it is utility software.",
+        "Incorrect. PowerPoint is general purpose application software.",
+        "Incorrect. Windows is an operating system.",
+        "Incorrect. A compiler is a language translator."
+      ],
+      "explanation": "Utility software performs maintenance, protection and optimisation tasks. A disk defragmenter reorganises files to improve performance.",
+      "relatedConcepts": [
+        "Utility Software",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-18",
+      "topicId": "ch2-application-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is general purpose application software?",
+      "options": [
+        "A school's fee-management system",
+        "MS Excel",
+        "Linux",
+        "A printer driver"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. A school's fee system is customised software.",
+        "Correct. MS Excel is a ready-made spreadsheet used by many people.",
+        "Incorrect. Linux is an operating system (system software).",
+        "Incorrect. A printer driver is a device driver."
+      ],
+      "explanation": "General purpose software is made for a wide range of users and common tasks. MS Excel (spreadsheet) is a typical example.",
+      "relatedConcepts": [
+        "General Purpose Software",
+        "Application Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-19",
+      "topicId": "ch2-application-software",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "A ready-made collection of related programs and files sold together to perform a set of tasks is called a:",
+      "options": [
+        "Software package",
+        "Device driver",
+        "Language translator",
+        "Firmware"
+      ],
+      "correctAnswer": 0,
+      "optionExplanations": [
+        "Correct. A software package bundles related programs and files, e.g. MS Office.",
+        "Incorrect. A device driver controls a device.",
+        "Incorrect. A translator converts languages.",
+        "Incorrect. Firmware is stored in ROM."
+      ],
+      "explanation": "A software package (such as MS Office) is a ready-made bundle of related applications and support files sold together for a group of tasks.",
+      "relatedConcepts": [
+        "Software Package",
+        "Application Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-20",
+      "topicId": "ch2-application-software",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is application software?",
+      "options": [
+        "Linux",
+        "MS Word",
+        "Device driver",
+        "Linker"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. Linux is an operating system.",
+        "Correct. MS Word helps the user perform a task, so it is application software.",
+        "Incorrect. A device driver is system software.",
+        "Incorrect. A linker is system software."
+      ],
+      "explanation": "Application software is made to do a specific user task. MS Word (word processing) is application software; the rest are system software.",
+      "relatedConcepts": [
+        "Application Software",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-21",
+      "topicId": "ch2-open-source",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "OSS stands for:",
+      "options": [
+        "Operating System Software",
+        "Open Source Software",
+        "Office Support System",
+        "Online Storage Software"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. This is not what OSS means in this context.",
+        "Correct. OSS stands for Open Source Software.",
+        "Incorrect. This is not the full form.",
+        "Incorrect. This is not the full form."
+      ],
+      "explanation": "OSS means Open Source Software — software whose source code is freely available for anyone to study, modify and redistribute.",
+      "relatedConcepts": [
+        "Open Source Software",
+        "OSS"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-22",
+      "topicId": "ch2-open-source",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "GPL stands for:",
+      "options": [
+        "General Public Licence",
+        "GNU General Public Licence",
+        "General Purpose Language",
+        "Global Programming Licence"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. The 'GNU' part is missing.",
+        "Correct. GPL stands for GNU General Public Licence.",
+        "Incorrect. This is not the full form.",
+        "Incorrect. This is not the full form."
+      ],
+      "explanation": "The GNU General Public Licence (GPL) is a widely used open source licence that requires derivative works to also remain open source (copyleft).",
+      "relatedConcepts": [
+        "GPL",
+        "Open Source Licences"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-23",
+      "topicId": "ch2-open-source",
+      "type": "mcq",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Which licence is known as a 'copyleft' licence?",
+      "options": [
+        "MIT",
+        "Apache",
+        "GPL",
+        "EULA"
+      ],
+      "correctAnswer": 2,
+      "optionExplanations": [
+        "Incorrect. MIT is a very permissive licence.",
+        "Incorrect. Apache is a permissive licence.",
+        "Correct. The GPL is copyleft: derived works must also stay open source.",
+        "Incorrect. EULA is a proprietary end-user licence."
+      ],
+      "explanation": "Copyleft (used by the GPL) means any modified or derived version must also be released as open source under the same licence.",
+      "relatedConcepts": [
+        "GPL",
+        "Copyleft"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-24",
+      "topicId": "ch2-open-source",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Which of the following is open source software?",
+      "options": [
+        "MS Office",
+        "Linux",
+        "Windows",
+        "Adobe Photoshop"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. MS Office is proprietary software.",
+        "Correct. Linux is open source; its source code is freely available.",
+        "Incorrect. Windows is proprietary software.",
+        "Incorrect. Adobe Photoshop is proprietary software."
+      ],
+      "explanation": "Open source software makes its source code available. Linux, Mozilla Firefox and Python are common open source examples, unlike proprietary MS Office or Windows.",
+      "relatedConcepts": [
+        "Open Source Software",
+        "Proprietary Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-mcq-25",
+      "topicId": "ch2-open-source",
+      "type": "mcq",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Proprietary software is software whose:",
+      "options": [
+        "Source code is available to all",
+        "Source code is kept secret",
+        "Licence is always free of cost",
+        "Code can be modified by anyone"
+      ],
+      "correctAnswer": 1,
+      "optionExplanations": [
+        "Incorrect. That describes open source software.",
+        "Correct. Proprietary software keeps its source code secret.",
+        "Incorrect. Proprietary software is usually paid.",
+        "Incorrect. Only the owner may modify proprietary software."
+      ],
+      "explanation": "Proprietary software keeps its source code hidden and is distributed under a restrictive licence (EULA). Only the owner can modify it. Examples: Windows, MS Office.",
+      "relatedConcepts": [
+        "Proprietary Software",
+        "EULA"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-assertion-01",
+      "topicId": "ch2-system-software",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Read the Assertion (A) and Reason (R) below and choose the correct option.",
+      "assertion": "A: Device drivers are a type of system software.",
+      "reason": "R: A device driver allows the operating system to communicate with a specific hardware device.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both statements are true and the reason correctly explains the assertion. Device drivers are hardware-dependent system software whose job is to let the OS control a device.",
+      "relatedConcepts": [
+        "Device Driver",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-assertion-02",
+      "topicId": "ch2-programming-tools",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Read the Assertion (A) and Reason (R) below and choose the correct option.",
+      "assertion": "A: An interpreter produces an executable file just like a compiler.",
+      "reason": "R: An interpreter translates and executes the program line by line.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 3,
+      "explanation": "A is false (an interpreter does not produce a separate executable/object file) but R is true (it works line by line). Hence A is false and R is true.",
+      "relatedConcepts": [
+        "Interpreter",
+        "Compiler"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-assertion-03",
+      "topicId": "ch2-application-software",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Read the Assertion (A) and Reason (R) below and choose the correct option.",
+      "assertion": "A: Application software can run only with the help of system software.",
+      "reason": "R: Application software performs a specific task for the user, while system software manages the hardware and provides a platform to run programs.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Both are true and R explains A: because system software provides the platform (hardware management and services), application software depends on it to run.",
+      "relatedConcepts": [
+        "Application Software",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-assertion-04",
+      "topicId": "ch2-open-source",
+      "type": "assertion",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Read the Assertion (A) and Reason (R) below and choose the correct option.",
+      "assertion": "A: All freeware is open source software.",
+      "reason": "R: Open source software makes its source code available to everyone.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctAnswer": 3,
+      "explanation": "A is false — freeware is free of cost but may be closed-source, so it is not necessarily open source. R is true, since open source software does share its source code.",
+      "relatedConcepts": [
+        "Open Source Software",
+        "Freeware"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-tf-01",
+      "topicId": "ch2-system-software",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "An operating system is the only example of system software.",
+      "correctAnswer": "False",
+      "correction": "An operating system is one type of system software; system software also includes language translators, device drivers, utilities and linkers/loaders.",
+      "explanation": "System software is a broad category. Besides the OS, it includes translators, device drivers, utilities and linkers/loaders.",
+      "relatedConcepts": [
+        "System Software",
+        "Operating System"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-tf-02",
+      "topicId": "ch2-system-software",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A utility program is essential for the computer to start up.",
+      "correctAnswer": "False",
+      "correction": "Utility programs are not essential for startup; they are used for maintenance, protection and optimisation tasks.",
+      "explanation": "Utilities such as antivirus and backup are helpful but not required to boot the computer. The OS and bootstrap loader are essential.",
+      "relatedConcepts": [
+        "Utility Program",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-tf-03",
+      "topicId": "ch2-programming-tools",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A compiler translates a program line by line.",
+      "correctAnswer": "False",
+      "correction": "An interpreter translates a program line by line; a compiler translates the whole program at once.",
+      "explanation": "The line-by-line translator is the interpreter. A compiler translates the entire program before execution.",
+      "relatedConcepts": [
+        "Compiler",
+        "Interpreter"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-tf-04",
+      "topicId": "ch2-programming-tools",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "A linker combines object files into a single executable program.",
+      "correctAnswer": "True",
+      "correction": "",
+      "explanation": "True. The linker joins object files and library code to form one executable; the loader then loads it into memory.",
+      "relatedConcepts": [
+        "Linker",
+        "Object Code"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-tf-05",
+      "topicId": "ch2-application-software",
+      "type": "truefalse",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A school's custom fee-management system is an example of general purpose software.",
+      "correctAnswer": "False",
+      "correction": "A school's custom fee-management system is customised (tailor-made) software, built for that school's specific needs.",
+      "explanation": "General purpose software is ready-made for many users. A system built for one organisation is customised software.",
+      "relatedConcepts": [
+        "Customised Software",
+        "General Purpose Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-tf-06",
+      "topicId": "ch2-open-source",
+      "type": "truefalse",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Open source software can never be sold for money.",
+      "correctAnswer": "False",
+      "correction": "Open source software can be sold for money; what defines it is that the source code is made available and may be modified and redistributed.",
+      "explanation": "'Open source' refers to the availability of source code, not to price. It may be sold, though it is often available free of cost.",
+      "relatedConcepts": [
+        "Open Source Software",
+        "Free Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-fb-01",
+      "topicId": "ch2-system-software",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "The software that acts as an interface between the user and the hardware is the ________.",
+      "correctAnswer": "operating system",
+      "acceptedAnswers": [
+        "operating system",
+        "OS",
+        "operating system (OS)"
+      ],
+      "explanation": "The operating system manages hardware and provides an interface for the user and applications.",
+      "relatedConcepts": [
+        "Operating System",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-fb-02",
+      "topicId": "ch2-system-software",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "A ________ is system software that allows the operating system to communicate with a hardware device.",
+      "correctAnswer": "device driver",
+      "acceptedAnswers": [
+        "device driver",
+        "driver",
+        "device driver program"
+      ],
+      "explanation": "Each device needs its own driver so the OS can control it. Drivers are hardware-dependent system software.",
+      "relatedConcepts": [
+        "Device Driver",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-fb-03",
+      "topicId": "ch2-programming-tools",
+      "type": "fillblank",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "A ________ translates the entire program into machine code at once.",
+      "correctAnswer": "compiler",
+      "acceptedAnswers": [
+        "compiler",
+        "Compiler"
+      ],
+      "explanation": "A compiler translates the whole high-level program into machine code before execution, producing an object/executable file.",
+      "relatedConcepts": [
+        "Compiler",
+        "Language Translator"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-fb-04",
+      "topicId": "ch2-programming-tools",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The program that loads an executable into main memory before execution is called a ________.",
+      "correctAnswer": "loader",
+      "acceptedAnswers": [
+        "loader",
+        "Loader"
+      ],
+      "explanation": "The loader loads the executable program into main memory so the CPU can run it.",
+      "relatedConcepts": [
+        "Loader",
+        "Linker"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-fb-05",
+      "topicId": "ch2-application-software",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "Software built specially for one organisation's specific requirement is called ________ software.",
+      "correctAnswer": "customised",
+      "acceptedAnswers": [
+        "customised",
+        "customized",
+        "tailor-made",
+        "tailor made",
+        "bespoke"
+      ],
+      "explanation": "Customised (tailor-made) software is developed on demand for a single user or organisation.",
+      "relatedConcepts": [
+        "Customised Software",
+        "Application Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-fb-06",
+      "topicId": "ch2-open-source",
+      "type": "fillblank",
+      "difficulty": "medium",
+      "marks": 1,
+      "question": "The ________ licence is a copyleft licence that requires derivative works to remain open source.",
+      "correctAnswer": "GPL",
+      "acceptedAnswers": [
+        "GPL",
+        "GNU General Public Licence",
+        "GNU GPL",
+        "GNU General Public License"
+      ],
+      "explanation": "The GPL (GNU General Public Licence) is copyleft: modified versions must also be released under the GPL.",
+      "relatedConcepts": [
+        "GPL",
+        "Copyleft"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-match-01",
+      "topicId": "ch2-programming-tools",
+      "type": "match",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match each programming tool with its correct function.",
+      "matchPairs": [
+        {
+          "left": "Compiler",
+          "right": "Translates the whole program at once"
+        },
+        {
+          "left": "Interpreter",
+          "right": "Translates and runs a program line by line"
+        },
+        {
+          "left": "Assembler",
+          "right": "Converts assembly language into machine language"
+        },
+        {
+          "left": "Linker",
+          "right": "Joins object files into one executable"
+        },
+        {
+          "left": "Debugger",
+          "right": "Helps locate errors by running a program step by step"
+        }
+      ],
+      "explanation": "Each translator works on a different input, and the linker/debugger support the build and testing stages.",
+      "relatedConcepts": [
+        "Compiler",
+        "Interpreter",
+        "Assembler",
+        "Linker"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-match-02",
+      "topicId": "ch2-open-source",
+      "type": "match",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Match each software/licence with its correct description.",
+      "matchPairs": [
+        {
+          "left": "GPL",
+          "right": "Copyleft licence; derivatives must stay open source"
+        },
+        {
+          "left": "MIT Licence",
+          "right": "Very permissive; allows use in proprietary products"
+        },
+        {
+          "left": "Proprietary software",
+          "right": "Source code is kept secret"
+        },
+        {
+          "left": "Open source software",
+          "right": "Source code is freely available to all"
+        }
+      ],
+      "explanation": "GPL is protective (copyleft), MIT is permissive, and the last two describe the two broad categories of software licensing.",
+      "relatedConcepts": [
+        "GPL",
+        "MIT Licence",
+        "Open Source Software",
+        "Proprietary Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-01",
+      "topicId": "ch2-system-software",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define system software.",
+      "modelAnswer": "System software is a set of programs that manage and control the computer hardware and provide a platform for running application software, e.g. an operating system, a compiler or a device driver.",
+      "keywords": [
+        "manages hardware",
+        "platform for application software",
+        "operating system"
+      ],
+      "explanation": "System software works in the background to run the machine and supports all other programs.",
+      "relatedConcepts": [
+        "System Software",
+        "Operating System"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-02",
+      "topicId": "ch2-system-software",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is an operating system?",
+      "modelAnswer": "An operating system is system software that manages hardware resources (CPU, memory, files, devices) and acts as an interface between the user and the computer.",
+      "keywords": [
+        "manages resources",
+        "interface between user and hardware",
+        "system software"
+      ],
+      "explanation": "The OS is the most important system software and the first to load when the computer starts.",
+      "relatedConcepts": [
+        "Operating System",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-03",
+      "topicId": "ch2-system-software",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is a device driver?",
+      "modelAnswer": "A device driver is system software that allows the operating system to communicate with and control a specific hardware device such as a printer or a graphics card.",
+      "keywords": [
+        "hardware device",
+        "communication",
+        "system software"
+      ],
+      "explanation": "Drivers are hardware-dependent — every device needs its own driver.",
+      "relatedConcepts": [
+        "Device Driver",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-04",
+      "topicId": "ch2-system-software",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is a utility program?",
+      "modelAnswer": "A utility program is system software that performs maintenance, protection and optimisation tasks, such as antivirus, disk defragmenter or backup software.",
+      "keywords": [
+        "maintenance",
+        "housekeeping",
+        "optimisation"
+      ],
+      "explanation": "Utilities are not essential for startup but keep the system healthy and efficient.",
+      "relatedConcepts": [
+        "Utility Program",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-05",
+      "topicId": "ch2-programming-tools",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Define a compiler.",
+      "modelAnswer": "A compiler is a language translator that converts an entire high-level language program into machine language (object code) in one go, producing an executable file.",
+      "keywords": [
+        "language translator",
+        "entire program",
+        "machine language",
+        "object code"
+      ],
+      "explanation": "A compiler reports all errors together after scanning the whole program.",
+      "relatedConcepts": [
+        "Compiler",
+        "Language Translator"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-06",
+      "topicId": "ch2-programming-tools",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is an assembler?",
+      "modelAnswer": "An assembler is a language translator that converts a program written in assembly language into machine language.",
+      "keywords": [
+        "assembly language",
+        "machine language",
+        "translator"
+      ],
+      "explanation": "Assembly language uses symbols; the assembler turns them into machine code.",
+      "relatedConcepts": [
+        "Assembler",
+        "Language Translator"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-07",
+      "topicId": "ch2-programming-tools",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is an IDE?",
+      "modelAnswer": "An IDE (Integrated Development Environment) is a single software package that combines a source code editor, a translator (compiler/interpreter) and a debugger to help write and test programs.",
+      "keywords": [
+        "integrated",
+        "editor",
+        "compiler",
+        "debugger"
+      ],
+      "explanation": "Examples include IDLE (Python), PyCharm and Eclipse.",
+      "relatedConcepts": [
+        "IDE",
+        "Programming Tools"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-08",
+      "topicId": "ch2-application-software",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is application software?",
+      "modelAnswer": "Application software is a set of programs designed to help the user perform a specific task, such as writing a document or preparing a spreadsheet, e.g. MS Word or MS Excel.",
+      "keywords": [
+        "specific task",
+        "user",
+        "runs on system software"
+      ],
+      "explanation": "Application software always depends on system software to run.",
+      "relatedConcepts": [
+        "Application Software",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-09",
+      "topicId": "ch2-open-source",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "What is proprietary software?",
+      "modelAnswer": "Proprietary software is software whose source code is kept secret and which is distributed under a restrictive licence (EULA); only the owner can modify it, e.g. Windows or MS Office.",
+      "keywords": [
+        "source code secret",
+        "restrictive licence",
+        "owner only"
+      ],
+      "explanation": "It is the opposite of open source software, which shares its source code.",
+      "relatedConcepts": [
+        "Proprietary Software",
+        "Open Source Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-vsa-10",
+      "topicId": "ch2-open-source",
+      "type": "vsa",
+      "difficulty": "easy",
+      "marks": 1,
+      "question": "Expand GPL.",
+      "modelAnswer": "GPL stands for GNU General Public Licence — a copyleft open source licence that requires derivative works to also be released under the GPL.",
+      "keywords": [
+        "GNU General Public Licence",
+        "copyleft",
+        "open source"
+      ],
+      "explanation": "The GPL is one of the most widely used open source licences.",
+      "relatedConcepts": [
+        "GPL",
+        "Open Source Licences"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-01",
+      "topicId": "ch2-system-software",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "State any three differences between system software and application software.",
+      "modelAnswer": "1) System software manages hardware and provides a platform, while application software performs a specific user task. 2) System software runs in the background; application software interacts directly with the user. 3) System software is essential (e.g. OS); application software needs system software to run (e.g. MS Word).",
+      "rubric": [
+        "Correctly states the purpose of system software (1 mark)",
+        "Correctly states the purpose of application software (1 mark)",
+        "Any valid supporting difference / examples"
+      ],
+      "explanation": "The core difference is that system software serves the machine while application software serves the user.",
+      "relatedConcepts": [
+        "System Software",
+        "Application Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-02",
+      "topicId": "ch2-system-software",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Explain any three types of system software with one example each.",
+      "modelAnswer": "1) Operating system — manages hardware and provides an interface (e.g. Windows). 2) Language translator — converts source code to machine language (e.g. a compiler). 3) Device driver — lets the OS communicate with a device (e.g. a printer driver). (Utility programs and linkers/loaders are also valid.)",
+      "rubric": [
+        "Names and explains any three types (1 mark each)",
+        "Gives a valid example for each type",
+        "Uses correct terminology"
+      ],
+      "explanation": "System software has several categories, each with a distinct role in running and maintaining the computer.",
+      "relatedConcepts": [
+        "System Software",
+        "Operating System",
+        "Device Driver",
+        "Language Translator"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-03",
+      "topicId": "ch2-programming-tools",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "What are language translators? Name any three types and state what each translates.",
+      "modelAnswer": "Language translators are programs that convert a program from one language into another, usually machine language. Three types are: compiler (high-level language to machine language, whole program at once), interpreter (high-level language to machine language, line by line) and assembler (assembly language to machine language).",
+      "rubric": [
+        "Defines language translators correctly (1 mark)",
+        "Names three types (1 mark)",
+        "Correctly states what each translates (1 mark)"
+      ],
+      "explanation": "Translators bridge the gap between human-readable source code and machine code the CPU understands.",
+      "relatedConcepts": [
+        "Language Translator",
+        "Compiler",
+        "Interpreter",
+        "Assembler"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-04",
+      "topicId": "ch2-programming-tools",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "Write any three differences between a compiler and an interpreter.",
+      "modelAnswer": "1) A compiler translates the whole program at once, while an interpreter translates line by line. 2) A compiler reports all errors together; an interpreter stops at the first error. 3) A compiler produces an object/executable file, while an interpreter does not. Compiled programs also run faster than interpreted ones.",
+      "rubric": [
+        "Any three correct differences (1 mark each)",
+        "Correct use of terms compiler/interpreter",
+        "May add the speed or error-reporting difference"
+      ],
+      "explanation": "Both translate high-level code, but they differ in how and when translation happens.",
+      "relatedConcepts": [
+        "Compiler",
+        "Interpreter"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-05",
+      "topicId": "ch2-application-software",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Differentiate between general purpose and customised software with one example each.",
+      "modelAnswer": "General purpose software is ready-made for a wide range of users and common tasks (e.g. MS Word). Customised (tailor-made) software is developed on demand for one specific user or organisation (e.g. a school's fee-management system).",
+      "rubric": [
+        "Correct meaning of general purpose software with example (1 mark)",
+        "Correct meaning of customised software with example (1 mark)"
+      ],
+      "explanation": "The key difference is whether the software is made for many users (general purpose) or one specific client (customised).",
+      "relatedConcepts": [
+        "General Purpose Software",
+        "Customised Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-06",
+      "topicId": "ch2-application-software",
+      "type": "sa",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "What is utility software? Give two examples.",
+      "modelAnswer": "Utility software is a set of small programs that perform maintenance, protection and optimisation tasks on a computer system. Examples: antivirus software and disk defragmenter (a backup tool is also valid).",
+      "rubric": [
+        "Correct definition of utility software (1 mark)",
+        "Two valid examples (1 mark)"
+      ],
+      "explanation": "Utilities keep the system healthy but are not essential for the computer to boot.",
+      "relatedConcepts": [
+        "Utility Software",
+        "System Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-07",
+      "topicId": "ch2-open-source",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "State any three differences between open source software and proprietary software.",
+      "modelAnswer": "1) In open source software the source code is freely available, while in proprietary software it is kept secret. 2) Open source software can be modified by anyone, while proprietary software can be modified only by its owner. 3) Open source software is usually free of cost (e.g. Linux), while proprietary software usually requires a paid licence (e.g. Windows).",
+      "rubric": [
+        "Any three correct differences (1 mark each)",
+        "Correct examples where required",
+        "Correct terminology (open source / proprietary)"
+      ],
+      "explanation": "The dividing line is the availability of the source code and the freedom to modify it.",
+      "relatedConcepts": [
+        "Open Source Software",
+        "Proprietary Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-08",
+      "topicId": "ch2-open-source",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 3,
+      "question": "What is free software? Explain the four freedoms it grants.",
+      "modelAnswer": "Free software is software that grants users freedom (not merely zero cost). Its four freedoms are: the freedom to run the program for any purpose, to study and change how it works, to redistribute copies to others, and to distribute modified versions so the community benefits.",
+      "rubric": [
+        "Correct meaning of free software (1 mark)",
+        "Lists at least three of the four freedoms (1 mark)",
+        "Clear explanation that 'free' refers to freedom (1 mark)"
+      ],
+      "explanation": "The Free Software Foundation defines free software through these four freedoms.",
+      "relatedConcepts": [
+        "Free Software",
+        "Four Freedoms"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-09",
+      "topicId": "ch2-system-software",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "What is firmware? Give one example.",
+      "modelAnswer": "Firmware is software that is stored permanently in a hardware device's ROM and provides the basic instructions needed to start and operate that device. Example: the BIOS/UEFI stored on a computer's motherboard.",
+      "rubric": [
+        "Correct definition of firmware (1 mark)",
+        "Valid example such as BIOS (1 mark)"
+      ],
+      "explanation": "Firmware sits between hardware and software, being permanent software embedded in a chip.",
+      "relatedConcepts": [
+        "Firmware",
+        "ROM"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-sa-10",
+      "topicId": "ch2-programming-tools",
+      "type": "sa",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "Explain the roles of a linker and a loader.",
+      "modelAnswer": "A linker combines several object files and library code produced by the compiler into a single executable file. A loader then loads that executable program into main memory so the CPU can execute it.",
+      "rubric": [
+        "Correct role of the linker (1 mark)",
+        "Correct role of the loader (1 mark)"
+      ],
+      "explanation": "Linker works before running (build stage); the loader works just before execution.",
+      "relatedConcepts": [
+        "Linker",
+        "Loader"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-la-01",
+      "topicId": "ch2-system-software",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain the different types of system software in detail with examples.",
+      "modelAnswer": "System software is broadly of the following types: (1) Operating System — manages hardware, memory, files and processes and provides the user interface; examples: Windows, Linux. (2) Language Translators — convert source code into machine language; compiler, interpreter and assembler. (3) Device Drivers — allow the OS to communicate with specific hardware devices; e.g. a printer driver. (4) Utility Programs — perform maintenance and protection tasks; e.g. antivirus, disk defragmenter, backup. (5) Linker and Loader — the linker joins object files into an executable and the loader loads it into memory. Together these programs let the computer run and support all application software.",
+      "rubric": [
+        "Correctly names and explains the OS (1 mark)",
+        "Correctly explains language translators with types (1 mark)",
+        "Correctly explains device drivers (1 mark)",
+        "Correctly explains utility programs (1 mark)",
+        "Mentions linker/loader and overall clarity with examples (1 mark)"
+      ],
+      "keywords": [
+        "Operating System",
+        "Language Translator",
+        "Device Driver",
+        "Utility",
+        "Linker",
+        "Loader"
+      ],
+      "explanation": "This question tests the complete classification of system software, which is a very common long-answer question.",
+      "relatedConcepts": [
+        "System Software",
+        "Operating System",
+        "Device Driver",
+        "Utility Program"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-la-02",
+      "topicId": "ch2-system-software",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain the main functions of an operating system.",
+      "modelAnswer": "An operating system performs the following functions: (1) Process Management — schedules and runs processes on the CPU. (2) Memory Management — allocates and frees main memory for programs. (3) File Management — creates, stores, retrieves and organises files and folders. (4) Device Management — controls input/output devices through device drivers. (5) User Interface — provides a command-line or graphical interface so the user can interact with the computer. It may also handle security, error detection and networking.",
+      "rubric": [
+        "Process management explained (1 mark)",
+        "Memory management explained (1 mark)",
+        "File management explained (1 mark)",
+        "Device management explained (1 mark)",
+        "User interface and clarity (1 mark)"
+      ],
+      "keywords": [
+        "Process Management",
+        "Memory Management",
+        "File Management",
+        "Device Management",
+        "User Interface"
+      ],
+      "explanation": "These five functions form the standard answer to 'functions of an operating system'.",
+      "relatedConcepts": [
+        "Operating System",
+        "Resource Management"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-la-03",
+      "topicId": "ch2-programming-tools",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Discuss the compiler, interpreter and assembler. Also give two differences between a compiler and an interpreter.",
+      "modelAnswer": "A compiler translates an entire high-level program into machine code at once, producing an object/executable file. An interpreter translates and executes a high-level program line by line and produces no separate executable. An assembler converts assembly language into machine language. Differences between compiler and interpreter: (1) A compiler translates the whole program at once, whereas an interpreter translates line by line. (2) A compiler reports all errors together and creates an executable file, whereas an interpreter stops at the first error and creates no executable file. Compiled programs generally run faster.",
+      "rubric": [
+        "Explains the compiler (1 mark)",
+        "Explains the interpreter (1 mark)",
+        "Explains the assembler (1 mark)",
+        "Any two valid compiler-vs-interpreter differences (2 marks)"
+      ],
+      "keywords": [
+        "Compiler",
+        "Interpreter",
+        "Assembler",
+        "object code",
+        "line by line"
+      ],
+      "explanation": "This combines the definitions of all three translators with a comparison, a very common exam pattern.",
+      "relatedConcepts": [
+        "Compiler",
+        "Interpreter",
+        "Assembler"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-la-04",
+      "topicId": "ch2-application-software",
+      "type": "la",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Explain the types of application software with suitable examples.",
+      "modelAnswer": "Application software is of three main types: (1) General Purpose (Packaged) Software — made for a wide range of users and common tasks; examples: MS Word, MS Excel, web browsers, games. (2) Customised (Tailor-made) Software — developed on demand for one specific user or organisation; examples: a school's exam-management system, a bank's core banking software. (3) Utility Software — small programs that maintain, protect and optimise the system; examples: antivirus, disk defragmenter, backup tools. Application software runs on top of system software and performs tasks directly for the user.",
+      "rubric": [
+        "General purpose software explained with examples (1-2 marks)",
+        "Customised software explained with examples (1-2 marks)",
+        "Utility software explained with examples (1 mark)",
+        "Overall clarity and correct terminology (1 mark)"
+      ],
+      "keywords": [
+        "General Purpose",
+        "Customised",
+        "Utility",
+        "Software Package"
+      ],
+      "explanation": "This tests the complete classification of application software.",
+      "relatedConcepts": [
+        "Application Software",
+        "General Purpose Software",
+        "Customised Software",
+        "Utility Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-la-05",
+      "topicId": "ch2-open-source",
+      "type": "la",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Explain open source software and free software. Also compare the GPL, Apache and MIT licences.",
+      "modelAnswer": "Open source software (OSS) is software whose source code is freely available so that anyone may study, modify and redistribute it. Free software, as defined by the Free Software Foundation, grants four freedoms: to run the program, to study and change it, to redistribute copies, and to distribute modified versions. Comparison of licences: (1) GPL (GNU General Public Licence) is a copyleft licence — any modified or derived work must also be released under the GPL, keeping it open source. (2) Apache License 2.0 is permissive — it allows reuse and modification and even use in proprietary products, provided attribution is given. (3) MIT Licence is very permissive and short — it allows almost any use as long as the original copyright notice is retained. Thus GPL is the most protective of openness, while Apache and MIT are more permissive.",
+      "rubric": [
+        "Defines open source software (1 mark)",
+        "Explains free software and its freedoms (1 mark)",
+        "Explains GPL as copyleft (1-2 marks)",
+        "Explains Apache and MIT as permissive (1-2 marks)",
+        "Overall comparison and clarity (1 mark)"
+      ],
+      "keywords": [
+        "Open Source",
+        "Free Software",
+        "GPL",
+        "Apache",
+        "MIT",
+        "Copyleft",
+        "Permissive"
+      ],
+      "explanation": "This long answer ties together open source, free software and the three major licences.",
+      "relatedConcepts": [
+        "Open Source Software",
+        "Free Software",
+        "GPL",
+        "MIT Licence"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-case-01",
+      "topicId": "ch2-system-software",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Read the passage and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "Riya switches on her new laptop. Before she can open any application, the operating system loads into memory. The OS then manages the CPU, memory, files and connected devices. When she plugs in a printer, the OS uses a small program to talk to it. She also runs an antivirus scan and cleans up her disk with a defragmenter.",
+        "subQuestions": [
+          {
+            "question": "Which software loads into memory first when the laptop is switched on?",
+            "kind": "mcq",
+            "options": [
+              "Antivirus",
+              "Operating System",
+              "Printer driver",
+              "Disk defragmenter"
+            ],
+            "answer": 1,
+            "explanation": "The operating system loads first (during booting) and then manages everything else.",
+            "marks": 1
+          },
+          {
+            "question": "The small program that lets the OS talk to the printer is called a ________.",
+            "kind": "short",
+            "answer": "device driver (printer driver)",
+            "explanation": "A device driver lets the OS communicate with a specific hardware device such as a printer.",
+            "marks": 1
+          },
+          {
+            "question": "The antivirus and disk defragmenter are examples of which type of software?",
+            "kind": "mcq",
+            "options": [
+              "Application software",
+              "Utility software",
+              "Firmware",
+              "Language translator"
+            ],
+            "answer": 1,
+            "explanation": "They perform maintenance and protection tasks, so they are utility software.",
+            "marks": 1
+          },
+          {
+            "question": "State two functions of the operating system mentioned in the passage.",
+            "kind": "short",
+            "answer": "Managing the CPU/processes, managing memory, managing files, and managing devices (any two).",
+            "explanation": "The passage lists process, memory, file and device management as OS functions.",
+            "marks": 2
+          }
+        ]
+      },
+      "explanation": "This case applies system-software concepts (OS, device drivers, utilities) to a real situation.",
+      "relatedConcepts": [
+        "Operating System",
+        "Device Driver",
+        "Utility Software"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-case-02",
+      "topicId": "ch2-programming-tools",
+      "type": "case",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Read the passage and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "Aman writes a C program and a Python program. For the C program, a compiler converts the whole program into machine code and produces an executable file; if there is any error, all errors are shown together. For the Python program, an interpreter runs it line by line and stops at the very first error. In both cases, Aman uses an editor to type the code and a debugger to trace errors.",
+        "subQuestions": [
+          {
+            "question": "Which translator converts the whole C program at once?",
+            "kind": "mcq",
+            "options": [
+              "Interpreter",
+              "Compiler",
+              "Assembler",
+              "Loader"
+            ],
+            "answer": 1,
+            "explanation": "A compiler translates the entire program before execution.",
+            "marks": 1
+          },
+          {
+            "question": "Why does the Python program stop at the first error?",
+            "kind": "short",
+            "answer": "Because an interpreter translates and executes line by line, so it halts as soon as it meets an error.",
+            "explanation": "Interpreters process one line at a time and stop at the first error.",
+            "marks": 1
+          },
+          {
+            "question": "Which tool does Aman use to type the code?",
+            "kind": "mcq",
+            "options": [
+              "Debugger",
+              "Linker",
+              "Editor",
+              "Compiler"
+            ],
+            "answer": 2,
+            "explanation": "An editor is used to type and save source code.",
+            "marks": 1
+          },
+          {
+            "question": "Name the tool Aman uses to trace errors in his program, and state its purpose.",
+            "kind": "short",
+            "answer": "A debugger; it runs the program step by step to help locate and fix errors.",
+            "explanation": "A debugger helps find bugs by step execution and inspection.",
+            "marks": 2
+          }
+        ]
+      },
+      "explanation": "This case contrasts compiler and interpreter behaviour and covers editors and debuggers.",
+      "relatedConcepts": [
+        "Compiler",
+        "Interpreter",
+        "Debugger",
+        "Editor"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-case-03",
+      "topicId": "ch2-open-source",
+      "type": "case",
+      "difficulty": "hard",
+      "marks": 6,
+      "question": "Read the passage and answer the questions that follow.",
+      "caseStudy": {
+        "passage": "Meera runs a small design studio. She uses Linux and LibreOffice, both of which share their source code openly. She also uses a paid photo-editing program whose source code is secret. A friend suggests she release her own tool under the MIT Licence, while another suggests the GPL.",
+        "subQuestions": [
+          {
+            "question": "Linux and LibreOffice are examples of which type of software?",
+            "kind": "mcq",
+            "options": [
+              "Proprietary software",
+              "Open source software",
+              "Firmware",
+              "Utility software"
+            ],
+            "answer": 1,
+            "explanation": "Their source code is openly available, so they are open source software.",
+            "marks": 1
+          },
+          {
+            "question": "The paid photo-editing program with a secret source code is an example of ________ software.",
+            "kind": "short",
+            "answer": "proprietary",
+            "explanation": "Proprietary software keeps its source code secret and is usually paid.",
+            "marks": 1
+          },
+          {
+            "question": "If Meera uses the GPL, what must happen to any modified version she distributes?",
+            "kind": "short",
+            "answer": "It must also be released as open source under the GPL (copyleft).",
+            "explanation": "The GPL is copyleft, so derivative works must remain open source.",
+            "marks": 2
+          },
+          {
+            "question": "Which licence would let others use her tool in a paid, closed-source product?",
+            "kind": "mcq",
+            "options": [
+              "GPL",
+              "MIT Licence",
+              "EULA",
+              "None of these"
+            ],
+            "answer": 1,
+            "explanation": "The MIT Licence is permissive and allows use in proprietary products with attribution.",
+            "marks": 1
+          },
+          {
+            "question": "State one difference between open source and proprietary software.",
+            "kind": "short",
+            "answer": "In open source software the source code is available and modifiable by anyone; in proprietary software it is secret and only the owner can modify it.",
+            "explanation": "Source-code availability is the main difference.",
+            "marks": 1
+          }
+        ]
+      },
+      "explanation": "This case applies open source, proprietary and licensing concepts to a realistic scenario.",
+      "relatedConcepts": [
+        "Open Source Software",
+        "Proprietary Software",
+        "GPL",
+        "MIT Licence"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-output-01",
+      "topicId": "ch2-programming-tools",
+      "type": "output",
+      "difficulty": "easy",
+      "marks": 2,
+      "question": "Write the exact output of the following Python program.",
+      "code": "a = 5\nb = 3\nprint(a + b)\nprint(a * b)\nprint(a - b)",
+      "correctAnswer": "8\n15\n2",
+      "executionSteps": [
+        "a is assigned the value 5 and b is assigned the value 3.",
+        "print(a + b) prints 5 + 3 = 8.",
+        "print(a * b) prints 5 * 3 = 15.",
+        "print(a - b) prints 5 - 3 = 2.",
+        "The interpreter executes each line one after another and prints three lines of output."
+      ],
+      "explanation": "Because Python is interpreted, each print statement is executed in order. The outputs are 8, 15 and 2 on separate lines.",
+      "relatedConcepts": [
+        "Interpreter",
+        "Python",
+        "Output"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-debug-01",
+      "topicId": "ch2-programming-tools",
+      "type": "debug",
+      "difficulty": "medium",
+      "marks": 2,
+      "question": "The following program has an error. Identify the error type and write the corrected program.",
+      "code": "num1 = 10\nnum2 = 20\nprint(num1 + num2",
+      "errorType": "SyntaxError",
+      "correctAnswer": "num1 = 10\nnum2 = 20\nprint(num1 + num2)",
+      "executionSteps": [
+        "The third line is missing the closing bracket ')' of the print() call.",
+        "The interpreter reports a SyntaxError: '(' was never closed.",
+        "Adding the missing ')' fixes the program.",
+        "Corrected program: num1 = 10; num2 = 20; print(num1 + num2) -> prints 30."
+      ],
+      "explanation": "A missing closing bracket makes the statement invalid, so Python raises a SyntaxError before running the program. Correcting it makes the program print 30.",
+      "relatedConcepts": [
+        "SyntaxError",
+        "Debugger",
+        "Interpreter"
+      ],
+      "chapterId": "ch2"
+    },
+    {
+      "id": "ch2-program-01",
+      "topicId": "ch2-programming-tools",
+      "type": "program",
+      "difficulty": "medium",
+      "marks": 5,
+      "question": "Write a Python program that takes two numbers as input and prints their sum, difference, product and quotient. Explain each line briefly.",
+      "hints": [
+        "Use input() to read values, but remember input() returns a string.",
+        "Convert the inputs to numbers using int() or float().",
+        "Use +, -, *, / operators for the four results.",
+        "Use print() to display each result with a label."
+      ],
+      "modelSolution": "a = float(input(\"Enter first number: \"))\nb = float(input(\"Enter second number: \"))\nprint(\"Sum =\", a + b)\nprint(\"Difference =\", a - b)\nprint(\"Product =\", a * b)\nprint(\"Quotient =\", a / b)",
+      "lineExplanations": [
+        "Line 1: reads the first number and converts it to float.",
+        "Line 2: reads the second number and converts it to float.",
+        "Line 3: prints the sum (a + b).",
+        "Line 4: prints the difference (a - b).",
+        "Line 5: prints the product (a * b).",
+        "Line 6: prints the quotient (a / b)."
+      ],
+      "testCases": [
+        {
+          "input": "10 4",
+          "output": "Sum = 14.0\nDifference = 6.0\nProduct = 40.0\nQuotient = 2.5"
+        },
+        {
+          "input": "7 2",
+          "output": "Sum = 9.0\nDifference = 5.0\nProduct = 14.0\nQuotient = 3.5"
+        }
+      ],
+      "rubric": [
+        "Correct use of input() and conversion (1 mark)",
+        "Correct sum and difference (1 mark)",
+        "Correct product (1 mark)",
+        "Correct quotient (1 mark)",
+        "Brief and correct explanation of each line (1 mark)"
+      ],
+      "explanation": "This program practises input, type conversion and the four arithmetic operators, and shows how an interpreted language runs each line in order.",
+      "relatedConcepts": [
+        "Python",
+        "Input/Output",
+        "Arithmetic Operators"
+      ],
+      "chapterId": "ch2"
+    }
+  ]
+}
