@@ -244,3 +244,12 @@ html.light ::selection { background: rgba(51, 102, 255, 0.22); }
 @media (hover: none) {
   .navlink { padding-top: 0.7rem; padding-bottom: 0.7rem; }
 }
+
+/* ---------------------------------------------------------------------------
+   Permanently-dark surfaces (Python Lab console)
+   These sit on a dark background in BOTH themes — like code blocks — so their
+   colours must not be remapped by the light theme layer. Custom classes rather
+   than Tailwind utilities, so the light overrides never touch them.
+--------------------------------------------------------------------------- */
+.console-err { color: #fda4af; }
+.console-muted { color: #94a3b8; }

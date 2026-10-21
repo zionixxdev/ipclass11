@@ -254,13 +254,15 @@ export default function PythonLab() {
         {/* Console */}
         <div className="space-y-3">
           <span className="flex items-center gap-2 text-sm font-semibold text-slate-200"><Terminal size={16} /> Output console</span>
-          <div className="min-h-[280px] rounded-xl border border-white/10 bg-[#0a0f1c] p-4 font-mono text-[13px] leading-relaxed">
-            {!executed && !result && <span className="text-slate-500">Press “Run” to execute your code. Output appears here.</span>}
+          {/* A dark console in both themes (same treatment as code blocks), so
+              the light theme layer must not recolour its text. */}
+          <div className="code-block max-h-[420px] min-h-[280px] overflow-y-auto">
+            {!executed && !result && <span className="console-muted">Press “Run” to execute your code. Output appears here.</span>}
             {result && (
               <>
-                {result.stdout && <pre className="whitespace-pre-wrap text-slate-100">{result.stdout}</pre>}
-                {result.stderr && <pre className="mt-2 whitespace-pre-wrap text-rose-300">{result.stderr}</pre>}
-                {!result.stdout && !result.stderr && <span className="text-slate-500">(no output)</span>}
+                {result.stdout && <pre className="whitespace-pre-wrap">{result.stdout}</pre>}
+                {result.stderr && <pre className="mt-2 whitespace-pre-wrap console-err">{result.stderr}</pre>}
+                {!result.stdout && !result.stderr && <span className="console-muted">(no output)</span>}
               </>
             )}
           </div>
