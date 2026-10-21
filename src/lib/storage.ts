@@ -1,6 +1,10 @@
 import type { ProgressState, Settings } from '../data/types';
 
-const KEY = 'compprep11.progress.v1';
+export const PROGRESS_KEY = 'ipprep11.progress.v1';
+const KEY = PROGRESS_KEY;
+// Progress saved under the app's earlier name is still read, so anyone who used
+// the site before the rename keeps their data.
+const LEGACY_KEY = 'compprep11.progress.v1';
 
 export const defaultSettings: Settings = {
   theme: 'dark',
@@ -23,7 +27,7 @@ export const defaultProgress: ProgressState = {
 
 export function loadProgress(): ProgressState {
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = localStorage.getItem(KEY) ?? localStorage.getItem(LEGACY_KEY);
     if (!raw) return structuredClone(defaultProgress);
     const parsed = JSON.parse(raw) as Partial<ProgressState>;
     return {
@@ -57,7 +61,7 @@ export function exportProgress(state: ProgressState): void {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `compprep11-progress-${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = `ipprep11-progress-${new Date().toISOString().slice(0, 10)}.json`;
   document.body.appendChild(a);
   a.click();
   a.remove();

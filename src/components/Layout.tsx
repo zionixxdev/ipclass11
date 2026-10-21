@@ -73,8 +73,8 @@ export default function Layout() {
             <GraduationCap size={22} />
           </div>
           <div>
-            <div className="text-sm font-extrabold tracking-tight text-slate-100">CompPrep 11</div>
-            <div className="text-[11px] text-slate-400">Computer Exam Prep</div>
+            <div className="text-sm font-extrabold tracking-tight text-slate-100">IPPrep 11</div>
+            <div className="text-[11px] text-slate-400">Informatics Practices</div>
           </div>
         </div>
         <nav className="flex flex-col gap-1">{NAV.map((i) => navItem(i))}</nav>
@@ -103,7 +103,7 @@ export default function Layout() {
             <div className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-violet-500 text-white">
               <GraduationCap size={18} />
             </div>
-            <div className="text-sm font-extrabold text-slate-100">CompPrep 11</div>
+            <div className="text-sm font-extrabold text-slate-100">IPPrep 11</div>
           </div>
           <div className="flex items-center gap-2">
             {dLeft != null && (

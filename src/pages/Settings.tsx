@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Download, Moon, RotateCcw, Sun, Upload, User } from 'lucide-react';
 import { useProgress } from '../lib/store';
+import { PROGRESS_KEY } from '../lib/storage';
 import { Card, SectionTitle, Toggle } from '../components/ui';
 import { toISODate } from '../lib/utils';
 
@@ -17,11 +18,11 @@ export default function SettingsPage() {
       try {
         const data = JSON.parse(String(reader.result));
         if (!data || typeof data !== 'object') throw new Error('bad');
-        localStorage.setItem('compprep11.progress.v1', JSON.stringify(data));
+        localStorage.setItem(PROGRESS_KEY, JSON.stringify(data));
         setImportMsg('Imported successfully. Reloading…');
         setTimeout(() => window.location.reload(), 800);
       } catch {
-        setImportMsg('That file could not be read as a CompPrep progress export.');
+        setImportMsg('That file could not be read as an IPPrep progress export.');
       }
     };
     reader.readAsText(file);
@@ -111,7 +112,7 @@ export default function SettingsPage() {
         </div>
       </Card>
 
-      <p className="text-center text-xs text-slate-500">CompPrep 11 · Built for Class 11 Computer / Informatics Practices. Practice content only — not official CBSE material.</p>
+      <p className="text-center text-xs text-slate-500">IPPrep 11 · Built for Class 11 Informatics Practices (IP). Practice content only — not official CBSE material.</p>
     </div>
   );
 }

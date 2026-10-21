@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Core data model for CompPrep 11.
+// Core data model for IPPrep 11.
 // Content (chapters, topics, questions) lives in JSON files under src/data and
 // is completely decoupled from the UI. New questions can be dropped in without
 // touching any component logic.

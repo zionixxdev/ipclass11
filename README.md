@@ -1,7 +1,7 @@
-# CompPrep 11 — Class 11 Computer Exam Preparation
+# IPPrep 11 — Class 11 Informatics Practices Exam Preparation
 
-A complete, functional, responsive web application for Class 11 Computer Science /
-Informatics Practices exam preparation. It covers the full eight-chapter syllabus
+A complete, functional, responsive web application for Class 11 Informatics
+Practices (IP) exam preparation. It covers the full eight-chapter syllabus
 with structured learning content, a large tagged question bank, a smart practice
 engine, CBSE-style mock tests, a Python lab with real in-browser execution, a
 revision centre and local progress analytics.
@@ -44,6 +44,18 @@ directly from the file system. A prebuilt copy is already included in `dist/`.
 > Note: the default `npm run build` (Vite) emits ES modules, which need to be
 > served over HTTP (not opened via `file://`). Use `npm run build:static` if you
 > want a double-click-openable build.
+
+---
+
+## Deployment (GitHub Pages)
+
+The site is published to GitHub Pages from the committed `dist/` folder by
+`.github/workflows/deploy-pages.yml`, which runs on every push to `main`.
+
+**Live: https://zionixxdev.github.io/ipclass11/**
+
+Because the workflow deploys the committed `dist/` (it does not rebuild), run
+`npm run build:static` and commit the updated `dist/` after any source change.
 
 ---
 
