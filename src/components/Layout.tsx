@@ -5,7 +5,9 @@ import {
   BookMarked,
   BookOpen,
   ClipboardList,
+  Code2,
   GraduationCap,
+  HelpCircle,
   LayoutDashboard,
   Menu,
   Moon,
@@ -17,17 +19,21 @@ import {
   X,
 } from 'lucide-react';
 import { useProgress } from '../lib/store';
+import { ONBOARD_KEY } from '../lib/storage';
 import { cn, daysUntil } from '../lib/utils';
+import Onboarding from './Onboarding';
 
 const NAV = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/learn', label: 'Learn Chapters', icon: BookOpen },
   { to: '/practice', label: 'Practice Questions', icon: ClipboardList },
   { to: '/lab', label: 'Python Lab', icon: Terminal },
+  { to: '/examples', label: 'Python Examples', icon: Code2 },
   { to: '/mocks', label: 'Mock Tests', icon: GraduationCap },
   { to: '/revision', label: 'Revision', icon: RefreshCw },
   { to: '/progress', label: 'Progress', icon: BarChart3 },
   { to: '/bookmarks', label: 'Bookmarks', icon: BookMarked },
+  { to: '/help', label: 'Help', icon: HelpCircle },
   { to: '/settings', label: 'Settings', icon: SettingsIcon },
 ];
 
@@ -38,7 +44,23 @@ export default function Layout() {
   const { state, updateSettings } = useProgress();
   const { settings } = state;
   const [sheet, setSheet] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(() => {
+    try {
+      return !localStorage.getItem(ONBOARD_KEY);
+    } catch {
+      return false;
+    }
+  });
   const location = useLocation();
+
+  const dismissWelcome = () => {
+    try {
+      localStorage.setItem(ONBOARD_KEY, '1');
+    } catch {
+      /* ignore */
+    }
+    setShowWelcome(false);
+  };
 
   useEffect(() => {
     setSheet(false);
@@ -67,7 +89,7 @@ export default function Layout() {
   return (
     <div className="flex min-h-full">
       {/* Sidebar (desktop) */}
-      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-white/10 bg-navy-900/60 p-4 backdrop-blur-md lg:flex">
+      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col overflow-y-auto border-r border-white/10 bg-navy-900/60 p-4 backdrop-blur-md lg:flex">
         <div className="mb-6 flex items-center gap-3 px-2">
           <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-violet-500 text-white shadow-glow">
             <GraduationCap size={22} />
@@ -78,6 +100,7 @@ export default function Layout() {
           </div>
         </div>
         <nav className="flex flex-col gap-1">{NAV.map((i) => navItem(i))}</nav>
+        <div className="flex-1" />
         <div className="mt-auto space-y-3 pt-4">
           {dLeft != null && (
             <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-center">
@@ -122,7 +145,7 @@ export default function Layout() {
         </main>
 
         {/* Bottom nav (mobile) */}
-        <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-navy-950/90 backdrop-blur-md lg:hidden">
+        <nav className="safe-bottom fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-navy-950/90 backdrop-blur-md lg:hidden">
           <div className="grid grid-cols-5">
             {BOTTOM.map((item) => {
               const Icon = item.icon;
@@ -148,6 +171,8 @@ export default function Layout() {
             </button>
           </div>
         </nav>
+
+        <Onboarding open={showWelcome} onClose={dismissWelcome} />
 
         {/* More sheet */}
         {sheet && (

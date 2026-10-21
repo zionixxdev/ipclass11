@@ -6,11 +6,13 @@ import ChapterView from './pages/ChapterView';
 import TopicView from './pages/TopicView';
 import Practice from './pages/Practice';
 import PythonLab from './pages/PythonLab';
+import PythonExamples from './pages/PythonExamples';
 import MockTests from './pages/MockTests';
 import Revision from './pages/Revision';
 import Progress from './pages/Progress';
 import Bookmarks from './pages/Bookmarks';
 import SettingsPage from './pages/Settings';
+import Help from './pages/Help';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -23,11 +25,13 @@ export default function App() {
         <Route path="learn/:chapterId/:topicId" element={<TopicView />} />
         <Route path="practice" element={<Practice />} />
         <Route path="lab" element={<PythonLab />} />
+        <Route path="examples" element={<PythonExamples />} />
         <Route path="mocks" element={<MockTests />} />
         <Route path="revision" element={<Revision />} />
         <Route path="progress" element={<Progress />} />
         <Route path="bookmarks" element={<Bookmarks />} />
         <Route path="settings" element={<SettingsPage />} />
+        <Route path="help" element={<Help />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

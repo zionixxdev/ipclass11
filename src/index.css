@@ -139,3 +139,108 @@ html.light .code-block {
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ---------------------------------------------------------------------------
+   LIGHT THEME LAYER
+   The components are authored dark-first, so the dark utility classes used in
+   the JSX (slate text, white/opacity surfaces + borders, navy panels) are
+   remapped here for light mode. Elements that must stay dark — code blocks —
+   are excluded with :not(.code-block).
+
+   These use ATTRIBUTE selectors ([class~="..."]) rather than class selectors,
+   so Tailwind's @apply resolver does not mistake them for utility definitions
+   and report a circular dependency.
+--------------------------------------------------------------------------- */
+
+/* text */
+html.light [class~="text-slate-100"]:not(.code-block),
+html.light [class~="hover:text-slate-100"]:hover { color: #0f172a; }
+html.light [class~="text-slate-200"]:not(.code-block),
+html.light [class~="hover:text-slate-200"]:hover { color: #1e293b; }
+html.light [class~="text-slate-300"]:not(.code-block) { color: #334155; }
+html.light [class~="text-slate-400"]:not(.code-block) { color: #475569; }
+html.light [class~="text-slate-500"]:not(.code-block) { color: #64748b; }
+html.light [class~="text-slate-600"]:not(.code-block) { color: #475569; }
+
+/* accent text needs darkening to stay readable on white */
+html.light [class~="text-brand-100"]:not(.code-block) { color: #1e3a8a; }
+html.light [class~="text-brand-200"]:not(.code-block) { color: #1d4ed8; }
+html.light [class~="text-brand-300"]:not(.code-block) { color: #1d4ed8; }
+html.light [class~="text-emerald-300"]:not(.code-block) { color: #047857; }
+html.light [class~="text-emerald-400"]:not(.code-block) { color: #059669; }
+html.light [class~="text-amber-200"]:not(.code-block) { color: #92400e; }
+html.light [class~="text-amber-300"]:not(.code-block) { color: #b45309; }
+html.light [class~="text-rose-200"]:not(.code-block) { color: #9f1239; }
+html.light [class~="text-rose-300"]:not(.code-block) { color: #be123c; }
+html.light [class~="text-violet-300"]:not(.code-block) { color: #6d28d9; }
+
+/* surfaces */
+html.light [class~="bg-white/5"] { background-color: rgba(15, 23, 42, 0.04); }
+html.light [class~="bg-white/10"] { background-color: rgba(15, 23, 42, 0.07); }
+html.light [class~="bg-white/15"] { background-color: rgba(15, 23, 42, 0.10); }
+html.light [class~="hover:bg-white/10"]:hover { background-color: rgba(15, 23, 42, 0.07); }
+html.light [class~="bg-navy-900/60"] { background-color: rgba(255, 255, 255, 0.78); }
+html.light [class~="bg-navy-950/80"] { background-color: rgba(255, 255, 255, 0.86); }
+html.light [class~="bg-navy-950/90"] { background-color: rgba(255, 255, 255, 0.92); }
+
+/* borders */
+html.light [class~="border-white/5"] { border-color: rgba(15, 23, 42, 0.06); }
+html.light [class~="border-white/10"] { border-color: rgba(15, 23, 42, 0.10); }
+html.light [class~="border-white/20"] { border-color: rgba(15, 23, 42, 0.18); }
+html.light [class~="border-white/30"] { border-color: rgba(15, 23, 42, 0.25); }
+html.light [class~="border-t-white"] { border-top-color: #334155; }
+
+/* tinted accent fills read better with a touch more opacity on white */
+html.light [class~="bg-brand-500/15"] { background-color: rgba(51, 102, 255, 0.12); }
+html.light [class~="bg-emerald-500/15"] { background-color: rgba(16, 185, 129, 0.14); }
+html.light [class~="bg-amber-500/15"] { background-color: rgba(245, 158, 11, 0.16); }
+html.light [class~="bg-rose-500/15"] { background-color: rgba(244, 63, 94, 0.13); }
+html.light [class~="bg-violet-500/15"] { background-color: rgba(139, 92, 246, 0.13); }
+html.light [class~="bg-emerald-500/10"] { background-color: rgba(16, 185, 129, 0.10); }
+html.light [class~="bg-amber-500/10"] { background-color: rgba(245, 158, 11, 0.12); }
+html.light [class~="bg-rose-500/10"] { background-color: rgba(244, 63, 94, 0.10); }
+html.light [class~="bg-emerald-500/5"] { background-color: rgba(16, 185, 129, 0.07); }
+html.light [class~="bg-amber-500/5"] { background-color: rgba(245, 158, 11, 0.08); }
+html.light [class~="bg-rose-500/5"] { background-color: rgba(244, 63, 94, 0.06); }
+html.light [class~="bg-brand-500/5"] { background-color: rgba(51, 102, 255, 0.06); }
+
+/* status borders a little stronger on white */
+html.light [class~="border-emerald-400/30"] { border-color: rgba(5, 150, 105, 0.40); }
+html.light [class~="border-rose-400/30"] { border-color: rgba(190, 18, 60, 0.35); }
+html.light [class~="border-amber-400/30"] { border-color: rgba(180, 83, 9, 0.35); }
+html.light [class~="border-emerald-400/20"] { border-color: rgba(5, 150, 105, 0.30); }
+html.light [class~="border-rose-400/20"] { border-color: rgba(190, 18, 60, 0.28); }
+html.light [class~="border-amber-400/20"] { border-color: rgba(180, 83, 9, 0.28); }
+html.light [class~="border-brand-400/20"] { border-color: rgba(51, 102, 255, 0.25); }
+
+/* themed SVG diagram + chart helpers */
+.diagram-frame { color: #cbd5e1; background-color: rgba(255, 255, 255, 0.03); }
+html.light .diagram-frame { color: #334155; background-color: rgba(15, 23, 42, 0.03); }
+.ring-track { stroke: rgba(255, 255, 255, 0.10); }
+html.light .ring-track { stroke: rgba(15, 23, 42, 0.12); }
+
+/* light-mode selection polish */
+html.light ::selection { background: rgba(51, 102, 255, 0.22); }
+
+/* ---------------------------------------------------------------------------
+   RESPONSIVE HELPERS
+--------------------------------------------------------------------------- */
+
+/* SVG diagrams scale to their container and keep their aspect ratio */
+.diagram-frame svg { display: block; width: 100%; height: auto; max-width: 100%; }
+
+/* Keep long code / tables from pushing the page sideways on phones */
+.code-block, .overflow-x-auto { -webkit-overflow-scrolling: touch; }
+
+/* iOS zooms in when a form control smaller than 16px is focused — avoid that */
+@media (max-width: 639px) {
+  .input, input, select, textarea { font-size: 16px; }
+}
+
+/* Respect the home-indicator area on notched phones */
+.safe-bottom { padding-bottom: max(0px, env(safe-area-inset-bottom)); }
+
+/* Larger, easier tap targets on touch devices */
+@media (hover: none) {
+  .navlink { padding-top: 0.7rem; padding-bottom: 0.7rem; }
+}

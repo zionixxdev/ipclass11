@@ -1,0 +1,668 @@
+{
+  "ch3-introduction": [
+    {
+      "code": "print(\"Hello, World!\")\nprint(\"Welcome to Python programming.\")",
+      "output": "Hello, World!\nWelcome to Python programming.\n",
+      "explanation": "Python runs the statements one after another. Each print() call displays a line of text on the screen."
+    },
+    {
+      "code": "print(2 + 3)\nprint(10 - 4)\nprint(6 * 7)\nprint(20 / 5)",
+      "output": "5\n6\n42\n4.0\n",
+      "explanation": "Python can be used as a calculator. Note that the division operator / always gives a float result."
+    },
+    {
+      "code": "# This is a comment\nprint(\"Comments are ignored by Python\")",
+      "output": "Comments are ignored by Python\n",
+      "explanation": "A line starting with # is a comment. Python ignores comments when running the program."
+    }
+  ],
+  "ch3-installation": [
+    {
+      "code": "print(\"Python installed successfully!\")\nprint(\"Ready to write your first program.\")",
+      "output": "Python installed successfully!\nReady to write your first program.\n",
+      "explanation": "Once Python is installed you can save code in a .py file and run it from the command prompt or an IDE."
+    },
+    {
+      "code": "# First command after installation\nprint(4 + 6)\nprint(\"Python works!\")",
+      "output": "10\nPython works!\n",
+      "explanation": "This small program confirms that your Python installation is working correctly."
+    }
+  ],
+  "ch3-working": [
+    {
+      "code": "print(\"Line 1\")\nprint(\"Line 2\")\nprint(\"Line 3\")",
+      "output": "Line 1\nLine 2\nLine 3\n",
+      "explanation": "The interpreter reads and executes each statement from top to bottom, in the order written."
+    },
+    {
+      "code": "print(10)\nprint(20)\nprint(10 + 20)",
+      "output": "10\n20\n30\n",
+      "explanation": "Python first evaluates the expression 10 + 20 and then displays its result."
+    },
+    {
+      "code": "print(\"Sum is\", 3 + 4)",
+      "output": "Sum is 7\n",
+      "explanation": "A print() call can show text and a computed value together, separated by a space by default."
+    }
+  ],
+  "ch3-hello-world": [
+    {
+      "code": "print(\"Hello, World!\")",
+      "output": "Hello, World!\n",
+      "explanation": "The classic first program. It simply prints a line of text to the screen."
+    },
+    {
+      "code": "print(\"Hello World\")\nprint(\"Hello\", \"World\")",
+      "output": "Hello World\nHello World\n",
+      "explanation": "When two strings are written separately, print() puts a space between them automatically."
+    },
+    {
+      "code": "name = \"Aditya\"\nprint(\"Hello, \" + name)",
+      "output": "Hello, Aditya\n",
+      "explanation": "The + operator joins (concatenates) two strings into one before it is printed."
+    }
+  ],
+  "ch4-character-set": [
+    {
+      "code": "print(\"Letters:\", \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\")\nprint(\"Digits:\", \"0123456789\")",
+      "output": "Letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ\nDigits: 0123456789\n",
+      "explanation": "Python programs are written using letters and digits. Strings let you print such character sets easily."
+    },
+    {
+      "code": "print(\"Special characters:\", \"@\", \"#\", \"$\", \"%\", \"&\", \"*\")",
+      "output": "Special characters: @ # $ % & *\n",
+      "explanation": "The Python character set also includes special symbols used in programs and in text output."
+    }
+  ],
+  "ch4-tokens": [
+    {
+      "code": "print(100)\nprint(3.14)\nprint(\"Python\")\nprint(True)",
+      "output": "100\n3.14\nPython\nTrue\n",
+      "explanation": "Literals are the smallest tokens that hold a fixed value: integers, floats, strings and booleans."
+    },
+    {
+      "code": "student_name = \"Riya\"\nmarks = 92\nprint(student_name, \"scored\", marks)",
+      "output": "Riya scored 92\n",
+      "explanation": "Identifiers are the names you give to variables. They must start with a letter or underscore."
+    },
+    {
+      "code": "print(7 + 3)\nprint(7 > 3)\nprint(True and False)",
+      "output": "10\nTrue\nFalse\n",
+      "explanation": "Operators are tokens that tell Python to perform an action, such as arithmetic or comparison."
+    },
+    {
+      "code": "numbers = [1, 2, 3]\nprint(numbers)",
+      "output": "[1, 2, 3]\n",
+      "explanation": "Punctuators such as [ ] , are symbols that help structure the code; here they build a list."
+    }
+  ],
+  "ch4-variables": [
+    {
+      "code": "x = 10\nprint(x)",
+      "output": "10\n",
+      "explanation": "A variable is created the moment you assign a value to it using the = operator."
+    },
+    {
+      "code": "count = 1\ncount = count + 1\nprint(count)",
+      "output": "2\n",
+      "explanation": "The right-hand side is evaluated first, then stored back into the variable. So count becomes 2."
+    },
+    {
+      "code": "a, b = 5, 7\nprint(a)\nprint(b)",
+      "output": "5\n7\n",
+      "explanation": "Python lets you assign values to several variables in a single statement."
+    },
+    {
+      "code": "a = 1\nb = 2\na, b = b, a\nprint(\"a =\", a)\nprint(\"b =\", b)",
+      "output": "a = 2\nb = 1\n",
+      "explanation": "Multiple assignment makes it easy to swap the values of two variables without a third variable."
+    }
+  ],
+  "ch4-input-output": [
+    {
+      "code": "name = input(\"Enter your name: \")\nprint(\"Hello\", name)",
+      "output": "Enter your name: Aditya\nHello Aditya\n",
+      "explanation": "input() reads text typed by the user as a string. The text inside the brackets is the prompt shown."
+    },
+    {
+      "code": "a = int(input(\"Enter first number: \"))\nb = int(input(\"Enter second number: \"))\nprint(\"Sum is\", a + b)",
+      "output": "Enter first number: 12\nEnter second number: 8\nSum is 20\n",
+      "explanation": "input() returns a string, so int() is used to convert it to a number before adding."
+    },
+    {
+      "code": "price = float(input(\"Enter price: \"))\nprint(\"Price with tax:\", price + price * 0.05)",
+      "output": "Enter price: 200\nPrice with tax: 210.0\n",
+      "explanation": "float() converts the typed text into a decimal number. A 5% tax is added to the price."
+    },
+    {
+      "code": "print(\"apple\", \"banana\", \"cherry\", sep=\", \")\nprint(\"End of line\", end=\" | \")\nprint(\"continues here\")",
+      "output": "apple, banana, cherry\nEnd of line | continues here\n",
+      "explanation": "sep changes the separator between values, and end changes what is printed at the end of the line."
+    },
+    {
+      "code": "x = input(\"Type anything: \")\nprint(\"You typed:\", x)",
+      "output": "Type anything: Python\nYou typed: Python\n",
+      "explanation": "Whatever the user types is stored in the variable x and then printed back on the screen."
+    }
+  ],
+  "ch4-structure": [
+    {
+      "code": "print(\"Statement 1\")\nprint(\"Statement 2\")\nprint(\"Statement 3\")",
+      "output": "Statement 1\nStatement 2\nStatement 3\n",
+      "explanation": "A Python program is a sequence of statements, each written on its own line."
+    },
+    {
+      "code": "x = 10\nif x > 5:\n    print(\"x is greater than 5\")",
+      "output": "x is greater than 5\n",
+      "explanation": "The indented line forms a block that belongs to the if statement. Indentation defines blocks in Python."
+    },
+    {
+      "code": "# Program with comments\nmarks = 75\nprint(\"Marks:\", marks)",
+      "output": "Marks: 75\n",
+      "explanation": "A well-structured program uses comments to explain the code and keeps statements neat and readable."
+    }
+  ],
+  "ch5-data-types": [
+    {
+      "code": "a = 10\nprint(type(a))",
+      "output": "<class 'int'>\n",
+      "explanation": "10 is an integer (int). The type() function tells you the data type of a value."
+    },
+    {
+      "code": "b = 3.5\nprint(type(b))",
+      "output": "<class 'float'>\n",
+      "explanation": "A number with a decimal point is a float."
+    },
+    {
+      "code": "c = \"Hello\"\nprint(type(c))",
+      "output": "<class 'str'>\n",
+      "explanation": "Text enclosed in quotes is a string (str)."
+    },
+    {
+      "code": "d = True\nprint(type(d))",
+      "output": "<class 'bool'>\n",
+      "explanation": "True and False are boolean (bool) values used in conditions."
+    },
+    {
+      "code": "print(type(25))\nprint(type(25.0))\nprint(type(\"25\"))",
+      "output": "<class 'int'>\n<class 'float'>\n<class 'str'>\n",
+      "explanation": "The same-looking value can have different types: 25 is int, 25.0 is float and \"25\" is str."
+    }
+  ],
+  "ch5-operators": [
+    {
+      "code": "a = 9\nb = 2\nprint(a + b)\nprint(a - b)\nprint(a * b)\nprint(a / b)",
+      "output": "11\n7\n18\n4.5\n",
+      "explanation": "The arithmetic operators +, -, * and / perform addition, subtraction, multiplication and division."
+    },
+    {
+      "code": "a = 9\nb = 2\nprint(a // b)\nprint(a % b)\nprint(a ** b)",
+      "output": "4\n1\n81\n",
+      "explanation": "// gives the quotient without remainder, % gives the remainder, and ** raises to a power."
+    },
+    {
+      "code": "print(5 > 3)\nprint(5 < 3)\nprint(5 == 5)\nprint(5 != 5)",
+      "output": "True\nFalse\nTrue\nFalse\n",
+      "explanation": "Relational operators compare two values and always give a boolean (True or False) result."
+    },
+    {
+      "code": "print(True and False)\nprint(True or False)\nprint(not True)",
+      "output": "False\nTrue\nFalse\n",
+      "explanation": "Logical operators and, or and not combine boolean values."
+    },
+    {
+      "code": "x = 10\nx += 5\nprint(x)\nx *= 2\nprint(x)",
+      "output": "15\n30\n",
+      "explanation": "Augmented assignment operators like += and *= update a variable using its current value."
+    },
+    {
+      "code": "print(2 + 3 * 4)\nprint((2 + 3) * 4)",
+      "output": "14\n20\n",
+      "explanation": "Multiplication has higher precedence than addition; brackets change the order of evaluation."
+    }
+  ],
+  "ch5-type-conversion": [
+    {
+      "code": "s = \"25\"\nn = int(s)\nprint(n)\nprint(type(n))",
+      "output": "25\n<class 'int'>\n",
+      "explanation": "int() converts a string of digits into an integer."
+    },
+    {
+      "code": "f = float(\"3.5\")\nprint(f)\nprint(type(f))",
+      "output": "3.5\n<class 'float'>\n",
+      "explanation": "float() converts a string into a decimal number."
+    },
+    {
+      "code": "n = 100\ns = str(n)\nprint(s + \" is a string now\")\nprint(type(s))",
+      "output": "100 is a string now\n<class 'str'>\n",
+      "explanation": "str() converts a number into a string so that it can be joined with other text."
+    },
+    {
+      "code": "print(int(3.9))\nprint(int(True))\nprint(float(5))",
+      "output": "3\n1\n5.0\n",
+      "explanation": "int() cuts off the decimal part, True becomes 1, and float() turns an integer into a decimal."
+    }
+  ],
+  "ch5-expressions": [
+    {
+      "code": "print(15 + 4 * 3)",
+      "output": "27\n",
+      "explanation": "An expression is evaluated following operator precedence: * is done before +."
+    },
+    {
+      "code": "print((15 + 4) * 3)",
+      "output": "57\n",
+      "explanation": "Brackets force the addition to be done before the multiplication."
+    },
+    {
+      "code": "print(10 > 5 and 3 < 8)",
+      "output": "True\n",
+      "explanation": "This expression combines two comparisons with and; both are True so the result is True."
+    },
+    {
+      "code": "x = 4\ny = 3\nprint(x ** 2 + y ** 2)",
+      "output": "25\n",
+      "explanation": "The expression uses powers and addition to compute 16 + 9."
+    },
+    {
+      "code": "print(20 % 6 + 20 // 6)",
+      "output": "5\n",
+      "explanation": "The remainder (20 % 6) and the quotient (20 // 6) are computed first, then added."
+    }
+  ],
+  "ch6-control-structures": [
+    {
+      "code": "print(\"Step 1\")\nprint(\"Step 2\")\nprint(\"Step 3\")",
+      "output": "Step 1\nStep 2\nStep 3\n",
+      "explanation": "A sequence runs statements one after another with no decision or repetition."
+    },
+    {
+      "code": "marks = 80\nif marks >= 40:\n    print(\"Pass\")",
+      "output": "Pass\n",
+      "explanation": "Selection uses a condition to decide whether a block of code should run."
+    },
+    {
+      "code": "for i in range(3):\n    print(\"Repeat\", i)",
+      "output": "Repeat 0\nRepeat 1\nRepeat 2\n",
+      "explanation": "Iteration repeats a block of code a number of times using a loop."
+    }
+  ],
+  "ch6-sequence": [
+    {
+      "code": "print(\"Start\")\nprint(\"Middle\")\nprint(\"End\")",
+      "output": "Start\nMiddle\nEnd\n",
+      "explanation": "In a sequence, statements execute in exactly the order in which they are written."
+    },
+    {
+      "code": "length = 5\nbreadth = 3\narea = length * breadth\nprint(\"Area =\", area)",
+      "output": "Area = 15\n",
+      "explanation": "The values are computed step by step and the final result is displayed."
+    }
+  ],
+  "ch6-selection": [
+    {
+      "code": "age = 20\nif age >= 18:\n    print(\"You can vote\")",
+      "output": "You can vote\n",
+      "explanation": "A simple if runs its block only when the condition is True."
+    },
+    {
+      "code": "n = 7\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")",
+      "output": "Odd\n",
+      "explanation": "if-else chooses between two blocks: one when the condition is True and the other when it is False."
+    },
+    {
+      "code": "marks = 78\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 75:\n    print(\"Grade B\")\nelif marks >= 60:\n    print(\"Grade C\")\nelse:\n    print(\"Grade D\")",
+      "output": "Grade B\n",
+      "explanation": "if-elif-else checks several conditions in order and runs the first block whose condition is True."
+    },
+    {
+      "code": "a = 10\nif a > 0:\n    if a % 2 == 0:\n        print(\"Positive and even\")",
+      "output": "Positive and even\n",
+      "explanation": "An if statement can be placed inside another if. This is called nesting."
+    },
+    {
+      "code": "marks = int(input(\"Enter marks: \"))\nif marks >= 40:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+      "output": "Enter marks: 55\nPass\n",
+      "explanation": "The marks are read from the user and converted to an integer, then compared with the passing mark."
+    },
+    {
+      "code": "age = 25\nhas_id = True\nif age >= 18 and has_id:\n    print(\"Entry allowed\")",
+      "output": "Entry allowed\n",
+      "explanation": "The and operator lets a condition depend on two things being true at the same time."
+    }
+  ],
+  "ch6-iteration": [
+    {
+      "code": "for i in range(5):\n    print(i)",
+      "output": "0\n1\n2\n3\n4\n",
+      "explanation": "range(5) produces the numbers 0, 1, 2, 3, 4. The loop body runs once for each value."
+    },
+    {
+      "code": "for i in range(1, 6):\n    print(i)",
+      "output": "1\n2\n3\n4\n5\n",
+      "explanation": "range(1, 6) produces numbers from 1 up to but not including 6."
+    },
+    {
+      "code": "for i in range(2, 11, 2):\n    print(i)",
+      "output": "2\n4\n6\n8\n10\n",
+      "explanation": "The third value in range() is the step, so this prints even numbers from 2 to 10."
+    },
+    {
+      "code": "i = 1\nwhile i <= 5:\n    print(i)\n    i = i + 1",
+      "output": "1\n2\n3\n4\n5\n",
+      "explanation": "A while loop repeats as long as its condition stays True. The counter must be updated to stop it."
+    },
+    {
+      "code": "n = 5\ntotal = 0\nfor i in range(1, n + 1):\n    total = total + i\nprint(\"Sum =\", total)",
+      "output": "Sum = 15\n",
+      "explanation": "This loop adds the numbers 1 to 5 into total using an accumulator variable."
+    },
+    {
+      "code": "for i in range(1, 10):\n    if i == 4:\n        break\n    print(i)",
+      "output": "1\n2\n3\n",
+      "explanation": "break stops the loop completely as soon as the condition becomes true."
+    },
+    {
+      "code": "for i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)",
+      "output": "1\n2\n4\n5\n",
+      "explanation": "continue skips the rest of the current iteration and moves on to the next one."
+    },
+    {
+      "code": "for i in range(1, 4):\n    for j in range(1, 3):\n        print(i, j)",
+      "output": "1 1\n1 2\n2 1\n2 2\n3 1\n3 2\n",
+      "explanation": "A loop inside another loop is a nested loop; the inner loop finishes fully for each outer value."
+    }
+  ],
+  "ch6-programs": [
+    {
+      "code": "n = int(input(\"Enter n: \"))\ntotal = 0\nfor i in range(1, n + 1):\n    total = total + i\nprint(\"Sum =\", total)",
+      "output": "Enter n: 5\nSum = 15\n",
+      "explanation": "Reads n from the user and adds all numbers from 1 to n."
+    },
+    {
+      "code": "n = int(input(\"Enter a number: \"))\nfact = 1\nfor i in range(1, n + 1):\n    fact = fact * i\nprint(\"Factorial =\", fact)",
+      "output": "Enter a number: 5\nFactorial = 120\n",
+      "explanation": "Computes the factorial of n by multiplying the numbers 1 to n."
+    },
+    {
+      "code": "n = int(input(\"Enter a number: \"))\nfor i in range(1, 11):\n    print(n, \"x\", i, \"=\", n * i)",
+      "output": "Enter a number: 3\n3 x 1 = 3\n3 x 2 = 6\n3 x 3 = 9\n3 x 4 = 12\n3 x 5 = 15\n3 x 6 = 18\n3 x 7 = 21\n3 x 8 = 24\n3 x 9 = 27\n3 x 10 = 30\n",
+      "explanation": "Prints the multiplication table of n from 1 to 10."
+    },
+    {
+      "code": "a = int(input(\"Enter first: \"))\nb = int(input(\"Enter second: \"))\nc = int(input(\"Enter third: \"))\nif a >= b and a >= c:\n    print(\"Largest is\", a)\nelif b >= c:\n    print(\"Largest is\", b)\nelse:\n    print(\"Largest is\", c)",
+      "output": "Enter first: 10\nEnter second: 25\nEnter third: 17\nLargest is 25\n",
+      "explanation": "Reads three numbers and finds the largest using nested conditions."
+    },
+    {
+      "code": "n = int(input(\"How many numbers? \"))\neven = 0\nfor i in range(n):\n    x = int(input(\"Enter a number: \"))\n    if x % 2 == 0:\n        even = even + 1\nprint(\"Even count =\", even)",
+      "output": "How many numbers? 4\nEnter a number: 2\nEnter a number: 7\nEnter a number: 8\nEnter a number: 5\nEven count = 2\n",
+      "explanation": "Reads n numbers and counts how many of them are even."
+    },
+    {
+      "code": "n = int(input(\"Enter a number: \"))\nrev = 0\nwhile n > 0:\n    rev = rev * 10 + n % 10\n    n = n // 10\nprint(\"Reversed =\", rev)",
+      "output": "Enter a number: 1234\nReversed = 4321\n",
+      "explanation": "Reverses the digits of a number using a while loop and the % and // operators."
+    }
+  ],
+  "ch7-error-messages": [
+    {
+      "code": "# print(marks) before marks is defined\nprint(\"NameError: name 'marks' is not defined\")",
+      "output": "NameError: name 'marks' is not defined\n",
+      "explanation": "A NameError appears when you use a variable that has not been defined yet."
+    },
+    {
+      "code": "# print(10 / 0)\nprint(\"ZeroDivisionError: division by zero\")",
+      "output": "ZeroDivisionError: division by zero\n",
+      "explanation": "A ZeroDivisionError appears when a number is divided by zero."
+    },
+    {
+      "code": "# print(int(\"abc\"))\nprint(\"ValueError: invalid literal for int() with base 10: 'abc'\")",
+      "output": "ValueError: invalid literal for int() with base 10: 'abc'\n",
+      "explanation": "A ValueError appears when a value cannot be converted to the requested type."
+    },
+    {
+      "code": "# if x > 5  (missing colon)\nprint(\"SyntaxError: expected ':'\")",
+      "output": "SyntaxError: expected ':'\n",
+      "explanation": "A SyntaxError appears when the code does not follow Python's rules, such as a missing colon."
+    }
+  ],
+  "ch7-exceptions": [
+    {
+      "code": "# 10 / 0 causes this\nprint(\"ZeroDivisionError: division by zero\")",
+      "output": "ZeroDivisionError: division by zero\n",
+      "explanation": "An exception is an error that stops the program while it is running."
+    },
+    {
+      "code": "# int(\"hello\") causes this\nprint(\"ValueError: invalid literal for int() with base 10: 'hello'\")",
+      "output": "ValueError: invalid literal for int() with base 10: 'hello'\n",
+      "explanation": "ValueError is raised when the type is right but the value cannot be converted."
+    },
+    {
+      "code": "# numbers[5] on a 3-item list causes this\nprint(\"IndexError: list index out of range\")",
+      "output": "IndexError: list index out of range\n",
+      "explanation": "IndexError is raised when you ask for an index that does not exist in a list."
+    },
+    {
+      "code": "# \"5\" + 5 causes this\nprint(\"TypeError: can only concatenate str (not \\\"int\\\") to str\")",
+      "output": "TypeError: can only concatenate str (not \"int\") to str\n",
+      "explanation": "TypeError is raised when an operation is applied to the wrong type of value."
+    },
+    {
+      "code": "# printing an undefined variable causes this\nprint(\"NameError: name 'total' is not defined\")",
+      "output": "NameError: name 'total' is not defined\n",
+      "explanation": "NameError is raised when the program uses a name that has not been defined."
+    }
+  ],
+  "ch7-builtin-exceptions": [
+    {
+      "code": "# print(score) where score was never assigned\nprint(\"NameError: name 'score' is not defined\")",
+      "output": "NameError: name 'score' is not defined\n",
+      "explanation": "NameError is a built-in exception raised for an undefined variable."
+    },
+    {
+      "code": "# 5 + \"five\" causes this\nprint(\"TypeError: unsupported operand type(s) for +: 'int' and 'str'\")",
+      "output": "TypeError: unsupported operand type(s) for +: 'int' and 'str'\n",
+      "explanation": "TypeError is a built-in exception raised for incompatible data types."
+    },
+    {
+      "code": "# int(\"3.5a\") causes this\nprint(\"ValueError: invalid literal for int() with base 10: '3.5a'\")",
+      "output": "ValueError: invalid literal for int() with base 10: '3.5a'\n",
+      "explanation": "ValueError is a built-in exception raised when a conversion fails."
+    },
+    {
+      "code": "# 8 % 0 causes this\nprint(\"ZeroDivisionError: integer division or modulo by zero\")",
+      "output": "ZeroDivisionError: integer division or modulo by zero\n",
+      "explanation": "ZeroDivisionError is a built-in exception raised for division or modulo by zero."
+    },
+    {
+      "code": "# fruits[9] on a 2-item list causes this\nprint(\"IndexError: list index out of range\")",
+      "output": "IndexError: list index out of range\n",
+      "explanation": "IndexError is a built-in exception raised for an invalid list index."
+    }
+  ],
+  "ch8-creating-lists": [
+    {
+      "code": "numbers = [10, 20, 30, 40]\nprint(numbers)",
+      "output": "[10, 20, 30, 40]\n",
+      "explanation": "A list is created by writing values separated by commas inside square brackets."
+    },
+    {
+      "code": "mixed = [1, \"two\", 3.0, True]\nprint(mixed)",
+      "output": "[1, 'two', 3.0, True]\n",
+      "explanation": "A list can hold values of different data types in the same list."
+    },
+    {
+      "code": "zeros = [0] * 5\nprint(zeros)",
+      "output": "[0, 0, 0, 0, 0]\n",
+      "explanation": "The * operator can repeat a list, so [0] * 5 creates a list of five zeros."
+    }
+  ],
+  "ch8-accessing": [
+    {
+      "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])",
+      "output": "apple\n",
+      "explanation": "List indexing starts at 0, so fruits[0] gives the first element."
+    },
+    {
+      "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[2])",
+      "output": "cherry\n",
+      "explanation": "fruits[2] gives the third element of the list."
+    },
+    {
+      "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[-1])",
+      "output": "cherry\n",
+      "explanation": "A negative index counts from the end, so -1 gives the last element."
+    },
+    {
+      "code": "numbers = [10, 20, 30, 40, 50]\nprint(numbers[1:4])",
+      "output": "[20, 30, 40]\n",
+      "explanation": "A slice [1:4] gives the elements from index 1 up to but not including index 4."
+    },
+    {
+      "code": "numbers = [10, 20, 30, 40, 50]\nprint(numbers[::2])",
+      "output": "[10, 30, 50]\n",
+      "explanation": "The step value 2 in a slice picks every second element of the list."
+    }
+  ],
+  "ch8-traversing": [
+    {
+      "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)",
+      "output": "apple\nbanana\ncherry\n",
+      "explanation": "A for loop can go through a list directly, taking one element at a time."
+    },
+    {
+      "code": "numbers = [10, 20, 30]\nfor i in range(len(numbers)):\n    print(i, numbers[i])",
+      "output": "0 10\n1 20\n2 30\n",
+      "explanation": "Using range(len(list)) gives both the index and, through it, the element."
+    },
+    {
+      "code": "numbers = [10, 20, 30]\ni = 0\nwhile i < len(numbers):\n    print(numbers[i])\n    i = i + 1",
+      "output": "10\n20\n30\n",
+      "explanation": "A while loop can traverse a list by using an index that increases each time."
+    },
+    {
+      "code": "numbers = [5, 10, 15]\ntotal = 0\nfor n in numbers:\n    total = total + n\nprint(\"Sum =\", total)",
+      "output": "Sum = 30\n",
+      "explanation": "Traversing a list with a loop makes it easy to add up all its elements."
+    },
+    {
+      "code": "numbers = [3, 9, 1, 7]\nlargest = numbers[0]\nfor n in numbers:\n    if n > largest:\n        largest = n\nprint(\"Largest =\", largest)",
+      "output": "Largest = 9\n",
+      "explanation": "The loop compares each element with the current largest and updates it when needed."
+    }
+  ],
+  "ch8-operators": [
+    {
+      "code": "a = [1, 2]\nb = [3, 4]\nprint(a + b)",
+      "output": "[1, 2, 3, 4]\n",
+      "explanation": "The + operator joins two lists into a single new list."
+    },
+    {
+      "code": "a = [0] * 3\nprint(a)",
+      "output": "[0, 0, 0]\n",
+      "explanation": "The * operator repeats a list a given number of times."
+    },
+    {
+      "code": "fruits = [\"apple\", \"banana\"]\nprint(\"apple\" in fruits)\nprint(\"mango\" in fruits)",
+      "output": "True\nFalse\n",
+      "explanation": "The in operator checks whether an element is present in a list and gives True or False."
+    },
+    {
+      "code": "print([1, 2] == [1, 2])\nprint([1, 2] == [2, 1])",
+      "output": "True\nFalse\n",
+      "explanation": "The == operator compares two lists element by element, including their order."
+    }
+  ],
+  "ch8-operations": [
+    {
+      "code": "numbers = [10, 20]\nnumbers.append(30)\nprint(numbers)",
+      "output": "[10, 20, 30]\n",
+      "explanation": "append() adds a new element at the end of the list."
+    },
+    {
+      "code": "numbers = [10, 30]\nnumbers.insert(1, 20)\nprint(numbers)",
+      "output": "[10, 20, 30]\n",
+      "explanation": "insert() adds an element at a given position, pushing the rest to the right."
+    },
+    {
+      "code": "numbers = [10, 20, 30]\nnumbers.remove(20)\nprint(numbers)",
+      "output": "[10, 30]\n",
+      "explanation": "remove() deletes the first occurrence of the given value from the list."
+    },
+    {
+      "code": "numbers = [10, 20, 30]\nnumbers.pop()\nprint(numbers)",
+      "output": "[10, 20]\n",
+      "explanation": "pop() removes and returns the last element of the list."
+    },
+    {
+      "code": "numbers = [30, 10, 20]\nnumbers.sort()\nprint(numbers)",
+      "output": "[10, 20, 30]\n",
+      "explanation": "sort() arranges the elements of the list in ascending order."
+    },
+    {
+      "code": "numbers = [10, 20, 30]\nnumbers.reverse()\nprint(numbers)",
+      "output": "[30, 20, 10]\n",
+      "explanation": "reverse() changes the order of the elements so that the list is reversed."
+    }
+  ],
+  "ch8-builtin-functions": [
+    {
+      "code": "numbers = [10, 20, 30, 40]\nprint(len(numbers))",
+      "output": "4\n",
+      "explanation": "len() returns the number of elements in a list."
+    },
+    {
+      "code": "numbers = [10, 45, 20]\nprint(max(numbers))",
+      "output": "45\n",
+      "explanation": "max() returns the largest element in a list."
+    },
+    {
+      "code": "numbers = [10, 45, 20]\nprint(min(numbers))",
+      "output": "10\n",
+      "explanation": "min() returns the smallest element in a list."
+    },
+    {
+      "code": "numbers = [10, 20, 30]\nprint(sum(numbers))",
+      "output": "60\n",
+      "explanation": "sum() returns the total of all the numbers in a list."
+    },
+    {
+      "code": "numbers = [30, 10, 20]\nprint(sorted(numbers))",
+      "output": "[10, 20, 30]\n",
+      "explanation": "sorted() returns a new list with the elements arranged in ascending order."
+    }
+  ],
+  "ch8-programs": [
+    {
+      "code": "numbers = [10, 20, 30, 40]\ntotal = 0\nfor n in numbers:\n    total = total + n\nprint(\"Sum =\", total)\nprint(\"Average =\", total / len(numbers))",
+      "output": "Sum = 100\nAverage = 25.0\n",
+      "explanation": "Finds the sum of all list elements and then divides it by the count to get the average."
+    },
+    {
+      "code": "numbers = [12, 45, 7, 30]\nlargest = numbers[0]\nfor n in numbers:\n    if n > largest:\n        largest = n\nprint(\"Largest =\", largest)",
+      "output": "Largest = 45\n",
+      "explanation": "Finds the largest element in a list by comparing each element with the current largest."
+    },
+    {
+      "code": "numbers = [3, 8, 12, 7, 10]\ncount = 0\nfor n in numbers:\n    if n % 2 == 0:\n        count = count + 1\nprint(\"Even numbers =\", count)",
+      "output": "Even numbers = 3\n",
+      "explanation": "Counts how many elements in the list are even numbers."
+    },
+    {
+      "code": "numbers = [10, 20, 30]\nrev = []\nfor i in range(len(numbers) - 1, -1, -1):\n    rev = rev + [numbers[i]]\nprint(rev)",
+      "output": "[30, 20, 10]\n",
+      "explanation": "Builds a reversed copy of the list by reading it from the last index back to the first."
+    },
+    {
+      "code": "numbers = [10, 20, 30]\nkey = 20\nfound = False\nfor n in numbers:\n    if n == key:\n        found = True\nprint(\"Found:\", found)",
+      "output": "Found: True\n",
+      "explanation": "Searches for a value in the list and reports whether it was found."
+    },
+    {
+      "code": "numbers = [12, 45, 7, 30]\nlargest = numbers[0]\nsecond = numbers[0]\nfor n in numbers:\n    if n > largest:\n        second = largest\n        largest = n\n    elif n > second and n != largest:\n        second = n\nprint(\"Second largest =\", second)",
+      "output": "Second largest = 30\n",
+      "explanation": "Finds the second largest element by tracking both the largest and the runner-up."
+    }
+  ]
+}

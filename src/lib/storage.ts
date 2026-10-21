@@ -1,5 +1,11 @@
 import type { ProgressState, Settings } from '../data/types';
 
+/** Hand-off keys: lets the Python Examples page open a program in the Python Lab. */
+export const LAB_CODE_KEY = 'ipprep11.labCode';
+export const LAB_STDIN_KEY = 'ipprep11.labStdin';
+
+export const ONBOARD_KEY = 'ipprep11.onboarded';
+
 export const PROGRESS_KEY = 'ipprep11.progress.v1';
 const KEY = PROGRESS_KEY;
 // Progress saved under the app's earlier name is still read, so anyone who used

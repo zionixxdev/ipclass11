@@ -4,7 +4,9 @@ A complete, functional, responsive web application for Class 11 Informatics
 Practices (IP) exam preparation. It covers the full eight-chapter syllabus
 with structured learning content, a large tagged question bank, a smart practice
 engine, CBSE-style mock tests, a Python lab with real in-browser execution, a
-revision centre and local progress analytics.
+revision centre and local progress analytics. Every topic opens with its own
+inline SVG diagram, and a library of 97 CBSE-style Python example programs is
+one tap away from the Python Lab.
 
 **🔗 Live site: https://zionixxdev.github.io/ipclass11/**
 
@@ -129,6 +131,15 @@ Includes sample programs, a stdin area, an output console, step-by-step notes an
 a static study fallback for when the runtime cannot load. The console only ever
 shows output after code has actually run — nothing is simulated.
 
+### Python Examples
+
+A library of **97 CBSE-style programs** grouped into nine categories (basics &
+I/O, operators, conditionals, loops, nested-loop patterns, strings, lists, errors
+and mixed exam-style). Each card shows the question, the code, the sample input,
+the exact output and an explanation — plus a **Run in Lab** button that loads the
+program straight into the Python Lab. Every program's output was verified by
+actually executing it.
+
 ### Revision centre
 
 Chapter notes, a definitions notebook, all difference tables, a Python cheat
@@ -181,8 +192,18 @@ match the syllabus. They are clearly practice material and are **not** official
 CBSE questions or exam predictions. Long-answer mark allocations are configurable
 and labelled as practice guidance rather than an official marking scheme.
 
+## Student-friendly touches
+
+A four-step welcome tour appears on first visit, the Dashboard carries a
+"Getting started" checklist that ticks itself off as you work, and the **Help**
+page explains every section, suggests a 12-day study plan, and collects exam-hall
+tips and FAQs. Hinglish explanations can be toggled in Settings.
+
 ## Accessibility & responsiveness
 
 Mobile-first layout with a sidebar on desktop and a bottom navigation bar plus a
-"More" sheet on phones, light and dark themes, comfortable touch targets and
-readable contrast throughout.
+"More" sheet on phones. Light and dark themes, both with contrast checked to
+WCAG AA (every text/background pair is at least 4.5:1). Diagrams are inline SVG
+that scale to any width, form controls use a 16px font on phones so iOS does not
+zoom on focus, the bottom bar respects the home-indicator safe area, and the
+examples library loads a page at a time so it stays fast on low-end phones.

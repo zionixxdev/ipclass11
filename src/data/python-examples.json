@@ -1,0 +1,1514 @@
+{
+  "categories": [
+    {
+      "id": "basics",
+      "title": "Basics & Input / Output",
+      "description": "First steps: printing text, reading input, converting types and combining values.",
+      "examples": [
+        {
+          "id": "ex-basics-01",
+          "title": "Print a greeting",
+          "question": "Write a program to print a greeting message.",
+          "code": "print(\"Hello, World!\")",
+          "input": "",
+          "output": "Hello, World!",
+          "explanation": "print() displays whatever is placed inside the parentheses on the screen. Here a string literal (text inside quotes) is passed to print(). Strings can use either single or double quotes in Python.",
+          "concepts": [
+            "print()",
+            "strings"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-basics-02",
+          "title": "Print several items in one line",
+          "question": "Write a program to print the words Python, is and fun in a single line separated by spaces.",
+          "code": "print(\"Python\", \"is\", \"fun\")",
+          "input": "",
+          "output": "Python is fun",
+          "explanation": "print() can take more than one argument separated by commas. By default it places a single space between each argument, so the three words are printed with spaces in between.",
+          "concepts": [
+            "print()",
+            "multiple arguments"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-basics-03",
+          "title": "Print on separate lines",
+          "question": "Write a program to print two lines of text.",
+          "code": "print(\"Line 1\")\nprint(\"Line 2\")",
+          "input": "",
+          "output": "Line 1\nLine 2",
+          "explanation": "Each print() call ends by moving the cursor to a new line. Calling print() twice therefore produces two separate lines of output.",
+          "concepts": [
+            "print()",
+            "newline"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-basics-04",
+          "title": "Greet the user by name",
+          "question": "Write a program that reads a name from the user and prints a greeting.",
+          "code": "name = input()\nprint(\"Hello, \" + name + \"!\")",
+          "input": "Riya",
+          "output": "Hello, Riya!",
+          "explanation": "input() reads a line typed by the user and always returns it as a string. The + operator joins (concatenates) strings, so the greeting text and the name are combined into one message.",
+          "concepts": [
+            "input()",
+            "string concatenation",
+            "variables"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-basics-05",
+          "title": "Sum of two numbers entered by the user",
+          "question": "Write a program to read two integers and print their sum.",
+          "code": "a = int(input())\nb = int(input())\nprint(\"Sum =\", a + b)",
+          "input": "5\n3",
+          "output": "Sum = 8",
+          "explanation": "input() returns text, so int() is used to convert it into a whole number before doing arithmetic. Without int(), the + operator would join the two strings instead of adding them.",
+          "concepts": [
+            "input()",
+            "int()",
+            "arithmetic"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-basics-06",
+          "title": "Find the type of a value",
+          "question": "Write a program to display the data type of different values using type().",
+          "code": "print(type(10))\nprint(type(3.5))\nprint(type(\"text\"))\nprint(type(True))",
+          "input": "",
+          "output": "<class 'int'>\n<class 'float'>\n<class 'str'>\n<class 'bool'>",
+          "explanation": "type() tells you which data type a value belongs to. Python's four basic types shown here are int (whole numbers), float (decimal numbers), str (text) and bool (True or False).",
+          "concepts": [
+            "type()",
+            "data types"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-basics-07",
+          "title": "Print the square of a number",
+          "question": "Write a program to read a number and print its square.",
+          "code": "n = int(input())\nprint(\"Square =\", n * n)",
+          "input": "7",
+          "output": "Square = 49",
+          "explanation": "The number is read and converted to an integer, then multiplied by itself to get the square. print() with a comma prints the label and the result separated by a space.",
+          "concepts": [
+            "input()",
+            "int()",
+            "arithmetic"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-basics-08",
+          "title": "Display a name and age",
+          "question": "Write a program that reads a name and an age and prints them in a sentence.",
+          "code": "name = input()\nage = input()\nprint(name + \" is \" + age + \" years old.\")",
+          "input": "Aman\n16",
+          "output": "Aman is 16 years old.",
+          "explanation": "Both inputs are read as strings. Because no arithmetic is needed, they can be joined directly with the + operator to form a complete sentence.",
+          "concepts": [
+            "input()",
+            "string concatenation"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-basics-09",
+          "title": "Print a value using sep and end",
+          "question": "Write a program that prints items separated by a hyphen and ends without a newline.",
+          "code": "print(\"2024\", \"10\", \"21\", sep=\"-\")\nprint(\"End\", end=\"!\")\nprint(\" Done\")",
+          "input": "",
+          "output": "2024-10-21\nEnd! Done",
+          "explanation": "The sep argument changes the text placed between printed items, and the end argument changes what is printed after the last item. Setting end=\"!\" stops print() from adding a newline, so the next print continues on the same line.",
+          "concepts": [
+            "print()",
+            "sep",
+            "end"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-basics-10",
+          "title": "Read a decimal number and double it",
+          "question": "Write a program to read a decimal number and print twice its value.",
+          "code": "x = float(input())\nprint(\"Double =\", 2 * x)",
+          "input": "4.5",
+          "output": "Double = 9.0",
+          "explanation": "float() converts the typed text into a decimal number. Multiplying by 2 gives a float result, which is why 9 is shown as 9.0.",
+          "concepts": [
+            "float()",
+            "input()",
+            "arithmetic"
+          ],
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "operators",
+      "title": "Operators & Expressions",
+      "description": "Arithmetic, relational, logical and assignment operators used to build expressions.",
+      "examples": [
+        {
+          "id": "ex-operators-01",
+          "title": "All arithmetic operators",
+          "question": "Write a program to demonstrate arithmetic operators on two numbers.",
+          "code": "a = 17\nb = 5\nprint(\"Sum =\", a + b)\nprint(\"Difference =\", a - b)\nprint(\"Product =\", a * b)\nprint(\"Quotient =\", a / b)\nprint(\"Floor division =\", a // b)\nprint(\"Remainder =\", a % b)\nprint(\"Power =\", a ** b)",
+          "input": "",
+          "output": "Sum = 22\nDifference = 12\nProduct = 85\nQuotient = 3.4\nFloor division = 3\nRemainder = 2\nPower = 1419857",
+          "explanation": "This program shows the seven arithmetic operators. Note that / always gives a float, // gives the whole-number part of the division, % gives the remainder, and ** raises a number to a power.",
+          "concepts": [
+            "arithmetic operators",
+            "//",
+            "%",
+            "**"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-operators-02",
+          "title": "Relational operators",
+          "question": "Write a program to demonstrate relational operators and print the boolean results.",
+          "code": "a = 10\nb = 20\nprint(a < b)\nprint(a > b)\nprint(a == b)\nprint(a != b)\nprint(a <= 10)\nprint(b >= 25)",
+          "input": "",
+          "output": "True\nFalse\nFalse\nTrue\nTrue\nFalse",
+          "explanation": "Relational operators compare two values and always produce a boolean (True or False). == checks equality while = is used for assignment, so it is important not to mix them up.",
+          "concepts": [
+            "relational operators",
+            "bool"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-operators-03",
+          "title": "Logical operators",
+          "question": "Write a program to demonstrate the logical operators and, or and not.",
+          "code": "x = 15\nprint(x > 10 and x < 20)\nprint(x > 20 or x > 5)\nprint(not (x == 15))",
+          "input": "",
+          "output": "True\nTrue\nFalse",
+          "explanation": "and is True only when both conditions are True, or is True when at least one is True, and not reverses a boolean value. Logical operators are commonly used to combine comparisons.",
+          "concepts": [
+            "logical operators",
+            "and",
+            "or",
+            "not"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-operators-04",
+          "title": "Assignment operators",
+          "question": "Write a program to demonstrate compound assignment operators.",
+          "code": "x = 10\nx += 5\nprint(x)\nx -= 3\nprint(x)\nx *= 2\nprint(x)\nx //= 4\nprint(x)",
+          "input": "",
+          "output": "15\n12\n24\n6",
+          "explanation": "A compound assignment such as x += 5 is a short form of x = x + 5. The same idea works with -=, *=, //=, %= and **=, and each one updates the value stored in the variable.",
+          "concepts": [
+            "assignment operators",
+            "variables"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-operators-05",
+          "title": "Area of a circle",
+          "question": "Write a program to find the area of a circle given its radius.",
+          "code": "radius = float(input())\narea = 3.14 * radius * radius\nprint(\"Area =\", area)",
+          "input": "10",
+          "output": "Area = 314.0",
+          "explanation": "The area of a circle is pi times the radius squared. Here pi is taken as 3.14, and float() is used so that a decimal radius can also be entered.",
+          "concepts": [
+            "float()",
+            "arithmetic",
+            "formula"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-operators-06",
+          "title": "Simple interest",
+          "question": "Write a program to calculate simple interest given principal, rate and time.",
+          "code": "p = float(input())\nr = float(input())\nt = float(input())\nsi = (p * r * t) / 100\nprint(\"Simple Interest =\", si)",
+          "input": "10000\n5\n2",
+          "output": "Simple Interest = 1000.0",
+          "explanation": "Simple interest is calculated with the formula SI = (P x R x T) / 100. All three inputs are read as floats so that decimal values are handled correctly.",
+          "concepts": [
+            "float()",
+            "arithmetic",
+            "formula"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-operators-07",
+          "title": "Swap two numbers",
+          "question": "Write a program to swap the values of two variables.",
+          "code": "a = int(input())\nb = int(input())\na, b = b, a\nprint(\"a =\", a)\nprint(\"b =\", b)",
+          "input": "5\n8",
+          "output": "a = 8\nb = 5",
+          "explanation": "Python allows two variables to be swapped in a single statement, a, b = b, a. The right-hand side is evaluated first and then assigned, so the original values are exchanged without needing a temporary variable.",
+          "concepts": [
+            "multiple assignment",
+            "swap",
+            "variables"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-operators-08",
+          "title": "Celsius to Fahrenheit",
+          "question": "Write a program to convert a temperature from Celsius to Fahrenheit.",
+          "code": "c = float(input())\nf = (c * 9 / 5) + 32\nprint(\"Fahrenheit =\", f)",
+          "input": "25",
+          "output": "Fahrenheit = 77.0",
+          "explanation": "The conversion formula is F = (C x 9/5) + 32. Because / produces a float, the result is shown with a decimal point.",
+          "concepts": [
+            "float()",
+            "arithmetic",
+            "formula"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-operators-09",
+          "title": "Average of three numbers",
+          "question": "Write a program to find the average of three numbers entered by the user.",
+          "code": "a = float(input())\nb = float(input())\nc = float(input())\navg = (a + b + c) / 3\nprint(\"Average =\", avg)",
+          "input": "10\n20\n30",
+          "output": "Average = 20.0",
+          "explanation": "The three numbers are added and the total is divided by 3 to get the average. Dividing with / always returns a float result.",
+          "concepts": [
+            "float()",
+            "arithmetic",
+            "average"
+          ],
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "conditionals",
+      "title": "Conditionals (if / elif / else)",
+      "description": "Making decisions in a program with if, elif and else.",
+      "examples": [
+        {
+          "id": "ex-conditionals-01",
+          "title": "Even or odd",
+          "question": "Write a program to check whether a number is even or odd.",
+          "code": "n = int(input())\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")",
+          "input": "7",
+          "output": "Odd",
+          "explanation": "A number is even if it leaves no remainder when divided by 2. The % operator gives the remainder, so n % 2 == 0 is True for even numbers.",
+          "concepts": [
+            "if-else",
+            "%",
+            "modulus"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-conditionals-02",
+          "title": "Largest of three numbers",
+          "question": "Write a program to find the largest of three numbers.",
+          "code": "a = int(input())\nb = int(input())\nc = int(input())\nif a >= b and a >= c:\n    print(a, \"is the largest\")\nelif b >= a and b >= c:\n    print(b, \"is the largest\")\nelse:\n    print(c, \"is the largest\")",
+          "input": "12\n45\n30",
+          "output": "45 is the largest",
+          "explanation": "Each candidate is compared with the other two using and. The first branch whose condition is True runs, and the else catches the remaining case where c is the largest.",
+          "concepts": [
+            "if-elif-else",
+            "logical operators",
+            "comparison"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-conditionals-03",
+          "title": "Positive, negative or zero",
+          "question": "Write a program to check whether a number is positive, negative or zero.",
+          "code": "n = int(input())\nif n > 0:\n    print(\"Positive\")\nelif n < 0:\n    print(\"Negative\")\nelse:\n    print(\"Zero\")",
+          "input": "-5",
+          "output": "Negative",
+          "explanation": "The program tests the three possible cases in order. If neither n > 0 nor n < 0 is True, the number must be zero, which the else handles.",
+          "concepts": [
+            "if-elif-else",
+            "comparison"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-conditionals-04",
+          "title": "Grade calculator",
+          "question": "Write a program to print a grade based on the marks entered.",
+          "code": "marks = int(input())\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 75:\n    print(\"Grade B\")\nelif marks >= 60:\n    print(\"Grade C\")\nelif marks >= 40:\n    print(\"Grade D\")\nelse:\n    print(\"Grade F\")",
+          "input": "82",
+          "output": "Grade B",
+          "explanation": "The conditions are checked from top to bottom and the first one that is True decides the grade. Because the tests are ordered, an elif is only reached when all earlier conditions were False.",
+          "concepts": [
+            "if-elif-else",
+            "range checking"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-conditionals-05",
+          "title": "Leap year check",
+          "question": "Write a program to check whether a given year is a leap year.",
+          "code": "year = int(input())\nif (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):\n    print(\"Leap year\")\nelse:\n    print(\"Not a leap year\")",
+          "input": "2024",
+          "output": "Leap year",
+          "explanation": "A year is a leap year if it is divisible by 4 but not by 100, or if it is divisible by 400. This rule is expressed using the logical operators and and or.",
+          "concepts": [
+            "if-else",
+            "logical operators",
+            "modulus"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-conditionals-06",
+          "title": "Vowel or consonant",
+          "question": "Write a program to check whether an entered character is a vowel or a consonant.",
+          "code": "ch = input()\nif ch in \"aeiouAEIOU\":\n    print(\"Vowel\")\nelse:\n    print(\"Consonant\")",
+          "input": "a",
+          "output": "Vowel",
+          "explanation": "The in operator checks whether the character appears inside the string of vowels. Including both uppercase and lowercase letters lets the program accept either case.",
+          "concepts": [
+            "in operator",
+            "if-else",
+            "strings"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-conditionals-07",
+          "title": "Menu-driven calculator",
+          "question": "Write a program that reads two numbers and an operator, and performs the matching operation.",
+          "code": "a = float(input())\nb = float(input())\nop = input()\nif op == \"+\":\n    print(a + b)\nelif op == \"-\":\n    print(a - b)\nelif op == \"*\":\n    print(a * b)\nelif op == \"/\":\n    print(a / b)\nelse:\n    print(\"Invalid choice\")",
+          "input": "10\n4\n+",
+          "output": "14.0",
+          "explanation": "The operator entered by the user is compared with each possible symbol using ==. The matching branch performs that operation, and the else handles any symbol that is not recognised.",
+          "concepts": [
+            "if-elif-else",
+            "float()",
+            "arithmetic"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-conditionals-08",
+          "title": "Divisible by 3 and 5",
+          "question": "Write a program to check whether a number is divisible by 3, by 5, by both or by neither.",
+          "code": "n = int(input())\nif n % 3 == 0 and n % 5 == 0:\n    print(\"Divisible by both 3 and 5\")\nelif n % 3 == 0:\n    print(\"Divisible by 3\")\nelif n % 5 == 0:\n    print(\"Divisible by 5\")\nelse:\n    print(\"Not divisible by 3 or 5\")",
+          "input": "30",
+          "output": "Divisible by both 3 and 5",
+          "explanation": "The most specific condition (divisible by both) is tested first so that it is not hidden by the single-divisor tests that follow. This ordering of conditions is a common exam point.",
+          "concepts": [
+            "if-elif-else",
+            "logical operators",
+            "modulus"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-conditionals-09",
+          "title": "Uppercase, lowercase or digit",
+          "question": "Write a program to check whether a character is an uppercase letter, a lowercase letter or a digit.",
+          "code": "ch = input()\nif ch >= \"A\" and ch <= \"Z\":\n    print(\"Uppercase letter\")\nelif ch >= \"a\" and ch <= \"z\":\n    print(\"Lowercase letter\")\nelif ch >= \"0\" and ch <= \"9\":\n    print(\"Digit\")\nelse:\n    print(\"Other character\")",
+          "input": "B",
+          "output": "Uppercase letter",
+          "explanation": "Characters can be compared with relational operators because letters and digits have a fixed order in the character set. This lets the program decide which range a character falls into.",
+          "concepts": [
+            "character comparison",
+            "if-elif-else"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-conditionals-10",
+          "title": "Largest of two numbers",
+          "question": "Write a program to find the larger of two numbers, or report that they are equal.",
+          "code": "a = int(input())\nb = int(input())\nif a > b:\n    print(a, \"is larger\")\nelif b > a:\n    print(b, \"is larger\")\nelse:\n    print(\"Both are equal\")",
+          "input": "15\n9",
+          "output": "15 is larger",
+          "explanation": "The two values are compared directly. The else branch runs only when neither value is greater, that is, when they are equal.",
+          "concepts": [
+            "if-elif-else",
+            "comparison"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-conditionals-11",
+          "title": "Pass or fail",
+          "question": "Write a program to decide pass or fail using marks in three subjects.",
+          "code": "m1 = int(input())\nm2 = int(input())\nm3 = int(input())\nif m1 >= 33 and m2 >= 33 and m3 >= 33:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+          "input": "45\n67\n29",
+          "output": "Fail",
+          "explanation": "The student passes only if every subject mark is at least 33. The and operator requires all three conditions to be True, so a single low mark makes the result Fail.",
+          "concepts": [
+            "logical operators",
+            "if-else"
+          ],
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops (for & while)",
+      "description": "Repetition with for and while loops, including range(), break and continue.",
+      "examples": [
+        {
+          "id": "ex-loops-01",
+          "title": "Sum of first n natural numbers",
+          "question": "Write a program to find the sum of the first n natural numbers using a for loop.",
+          "code": "n = int(input())\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\nprint(\"Sum =\", total)",
+          "input": "10",
+          "output": "Sum = 55",
+          "explanation": "range(1, n + 1) produces the numbers 1 up to n. Each value is added to a running total, a pattern called an accumulator that appears in many loop problems.",
+          "concepts": [
+            "for loop",
+            "range()",
+            "accumulator"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-loops-02",
+          "title": "Multiplication table",
+          "question": "Write a program to print the multiplication table of a number from 1 to 10.",
+          "code": "n = int(input())\nfor i in range(1, 11):\n    print(n, \"x\", i, \"=\", n * i)",
+          "input": "5",
+          "output": "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n5 x 10 = 50",
+          "explanation": "The loop variable i takes values from 1 to 10. In every round the number is multiplied by i and the equation is printed, giving the full table.",
+          "concepts": [
+            "for loop",
+            "range()",
+            "arithmetic"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-loops-03",
+          "title": "Factorial of a number",
+          "question": "Write a program to find the factorial of a number using a for loop.",
+          "code": "n = int(input())\nfact = 1\nfor i in range(1, n + 1):\n    fact *= i\nprint(\"Factorial =\", fact)",
+          "input": "5",
+          "output": "Factorial = 120",
+          "explanation": "The factorial of n is the product 1 x 2 x ... x n. The accumulator fact starts at 1 (not 0, because anything times 0 is 0) and is multiplied by each value of i.",
+          "concepts": [
+            "for loop",
+            "accumulator",
+            "range()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-loops-04",
+          "title": "Reverse a number",
+          "question": "Write a program to reverse the digits of a number using a while loop.",
+          "code": "n = int(input())\nrev = 0\nwhile n > 0:\n    digit = n % 10\n    rev = rev * 10 + digit\n    n //= 10\nprint(\"Reversed =\", rev)",
+          "input": "1234",
+          "output": "Reversed = 4321",
+          "explanation": "Each round of the loop takes the last digit with n % 10 and adds it to the right of rev. Dividing n by 10 with // removes that digit, and the loop stops when n becomes 0.",
+          "concepts": [
+            "while loop",
+            "%",
+            "//",
+            "digit extraction"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-loops-05",
+          "title": "Count the digits in a number",
+          "question": "Write a program to count how many digits a number has.",
+          "code": "n = int(input())\ncount = 0\nwhile n > 0:\n    n //= 10\n    count += 1\nprint(\"Number of digits =\", count)",
+          "input": "50704",
+          "output": "Number of digits = 5",
+          "explanation": "Every time the number is divided by 10 using //, one digit is removed from the end. Counting how many times this can be done gives the number of digits.",
+          "concepts": [
+            "while loop",
+            "//",
+            "counter"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-loops-06",
+          "title": "Sum of the digits of a number",
+          "question": "Write a program to find the sum of the digits of a number.",
+          "code": "n = int(input())\ntotal = 0\nwhile n > 0:\n    total += n % 10\n    n //= 10\nprint(\"Sum of digits =\", total)",
+          "input": "1234",
+          "output": "Sum of digits = 10",
+          "explanation": "In each round the last digit is picked up with n % 10 and added to the total, then removed with n //= 10. The loop ends when no digits are left.",
+          "concepts": [
+            "while loop",
+            "%",
+            "//"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-loops-07",
+          "title": "Fibonacci series",
+          "question": "Write a program to print the first n terms of the Fibonacci series.",
+          "code": "n = int(input())\na, b = 0, 1\nout = \"\"\nfor i in range(n):\n    if i > 0:\n        out += \" \"\n    out += str(a)\n    a, b = b, a + b\nprint(out)",
+          "input": "8",
+          "output": "0 1 1 2 3 5 8 13",
+          "explanation": "In the Fibonacci series each term is the sum of the two before it, starting with 0 and 1. The pair a, b = b, a + b shifts the two previous terms forward in one step.",
+          "concepts": [
+            "for loop",
+            "multiple assignment",
+            "series"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-loops-08",
+          "title": "Prime number check",
+          "question": "Write a program to check whether a number is prime.",
+          "code": "n = int(input())\nis_prime = True\nif n < 2:\n    is_prime = False\nelse:\n    for i in range(2, n):\n        if n % i == 0:\n            is_prime = False\n            break\nif is_prime:\n    print(n, \"is a prime number\")\nelse:\n    print(n, \"is not a prime number\")",
+          "input": "29",
+          "output": "29 is a prime number",
+          "explanation": "A prime has no divisor other than 1 and itself. The loop tests every number from 2 up to n - 1; if any divides n exactly, a flag is set and the loop is stopped early with break.",
+          "concepts": [
+            "for loop",
+            "break",
+            "flag variable"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-loops-09",
+          "title": "Print even numbers from 1 to 20",
+          "question": "Write a program to print all even numbers from 1 to 20 using range().",
+          "code": "for i in range(2, 21, 2):\n    print(i)",
+          "input": "",
+          "output": "2\n4\n6\n8\n10\n12\n14\n16\n18\n20",
+          "explanation": "range() can take a third argument, the step. range(2, 21, 2) starts at 2 and jumps by 2 each time, so only even numbers up to 20 are produced.",
+          "concepts": [
+            "for loop",
+            "range()",
+            "step"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-loops-10",
+          "title": "Countdown with a while loop",
+          "question": "Write a program to print a countdown from a number down to 1.",
+          "code": "n = int(input())\nwhile n >= 1:\n    print(n)\n    n -= 1\nprint(\"Liftoff!\")",
+          "input": "5",
+          "output": "5\n4\n3\n2\n1\nLiftoff!",
+          "explanation": "The while loop keeps running as long as n is at least 1. Inside the loop n is decreased by 1 each time, so the loop eventually stops and the message after it is printed.",
+          "concepts": [
+            "while loop",
+            "decrement"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-loops-11",
+          "title": "Sum of even numbers up to n",
+          "question": "Write a program to find the sum of all even numbers from 1 to n.",
+          "code": "n = int(input())\ntotal = 0\nfor i in range(2, n + 1, 2):\n    total += i\nprint(\"Sum of even numbers =\", total)",
+          "input": "10",
+          "output": "Sum of even numbers = 30",
+          "explanation": "The loop walks only through even numbers by using a step of 2 in range(). Each of these numbers is added to the running total.",
+          "concepts": [
+            "for loop",
+            "range()",
+            "accumulator"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-loops-12",
+          "title": "break and continue",
+          "question": "Write a program to demonstrate the break and continue statements in a loop.",
+          "code": "for i in range(1, 11):\n    if i == 4:\n        continue\n    if i == 8:\n        break\n    print(i)",
+          "input": "",
+          "output": "1\n2\n3\n5\n6\n7",
+          "explanation": "continue skips the rest of the current round, so 4 is not printed, while break leaves the loop completely, so printing stops before 8. Together they give fine control over a loop.",
+          "concepts": [
+            "break",
+            "continue",
+            "for loop"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-loops-13",
+          "title": "Numbers from 1 to n using while",
+          "question": "Write a program to print the numbers from 1 to n using a while loop.",
+          "code": "n = int(input())\ni = 1\nwhile i <= n:\n    print(i)\n    i += 1",
+          "input": "4",
+          "output": "1\n2\n3\n4",
+          "explanation": "A counter i starts at 1 and is printed each time round the loop. It is increased by 1 until it becomes greater than n, at which point the condition fails and the loop ends.",
+          "concepts": [
+            "while loop",
+            "counter"
+          ],
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "patterns",
+      "title": "Nested Loops & Patterns",
+      "description": "Printing star, number and alphabet patterns with nested loops.",
+      "examples": [
+        {
+          "id": "ex-patterns-01",
+          "title": "Right triangle of stars",
+          "question": "Write a program to print a right-angled triangle of stars with n rows.",
+          "code": "n = int(input())\nfor i in range(1, n + 1):\n    print(\"*\" * i)",
+          "input": "4",
+          "output": "*\n**\n***\n****",
+          "explanation": "Row number i needs exactly i stars. String repetition, \"*\" * i, produces that many stars, and a single loop over the row numbers builds the triangle.",
+          "concepts": [
+            "for loop",
+            "string repetition",
+            "pattern"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-patterns-02",
+          "title": "Inverted triangle of stars",
+          "question": "Write a program to print an inverted right-angled triangle of stars.",
+          "code": "n = int(input())\nfor i in range(n, 0, -1):\n    print(\"*\" * i)",
+          "input": "4",
+          "output": "****\n***\n**\n*",
+          "explanation": "Using range(n, 0, -1) makes the loop count downwards, so the first row has n stars and each later row has one fewer. This is the mirror image of the previous pattern.",
+          "concepts": [
+            "for loop",
+            "range()",
+            "string repetition"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-patterns-03",
+          "title": "Number triangle",
+          "question": "Write a program to print a triangle where each row contains the numbers 1 up to that row number.",
+          "code": "n = int(input())\nfor i in range(1, n + 1):\n    row = \"\"\n    for j in range(1, i + 1):\n        if j < i:\n            row = row + str(j) + \" \"\n        else:\n            row = row + str(j)\n    print(row)",
+          "input": "4",
+          "output": "1\n1 2\n1 2 3\n1 2 3 4",
+          "explanation": "The outer loop chooses the row and the inner loop builds it. The numbers are joined with spaces so that there is no space after the last number in a row.",
+          "concepts": [
+            "nested loops",
+            "str()",
+            "pattern"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-patterns-04",
+          "title": "Star pyramid",
+          "question": "Write a program to print a centred pyramid of stars with n rows.",
+          "code": "n = int(input())\nfor i in range(1, n + 1):\n    print(\" \" * (n - i) + \"*\" * (2 * i - 1))",
+          "input": "4",
+          "output": "   *\n  ***\n *****\n*******",
+          "explanation": "Row i needs n - i leading spaces to centre the stars, followed by 2 * i - 1 stars. Joining these two parts in one print() call gives the pyramid shape.",
+          "concepts": [
+            "nested loops",
+            "string repetition",
+            "centering"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-patterns-05",
+          "title": "Floyd's triangle",
+          "question": "Write a program to print Floyd's triangle for n rows, where numbers increase continuously.",
+          "code": "n = int(input())\nnum = 1\nfor i in range(1, n + 1):\n    row = \"\"\n    for j in range(1, i + 1):\n        if j < i:\n            row = row + str(num) + \" \"\n        else:\n            row = row + str(num)\n        num += 1\n    print(row)",
+          "input": "4",
+          "output": "1\n2 3\n4 5 6\n7 8 9 10",
+          "explanation": "A single counter num increases by 1 for every number printed, so the values run on from row to row. Row i holds i numbers, which is why the rows grow in length.",
+          "concepts": [
+            "nested loops",
+            "counter",
+            "pattern"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-patterns-06",
+          "title": "Alphabet triangle",
+          "question": "Write a program to print a triangle of alphabets, where row i uses the first i letters.",
+          "code": "n = int(input())\nletters = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"\nfor i in range(1, n + 1):\n    row = \"\"\n    for j in range(i):\n        row = row + letters[j]\n    print(row)",
+          "input": "4",
+          "output": "A\nAB\nABC\nABCD",
+          "explanation": "The string of capital letters acts as a lookup table. Indexing it with j gives the j-th letter, and the inner loop stops before i so that row i contains exactly i letters.",
+          "concepts": [
+            "nested loops",
+            "string indexing",
+            "pattern"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-patterns-07",
+          "title": "Hollow square of stars",
+          "question": "Write a program to print a hollow square of stars of size n.",
+          "code": "n = int(input())\nfor i in range(1, n + 1):\n    if i == 1 or i == n:\n        print(\"*\" * n)\n    else:\n        print(\"*\" + \" \" * (n - 2) + \"*\")",
+          "input": "5",
+          "output": "*****\n*   *\n*   *\n*   *\n*****",
+          "explanation": "The first and last rows are full lines of stars, while the middle rows have a star at each end with spaces in between. String repetition and concatenation build each row.",
+          "concepts": [
+            "for loop",
+            "if-else",
+            "string repetition"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-patterns-08",
+          "title": "Diamond of stars",
+          "question": "Write a program to print a diamond shape of stars with n rows in its upper half.",
+          "code": "n = int(input())\nfor i in range(1, n + 1):\n    print(\" \" * (n - i) + \"*\" * (2 * i - 1))\nfor i in range(n - 1, 0, -1):\n    print(\" \" * (n - i) + \"*\" * (2 * i - 1))",
+          "input": "3",
+          "output": "  *\n ***\n*****\n ***\n  *",
+          "explanation": "The diamond is a pyramid followed by an inverted pyramid. The first loop grows the width row by row and the second loop shrinks it, sharing the same row-building expression.",
+          "concepts": [
+            "nested loops",
+            "string repetition",
+            "pattern"
+          ],
+          "difficulty": "hard"
+        },
+        {
+          "id": "ex-patterns-09",
+          "title": "Multiplication grid",
+          "question": "Write a program to print an n by n multiplication grid.",
+          "code": "n = int(input())\nfor i in range(1, n + 1):\n    row = \"\"\n    for j in range(1, n + 1):\n        row = row + str(i * j)\n        if j < n:\n            row = row + \" \"\n    print(row)",
+          "input": "3",
+          "output": "1 2 3\n2 4 6\n3 6 9",
+          "explanation": "Both loops run from 1 to n, and each cell holds the product of the two loop variables. The inner if adds a space only between cells so the row does not end with a space.",
+          "concepts": [
+            "nested loops",
+            "arithmetic",
+            "grid"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-patterns-10",
+          "title": "Right-aligned number triangle",
+          "question": "Write a program to print a right-aligned triangle of numbers 1 to n.",
+          "code": "n = int(input())\nfor i in range(1, n + 1):\n    row = \"\"\n    for j in range(1, i + 1):\n        row = row + str(j)\n    print(\" \" * (n - i) + row)",
+          "input": "4",
+          "output": "   1\n  12\n 123\n1234",
+          "explanation": "The digits 1 to i are collected in row, and n - i leading spaces push the row to the right. The number of spaces shrinks as the rows get longer, giving a staircase effect.",
+          "concepts": [
+            "nested loops",
+            "string repetition",
+            "pattern"
+          ],
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "description": "Creating strings and using indexing, slicing, len, case methods and membership.",
+      "examples": [
+        {
+          "id": "ex-strings-01",
+          "title": "Length of a string",
+          "question": "Write a program to find the number of characters in a string.",
+          "code": "s = input()\nprint(\"Length =\", len(s))",
+          "input": "Python",
+          "output": "Length = 6",
+          "explanation": "len() returns the number of characters in a string, including spaces if there are any. It works on any sequence, not just strings.",
+          "concepts": [
+            "len()",
+            "input()",
+            "strings"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-strings-02",
+          "title": "Uppercase and lowercase",
+          "question": "Write a program to print a string in both uppercase and lowercase.",
+          "code": "s = input()\nprint(s.upper())\nprint(s.lower())",
+          "input": "Hello",
+          "output": "HELLO\nhello",
+          "explanation": "upper() returns a copy of the string with all letters in capitals, and lower() returns a copy in small letters. The original string is not changed because strings are immutable.",
+          "concepts": [
+            "upper()",
+            "lower()",
+            "strings"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-strings-03",
+          "title": "String indexing",
+          "question": "Write a program to print the first, second and last characters of a string.",
+          "code": "s = input()\nprint(s[0])\nprint(s[1])\nprint(s[-1])",
+          "input": "Python",
+          "output": "P\ny\nn",
+          "explanation": "Indexing starts at 0, so s[0] is the first character and s[1] the second. A negative index counts from the end, so s[-1] is the last character.",
+          "concepts": [
+            "indexing",
+            "negative indexing",
+            "strings"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-strings-04",
+          "title": "String slicing",
+          "question": "Write a program to demonstrate different string slices.",
+          "code": "s = input()\nprint(s[0:3])\nprint(s[2:])\nprint(s[:4])\nprint(s[1:5:2])",
+          "input": "Programming",
+          "output": "Pro\nogramming\nProg\nrg",
+          "explanation": "A slice s[start:end] takes characters from start up to but not including end. Leaving out start or end uses the beginning or the end, and a third value sets the step.",
+          "concepts": [
+            "slicing",
+            "strings",
+            "step"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-strings-05",
+          "title": "Reverse a string",
+          "question": "Write a program to reverse a string.",
+          "code": "s = input()\nprint(s[::-1])",
+          "input": "Python",
+          "output": "nohtyP",
+          "explanation": "The slice s[::-1] uses a step of -1, which walks through the string from the last character to the first. This is the shortest way to reverse a string in Python.",
+          "concepts": [
+            "slicing",
+            "reverse",
+            "strings"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-strings-06",
+          "title": "Palindrome string check",
+          "question": "Write a program to check whether a string is a palindrome.",
+          "code": "s = input()\nif s == s[::-1]:\n    print(\"Palindrome\")\nelse:\n    print(\"Not a palindrome\")",
+          "input": "madam",
+          "output": "Palindrome",
+          "explanation": "A palindrome reads the same forwards and backwards. The reversed string is compared with the original; if they match, the string is a palindrome.",
+          "concepts": [
+            "slicing",
+            "if-else",
+            "comparison"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-strings-07",
+          "title": "Count vowels in a string",
+          "question": "Write a program to count the number of vowels in a string.",
+          "code": "s = input()\ncount = 0\nfor ch in s:\n    if ch in \"aeiouAEIOU\":\n        count += 1\nprint(\"Number of vowels =\", count)",
+          "input": "Education",
+          "output": "Number of vowels = 5",
+          "explanation": "A for loop over a string visits one character at a time. Each character is tested with the in operator against the set of vowels, and a counter keeps the total.",
+          "concepts": [
+            "for loop",
+            "in operator",
+            "counter"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-strings-08",
+          "title": "Concatenation and repetition",
+          "question": "Write a program to join two strings and repeat a string three times.",
+          "code": "a = input()\nb = input()\nprint(a + b)\nprint(a * 3)",
+          "input": "Py\nthon",
+          "output": "Python\nPyPyPy",
+          "explanation": "The + operator joins two strings end to end, while the * operator repeats a string a given number of times. Neither operator changes the original strings.",
+          "concepts": [
+            "concatenation",
+            "string repetition",
+            "operators"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-strings-09",
+          "title": "Count occurrences of a character",
+          "question": "Write a program to count how many times a given character appears in a string.",
+          "code": "s = input()\nch = input()\ncount = 0\nfor c in s:\n    if c == ch:\n        count += 1\nprint(\"Occurrences =\", count)",
+          "input": "banana\na",
+          "output": "Occurrences = 3",
+          "explanation": "Every character of the string is compared with the target character. Each match increases the counter, so at the end it holds the number of occurrences.",
+          "concepts": [
+            "for loop",
+            "comparison",
+            "counter"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-strings-10",
+          "title": "Check if a substring is present",
+          "question": "Write a program to check whether one string appears inside another.",
+          "code": "s = input()\nsub = input()\nif sub in s:\n    print(\"Found\")\nelse:\n    print(\"Not found\")",
+          "input": "programming\ngram",
+          "output": "Found",
+          "explanation": "The in operator checks membership: sub in s is True if sub appears anywhere inside s. This works for single characters as well as longer substrings.",
+          "concepts": [
+            "in operator",
+            "if-else",
+            "strings"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-strings-11",
+          "title": "Count uppercase letters",
+          "question": "Write a program to count the number of uppercase letters in a string.",
+          "code": "s = input()\ncount = 0\nfor ch in s:\n    if ch >= \"A\" and ch <= \"Z\":\n        count += 1\nprint(\"Uppercase letters =\", count)",
+          "input": "Hello World",
+          "output": "Uppercase letters = 2",
+          "explanation": "Each character is tested to see whether it lies between 'A' and 'Z' in the character order. Only characters that satisfy this range are counted.",
+          "concepts": [
+            "for loop",
+            "character comparison",
+            "counter"
+          ],
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "description": "Creating lists and using indexing, slicing, append, remove, sort and built-in functions.",
+      "examples": [
+        {
+          "id": "ex-lists-01",
+          "title": "Create a list and print it",
+          "question": "Write a program to create a list of numbers and print the list and its length.",
+          "code": "numbers = [10, 20, 30, 40, 50]\nprint(numbers)\nprint(\"Length =\", len(numbers))",
+          "input": "",
+          "output": "[10, 20, 30, 40, 50]\nLength = 5",
+          "explanation": "A list is written with square brackets and commas. Printing the list shows all its elements, and len() gives the number of elements it contains.",
+          "concepts": [
+            "lists",
+            "len()",
+            "print()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-02",
+          "title": "List indexing and negative indexing",
+          "question": "Write a program to access list elements using positive and negative indexes.",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\", \"mango\"]\nprint(fruits[0])\nprint(fruits[2])\nprint(fruits[-1])\nprint(fruits[-2])",
+          "input": "",
+          "output": "apple\ncherry\nmango\ncherry",
+          "explanation": "List indexes start at 0, so fruits[0] is the first element. A negative index counts from the end, so fruits[-1] is the last element and fruits[-2] the one before it.",
+          "concepts": [
+            "lists",
+            "indexing",
+            "negative indexing"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-03",
+          "title": "List slicing",
+          "question": "Write a program to demonstrate slicing a list.",
+          "code": "numbers = [1, 2, 3, 4, 5, 6, 7, 8]\nprint(numbers[0:4])\nprint(numbers[2:])\nprint(numbers[:3])\nprint(numbers[1:6:2])",
+          "input": "",
+          "output": "[1, 2, 3, 4]\n[3, 4, 5, 6, 7, 8]\n[1, 2, 3]\n[2, 4, 6]",
+          "explanation": "Slicing works on lists exactly as on strings, but returns a new list. The end index is not included, and a third value in the slice sets the step.",
+          "concepts": [
+            "lists",
+            "slicing",
+            "step"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-lists-04",
+          "title": "append and insert",
+          "question": "Write a program to add an element at the end and in the middle of a list.",
+          "code": "numbers = [10, 20, 30]\nnumbers.append(40)\nprint(numbers)\nnumbers.insert(1, 15)\nprint(numbers)",
+          "input": "",
+          "output": "[10, 20, 30, 40]\n[10, 15, 20, 30, 40]",
+          "explanation": "append() adds an element to the end of the list. insert() places an element at a given index and shifts the following elements to the right.",
+          "concepts": [
+            "lists",
+            "append()",
+            "insert()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-05",
+          "title": "remove and pop",
+          "question": "Write a program to remove an element by value and by position.",
+          "code": "numbers = [10, 20, 30, 40, 50]\nnumbers.remove(30)\nprint(numbers)\npopped = numbers.pop()\nprint(\"Popped =\", popped)\nprint(numbers)",
+          "input": "",
+          "output": "[10, 20, 40, 50]\nPopped = 50\n[10, 20, 40]",
+          "explanation": "remove() deletes the first element equal to the given value. pop() removes and returns the last element, so the removed value can be stored in a variable.",
+          "concepts": [
+            "lists",
+            "remove()",
+            "pop()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-06",
+          "title": "Sum and average of list elements",
+          "question": "Write a program to find the sum and average of the elements of a list.",
+          "code": "numbers = [10, 20, 30, 40, 50]\nprint(\"Sum =\", sum(numbers))\nprint(\"Average =\", sum(numbers) / len(numbers))",
+          "input": "",
+          "output": "Sum = 150\nAverage = 30.0",
+          "explanation": "sum() adds up all the elements of a list and len() gives how many there are. Dividing the two gives the average, which is a float because / is used.",
+          "concepts": [
+            "lists",
+            "sum()",
+            "len()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-07",
+          "title": "Maximum and minimum of a list",
+          "question": "Write a program to find the largest and smallest elements of a list.",
+          "code": "numbers = [45, 12, 78, 34, 90, 23]\nprint(\"Maximum =\", max(numbers))\nprint(\"Minimum =\", min(numbers))",
+          "input": "",
+          "output": "Maximum = 90\nMinimum = 12",
+          "explanation": "max() returns the largest element in the list and min() the smallest. Both work directly on the whole list without needing a loop.",
+          "concepts": [
+            "lists",
+            "max()",
+            "min()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-08",
+          "title": "Sort and reverse a list",
+          "question": "Write a program to sort a list in ascending order and then reverse it.",
+          "code": "numbers = [45, 12, 78, 34, 90, 23]\nnumbers.sort()\nprint(numbers)\nnumbers.reverse()\nprint(numbers)",
+          "input": "",
+          "output": "[12, 23, 34, 45, 78, 90]\n[90, 78, 45, 34, 23, 12]",
+          "explanation": "sort() rearranges the list itself into ascending order. reverse() then flips the order of the elements, giving a descending list.",
+          "concepts": [
+            "lists",
+            "sort()",
+            "reverse()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-09",
+          "title": "Count even and odd numbers in a list",
+          "question": "Write a program to count how many elements of a list are even and how many are odd.",
+          "code": "numbers = [12, 7, 9, 24, 35, 8]\neven = 0\nodd = 0\nfor n in numbers:\n    if n % 2 == 0:\n        even += 1\n    else:\n        odd += 1\nprint(\"Even numbers =\", even)\nprint(\"Odd numbers =\", odd)",
+          "input": "",
+          "output": "Even numbers = 3\nOdd numbers = 3",
+          "explanation": "The loop visits each element of the list. A number is even when n % 2 is 0, so two separate counters keep track of the even and odd elements.",
+          "concepts": [
+            "lists",
+            "for loop",
+            "counter"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-10",
+          "title": "Search for an element in a list",
+          "question": "Write a program to search for a value in a list and report its position.",
+          "code": "numbers = [10, 20, 30, 40, 50]\nitem = int(input())\nif item in numbers:\n    print(\"Found at index\", numbers.index(item))\nelse:\n    print(\"Not found\")",
+          "input": "30",
+          "output": "Found at index 2",
+          "explanation": "The in operator checks whether the value is present, and index() gives the position of its first occurrence. Indexes start at 0, so 30 is at index 2.",
+          "concepts": [
+            "lists",
+            "in operator",
+            "index()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-11",
+          "title": "Second largest element",
+          "question": "Write a program to find the second largest element of a list.",
+          "code": "numbers = [45, 12, 78, 34, 90, 23]\nnumbers.sort()\nprint(\"Second largest =\", numbers[-2])",
+          "input": "",
+          "output": "Second largest = 78",
+          "explanation": "After sorting in ascending order, the largest element is at index -1 and the second largest at index -2. Sorting first makes this a very short solution.",
+          "concepts": [
+            "lists",
+            "sort()",
+            "negative indexing"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-lists-12",
+          "title": "Remove duplicates from a list",
+          "question": "Write a program to remove duplicate elements from a list.",
+          "code": "numbers = [10, 20, 20, 30, 10, 40, 30]\nunique = []\nfor n in numbers:\n    if n not in unique:\n        unique.append(n)\nprint(unique)",
+          "input": "",
+          "output": "[10, 20, 30, 40]",
+          "explanation": "A new list is built one element at a time. An element is appended only if it is not already in the new list, so duplicates are skipped and the original order is kept.",
+          "concepts": [
+            "lists",
+            "not in",
+            "append()"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-lists-13",
+          "title": "Extend a list and count occurrences",
+          "question": "Write a program to join two lists and count how often a value appears.",
+          "code": "a = [1, 2, 3]\nb = [4, 5]\na.extend(b)\nprint(a)\nprint(\"Count of 2 =\", a.count(2))",
+          "input": "",
+          "output": "[1, 2, 3, 4, 5]\nCount of 2 = 1",
+          "explanation": "extend() adds all the elements of one list to the end of another. count() then returns how many times a given value occurs in the list.",
+          "concepts": [
+            "lists",
+            "extend()",
+            "count()"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "ex-lists-14",
+          "title": "Average of numbers entered by the user",
+          "question": "Write a program to read n numbers into a list and print their sum and average.",
+          "code": "n = int(input())\nnumbers = []\nfor i in range(n):\n    numbers.append(int(input()))\nprint(\"Sum =\", sum(numbers))\nprint(\"Average =\", sum(numbers) / n)",
+          "input": "5\n10\n20\n30\n40\n50",
+          "output": "Sum = 150\nAverage = 30.0",
+          "explanation": "The first input gives how many numbers follow. The loop runs that many times, reading one number each time and adding it to the list with append().",
+          "concepts": [
+            "lists",
+            "append()",
+            "for loop",
+            "sum()"
+          ],
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "errors",
+      "title": "Errors & Exceptions (try/except)",
+      "description": "Handling runtime errors gracefully with try, except, else and finally.",
+      "examples": [
+        {
+          "id": "ex-errors-01",
+          "title": "Handle division by zero",
+          "question": "Write a program that divides two numbers and handles a division by zero.",
+          "code": "a = int(input())\nb = int(input())\ntry:\n    print(\"Result =\", a / b)\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")",
+          "input": "10\n0",
+          "output": "Cannot divide by zero",
+          "explanation": "Dividing a number by zero raises a ZeroDivisionError. Putting the risky statement inside try lets the program catch that error and print a friendly message instead of crashing.",
+          "concepts": [
+            "try-except",
+            "ZeroDivisionError"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-errors-02",
+          "title": "Handle invalid integer input",
+          "question": "Write a program that reads a number and handles non-numeric input.",
+          "code": "try:\n    n = int(input())\n    print(\"You entered\", n)\nexcept ValueError:\n    print(\"Invalid input: please enter a number\")",
+          "input": "abc",
+          "output": "Invalid input: please enter a number",
+          "explanation": "int() raises a ValueError when the text cannot be converted into a number. Catching ValueError lets the program respond politely to bad input.",
+          "concepts": [
+            "try-except",
+            "ValueError",
+            "int()"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-errors-03",
+          "title": "Handle index out of range",
+          "question": "Write a program that accesses a list element and handles an invalid index.",
+          "code": "numbers = [10, 20, 30]\ntry:\n    i = int(input())\n    print(numbers[i])\nexcept IndexError:\n    print(\"Index out of range\")",
+          "input": "5",
+          "output": "Index out of range",
+          "explanation": "The list has only three elements, so asking for index 5 raises an IndexError. The except block catches this and prints a clear message.",
+          "concepts": [
+            "try-except",
+            "IndexError",
+            "lists"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-errors-04",
+          "title": "try / except / else",
+          "question": "Write a program that divides two numbers and uses else to print the result only when no error occurs.",
+          "code": "a = int(input())\nb = int(input())\ntry:\n    result = a / b\nexcept ZeroDivisionError:\n    print(\"Error: division by zero\")\nelse:\n    print(\"Result =\", result)",
+          "input": "20\n4",
+          "output": "Result = 5.0",
+          "explanation": "The else block of a try statement runs only when no exception was raised. Keeping the print in else makes the intent clear: the result is shown only for a valid division.",
+          "concepts": [
+            "try-except",
+            "else",
+            "division"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-errors-05",
+          "title": "try / except / finally",
+          "question": "Write a program that prints the square of a number and always prints a closing message.",
+          "code": "try:\n    n = int(input())\n    print(\"Square =\", n * n)\nexcept ValueError:\n    print(\"Not a valid number\")\nfinally:\n    print(\"Program finished\")",
+          "input": "6",
+          "output": "Square = 36\nProgram finished",
+          "explanation": "The finally block always runs, whether or not an exception occurred. It is used for steps that must happen no matter what, such as closing a resource or printing a final message.",
+          "concepts": [
+            "try-except",
+            "finally",
+            "ValueError"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-errors-06",
+          "title": "Handle multiple exceptions",
+          "question": "Write a program that handles both invalid input and an out-of-range index.",
+          "code": "numbers = [10, 20, 30]\ntry:\n    i = int(input())\n    print(\"Value =\", numbers[i])\nexcept ValueError:\n    print(\"Please enter a valid integer index\")\nexcept IndexError:\n    print(\"Index is out of range\")",
+          "input": "two",
+          "output": "Please enter a valid integer index",
+          "explanation": "A single try can have several except blocks, each handling a different error type. Python runs the first except block whose error matches what actually happened.",
+          "concepts": [
+            "try-except",
+            "multiple except",
+            "ValueError",
+            "IndexError"
+          ],
+          "difficulty": "hard"
+        },
+        {
+          "id": "ex-errors-07",
+          "title": "Validate an age value",
+          "question": "Write a program that reads an age and handles invalid input or a negative value.",
+          "code": "try:\n    age = int(input())\n    if age < 0:\n        print(\"Age cannot be negative\")\n    else:\n        print(\"Age is\", age)\nexcept ValueError:\n    print(\"Invalid age\")",
+          "input": "17",
+          "output": "Age is 17",
+          "explanation": "The try block covers both the conversion and the range check. If the text cannot be converted a ValueError is caught, while a valid but negative number is handled by the if test.",
+          "concepts": [
+            "try-except",
+            "ValueError",
+            "if-else"
+          ],
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "title": "Mixed Exam-Style Programs",
+      "description": "Longer problems that combine loops, conditions and lists the way exam questions do.",
+      "examples": [
+        {
+          "id": "ex-mixed-01",
+          "title": "Armstrong number check",
+          "question": "Write a program to check whether a three-digit number is an Armstrong number.",
+          "code": "n = int(input())\ntemp = n\ntotal = 0\nwhile temp > 0:\n    digit = temp % 10\n    total += digit ** 3\n    temp //= 10\nif total == n:\n    print(n, \"is an Armstrong number\")\nelse:\n    print(n, \"is not an Armstrong number\")",
+          "input": "153",
+          "output": "153 is an Armstrong number",
+          "explanation": "An Armstrong number of three digits equals the sum of the cubes of its digits. The loop takes each digit, cubes it and adds it to the total, which is then compared with the original number.",
+          "concepts": [
+            "while loop",
+            "**",
+            "digit extraction",
+            "if-else"
+          ],
+          "difficulty": "hard"
+        },
+        {
+          "id": "ex-mixed-02",
+          "title": "Palindrome number check",
+          "question": "Write a program to check whether a number is a palindrome.",
+          "code": "n = int(input())\ntemp = n\nrev = 0\nwhile temp > 0:\n    rev = rev * 10 + temp % 10\n    temp //= 10\nif rev == n:\n    print(\"Palindrome number\")\nelse:\n    print(\"Not a palindrome number\")",
+          "input": "121",
+          "output": "Palindrome number",
+          "explanation": "The number is reversed digit by digit into rev. Comparing rev with the original number tells whether it reads the same both ways.",
+          "concepts": [
+            "while loop",
+            "reverse",
+            "if-else"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-mixed-03",
+          "title": "GCD of two numbers",
+          "question": "Write a program to find the greatest common divisor of two numbers.",
+          "code": "a = int(input())\nb = int(input())\nwhile b != 0:\n    a, b = b, a % b\nprint(\"GCD =\", a)",
+          "input": "48\n18",
+          "output": "GCD = 6",
+          "explanation": "This uses the Euclidean method: replace the pair (a, b) with (b, a % b) until b becomes 0, at which point a is the GCD. The loop needs no counter.",
+          "concepts": [
+            "while loop",
+            "%",
+            "multiple assignment"
+          ],
+          "difficulty": "hard"
+        },
+        {
+          "id": "ex-mixed-04",
+          "title": "Prime numbers up to n",
+          "question": "Write a program to print all prime numbers from 2 up to n.",
+          "code": "n = int(input())\nfor num in range(2, n + 1):\n    is_prime = True\n    for i in range(2, num):\n        if num % i == 0:\n            is_prime = False\n            break\n    if is_prime:\n        print(num)",
+          "input": "20",
+          "output": "2\n3\n5\n7\n11\n13\n17\n19",
+          "explanation": "The outer loop tries every number from 2 to n. For each one the inner loop checks for a divisor; if none is found the flag stays True and the number is printed.",
+          "concepts": [
+            "nested loops",
+            "break",
+            "flag variable"
+          ],
+          "difficulty": "hard"
+        },
+        {
+          "id": "ex-mixed-05",
+          "title": "Sum and product of digits",
+          "question": "Write a program to find the sum and the product of the digits of a number.",
+          "code": "n = int(input())\ntotal = 0\nproduct = 1\nwhile n > 0:\n    d = n % 10\n    total += d\n    product *= d\n    n //= 10\nprint(\"Sum =\", total)\nprint(\"Product =\", product)",
+          "input": "234",
+          "output": "Sum = 9\nProduct = 24",
+          "explanation": "Each round pulls off the last digit and adds it to the sum and multiplies it into the product. The product starts at 1 so that the first multiplication is correct.",
+          "concepts": [
+            "while loop",
+            "accumulator",
+            "digit extraction"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-mixed-06",
+          "title": "Student result from a list of marks",
+          "question": "Write a program to find the total and average of marks in a list and print the result.",
+          "code": "marks = [78, 85, 62, 90, 55]\ntotal = sum(marks)\naverage = total / len(marks)\nprint(\"Total =\", total)\nprint(\"Average =\", average)\nif average >= 75:\n    print(\"Result: Distinction\")\nelif average >= 60:\n    print(\"Result: First Division\")\nelif average >= 40:\n    print(\"Result: Pass\")\nelse:\n    print(\"Result: Fail\")",
+          "input": "",
+          "output": "Total = 370\nAverage = 74.0\nResult: First Division",
+          "explanation": "The total and average come straight from sum() and len(). A chain of if-elif-else then turns the average into a division, testing the highest band first.",
+          "concepts": [
+            "lists",
+            "sum()",
+            "if-elif-else"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-mixed-07",
+          "title": "Count positive, negative and zero",
+          "question": "Write a program to count how many elements of a list are positive, negative or zero.",
+          "code": "numbers = [10, -5, 0, 23, -8, 0, 7]\npositive = 0\nnegative = 0\nzero = 0\nfor n in numbers:\n    if n > 0:\n        positive += 1\n    elif n < 0:\n        negative += 1\n    else:\n        zero += 1\nprint(\"Positive =\", positive)\nprint(\"Negative =\", negative)\nprint(\"Zero =\", zero)",
+          "input": "",
+          "output": "Positive = 3\nNegative = 2\nZero = 2",
+          "explanation": "Each element is classified into one of three groups using if-elif-else, and the matching counter is increased. This is a common list-traversal exam question.",
+          "concepts": [
+            "lists",
+            "for loop",
+            "if-elif-else"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-mixed-08",
+          "title": "Multiplication table with its sum",
+          "question": "Write a program to print the multiplication table of a number and the sum of the table.",
+          "code": "n = int(input())\ntotal = 0\nfor i in range(1, 11):\n    value = n * i\n    print(n, \"x\", i, \"=\", value)\n    total += value\nprint(\"Sum of table =\", total)",
+          "input": "3",
+          "output": "3 x 1 = 3\n3 x 2 = 6\n3 x 3 = 9\n3 x 4 = 12\n3 x 5 = 15\n3 x 6 = 18\n3 x 7 = 21\n3 x 8 = 24\n3 x 9 = 27\n3 x 10 = 30\nSum of table = 165",
+          "explanation": "The loop prints each line of the table and at the same time adds the product to a running total. After the loop the total of all ten products is printed.",
+          "concepts": [
+            "for loop",
+            "range()",
+            "accumulator"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-mixed-09",
+          "title": "Menu-driven area calculator",
+          "question": "Write a menu-driven program to find the area of a circle, rectangle or triangle.",
+          "code": "print(\"1. Area of circle\")\nprint(\"2. Area of rectangle\")\nprint(\"3. Area of triangle\")\nchoice = int(input())\nif choice == 1:\n    r = float(input())\n    print(\"Area =\", 3.14 * r * r)\nelif choice == 2:\n    l = float(input())\n    b = float(input())\n    print(\"Area =\", l * b)\nelif choice == 3:\n    b = float(input())\n    h = float(input())\n    print(\"Area =\", 0.5 * b * h)\nelse:\n    print(\"Invalid choice\")",
+          "input": "1\n10",
+          "output": "1. Area of circle\n2. Area of rectangle\n3. Area of triangle\nArea = 314.0",
+          "explanation": "The menu is printed first, then the choice decides which branch runs. Each branch reads only the inputs it needs and applies the correct area formula.",
+          "concepts": [
+            "if-elif-else",
+            "float()",
+            "formula"
+          ],
+          "difficulty": "hard"
+        },
+        {
+          "id": "ex-mixed-10",
+          "title": "Largest and smallest of user-entered numbers",
+          "question": "Write a program to read n numbers into a list and print the largest and smallest.",
+          "code": "n = int(input())\nnumbers = []\nfor i in range(n):\n    numbers.append(int(input()))\nprint(\"Largest =\", max(numbers))\nprint(\"Smallest =\", min(numbers))",
+          "input": "5\n34\n78\n12\n90\n45",
+          "output": "Largest = 90\nSmallest = 12",
+          "explanation": "The numbers are collected into a list inside the loop. Once the list is complete, max() and min() give the largest and smallest values directly.",
+          "concepts": [
+            "lists",
+            "append()",
+            "max()",
+            "min()"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-mixed-11",
+          "title": "Sum of the series 1 + 1/2 + 1/3 + ...",
+          "question": "Write a program to find the sum of the series 1 + 1/2 + 1/3 + ... + 1/n.",
+          "code": "n = int(input())\ntotal = 0.0\nfor i in range(1, n + 1):\n    total += 1 / i\nprint(\"Sum =\", total)",
+          "input": "5",
+          "output": "Sum = 2.283333333333333",
+          "explanation": "Each term is 1 divided by the loop variable. The terms are added to a float total, and because 1 / i is a float the answer carries a decimal part.",
+          "concepts": [
+            "for loop",
+            "float division",
+            "series"
+          ],
+          "difficulty": "medium"
+        },
+        {
+          "id": "ex-mixed-12",
+          "title": "Table of squares and cubes",
+          "question": "Write a program to print the square and cube of every number from 1 to n.",
+          "code": "n = int(input())\nfor i in range(1, n + 1):\n    print(i, i * i, i * i * i)",
+          "input": "5",
+          "output": "1 1 1\n2 4 8\n3 9 27\n4 16 64\n5 25 125",
+          "explanation": "The loop runs from 1 to n. For each number the square and the cube are computed with multiplication and printed in a row of three values.",
+          "concepts": [
+            "for loop",
+            "arithmetic",
+            "range()"
+          ],
+          "difficulty": "easy"
+        }
+      ]
+    }
+  ]
+}

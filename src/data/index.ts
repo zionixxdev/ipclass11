@@ -6,7 +6,25 @@ import raw5 from './content/chapter-5.json';
 import raw6 from './content/chapter-6.json';
 import raw7 from './content/chapter-7.json';
 import raw8 from './content/chapter-8.json';
+import rawDiagrams from './diagrams.json';
+import rawTopicExamples from './topic-code-examples.json';
 import type { Chapter, Question, Table, Topic } from './types';
+
+export interface DiagramData {
+  title: string;
+  caption: string;
+  svg: string;
+}
+
+/** Inline SVG diagrams keyed by topic id. */
+export const diagrams = rawDiagrams as unknown as Record<string, DiagramData>;
+
+/** Extra execution-verified code examples keyed by topic id. */
+export const topicCodeExamples = rawTopicExamples as unknown as Record<string, { code: string; output?: string; explanation?: string }[]>;
+
+export function getDiagram(topicId: string): DiagramData | undefined {
+  return diagrams[topicId];
+}
 
 interface ChapterFile {
   chapter: { id: string; number: number; title: string; summary: string };
@@ -46,7 +64,11 @@ function normTopic(t: any): Topic {
       diagrams: asArray<string>(c.diagrams),
       differences: asArray<any>(c.differences).map(normTable),
       pythonSyntax: c.pythonSyntax,
-      codeExamples: asArray<any>(c.codeExamples).map((e) => ({ code: e?.code || '', output: e?.output, explanation: e?.explanation })),
+      codeExamples: [
+        ...asArray<any>(c.codeExamples).map((e) => ({ code: e?.code || '', output: e?.output, explanation: e?.explanation })),
+        // extra verified examples bundled in topic-code-examples.json
+        ...(topicCodeExamples[t.id] || []).map((e) => ({ code: e.code, output: e.output, explanation: e.explanation })),
+      ],
       commonMistakes: asArray<string>(c.commonMistakes),
       examNotes: asArray<string>(c.examNotes),
       faqs: asArray<any>(c.faqs).map((f) => ({ q: f?.q || '', a: f?.a || '' })),

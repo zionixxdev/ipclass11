@@ -25,6 +25,7 @@ import { useProgress } from '../lib/store';
 import { cn } from '../lib/utils';
 import { Card } from '../components/ui';
 import { CodeBlock } from '../components/CodeBlock';
+import { Diagram } from '../components/Diagram';
 import NotFound from './NotFound';
 
 function DataTable({ t }: { t: Table }) {
@@ -139,12 +140,21 @@ export default function TopicView() {
       </div>
 
       <div className="space-y-6">
-        {/* 1. Hinglish */}
-        <Card className="p-5">
-          <Block icon={<Quote size={16} />} title="Simple explanation (Hinglish)">
-            <p className="prose-note">{c.hinglish}</p>
+        {/* Visual overview — the concept at a glance */}
+        <Card className="p-4 sm:p-5">
+          <Block icon={<FileText size={16} />} title="Visual overview">
+            <Diagram topicId={topic.id} />
           </Block>
         </Card>
+
+        {/* 1. Hinglish */}
+        {state.settings.showHinglish && (
+          <Card className="p-5">
+            <Block icon={<Quote size={16} />} title="Simple explanation (Hinglish)">
+              <p className="prose-note">{c.hinglish}</p>
+            </Block>
+          </Card>
+        )}
 
         {/* 2. Formal definition */}
         <Card className="p-5">
@@ -189,7 +199,7 @@ export default function TopicView() {
         {/* 6. Diagrams */}
         {c.diagrams?.length ? (
           <Card className="p-5">
-            <Block icon={<FileText size={16} />} title="Diagrams & flowcharts">
+            <Block icon={<FileText size={16} />} title="Quick sketch (text diagram)">
               <div className="space-y-3">
                 {c.diagrams.map((d, i) => (
                   <pre key={i} className="code-block whitespace-pre-wrap font-mono text-xs text-slate-200">{d}</pre>

@@ -5,9 +5,11 @@ import {
   BookOpen,
   CalendarClock,
   CheckCircle2,
+  Circle,
   ClipboardList,
   Flame,
   GraduationCap,
+  HelpCircle,
   Sparkles,
   Target,
   TrendingUp,
@@ -16,7 +18,7 @@ import { useProgress } from '../lib/store';
 import { overallStats, recommendNext, weakTopics } from '../lib/analytics';
 import { chapters, getTopic, topicIndex } from '../data';
 import { Card, ProgressBar, Ring, SectionTitle, Stat } from '../components/ui';
-import { daysUntil, pct, relTime, toISODate } from '../lib/utils';
+import { cn, daysUntil, relTime, toISODate } from '../lib/utils';
 
 export default function Dashboard() {
   const { state, updateSettings } = useProgress();
@@ -29,14 +31,53 @@ export default function Dashboard() {
     .filter((r) => r.meta)
     .slice(0, 4);
 
+  const checklist = [
+    { label: 'Learn your first topic', done: state.learnedTopics.length > 0, to: '/learn' },
+    { label: 'Answer 10 practice questions', done: stats.attempted >= 10, to: '/practice?mode=quick' },
+    { label: 'Set your exam date', done: !!state.settings.examDate, to: '/settings' },
+    { label: 'Clear a question from your mistake notebook', done: state.mistakes.length > 0, to: '/practice?mode=weak' },
+    { label: 'Take a mock test', done: state.mocks.length > 0, to: '/mocks' },
+  ];
+  const doneCount = checklist.filter((c) => c.done).length;
+  const allDone = doneCount === checklist.length;
+
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-2">
-        <p className="text-sm text-slate-400">
-          {state.settings.name ? `Welcome back, ${state.settings.name}.` : 'Welcome back.'} Here is your exam readiness at a glance.
-        </p>
-        <h1 className="text-2xl font-extrabold text-slate-100 sm:text-3xl">Dashboard</h1>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p className="text-sm text-slate-400">
+            {state.settings.name ? `Welcome back, ${state.settings.name}.` : 'Welcome back.'} Here is your exam readiness at a glance.
+          </p>
+          <h1 className="text-2xl font-extrabold text-slate-100 sm:text-3xl">Dashboard</h1>
+        </div>
+        <Link to="/help" className="btn-ghost !py-2">
+          <HelpCircle size={16} /> How to use this app
+        </Link>
       </div>
+
+      {/* Getting started — hidden once every step is done */}
+      {!allDone && (
+        <Card className="p-5">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-sm font-semibold text-slate-200">
+              <Sparkles size={16} className="text-brand-300" /> Getting started
+            </div>
+            <span className="chip">{doneCount}/{checklist.length} done</span>
+          </div>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {checklist.map((c) => (
+              <Link
+                key={c.label}
+                to={c.to}
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3 transition hover:border-brand-400/40"
+              >
+                {c.done ? <CheckCircle2 size={18} className="shrink-0 text-emerald-400" /> : <Circle size={18} className="shrink-0 text-slate-500" />}
+                <span className={cn('text-sm', c.done ? 'text-slate-400 line-through' : 'text-slate-200')}>{c.label}</span>
+              </Link>
+            ))}
+          </div>
+        </Card>
+      )}
 
       {/* Hero */}
       <Card className="overflow-hidden">

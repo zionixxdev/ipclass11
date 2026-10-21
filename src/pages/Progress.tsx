@@ -23,13 +23,19 @@ import { useProgress } from '../lib/store';
 import { computeChapterStats, overallStats, typeBreakdown, weakTopics } from '../lib/analytics';
 import { Card, EmptyState, ProgressBar, SectionTitle, Stat } from '../components/ui';
 
-const tooltipStyle = {
-  background: 'rgba(15,23,42,0.95)',
-  border: '1px solid rgba(255,255,255,0.1)',
-  borderRadius: 12,
-  fontSize: 12,
-  color: '#e2e8f0',
-};
+function chartColors(dark: boolean) {
+  return {
+    grid: dark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.10)',
+    tick: dark ? '#94a3b8' : '#475569',
+    tip: {
+      background: dark ? 'rgba(15,23,42,0.95)' : 'rgba(255,255,255,0.98)',
+      border: `1px solid ${dark ? 'rgba(255,255,255,0.10)' : 'rgba(15,23,42,0.12)'}`,
+      borderRadius: 12,
+      fontSize: 12,
+      color: dark ? '#e2e8f0' : '#0f172a',
+    },
+  };
+}
 
 export default function Progress() {
   const { state, exportData, resetProgress } = useProgress();
@@ -37,6 +43,8 @@ export default function Progress() {
   const chapterStats = computeChapterStats(state);
   const types = typeBreakdown(state);
   const weak = weakTopics(state, 3, 6);
+  const dark = state.settings.theme === 'dark';
+  const { grid: gridStroke, tick: tickFill, tip } = chartColors(dark);
 
   // Daily accuracy over last 14 days
   const daily = (() => {
@@ -109,10 +117,10 @@ export default function Progress() {
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chapterChart}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                <XAxis dataKey="name" tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                <YAxis tick={{ fill: '#94a3b8', fontSize: 12 }} domain={[0, 100]} />
-                <Tooltip contentStyle={tooltipStyle} />
+                <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+                <XAxis dataKey="name" tick={{ fill: tickFill, fontSize: 12 }} />
+                <YAxis tick={{ fill: tickFill, fontSize: 12 }} domain={[0, 100]} />
+                <Tooltip contentStyle={tip} />
                 <Legend wrapperStyle={{ fontSize: 12 }} />
                 <Bar dataKey="completion" name="Completion %" fill="#598cff" radius={[6, 6, 0, 0]} />
                 <Bar dataKey="accuracy" name="Accuracy %" fill="#34d399" radius={[6, 6, 0, 0]} />
@@ -126,10 +134,10 @@ export default function Progress() {
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={daily}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                <XAxis dataKey="day" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                <YAxis tick={{ fill: '#94a3b8', fontSize: 12 }} domain={[0, 100]} />
-                <Tooltip contentStyle={tooltipStyle} />
+                <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+                <XAxis dataKey="day" tick={{ fill: tickFill, fontSize: 11 }} />
+                <YAxis tick={{ fill: tickFill, fontSize: 12 }} domain={[0, 100]} />
+                <Tooltip contentStyle={tip} />
                 <Line type="monotone" dataKey="accuracy" name="Accuracy %" stroke="#8b5cf6" strokeWidth={2} dot={{ r: 3 }} />
                 <Line type="monotone" dataKey="attempts" name="Attempts" stroke="#f59e0b" strokeWidth={2} dot={false} />
               </LineChart>
@@ -142,10 +150,10 @@ export default function Progress() {
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={typeChart} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                <XAxis type="number" domain={[0, 100]} tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                <YAxis type="category" dataKey="name" width={120} tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                <Tooltip contentStyle={tooltipStyle} />
+                <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+                <XAxis type="number" domain={[0, 100]} tick={{ fill: tickFill, fontSize: 12 }} />
+                <YAxis type="category" dataKey="name" width={120} tick={{ fill: tickFill, fontSize: 11 }} />
+                <Tooltip contentStyle={tip} />
                 <Bar dataKey="accuracy" name="Accuracy %" radius={[0, 6, 6, 0]}>
                   {typeChart.map((t, i) => (
                     <Cell key={i} fill={t.accuracy >= 70 ? '#34d399' : t.accuracy >= 40 ? '#f59e0b' : '#f43f5e'} />
@@ -161,10 +169,10 @@ export default function Progress() {
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={radarData}>
-                <PolarGrid stroke="rgba(255,255,255,0.1)" />
-                <PolarAngleAxis dataKey="chapter" tick={{ fill: '#94a3b8', fontSize: 11 }} />
+                <PolarGrid stroke={gridStroke} />
+                <PolarAngleAxis dataKey="chapter" tick={{ fill: tickFill, fontSize: 11 }} />
                 <Radar dataKey="completion" name="Completion %" stroke="#598cff" fill="#598cff" fillOpacity={0.35} />
-                <Tooltip contentStyle={tooltipStyle} />
+                <Tooltip contentStyle={tip} />
               </RadarChart>
             </ResponsiveContainer>
           </div>
@@ -213,10 +221,10 @@ export default function Progress() {
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={state.mocks.map((m, i) => ({ name: `#${i + 1}`, score: m.totalMarks ? Math.round((m.scoredMarks / m.totalMarks) * 100) : 0 }))}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                <XAxis dataKey="name" tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                <YAxis domain={[0, 100]} tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                <Tooltip contentStyle={tooltipStyle} />
+                <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+                <XAxis dataKey="name" tick={{ fill: tickFill, fontSize: 12 }} />
+                <YAxis domain={[0, 100]} tick={{ fill: tickFill, fontSize: 12 }} />
+                <Tooltip contentStyle={tip} />
                 <Bar dataKey="score" name="Score %" fill="#8b5cf6" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

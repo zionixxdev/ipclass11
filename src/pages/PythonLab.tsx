@@ -3,6 +3,7 @@ import { AlertTriangle, Code2, Cpu, Loader2, Play, RotateCcw, Terminal, Zap } fr
 import { CodeBlock } from '../components/CodeBlock';
 import { Card, SectionTitle, Spinner } from '../components/ui';
 import { ensurePyodide, onPyodideStatus, pyodideStatus, runPython, type RunResult } from '../lib/pyodide';
+import { LAB_CODE_KEY, LAB_STDIN_KEY } from '../lib/storage';
 import { cn } from '../lib/utils';
 
 interface Sample {
@@ -108,6 +109,23 @@ export default function PythonLab() {
   const taRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => onPyodideStatus((s, msg) => { setStatus(s); if (msg) setError(msg); }), []);
+
+  // A program handed over from the Python Examples page.
+  useEffect(() => {
+    try {
+      const pending = localStorage.getItem(LAB_CODE_KEY);
+      if (!pending) return;
+      setCode(pending);
+      setStdin(localStorage.getItem(LAB_STDIN_KEY) || '');
+      setNotes(['This program was opened from Python Examples — press Run to see the output for yourself.']);
+      setResult(null);
+      setExecuted(false);
+      localStorage.removeItem(LAB_CODE_KEY);
+      localStorage.removeItem(LAB_STDIN_KEY);
+    } catch {
+      /* storage unavailable — keep the default sample */
+    }
+  }, []);
 
   const load = () => {
     setError(null);

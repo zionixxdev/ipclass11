@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
-import { Download, Moon, RotateCcw, Sun, Upload, User } from 'lucide-react';
+import { Download, Moon, RotateCcw, Sparkles, Sun, Upload, User } from 'lucide-react';
 import { useProgress } from '../lib/store';
-import { PROGRESS_KEY } from '../lib/storage';
+import { ONBOARD_KEY, PROGRESS_KEY } from '../lib/storage';
 import { Card, SectionTitle, Toggle } from '../components/ui';
 import { toISODate } from '../lib/utils';
 
@@ -10,6 +10,7 @@ export default function SettingsPage() {
   const { settings } = state;
   const [confirmReset, setConfirmReset] = useState(false);
   const [importMsg, setImportMsg] = useState('');
+  const [tourMsg, setTourMsg] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
 
   const importFile = (file: File) => {
@@ -77,6 +78,26 @@ export default function SettingsPage() {
             </div>
             <Toggle checked={settings.showHinglish} onChange={(v) => updateSettings({ showHinglish: v })} label="Hinglish" />
           </div>
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
+            <div>
+              <p className="flex items-center gap-1.5 text-sm font-medium text-slate-200"><Sparkles size={14} className="text-brand-300" /> Welcome tour</p>
+              <p className="text-xs text-slate-400">Show the 4-step introduction again</p>
+            </div>
+            <button
+              className="btn-ghost"
+              onClick={() => {
+                try {
+                  localStorage.removeItem(ONBOARD_KEY);
+                } catch {
+                  /* ignore */
+                }
+                setTourMsg('The welcome tour will appear again next time you open the app.');
+              }}
+            >
+              Show tour
+            </button>
+          </div>
+          {tourMsg && <p className="text-sm text-brand-300">{tourMsg}</p>}
         </div>
       </Card>
 
