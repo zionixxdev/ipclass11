@@ -6,6 +6,8 @@ with structured learning content, a large tagged question bank, a smart practice
 engine, CBSE-style mock tests, a Python lab with real in-browser execution, a
 revision centre and local progress analytics.
 
+**🔗 Live site: https://zionixxdev.github.io/ipclass11/**
+
 Built with **React + TypeScript + Vite + Tailwind CSS**, Lucide icons, Recharts
 (for analytics) and LocalStorage for persistence. No login is required and there
 is no paid API or mandatory API key — the app starts working immediately in
